@@ -16,10 +16,9 @@ class GameField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FrameUpdateBloc, FrameUpdateState>(
-      bloc: di.get<FrameUpdateBloc>(),
       builder: (BuildContext context, FrameUpdateState state) {
         di.get<SceneData>().update(state.delta);
-        di.get<FrameUpdateBloc>().add(const FrameUpdateEvent.update());
+        context.read<FrameUpdateBloc>().add(const FrameUpdateEvent.update());
 
         return Stack(
           children: <Widget>[
