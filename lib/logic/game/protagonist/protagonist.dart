@@ -13,41 +13,30 @@ enum RotatingState {
   changingToRight,
 }
 
-class Hero extends ActorMoving implements Updatable {
-  Hero._({
+class Protagonist extends ActorMoving implements Updatable {
+  Protagonist({
     required Vector position,
-    required double angle,
-    required double rotationSpeed,
-    required Vector size,
+    double? angle,
+    double? rotationSpeed,
   }) : super(
           position: position,
-          angle: angle,
-          rotationSpeed: rotationSpeed,
-          size: size,
+          angle: angle ?? 180,
+          rotationSpeed: rotationSpeed ?? kRotationSpeed,
+          size: Vector.square(size: 70),
         );
-
-  factory Hero.init({
-    required Vector position,
-  }) =>
-      Hero._(
-        position: position,
-        angle: 0,
-        rotationSpeed: kRotationSpeed,
-        size: Vector.square(size: 70),
-      );
 
   RotatingState changingRotation = RotatingState.notChanging;
 
-  Hero copyWith({
+  @override
+  Protagonist copyWith({
     required Vector position,
   }) =>
-      Hero._(
+      Protagonist(
         position: position,
         angle: angle,
         rotationSpeed: (changingRotation != RotatingState.notChanging)
             ? (rotationSpeed > 0 ? kRotationSpeed : -kRotationSpeed)
             : rotationSpeed,
-        size: size,
       );
 
   void shoot() {

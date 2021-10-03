@@ -2,35 +2,30 @@ import 'package:flutter_counter_shooter/logic/game/actor/actor_moving.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/updatable.dart';
 import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
 
-class Bullet extends ActorMoving implements Updatable {
-  Bullet({
+class Bomb extends ActorMoving implements Updatable {
+  Bomb({
     required Vector position,
     required double angle,
-    required double rotationSpeed,
-    Vector? linearSpeed,
-    Vector? size,
+    required Vector linearSpeed,
   }) : super(
           position: position,
           angle: angle,
-          rotationSpeed: rotationSpeed,
-          linearSpeed: linearSpeed ?? Vector.fromAngle(angle: angle, length: 100),
-          size: size ?? Vector.square(size: 20),
+          linearSpeed: linearSpeed,
+          size: Vector.square(size: 50),
         );
 
   @override
-  Bullet copyWith({
+  Bomb copyWith({
     required Vector position,
   }) =>
-      Bullet(
+      Bomb(
         position: position,
         angle: angle,
         linearSpeed: linearSpeed,
-        rotationSpeed: rotationSpeed,
-        size: size,
       );
 
   @override
   String toString() {
-    return 'HeroBullet{moving: ${super.toString()}}';
+    return 'Bomb{moving: ${super.toString()}}';
   }
 }
