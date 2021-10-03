@@ -8,7 +8,6 @@ import 'package:flutter_counter_shooter/logic/game/actor/actor_state.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/updatable.dart';
 import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
 import 'package:flutter_counter_shooter/logic/game/enemy/bomb.dart';
-import 'package:flutter_counter_shooter/logic/game/math/angle_conversion.dart';
 import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
 import 'package:flutter_counter_shooter/logic/game/protagonist/protagonist.dart';
 
@@ -140,15 +139,41 @@ class SceneData implements Updatable {
         ),
       );
 
+      final Vector bombPosition = _generateBombPosition();
+      final Vector toCenter = Vector(
+        x: width / 2 - bombPosition.x,
+        y: height / 2 - bombPosition.y,
+      );
+
+      final angleToCenter = toCenter.getAngle();
+      print('!!!!!! bombPosition=$bombPosition, toCenter=$toCenter, angleToCenter=$angleToCenter');
+
       bombs.add(
         Bomb(
-          position: Vector(x: width / 2, y: -50),
-          angle: deg2Rad(180),
-          linearSpeed: Vector.fromAngle(angle: deg2Rad(180), length: 20),
+          position: bombPosition,
+          angle: angleToCenter,
+          linearSpeed: Vector.fromAngle(angle: angleToCenter, length: 20),
         ),
       );
     } else {
       di.get<GameScoreBloc>().add(const GameScoreEvent.add(1));
+    }
+  }
+
+  Vector _generateBombPosition() => _getBombPosition(width, height, Random.secure().nextDouble());
+
+  Vector _getBombPosition(double width, double height, double value) {
+    final double perimeter = (width + height) * 2;
+    final double enteringPoint = perimeter * value;
+
+    if (enteringPoint < width) {
+      return Vector(x: enteringPoint, y: 0);
+    } else if (enteringPoint < width + height) {
+      return Vector(x: width, y: enteringPoint - width);
+    } else if (enteringPoint < width * 2 + height) {
+      return Vector(x: enteringPoint - (width + height), y: height);
+    } else {
+      return Vector(x: 0, y: enteringPoint - (width * 2 + height));
     }
   }
 

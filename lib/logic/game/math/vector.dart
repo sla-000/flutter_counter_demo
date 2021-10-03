@@ -72,12 +72,18 @@ class Vector {
     return sqrt(x * x + y * y);
   }
 
+  double getAngle() {
+    assert(!isNone);
+
+    return atan2(x, -y);
+  }
+
   Vector toLength(double length) {
     assert(!isNone);
 
-    final double koeff = length / getLength();
+    final double coeff = length / getLength();
 
-    return multiply(koeff);
+    return multiply(coeff);
   }
 
   @override
