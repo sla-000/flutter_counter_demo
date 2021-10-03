@@ -36,14 +36,14 @@ class SceneData implements Updatable {
     required double width,
     required double height,
   }) {
-    final double coeffWidth = width / this.width;
-    final double coeffHeight = height / this.width;
+    final double xCoeff = width / this.width;
+    final double yCoeff = height / this.height;
 
     return SceneData._(
       width: width,
       height: height,
       hero: hero.copyWith(position: Vector(x: width / 2, y: height / 2)),
-      bullets: bullets,
+      bullets: _getBullets(xCoeff, yCoeff),
       enemies: enemies,
     );
   }
@@ -56,6 +56,19 @@ class SceneData implements Updatable {
   final List<Bullet> bullets;
 
   final List<ActorMoving> enemies;
+
+  List<Bullet> _getBullets(double xCoeff, double yCoeff) {
+    return bullets
+        .map(
+          (Bullet bullet) => bullet.copyWith(
+            position: Vector(
+              x: bullet.position.x * xCoeff,
+              y: bullet.position.y * yCoeff,
+            ),
+          ),
+        )
+        .toList();
+  }
 
   @override
   void update(double delta) {
@@ -86,7 +99,7 @@ class SceneData implements Updatable {
   void buttonPressed() {
     if (I.get<GameStartedBloc>().value) {
       hero.shoot();
-      bullets.add(Bullet(
+      bullets.add(Bullet.init(
         position: Vector.copy(hero.position),
         angle: hero.angle,
       ));
