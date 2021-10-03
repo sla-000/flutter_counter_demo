@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score_bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_started_bloc.dart';
@@ -102,9 +104,15 @@ class SceneData implements Updatable {
       bullets.add(Bullet.init(
         position: Vector.copy(hero.position),
         angle: hero.angle,
+        rotationSpeed: _getBulletRotationSpeed(),
       ));
     } else {
       I.get<GameScoreBloc>().add(1);
     }
+  }
+
+  double _getBulletRotationSpeed() {
+    final double absSpeed = pow(hero.rotationSpeed.abs(), 2.3).toDouble();
+    return hero.rotationSpeed > 0 ? -absSpeed : absSpeed;
   }
 }

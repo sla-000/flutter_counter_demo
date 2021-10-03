@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter_counter_shooter/logic/game/actor/actor_moving.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/updatable.dart';
 import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
@@ -22,12 +20,13 @@ class Bullet extends ActorMoving implements Updatable {
   factory Bullet.init({
     required Vector position,
     required double angle,
+    required double rotationSpeed,
   }) =>
       Bullet._(
         position: position,
         angle: angle,
         linearSpeed: Vector.fromAngle(angle: angle, length: 100),
-        rotationSpeed: (Random.secure().nextDouble() * 2 - 1) * 10,
+        rotationSpeed: rotationSpeed,
         size: Vector.square(size: 20),
       );
 
