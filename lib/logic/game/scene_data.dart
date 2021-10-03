@@ -91,31 +91,63 @@ class SceneData implements Updatable {
     protagonist.update(delta);
     _updateBullets(delta);
     _updateBombs(delta);
+    _checkBulletsCollisions();
+  }
+
+  void _checkBulletsCollisions() {
+    final List<ActorState> deleteBullets = <ActorState>[];
+    final List<ActorState> deleteBombs = <ActorState>[];
+
+    for (final ActorMoving bullet in bullets) {
+      bool bulletHaveCollision = false;
+
+      for (final ActorMoving bomb in bombs) {
+        if (_bulletIsClose(bullet, bomb)) {
+          deleteBombs.add(bomb);
+          bulletHaveCollision = true;
+        }
+      }
+
+      if (bulletHaveCollision) {
+        deleteBullets.add(bullet);
+      }
+    }
+
+    if (deleteBullets.isNotEmpty) {
+      di.get<GameScoreBloc>().add(GameScoreEvent.add(deleteBullets.length));
+    }
+
+    deleteBullets.forEach(bullets.remove);
+    deleteBombs.forEach(bombs.remove);
+  }
+
+  bool _bulletIsClose(ActorMoving bullet, ActorMoving bomb) {
+    return bullet.position.distance(bomb.position) < 20;
   }
 
   void _updateBullets(double delta) {
-    final List<ActorState> deleteList = <ActorState>[];
+    final List<ActorState> deleteBullets = <ActorState>[];
 
     for (final ActorMoving bullet in bullets) {
       bullet.update(delta);
-      _addToDeleteList(deleteList, bullet);
+      _checkAndAddToDeleteList(deleteBullets, bullet);
     }
 
-    deleteList.forEach(bullets.remove);
+    deleteBullets.forEach(bullets.remove);
   }
 
   void _updateBombs(double delta) {
-    final List<ActorState> deleteList = <ActorState>[];
+    final List<ActorState> deleteBombs = <ActorState>[];
 
     for (final ActorMoving bomb in bombs) {
       bomb.update(delta);
-      _addToDeleteList(deleteList, bomb);
+      _checkAndAddToDeleteList(deleteBombs, bomb);
     }
 
-    deleteList.forEach(bombs.remove);
+    deleteBombs.forEach(bombs.remove);
   }
 
-  void _addToDeleteList(List<ActorState> deleteList, ActorState actor) {
+  void _checkAndAddToDeleteList(List<ActorState> deleteList, ActorState actor) {
     if (actor.position.x < -kDeleteDistance || actor.position.x > width + kDeleteDistance) {
       deleteList.add(actor);
       return;
@@ -145,8 +177,7 @@ class SceneData implements Updatable {
         y: height / 2 - bombPosition.y,
       );
 
-      final angleToCenter = toCenter.getAngle();
-      print('!!!!!! bombPosition=$bombPosition, toCenter=$toCenter, angleToCenter=$angleToCenter');
+      final double angleToCenter = toCenter.getAngle();
 
       bombs.add(
         Bomb(

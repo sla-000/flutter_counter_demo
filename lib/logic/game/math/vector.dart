@@ -86,6 +86,16 @@ class Vector {
     return multiply(coeff);
   }
 
+  double distance(Vector other) {
+    assert(!isNone);
+    assert(!other.isNone);
+
+    return Vector(
+      x: x - other.x,
+      y: y - other.y,
+    ).getLength();
+  }
+
   @override
   String toString() {
     return 'Vector{x: $x, y: $y}';
