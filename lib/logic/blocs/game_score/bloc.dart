@@ -14,7 +14,7 @@ class GameScoreBloc extends Bloc<GameScoreEvent, GameScoreState> {
     emit(state.copyWith(score: state.score + event.value));
 
     if (state.score > 2) {
-      I.get<GameStartedBloc>().start();
+      di.get<GameStartedBloc>().start();
     }
   }
 }

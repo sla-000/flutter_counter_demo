@@ -4,12 +4,12 @@ import 'package:flutter_counter_shooter/logic/blocs/game_started_bloc.dart';
 import 'package:flutter_counter_shooter/logic/game/scene_data.dart';
 import 'package:get_it/get_it.dart';
 
-final GetIt I = GetIt.I;
+final GetIt di = GetIt.I;
 
 void initDi() {
-  I.registerLazySingleton<GameStartedBloc>(() => GameStartedBloc());
-  I.registerLazySingleton<FrameUpdateBloc>(() => FrameUpdateBloc());
-  I.registerLazySingleton<GameScoreBloc>(() => GameScoreBloc());
+  di.registerLazySingleton<GameStartedBloc>(() => GameStartedBloc());
+  di.registerLazySingleton<FrameUpdateBloc>(() => FrameUpdateBloc());
+  di.registerLazySingleton<GameScoreBloc>(() => GameScoreBloc());
 }
 
-void addSceneDataToDi(SceneData newSceneData) => I.registerLazySingleton<SceneData>(() => newSceneData);
+void addSceneDataToDi(SceneData newSceneData) => di.registerLazySingleton<SceneData>(() => newSceneData);

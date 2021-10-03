@@ -43,7 +43,7 @@ class _GameViewState extends State<GameView> with TickerProviderStateMixin {
       ),
     );
 
-    _gameStartedSubscription = I.get<GameStartedBloc>().stream.distinct().listen(
+    _gameStartedSubscription = di.get<GameStartedBloc>().stream.distinct().listen(
       (bool started) {
         if (started) {
           _animationController.forward();

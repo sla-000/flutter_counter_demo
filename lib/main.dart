@@ -49,13 +49,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
     late final SceneData sceneData;
 
-    if (I.isRegistered<SceneData>()) {
-      sceneData = I.get<SceneData>().copyWith(
+    if (di.isRegistered<SceneData>()) {
+      sceneData = di.get<SceneData>().copyWith(
             height: screenSize.height,
             width: screenSize.width,
           );
 
-      I.unregister<SceneData>();
+      di.unregister<SceneData>();
     } else {
       sceneData = SceneData.init(
         height: screenSize.height,
@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: const GameView(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => I.get<SceneData>().buttonPressed(),
+        onPressed: () => di.get<SceneData>().buttonPressed(),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),

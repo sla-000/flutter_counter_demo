@@ -100,7 +100,7 @@ class SceneData implements Updatable {
   }
 
   void buttonPressed() {
-    if (I.get<GameStartedBloc>().value) {
+    if (di.get<GameStartedBloc>().value) {
       hero.shoot();
       bullets.add(Bullet.init(
         position: Vector.copy(hero.position),
@@ -108,7 +108,7 @@ class SceneData implements Updatable {
         rotationSpeed: _getBulletRotationSpeed(),
       ));
     } else {
-      I.get<GameScoreBloc>().add(const GameScoreEvent.add(1));
+      di.get<GameScoreBloc>().add(const GameScoreEvent.add(1));
     }
   }
 

@@ -22,7 +22,7 @@ class _GamerState extends State<Gamer> with TickerProviderStateMixin {
       height: widget.size,
       child: Center(
         child: StreamBuilder<bool>(
-          stream: I.get<GameStartedBloc>().stream,
+          stream: di.get<GameStartedBloc>().stream,
           builder: (_, AsyncSnapshot<bool> snapshot) {
             if (snapshot.data ?? false) {
               return AnimatedSize(

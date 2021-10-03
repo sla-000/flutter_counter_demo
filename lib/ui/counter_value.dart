@@ -12,7 +12,7 @@ class CounterValue extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GameScoreBloc, GameScoreState>(
-      bloc: I.get<GameScoreBloc>(),
+      bloc: di.get<GameScoreBloc>(),
       builder: (BuildContext context, GameScoreState state) {
         return Text(
           '${state.score}',

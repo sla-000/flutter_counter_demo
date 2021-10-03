@@ -16,10 +16,10 @@ class GameField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FrameUpdateBloc, FrameUpdateState>(
-      bloc: I.get<FrameUpdateBloc>(),
+      bloc: di.get<FrameUpdateBloc>(),
       builder: (BuildContext context, FrameUpdateState state) {
-        I.get<SceneData>().update(state.delta);
-        I.get<FrameUpdateBloc>().add(const FrameUpdateEvent.update());
+        di.get<SceneData>().update(state.delta);
+        di.get<FrameUpdateBloc>().add(const FrameUpdateEvent.update());
 
         return Stack(
           children: <Widget>[
@@ -42,7 +42,7 @@ class GameField extends StatelessWidget {
   }
 
   List<Widget> _buildBullets() {
-    return I.get<SceneData>().bullets.map(_buildBullet).toList(growable: false);
+    return di.get<SceneData>().bullets.map(_buildBullet).toList(growable: false);
   }
 
   Widget _buildBullet(Bullet bullet) => Positioned(
@@ -59,11 +59,11 @@ class GameField extends StatelessWidget {
       );
 
   Widget _buildHero() => Positioned(
-        left: I.get<SceneData>().hero.xOrigin,
-        top: I.get<SceneData>().hero.yOrigin,
+        left: di.get<SceneData>().hero.xOrigin,
+        top: di.get<SceneData>().hero.yOrigin,
         child: Transform.rotate(
-          angle: I.get<SceneData>().hero.angle,
-          child: Gamer(size: I.get<SceneData>().hero.size.x),
+          angle: di.get<SceneData>().hero.angle,
+          child: Gamer(size: di.get<SceneData>().hero.size.x),
         ),
       );
 }
