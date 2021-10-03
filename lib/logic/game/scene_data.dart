@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/event.dart';
-import 'package:flutter_counter_shooter/logic/blocs/game_started_bloc.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/actor_moving.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/actor_state.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/updatable.dart';
@@ -100,7 +99,7 @@ class SceneData implements Updatable {
   }
 
   void buttonPressed() {
-    if (di.get<GameStartedBloc>().value) {
+    if (di.get<GameScoreBloc>().state.gameStarted) {
       hero.shoot();
       bullets.add(Bullet.init(
         position: Vector.copy(hero.position),

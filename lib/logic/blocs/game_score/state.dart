@@ -6,5 +6,6 @@ part 'state.freezed.dart';
 class GameScoreState with _$GameScoreState {
   const factory GameScoreState({
     @Default(0) int score,
+    @Default(false) bool gameStarted,
   }) = _GameScoreState;
 }

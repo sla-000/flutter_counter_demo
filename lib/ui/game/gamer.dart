@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
-import 'package:flutter_counter_shooter/logic/blocs/game_started_bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/game_score/state.dart';
 
 class Gamer extends StatefulWidget {
   const Gamer({
@@ -21,13 +23,13 @@ class _GamerState extends State<Gamer> with TickerProviderStateMixin {
       width: widget.size,
       height: widget.size,
       child: Center(
-        child: StreamBuilder<bool>(
-          stream: di.get<GameStartedBloc>().stream,
-          builder: (_, AsyncSnapshot<bool> snapshot) {
-            if (snapshot.data ?? false) {
+        child: BlocBuilder<GameScoreBloc, GameScoreState>(
+          bloc: di.get<GameScoreBloc>(),
+          buildWhen: (GameScoreState previous, GameScoreState current) => current.gameStarted != previous.gameStarted,
+          builder: (_, GameScoreState state) {
+            if (state.gameStarted) {
               return AnimatedSize(
                 duration: const Duration(milliseconds: 1000),
-                vsync: this,
                 child: Icon(
                   Icons.android_outlined,
                   size: widget.size,
@@ -35,10 +37,9 @@ class _GamerState extends State<Gamer> with TickerProviderStateMixin {
               );
             }
 
-            return AnimatedSize(
-              duration: const Duration(milliseconds: 1000),
-              vsync: this,
-              child: const SizedBox.shrink(),
+            return const AnimatedSize(
+              duration: Duration(milliseconds: 1000),
+              child: SizedBox.shrink(),
             );
           },
         ),

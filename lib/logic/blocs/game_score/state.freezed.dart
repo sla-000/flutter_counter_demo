@@ -17,9 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$GameScoreStateTearOff {
   const _$GameScoreStateTearOff();
 
-  _GameScoreState call({int score = 0}) {
+  _GameScoreState call({int score = 0, bool gameStarted = false}) {
     return _GameScoreState(
       score: score,
+      gameStarted: gameStarted,
     );
   }
 }
@@ -30,6 +31,7 @@ const $GameScoreState = _$GameScoreStateTearOff();
 /// @nodoc
 mixin _$GameScoreState {
   int get score => throw _privateConstructorUsedError;
+  bool get gameStarted => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GameScoreStateCopyWith<GameScoreState> get copyWith =>
@@ -41,7 +43,7 @@ abstract class $GameScoreStateCopyWith<$Res> {
   factory $GameScoreStateCopyWith(
           GameScoreState value, $Res Function(GameScoreState) then) =
       _$GameScoreStateCopyWithImpl<$Res>;
-  $Res call({int score});
+  $Res call({int score, bool gameStarted});
 }
 
 /// @nodoc
@@ -56,12 +58,17 @@ class _$GameScoreStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? score = freezed,
+    Object? gameStarted = freezed,
   }) {
     return _then(_value.copyWith(
       score: score == freezed
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
               as int,
+      gameStarted: gameStarted == freezed
+          ? _value.gameStarted
+          : gameStarted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -73,7 +80,7 @@ abstract class _$GameScoreStateCopyWith<$Res>
           _GameScoreState value, $Res Function(_GameScoreState) then) =
       __$GameScoreStateCopyWithImpl<$Res>;
   @override
-  $Res call({int score});
+  $Res call({int score, bool gameStarted});
 }
 
 /// @nodoc
@@ -90,12 +97,17 @@ class __$GameScoreStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? score = freezed,
+    Object? gameStarted = freezed,
   }) {
     return _then(_GameScoreState(
       score: score == freezed
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
               as int,
+      gameStarted: gameStarted == freezed
+          ? _value.gameStarted
+          : gameStarted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -103,15 +115,18 @@ class __$GameScoreStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_GameScoreState implements _GameScoreState {
-  const _$_GameScoreState({this.score = 0});
+  const _$_GameScoreState({this.score = 0, this.gameStarted = false});
 
   @JsonKey(defaultValue: 0)
   @override
   final int score;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool gameStarted;
 
   @override
   String toString() {
-    return 'GameScoreState(score: $score)';
+    return 'GameScoreState(score: $score, gameStarted: $gameStarted)';
   }
 
   @override
@@ -119,12 +134,17 @@ class _$_GameScoreState implements _GameScoreState {
     return identical(this, other) ||
         (other is _GameScoreState &&
             (identical(other.score, score) ||
-                const DeepCollectionEquality().equals(other.score, score)));
+                const DeepCollectionEquality().equals(other.score, score)) &&
+            (identical(other.gameStarted, gameStarted) ||
+                const DeepCollectionEquality()
+                    .equals(other.gameStarted, gameStarted)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(score);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(score) ^
+      const DeepCollectionEquality().hash(gameStarted);
 
   @JsonKey(ignore: true)
   @override
@@ -133,10 +153,13 @@ class _$_GameScoreState implements _GameScoreState {
 }
 
 abstract class _GameScoreState implements GameScoreState {
-  const factory _GameScoreState({int score}) = _$_GameScoreState;
+  const factory _GameScoreState({int score, bool gameStarted}) =
+      _$_GameScoreState;
 
   @override
   int get score => throw _privateConstructorUsedError;
+  @override
+  bool get gameStarted => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$GameScoreStateCopyWith<_GameScoreState> get copyWith =>
