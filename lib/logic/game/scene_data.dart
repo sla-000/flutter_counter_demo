@@ -1,7 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter_counter_shooter/di/di.dart';
-import 'package:flutter_counter_shooter/logic/blocs/game_score_bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/game_score/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_started_bloc.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/actor_moving.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/actor_state.dart';
@@ -107,7 +108,7 @@ class SceneData implements Updatable {
         rotationSpeed: _getBulletRotationSpeed(),
       ));
     } else {
-      I.get<GameScoreBloc>().add(1);
+      I.get<GameScoreBloc>().add(const GameScoreEvent.add(1));
     }
   }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_counter_shooter/di/di.dart';
-import 'package:flutter_counter_shooter/logic/blocs/game_score_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/game_score/state.dart';
 
 class CounterValue extends StatelessWidget {
   const CounterValue({
@@ -9,11 +10,10 @@ class CounterValue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<int>(
-      stream: I.get<GameScoreBloc>().stream,
-      builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+    return BlocBuilder<GameScoreBloc, GameScoreState>(
+      builder: (_, GameScoreState state) {
         return Text(
-          '${snapshot.data}',
+          '${state.score}',
           style: Theme.of(context).textTheme.headline4,
         );
       },
