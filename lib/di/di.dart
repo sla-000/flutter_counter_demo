@@ -1,4 +1,4 @@
-import 'package:flutter_counter_shooter/logic/blocs/frame_update_bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/frame_update/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_started_bloc.dart';
 import 'package:flutter_counter_shooter/logic/game/scene_data.dart';

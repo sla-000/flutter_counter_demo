@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/state.dart';
 
@@ -11,7 +12,8 @@ class CounterValue extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GameScoreBloc, GameScoreState>(
-      builder: (_, GameScoreState state) {
+      bloc: I.get<GameScoreBloc>(),
+      builder: (BuildContext context, GameScoreState state) {
         return Text(
           '${state.score}',
           style: Theme.of(context).textTheme.headline4,
