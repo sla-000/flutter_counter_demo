@@ -6,7 +6,7 @@ import 'package:flutter_counter_shooter/logic/game/scene_data.dart';
 import 'package:flutter_counter_shooter/ui/game_view.dart';
 
 void main() {
-  initDi();
+  diInit();
 
   runApp(const MyApp());
 }
@@ -19,11 +19,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter counter demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter counter demo'),
     );
   }
 }
@@ -41,6 +41,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  @override
+  void dispose() {
+    diDispose();
+
+    super.dispose();
+  }
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -69,12 +76,42 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: SizedAppBar(
+        title: widget.title,
+        height: 50,
+      ),
       body: const GameView(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => di.get<SceneData>().buttonPressed(),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
+    );
+  }
+}
+
+class SizedAppBar extends StatefulWidget implements PreferredSizeWidget {
+  const SizedAppBar({
+    Key? key,
+    required this.title,
+    required this.height,
+  }) : super(key: key);
+
+  final String title;
+  final double height;
+
+  @override
+  Size get preferredSize => Size(double.infinity, height);
+
+  @override
+  State<SizedAppBar> createState() => _SizedAppBarState();
+}
+
+class _SizedAppBarState extends State<SizedAppBar> {
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      title: Text(widget.title),
     );
   }
 }

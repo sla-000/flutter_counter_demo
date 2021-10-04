@@ -4,8 +4,15 @@ import 'package:get_it/get_it.dart';
 
 final GetIt di = GetIt.I;
 
-void initDi() {
-  di.registerLazySingleton<GameScoreBloc>(() => GameScoreBloc());
+void diInit() {
+  di.registerLazySingleton<GameScoreBloc>(
+    () => GameScoreBloc(),
+    dispose: (GameScoreBloc bloc) => bloc.close(),
+  );
+}
+
+void diDispose() {
+  di.reset(dispose: true);
 }
 
 void addSceneDataToDi(SceneData newSceneData) => di.registerLazySingleton<SceneData>(() => newSceneData);
