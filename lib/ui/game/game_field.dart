@@ -104,7 +104,7 @@ class BulletView extends StatelessWidget {
         child: Icon(
           Icons.cancel,
           size: bullet.size.x,
-          color: Colors.red,
+          color: Colors.yellow[600],
         ),
       ),
     );
@@ -129,7 +129,7 @@ class BombView extends StatelessWidget {
         child: Icon(
           Icons.bolt,
           size: bomb.size.x,
-          color: Colors.blue,
+          color: Colors.red[400],
         ),
       ),
     );

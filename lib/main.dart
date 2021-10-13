@@ -1,7 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
+import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/game_score/state.dart';
 import 'package:flutter_counter_shooter/logic/game/scene_data.dart';
 import 'package:flutter_counter_shooter/ui/game_view.dart';
 
@@ -23,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter counter demo'),
+      home: const MyHomePage(),
     );
   }
 }
@@ -31,10 +34,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({
     Key? key,
-    required this.title,
   }) : super(key: key);
-
-  final String title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -76,11 +76,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SizedAppBar(
-        title: widget.title,
-        height: 50,
+      body: ClipRect(
+        child: Stack(
+          children: const <Widget>[
+            GameView(),
+            ShiftedAppBar(),
+          ],
+        ),
       ),
-      body: const GameView(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => di.get<SceneData>().buttonPressed(),
         tooltip: 'Increment',
@@ -90,28 +93,28 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class SizedAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const SizedAppBar({
+class ShiftedAppBar extends StatelessWidget {
+  const ShiftedAppBar({
     Key? key,
-    required this.title,
-    required this.height,
   }) : super(key: key);
 
-  final String title;
-  final double height;
-
-  @override
-  Size get preferredSize => Size(double.infinity, height);
-
-  @override
-  State<SizedAppBar> createState() => _SizedAppBarState();
-}
-
-class _SizedAppBarState extends State<SizedAppBar> {
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      title: Text(widget.title),
+    return BlocBuilder<GameScoreBloc, GameScoreState>(
+      bloc: di.get<GameScoreBloc>(),
+      buildWhen: (GameScoreState previous, GameScoreState current) => current.gameStarted != previous.gameStarted,
+      builder: (BuildContext context, GameScoreState gameScoreState) {
+        return AnimatedSlide(
+          duration: const Duration(milliseconds: 1000),
+          offset: gameScoreState.gameStarted ? const Offset(0, -1) : const Offset(0, 0),
+          child: SizedBox(
+            height: 50,
+            child: AppBar(
+              title: const Text('Flutter counter demo'),
+            ),
+          ),
+        );
+      },
     );
   }
 }

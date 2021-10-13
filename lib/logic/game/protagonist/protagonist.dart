@@ -22,7 +22,7 @@ class Protagonist extends ActorMoving implements Updatable {
           position: position,
           angle: angle ?? 180,
           rotationSpeed: rotationSpeed ?? kRotationSpeed,
-          size: Vector.square(size: 70),
+          size: Vector.square(size: 50),
         );
 
   RotatingState changingRotation = RotatingState.notChanging;
