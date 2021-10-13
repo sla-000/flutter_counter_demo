@@ -6,11 +6,10 @@ import 'package:flutter_counter_shooter/logic/blocs/frame_update/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame_update/state.dart';
 import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
 import 'package:flutter_counter_shooter/logic/game/enemy/bomb.dart';
-import 'package:flutter_counter_shooter/logic/game/protagonist/protagonist.dart';
 import 'package:flutter_counter_shooter/logic/game/scene_data.dart';
 import 'package:flutter_counter_shooter/ui/game/bomb.dart';
 import 'package:flutter_counter_shooter/ui/game/bullet.dart';
-import 'package:flutter_counter_shooter/ui/game/protagonist/gamer.dart';
+import 'package:flutter_counter_shooter/ui/game/protagonist/protagonist.dart';
 
 class GameField extends StatelessWidget {
   const GameField({
@@ -64,26 +63,5 @@ class GameField extends StatelessWidget {
           ),
         )
         .toList(growable: false);
-  }
-}
-
-class ProtagonistView extends StatelessWidget {
-  const ProtagonistView({
-    Key? key,
-    required this.protagonist,
-  }) : super(key: key);
-
-  final Protagonist protagonist;
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      left: protagonist.xOrigin,
-      top: protagonist.yOrigin,
-      child: Transform.rotate(
-        angle: protagonist.angle,
-        child: Gamer(size: protagonist.size.x),
-      ),
-    );
   }
 }
