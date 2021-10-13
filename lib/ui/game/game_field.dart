@@ -8,7 +8,9 @@ import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
 import 'package:flutter_counter_shooter/logic/game/enemy/bomb.dart';
 import 'package:flutter_counter_shooter/logic/game/protagonist/protagonist.dart';
 import 'package:flutter_counter_shooter/logic/game/scene_data.dart';
-import 'package:flutter_counter_shooter/ui/game/gamer.dart';
+import 'package:flutter_counter_shooter/ui/game/bomb.dart';
+import 'package:flutter_counter_shooter/ui/game/bullet.dart';
+import 'package:flutter_counter_shooter/ui/game/protagonist/gamer.dart';
 
 class GameField extends StatelessWidget {
   const GameField({
@@ -81,56 +83,6 @@ class ProtagonistView extends StatelessWidget {
       child: Transform.rotate(
         angle: protagonist.angle,
         child: Gamer(size: protagonist.size.x),
-      ),
-    );
-  }
-}
-
-class BulletView extends StatelessWidget {
-  const BulletView({
-    Key? key,
-    required this.bullet,
-  }) : super(key: key);
-
-  final Bullet bullet;
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      left: bullet.xOrigin,
-      top: bullet.yOrigin,
-      child: Transform.rotate(
-        angle: bullet.angle,
-        child: Icon(
-          Icons.cancel,
-          size: bullet.size.x,
-          color: Colors.yellow[600],
-        ),
-      ),
-    );
-  }
-}
-
-class BombView extends StatelessWidget {
-  const BombView({
-    Key? key,
-    required this.bomb,
-  }) : super(key: key);
-
-  final Bomb bomb;
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      left: bomb.xOrigin,
-      top: bomb.yOrigin,
-      child: Transform.rotate(
-        angle: bomb.angle,
-        child: Icon(
-          Icons.bolt,
-          size: bomb.size.x,
-          color: Colors.red[400],
-        ),
       ),
     );
   }
