@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
-import 'package:flutter_counter_shooter/logic/blocs/frame_update/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/state.dart';
 import 'package:flutter_counter_shooter/ui/counter_value.dart';
@@ -79,10 +78,7 @@ class _GameViewState extends State<GameView> with TickerProviderStateMixin {
               child: CounterValue(),
             ),
           ),
-          BlocProvider<FrameUpdateBloc>(
-            create: (_) => FrameUpdateBloc(),
-            child: const GameField(),
-          ),
+          const GameField(),
         ],
       ),
     );

@@ -1,14 +1,22 @@
 import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/frame_update/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/waves/repo.dart';
+import 'package:flutter_counter_shooter/logic/game/repo.dart';
 import 'package:flutter_counter_shooter/logic/game/scene_data.dart';
 import 'package:get_it/get_it.dart';
 
 final GetIt di = GetIt.I;
 
 void diInit() {
+  di.registerLazySingleton<FrameUpdateBloc>(
+    () => FrameUpdateBloc(),
+    dispose: (FrameUpdateBloc bloc) => bloc.close(),
+  );
+
   di.registerLazySingleton<GameScoreBloc>(
     () => GameScoreBloc(),
     dispose: (GameScoreBloc bloc) => bloc.close(),
@@ -20,8 +28,12 @@ void diInit() {
   );
 
   di.registerLazySingleton<WavesBloc>(
-    () => WavesBloc(),
+    () => WavesBloc(repo: di.get<WavesRepo>()),
     dispose: (WavesBloc bloc) => bloc.close(),
+  );
+
+  di.registerLazySingleton<WavesRepo>(
+    () => WavesRepoImpl(frameUpdateBloc: di.get<FrameUpdateBloc>()),
   );
 
   di.registerLazySingleton<BombSpawnRepo>(

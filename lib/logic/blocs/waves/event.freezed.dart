@@ -25,7 +25,7 @@ class _$WavesEventTearOff {
     return const WavesEventNextWave();
   }
 
-  WavesEventUpdate update(double delta) {
+  WavesEventUpdate update(int delta) {
     return WavesEventUpdate(
       delta,
     );
@@ -41,21 +41,21 @@ mixin _$WavesEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() nextWave,
-    required TResult Function(double delta) update,
+    required TResult Function(int delta) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? nextWave,
-    TResult Function(double delta)? update,
+    TResult Function(int delta)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? nextWave,
-    TResult Function(double delta)? update,
+    TResult Function(int delta)? update,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,7 +140,7 @@ class _$WavesEventInit implements WavesEventInit {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() nextWave,
-    required TResult Function(double delta) update,
+    required TResult Function(int delta) update,
   }) {
     return init();
   }
@@ -150,7 +150,7 @@ class _$WavesEventInit implements WavesEventInit {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? nextWave,
-    TResult Function(double delta)? update,
+    TResult Function(int delta)? update,
   }) {
     return init?.call();
   }
@@ -160,7 +160,7 @@ class _$WavesEventInit implements WavesEventInit {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? nextWave,
-    TResult Function(double delta)? update,
+    TResult Function(int delta)? update,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -250,7 +250,7 @@ class _$WavesEventNextWave implements WavesEventNextWave {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() nextWave,
-    required TResult Function(double delta) update,
+    required TResult Function(int delta) update,
   }) {
     return nextWave();
   }
@@ -260,7 +260,7 @@ class _$WavesEventNextWave implements WavesEventNextWave {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? nextWave,
-    TResult Function(double delta)? update,
+    TResult Function(int delta)? update,
   }) {
     return nextWave?.call();
   }
@@ -270,7 +270,7 @@ class _$WavesEventNextWave implements WavesEventNextWave {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? nextWave,
-    TResult Function(double delta)? update,
+    TResult Function(int delta)? update,
     required TResult orElse(),
   }) {
     if (nextWave != null) {
@@ -323,7 +323,7 @@ abstract class $WavesEventUpdateCopyWith<$Res> {
   factory $WavesEventUpdateCopyWith(
           WavesEventUpdate value, $Res Function(WavesEventUpdate) then) =
       _$WavesEventUpdateCopyWithImpl<$Res>;
-  $Res call({double delta});
+  $Res call({int delta});
 }
 
 /// @nodoc
@@ -345,7 +345,7 @@ class _$WavesEventUpdateCopyWithImpl<$Res>
       delta == freezed
           ? _value.delta
           : delta // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
     ));
   }
 }
@@ -356,7 +356,7 @@ class _$WavesEventUpdate implements WavesEventUpdate {
   const _$WavesEventUpdate(this.delta);
 
   @override
-  final double delta;
+  final int delta;
 
   @override
   String toString() {
@@ -385,7 +385,7 @@ class _$WavesEventUpdate implements WavesEventUpdate {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() nextWave,
-    required TResult Function(double delta) update,
+    required TResult Function(int delta) update,
   }) {
     return update(delta);
   }
@@ -395,7 +395,7 @@ class _$WavesEventUpdate implements WavesEventUpdate {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? nextWave,
-    TResult Function(double delta)? update,
+    TResult Function(int delta)? update,
   }) {
     return update?.call(delta);
   }
@@ -405,7 +405,7 @@ class _$WavesEventUpdate implements WavesEventUpdate {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? nextWave,
-    TResult Function(double delta)? update,
+    TResult Function(int delta)? update,
     required TResult orElse(),
   }) {
     if (update != null) {
@@ -450,9 +450,9 @@ class _$WavesEventUpdate implements WavesEventUpdate {
 }
 
 abstract class WavesEventUpdate implements WavesEvent {
-  const factory WavesEventUpdate(double delta) = _$WavesEventUpdate;
+  const factory WavesEventUpdate(int delta) = _$WavesEventUpdate;
 
-  double get delta => throw _privateConstructorUsedError;
+  int get delta => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $WavesEventUpdateCopyWith<WavesEventUpdate> get copyWith =>
       throw _privateConstructorUsedError;

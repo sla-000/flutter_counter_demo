@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/event.dart';
-import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/repo.dart';
+import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame_update/bloc.dart';
@@ -14,7 +14,6 @@ import 'package:flutter_counter_shooter/logic/blocs/game_score/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/event.dart';
-import 'package:flutter_counter_shooter/logic/blocs/waves/state.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/actor_moving.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/actor_state.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/updatable.dart';
@@ -25,20 +24,6 @@ import 'package:flutter_counter_shooter/logic/game/protagonist/protagonist.dart'
 import 'package:rxdart/rxdart.dart';
 
 const double kDeleteDistance = 100;
-
-class BombSpawnRepoImpl implements BombSpawnRepo {
-  BombSpawnRepoImpl({
-    required this.wavesBloc,
-  });
-
-  final WavesBloc wavesBloc;
-
-  @override
-  Stream<BombSpawnModel> get() => wavesBloc.stream.map((WavesState wavesState) => BombSpawnModel(
-        count: wavesState.count,
-        time: wavesState.waveTime,
-      ));
-}
 
 // todo Make bloc
 class SceneData implements Updatable {
@@ -80,6 +65,8 @@ class SceneData implements Updatable {
 
   late final StreamSubscription<void> _gameStartedSubscription;
 
+  late final StreamSubscription<BombSpawnState> _bombSpawnSubscription;
+
   final double height;
   final double width;
 
@@ -111,9 +98,14 @@ class SceneData implements Updatable {
       wavesBloc.add(const WavesEvent.init());
       bombSpawnBloc.add(const BombSpawnEvent.init());
     });
+
+    _bombSpawnSubscription = bombSpawnBloc.stream.listen((_) {
+      _addBomb();
+    });
   }
 
   void close() {
+    _bombSpawnSubscription.cancel();
     _gameStartedSubscription.cancel();
   }
 
@@ -240,11 +232,9 @@ class SceneData implements Updatable {
     } else {
       di.get<GameScoreBloc>().add(const GameScoreEvent.add(1));
     }
-
-    addBomb();
   }
 
-  void addBomb() {
+  void _addBomb() {
     if (!di.get<GameScoreBloc>().state.gameStarted) {
       return;
     }

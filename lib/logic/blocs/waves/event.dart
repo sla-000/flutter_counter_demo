@@ -8,5 +8,5 @@ class WavesEvent with _$WavesEvent {
 
   const factory WavesEvent.nextWave() = WavesEventNextWave;
 
-  const factory WavesEvent.update(double delta) = WavesEventUpdate;
+  const factory WavesEvent.update(int delta) = WavesEventUpdate;
 }
