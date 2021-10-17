@@ -17,6 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$WavesEventTearOff {
   const _$WavesEventTearOff();
 
+  WavesEventInit init() {
+    return const WavesEventInit();
+  }
+
   WavesEventNextWave nextWave() {
     return const WavesEventNextWave();
   }
@@ -35,18 +39,21 @@ const $WavesEvent = _$WavesEventTearOff();
 mixin _$WavesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() nextWave,
     required TResult Function(double delta) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? nextWave,
     TResult Function(double delta)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? nextWave,
     TResult Function(double delta)? update,
     required TResult orElse(),
@@ -54,18 +61,21 @@ mixin _$WavesEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(WavesEventInit value) init,
     required TResult Function(WavesEventNextWave value) nextWave,
     required TResult Function(WavesEventUpdate value) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(WavesEventInit value)? init,
     TResult Function(WavesEventNextWave value)? nextWave,
     TResult Function(WavesEventUpdate value)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(WavesEventInit value)? init,
     TResult Function(WavesEventNextWave value)? nextWave,
     TResult Function(WavesEventUpdate value)? update,
     required TResult orElse(),
@@ -87,6 +97,115 @@ class _$WavesEventCopyWithImpl<$Res> implements $WavesEventCopyWith<$Res> {
   final WavesEvent _value;
   // ignore: unused_field
   final $Res Function(WavesEvent) _then;
+}
+
+/// @nodoc
+abstract class $WavesEventInitCopyWith<$Res> {
+  factory $WavesEventInitCopyWith(
+          WavesEventInit value, $Res Function(WavesEventInit) then) =
+      _$WavesEventInitCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$WavesEventInitCopyWithImpl<$Res> extends _$WavesEventCopyWithImpl<$Res>
+    implements $WavesEventInitCopyWith<$Res> {
+  _$WavesEventInitCopyWithImpl(
+      WavesEventInit _value, $Res Function(WavesEventInit) _then)
+      : super(_value, (v) => _then(v as WavesEventInit));
+
+  @override
+  WavesEventInit get _value => super._value as WavesEventInit;
+}
+
+/// @nodoc
+
+class _$WavesEventInit implements WavesEventInit {
+  const _$WavesEventInit();
+
+  @override
+  String toString() {
+    return 'WavesEvent.init()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is WavesEventInit);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() nextWave,
+    required TResult Function(double delta) update,
+  }) {
+    return init();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? nextWave,
+    TResult Function(double delta)? update,
+  }) {
+    return init?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? nextWave,
+    TResult Function(double delta)? update,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(WavesEventInit value) init,
+    required TResult Function(WavesEventNextWave value) nextWave,
+    required TResult Function(WavesEventUpdate value) update,
+  }) {
+    return init(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(WavesEventInit value)? init,
+    TResult Function(WavesEventNextWave value)? nextWave,
+    TResult Function(WavesEventUpdate value)? update,
+  }) {
+    return init?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(WavesEventInit value)? init,
+    TResult Function(WavesEventNextWave value)? nextWave,
+    TResult Function(WavesEventUpdate value)? update,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WavesEventInit implements WavesEvent {
+  const factory WavesEventInit() = _$WavesEventInit;
 }
 
 /// @nodoc
@@ -129,6 +248,7 @@ class _$WavesEventNextWave implements WavesEventNextWave {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() nextWave,
     required TResult Function(double delta) update,
   }) {
@@ -138,6 +258,7 @@ class _$WavesEventNextWave implements WavesEventNextWave {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? nextWave,
     TResult Function(double delta)? update,
   }) {
@@ -147,6 +268,7 @@ class _$WavesEventNextWave implements WavesEventNextWave {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? nextWave,
     TResult Function(double delta)? update,
     required TResult orElse(),
@@ -160,6 +282,7 @@ class _$WavesEventNextWave implements WavesEventNextWave {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(WavesEventInit value) init,
     required TResult Function(WavesEventNextWave value) nextWave,
     required TResult Function(WavesEventUpdate value) update,
   }) {
@@ -169,6 +292,7 @@ class _$WavesEventNextWave implements WavesEventNextWave {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(WavesEventInit value)? init,
     TResult Function(WavesEventNextWave value)? nextWave,
     TResult Function(WavesEventUpdate value)? update,
   }) {
@@ -178,6 +302,7 @@ class _$WavesEventNextWave implements WavesEventNextWave {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(WavesEventInit value)? init,
     TResult Function(WavesEventNextWave value)? nextWave,
     TResult Function(WavesEventUpdate value)? update,
     required TResult orElse(),
@@ -258,6 +383,7 @@ class _$WavesEventUpdate implements WavesEventUpdate {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() nextWave,
     required TResult Function(double delta) update,
   }) {
@@ -267,6 +393,7 @@ class _$WavesEventUpdate implements WavesEventUpdate {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? nextWave,
     TResult Function(double delta)? update,
   }) {
@@ -276,6 +403,7 @@ class _$WavesEventUpdate implements WavesEventUpdate {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? nextWave,
     TResult Function(double delta)? update,
     required TResult orElse(),
@@ -289,6 +417,7 @@ class _$WavesEventUpdate implements WavesEventUpdate {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(WavesEventInit value) init,
     required TResult Function(WavesEventNextWave value) nextWave,
     required TResult Function(WavesEventUpdate value) update,
   }) {
@@ -298,6 +427,7 @@ class _$WavesEventUpdate implements WavesEventUpdate {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(WavesEventInit value)? init,
     TResult Function(WavesEventNextWave value)? nextWave,
     TResult Function(WavesEventUpdate value)? update,
   }) {
@@ -307,6 +437,7 @@ class _$WavesEventUpdate implements WavesEventUpdate {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(WavesEventInit value)? init,
     TResult Function(WavesEventNextWave value)? nextWave,
     TResult Function(WavesEventUpdate value)? update,
     required TResult orElse(),

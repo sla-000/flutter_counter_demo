@@ -1,4 +1,5 @@
 import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
@@ -18,14 +19,22 @@ void diInit() {
     dispose: (BombsBloc bloc) => bloc.close(),
   );
 
-  di.registerFactory<WavesBloc>(() => WavesBloc());
+  di.registerLazySingleton<WavesBloc>(
+    () => WavesBloc(),
+    dispose: (WavesBloc bloc) => bloc.close(),
+  );
 
-  di.registerFactory<BombSpawnBloc>(
-    () => BombSpawnBloc(
-      repo: BombSpawnRepoImpl(
-        wavesBloc: di.get<WavesBloc>(),
-      ),
+  di.registerLazySingleton<BombSpawnRepo>(
+    () => BombSpawnRepoImpl(
+      wavesBloc: di.get<WavesBloc>(),
     ),
+  );
+
+  di.registerLazySingleton<BombSpawnBloc>(
+    () => BombSpawnBloc(
+      repo: di.get<BombSpawnRepo>(),
+    ),
+    dispose: (BombSpawnBloc bloc) => bloc.close(),
   );
 }
 

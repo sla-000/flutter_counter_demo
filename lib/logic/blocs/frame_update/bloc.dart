@@ -5,10 +5,20 @@ import 'state.dart';
 
 class FrameUpdateBloc extends Bloc<FrameUpdateEvent, FrameUpdateState> {
   FrameUpdateBloc() : super(const FrameUpdateState()) {
+    on<FrameUpdateEventControl>(_onControl);
     on<FrameUpdateEventUpdate>(_onUpdate);
   }
 
   final Stopwatch _stopwatch = Stopwatch();
+
+  void _onControl(FrameUpdateEventControl event, Emitter<FrameUpdateState> emit) {
+    if (event.enable) {
+      _stopwatch.stop();
+    } else {
+      _stopwatch.reset();
+      _stopwatch.start();
+    }
+  }
 
   void _onUpdate(FrameUpdateEventUpdate event, Emitter<FrameUpdateState> emit) {
     _stopwatch.stop();

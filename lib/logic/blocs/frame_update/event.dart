@@ -4,5 +4,6 @@ part 'event.freezed.dart';
 
 @freezed
 class FrameUpdateEvent with _$FrameUpdateEvent {
+  const factory FrameUpdateEvent.control(bool enable) = FrameUpdateEventControl;
   const factory FrameUpdateEvent.update() = FrameUpdateEventUpdate;
 }

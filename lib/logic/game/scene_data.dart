@@ -1,12 +1,19 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter_counter_shooter/di/di.dart';
+import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/frame_update/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/frame_update/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/game_score/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/waves/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/state.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/actor_moving.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/actor_state.dart';
@@ -15,6 +22,7 @@ import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
 import 'package:flutter_counter_shooter/logic/game/enemy/bomb.dart';
 import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
 import 'package:flutter_counter_shooter/logic/game/protagonist/protagonist.dart';
+import 'package:rxdart/rxdart.dart';
 
 const double kDeleteDistance = 100;
 
@@ -39,7 +47,9 @@ class SceneData implements Updatable {
     required this.height,
     required this.protagonist,
     required this.bullets,
-  });
+  }) {
+    _subscribe();
+  }
 
   factory SceneData.init({
     required double width,
@@ -68,6 +78,8 @@ class SceneData implements Updatable {
     )..bombsBloc.add(BombsEvent.setAll(_getBombs(xCoeff, yCoeff)));
   }
 
+  late final StreamSubscription<void> _gameStartedSubscription;
+
   final double height;
   final double width;
 
@@ -77,6 +89,33 @@ class SceneData implements Updatable {
 
   // todo Assign in Ctor
   final BombsBloc bombsBloc = di.get<BombsBloc>();
+
+  final BombSpawnBloc bombSpawnBloc = di.get<BombSpawnBloc>();
+  final WavesBloc wavesBloc = di.get<WavesBloc>();
+
+  void _subscribe() {
+    _gameStartedSubscription = di
+        .get<GameScoreBloc>()
+        .stream
+        .map(
+          (GameScoreState event) => event.gameStarted,
+        )
+        .distinct()
+        .doOnData(
+          (bool started) => di.get<FrameUpdateBloc>().add(FrameUpdateEvent.control(started)),
+        )
+        .where(
+          (bool started) => started,
+        )
+        .listen((_) {
+      wavesBloc.add(const WavesEvent.init());
+      bombSpawnBloc.add(const BombSpawnEvent.init());
+    });
+  }
+
+  void close() {
+    _gameStartedSubscription.cancel();
+  }
 
   List<Bullet> _getBullets(double xCoeff, double yCoeff) {
     return bullets
