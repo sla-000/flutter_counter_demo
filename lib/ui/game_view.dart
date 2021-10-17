@@ -5,6 +5,7 @@ import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/state.dart';
 import 'package:flutter_counter_shooter/ui/counter_value.dart';
 import 'package:flutter_counter_shooter/ui/game/game_field.dart';
+import 'package:flutter_counter_shooter/ui/wave_value.dart';
 import 'package:flutter_counter_shooter/ui/you_pushed_the_button_text.dart';
 
 class GameView extends StatefulWidget {
@@ -71,6 +72,7 @@ class _GameViewState extends State<GameView> with TickerProviderStateMixin {
               ),
             ),
           ),
+          const GameField(),
           AlignTransition(
             alignment: _alignmentAnimation,
             child: const Padding(
@@ -78,7 +80,11 @@ class _GameViewState extends State<GameView> with TickerProviderStateMixin {
               child: CounterValue(),
             ),
           ),
-          const GameField(),
+          const Positioned(
+            top: 20,
+            left: 20,
+            child: WaveValue(),
+          ),
         ],
       ),
     );

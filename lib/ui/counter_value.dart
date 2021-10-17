@@ -13,10 +13,20 @@ class CounterValue extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<GameScoreBloc, GameScoreState>(
       bloc: di.get<GameScoreBloc>(),
-      builder: (BuildContext context, GameScoreState state) {
-        return Text(
-          '${state.score}',
-          style: Theme.of(context).textTheme.headline4,
+      builder: (BuildContext context, GameScoreState gameScoreState) {
+        return AnimatedSwitcher(
+          duration: const Duration(milliseconds: 800),
+          child: gameScoreState.gameStarted
+              ? Text(
+                  'Score: ${gameScoreState.score}',
+                  style: Theme.of(context).textTheme.headline4,
+                  key: const Key('f63a54b4a5b54a9cd0c8a49d5fa58e88'),
+                )
+              : Text(
+                  '${gameScoreState.score}',
+                  style: Theme.of(context).textTheme.headline4,
+                  key: const Key('ade99e892f137424c04a36dbf01a205b'),
+                ),
         );
       },
     );
