@@ -11,10 +11,10 @@ class GamerIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Transform.translate(
-      offset: const Offset(0, -7),
+      offset: const Offset(0, -5),
       child: Icon(
         Icons.android_outlined,
-        color: Colors.green[700],
+        color: Colors.green[600],
         size: size,
       ),
     );

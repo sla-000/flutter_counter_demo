@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter_counter_shooter/di/di.dart';
+import 'package:flutter_counter_shooter/logic/blocs/bombs/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/bombs/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/event.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/actor_moving.dart';
@@ -13,13 +15,13 @@ import 'package:flutter_counter_shooter/logic/game/protagonist/protagonist.dart'
 
 const double kDeleteDistance = 100;
 
+// todo Make bloc
 class SceneData implements Updatable {
   SceneData._({
     required this.width,
     required this.height,
     required this.protagonist,
     required this.bullets,
-    required this.bombs,
   });
 
   factory SceneData.init({
@@ -31,8 +33,7 @@ class SceneData implements Updatable {
       height: height,
       protagonist: Protagonist(position: Vector(x: width / 2, y: height / 2)),
       bullets: <Bullet>[],
-      bombs: <Bomb>[],
-    );
+    )..bombsBloc.add(const BombsEvent.init());
   }
 
   SceneData copyWith({
@@ -47,8 +48,7 @@ class SceneData implements Updatable {
       height: height,
       protagonist: protagonist.copyWith(position: Vector(x: width / 2, y: height / 2)),
       bullets: _getBullets(xCoeff, yCoeff),
-      bombs: _getBombs(xCoeff, yCoeff),
-    );
+    )..bombsBloc.add(BombsEvent.setAll(_getBombs(xCoeff, yCoeff)));
   }
 
   final double height;
@@ -58,7 +58,8 @@ class SceneData implements Updatable {
 
   final List<Bullet> bullets;
 
-  final List<Bomb> bombs;
+  // todo Assign in Ctor
+  final BombsBloc bombsBloc = di.get<BombsBloc>();
 
   List<Bullet> _getBullets(double xCoeff, double yCoeff) {
     return bullets
@@ -74,7 +75,7 @@ class SceneData implements Updatable {
   }
 
   List<Bomb> _getBombs(double xCoeff, double yCoeff) {
-    return bombs
+    return bombsBloc.state.bombs
         .map(
           (Bomb bomb) => bomb.copyWith(
             position: Vector(
@@ -96,12 +97,12 @@ class SceneData implements Updatable {
 
   void _checkBulletsCollisions() {
     final List<ActorState> deleteBullets = <ActorState>[];
-    final List<ActorState> deleteBombs = <ActorState>[];
+    final List<Bomb> deleteBombs = <Bomb>[];
 
     for (final ActorMoving bullet in bullets) {
       bool bulletHaveCollision = false;
 
-      for (final ActorMoving bomb in bombs) {
+      for (final Bomb bomb in bombsBloc.state.bombs) {
         if (_bulletIsClose(bullet, bomb)) {
           deleteBombs.add(bomb);
           bulletHaveCollision = true;
@@ -118,7 +119,9 @@ class SceneData implements Updatable {
     }
 
     deleteBullets.forEach(bullets.remove);
-    deleteBombs.forEach(bombs.remove);
+    for (final Bomb bomb in deleteBombs) {
+      bombsBloc.add(BombsEvent.remove(bomb));
+    }
   }
 
   bool _bulletIsClose(ActorMoving bullet, ActorMoving bomb) {
@@ -137,14 +140,21 @@ class SceneData implements Updatable {
   }
 
   void _updateBombs(double delta) {
-    final List<ActorState> deleteBombs = <ActorState>[];
+    bombsBloc.add(BombsEvent.update(delta));
 
-    for (final ActorMoving bomb in bombs) {
-      bomb.update(delta);
+    _deleteBombs();
+  }
+
+  void _deleteBombs() {
+    final List<Bomb> deleteBombs = <Bomb>[];
+
+    for (final Bomb bomb in bombsBloc.state.bombs) {
       _checkAndAddToDeleteList(deleteBombs, bomb);
     }
 
-    deleteBombs.forEach(bombs.remove);
+    for (final Bomb bomb in deleteBombs) {
+      bombsBloc.add(BombsEvent.remove(bomb));
+    }
   }
 
   void _checkAndAddToDeleteList(List<ActorState> deleteList, ActorState actor) {
@@ -163,6 +173,7 @@ class SceneData implements Updatable {
     if (di.get<GameScoreBloc>().state.gameStarted) {
       protagonist.shoot();
 
+      // todo Move to protagonist.shoot()
       bullets.add(
         Bullet(
           position: Vector.copy(protagonist.position),
@@ -170,25 +181,31 @@ class SceneData implements Updatable {
           rotationSpeed: _getBulletRotationSpeed(),
         ),
       );
-
-      final Vector bombPosition = _generateBombPosition();
-      final Vector toCenter = Vector(
-        x: width / 2 - bombPosition.x,
-        y: height / 2 - bombPosition.y,
-      );
-
-      final double angleToCenter = toCenter.getAngle();
-
-      bombs.add(
-        Bomb(
-          position: bombPosition,
-          angle: angleToCenter,
-          linearSpeed: Vector.fromAngle(angle: angleToCenter, length: 20),
-        ),
-      );
     } else {
       di.get<GameScoreBloc>().add(const GameScoreEvent.add(1));
     }
+  }
+
+  void addBomb() {
+    if (!di.get<GameScoreBloc>().state.gameStarted) {
+      return;
+    }
+
+    final Vector bombPosition = _generateBombPosition();
+    final Vector toCenter = Vector(
+      x: width / 2 - bombPosition.x,
+      y: height / 2 - bombPosition.y,
+    );
+
+    final double angleToCenter = toCenter.getAngle();
+
+    final Bomb bomb = Bomb(
+      position: bombPosition,
+      angle: angleToCenter,
+      linearSpeed: Vector.fromAngle(angle: angleToCenter, length: 20),
+    );
+
+    bombsBloc.add(BombsEvent.add(bomb));
   }
 
   Vector _generateBombPosition() => _getBombPosition(width, height, Random.secure().nextDouble());

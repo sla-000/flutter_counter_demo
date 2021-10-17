@@ -1,3 +1,4 @@
+import 'package:flutter_counter_shooter/logic/blocs/bombs/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/game/scene_data.dart';
 import 'package:get_it/get_it.dart';
@@ -8,6 +9,11 @@ void diInit() {
   di.registerLazySingleton<GameScoreBloc>(
     () => GameScoreBloc(),
     dispose: (GameScoreBloc bloc) => bloc.close(),
+  );
+
+  di.registerLazySingleton<BombsBloc>(
+    () => BombsBloc(),
+    dispose: (BombsBloc bloc) => bloc.close(),
   );
 }
 
