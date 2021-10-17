@@ -162,8 +162,8 @@ class SceneData implements Updatable {
       }
     }
 
-    if (deleteBullets.isNotEmpty) {
-      di.get<GameScoreBloc>().add(GameScoreEvent.add(deleteBullets.length));
+    for (final ActorState _ in deleteBullets) {
+      di.get<GameScoreBloc>().add(const GameScoreEvent.kill());
     }
 
     deleteBullets.forEach(bullets.remove);
@@ -218,6 +218,8 @@ class SceneData implements Updatable {
   }
 
   void buttonPressed() {
+    di.get<GameScoreBloc>().add(const GameScoreEvent.shoot());
+
     if (di.get<GameScoreBloc>().state.gameStarted) {
       protagonist.shoot();
 
@@ -229,8 +231,6 @@ class SceneData implements Updatable {
           rotationSpeed: _getBulletRotationSpeed(),
         ),
       );
-    } else {
-      di.get<GameScoreBloc>().add(const GameScoreEvent.add(1));
     }
   }
 
