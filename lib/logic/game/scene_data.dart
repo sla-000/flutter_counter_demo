@@ -1,10 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter_counter_shooter/di/di.dart';
+import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/waves/state.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/actor_moving.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/actor_state.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/updatable.dart';
@@ -14,6 +17,20 @@ import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
 import 'package:flutter_counter_shooter/logic/game/protagonist/protagonist.dart';
 
 const double kDeleteDistance = 100;
+
+class BombSpawnRepoImpl implements BombSpawnRepo {
+  BombSpawnRepoImpl({
+    required this.wavesBloc,
+  });
+
+  final WavesBloc wavesBloc;
+
+  @override
+  Stream<BombSpawnModel> get() => wavesBloc.stream.map((WavesState wavesState) => BombSpawnModel(
+        count: wavesState.count,
+        time: wavesState.waveTime,
+      ));
+}
 
 // todo Make bloc
 class SceneData implements Updatable {
