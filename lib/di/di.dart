@@ -1,6 +1,7 @@
 import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/bombs/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame_update/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
@@ -22,18 +23,20 @@ void diInit() {
     dispose: (GameScoreBloc bloc) => bloc.close(),
   );
 
-  di.registerLazySingleton<BombsBloc>(
-    () => BombsBloc(),
-    dispose: (BombsBloc bloc) => bloc.close(),
+  di.registerLazySingleton<BombsClearRepo>(
+    () => BombsClearRepoImpl(wavesBloc: di.get<WavesBloc>()),
   );
-
-  di.registerLazySingleton<WavesBloc>(
-    () => WavesBloc(repo: di.get<WavesRepo>()),
-    dispose: (WavesBloc bloc) => bloc.close(),
+  di.registerLazySingleton<BombsBloc>(
+    () => BombsBloc(bombsClearRepo: di.get<BombsClearRepo>()),
+    dispose: (BombsBloc bloc) => bloc.close(),
   );
 
   di.registerLazySingleton<WavesRepo>(
     () => WavesRepoImpl(frameUpdateBloc: di.get<FrameUpdateBloc>()),
+  );
+  di.registerLazySingleton<WavesBloc>(
+    () => WavesBloc(repo: di.get<WavesRepo>()),
+    dispose: (WavesBloc bloc) => bloc.close(),
   );
 
   di.registerLazySingleton<BombSpawnRepo>(
@@ -41,7 +44,6 @@ void diInit() {
       wavesBloc: di.get<WavesBloc>(),
     ),
   );
-
   di.registerLazySingleton<BombSpawnBloc>(
     () => BombSpawnBloc(
       repo: di.get<BombSpawnRepo>(),

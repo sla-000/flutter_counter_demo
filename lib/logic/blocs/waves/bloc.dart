@@ -6,6 +6,8 @@ import 'event.dart';
 import 'repo.dart';
 import 'state.dart';
 
+const int kWaveTime = 60000;
+
 class WavesBloc extends Bloc<WavesEvent, WavesState> {
   WavesBloc({
     required WavesRepo repo,
@@ -44,6 +46,15 @@ class WavesBloc extends Bloc<WavesEvent, WavesState> {
   }
 
   void _onUpdate(WavesEventUpdate event, Emitter<WavesState> emit) {
-    emit(state.copyWith(waveTime: state.waveTime + event.delta));
+    final int time = state.waveTime + event.delta;
+
+    if (time > kWaveTime) {
+      emit(state.copyWith(
+        waveTime: time - kWaveTime,
+        count: state.count + 1,
+      ));
+    } else {
+      emit(state.copyWith(waveTime: time));
+    }
   }
 }

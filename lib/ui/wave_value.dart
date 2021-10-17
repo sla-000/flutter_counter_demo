@@ -24,7 +24,7 @@ class WaveValue extends StatelessWidget {
                     duration: const Duration(milliseconds: 800),
                     opacity: 1,
                     child: Text(
-                      'Wave: ${wavesState.count}',
+                      'Wave: ${wavesState.count + 1}',
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   )

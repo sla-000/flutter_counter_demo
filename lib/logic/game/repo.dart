@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/repo.dart';
+import 'package:flutter_counter_shooter/logic/blocs/bombs/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame_update/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame_update/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
@@ -38,4 +39,15 @@ class BombSpawnRepoImpl implements BombSpawnRepo {
         count: wavesState.count,
         time: wavesState.waveTime,
       ));
+}
+
+class BombsClearRepoImpl implements BombsClearRepo {
+  BombsClearRepoImpl({
+    required this.wavesBloc,
+  });
+
+  final WavesBloc wavesBloc;
+
+  @override
+  Stream<void> get() => wavesBloc.stream.map((WavesState wavesState) => wavesState.count).distinct();
 }
