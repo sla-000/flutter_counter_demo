@@ -28,13 +28,13 @@ class BombsBloc extends Bloc<BombsEvent, BombsState> {
 
   void _onAdd(BombsEventAdd event, Emitter<BombsState> emit) {
     emit(state.copyWith(
-      bombs: state.bombs..add(event.bomb),
+      bombs: List<Bomb>.of(state.bombs)..add(event.bomb),
     ));
   }
 
   void _onRemove(BombsEventRemove event, Emitter<BombsState> emit) {
     emit(state.copyWith(
-      bombs: state.bombs..remove(event.bomb),
+      bombs: List<Bomb>.of(state.bombs)..remove(event.bomb),
     ));
   }
 

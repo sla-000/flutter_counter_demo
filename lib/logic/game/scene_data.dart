@@ -184,6 +184,8 @@ class SceneData implements Updatable {
     } else {
       di.get<GameScoreBloc>().add(const GameScoreEvent.add(1));
     }
+
+    addBomb();
   }
 
   void addBomb() {
