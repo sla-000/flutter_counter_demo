@@ -62,8 +62,8 @@ class SceneData implements Updatable {
       height: height,
       protagonist: protagonist.copyWith(position: Vector(x: width / 2, y: height / 2)),
     )
-      ..bombsBloc.add(BombsEvent.setAll(_getBombs(xCoeff, yCoeff)))
-      ..bulletsBloc.add(BulletsEvent.setAll(_getBullets(xCoeff, yCoeff)));
+      ..bombsBloc.add(BombsEvent.setAll(_convertBombs(xCoeff, yCoeff)))
+      ..bulletsBloc.add(BulletsEvent.setAll(_convertBullets(xCoeff, yCoeff)));
   }
 
   late final StreamSubscription<void> _gameStartedSubscription;
@@ -113,7 +113,7 @@ class SceneData implements Updatable {
     _gameStartedSubscription.cancel();
   }
 
-  List<Bullet> _getBullets(double xCoeff, double yCoeff) {
+  List<Bullet> _convertBullets(double xCoeff, double yCoeff) {
     return bulletsBloc.state.bullets
         .map(
           (Bullet bullet) => bullet.copyWith(
@@ -126,7 +126,7 @@ class SceneData implements Updatable {
         .toList();
   }
 
-  List<Bomb> _getBombs(double xCoeff, double yCoeff) {
+  List<Bomb> _convertBombs(double xCoeff, double yCoeff) {
     return bombsBloc.state.bombs
         .map(
           (Bomb bomb) => bomb.copyWith(
@@ -230,13 +230,13 @@ class SceneData implements Updatable {
       protagonist.shoot();
 
       // todo Move to protagonist.shoot()
-      bulletsBloc.state.bullets.add(
+      bulletsBloc.add(BulletsEvent.add(
         Bullet(
           position: Vector.copy(protagonist.position),
           angle: protagonist.angle,
           rotationSpeed: _getBulletRotationSpeed(),
         ),
-      );
+      ));
     }
   }
 
