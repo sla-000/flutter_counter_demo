@@ -59,6 +59,8 @@ class GameField extends StatelessWidget {
   List<Widget> _buildBullets() {
     return di
         .get<SceneData>()
+        .bulletsBloc
+        .state
         .bullets
         .map(
           (Bullet bullet) => BulletView(
