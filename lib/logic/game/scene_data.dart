@@ -32,7 +32,6 @@ class SceneData implements Updatable {
   SceneData._({
     required this.width,
     required this.height,
-    required this.protagonist,
   }) {
     _subscribe();
   }
@@ -44,10 +43,10 @@ class SceneData implements Updatable {
     return SceneData._(
       width: width,
       height: height,
-      protagonist: Protagonist(position: Vector(x: width / 2, y: height / 2)),
     )
       ..bombsBloc.add(const BombsEvent.init())
-      ..bulletsBloc.add(const BulletsEvent.init());
+      ..bulletsBloc.add(const BulletsEvent.init())
+      ..protagonist = Protagonist(position: Vector(x: width / 2, y: height / 2));
   }
 
   SceneData copyWith({
@@ -60,10 +59,10 @@ class SceneData implements Updatable {
     return SceneData._(
       width: width,
       height: height,
-      protagonist: protagonist.copyWith(position: Vector(x: width / 2, y: height / 2)),
     )
       ..bombsBloc.add(BombsEvent.setAll(_convertBombs(xCoeff, yCoeff)))
-      ..bulletsBloc.add(BulletsEvent.setAll(_convertBullets(xCoeff, yCoeff)));
+      ..bulletsBloc.add(BulletsEvent.setAll(_convertBullets(xCoeff, yCoeff)))
+      ..protagonist.copyWith(position: Vector(x: width / 2, y: height / 2));
   }
 
   late final StreamSubscription<void> _gameStartedSubscription;
@@ -73,7 +72,7 @@ class SceneData implements Updatable {
   final double height;
   final double width;
 
-  final Protagonist protagonist;
+  late Protagonist protagonist;
 
   // todo Assign in Ctor
   final BulletsBloc bulletsBloc = di.get<BulletsBloc>();
@@ -229,7 +228,6 @@ class SceneData implements Updatable {
     if (di.get<GameScoreBloc>().state.gameStarted) {
       protagonist.shoot();
 
-      // todo Move to protagonist.shoot()
       bulletsBloc.add(BulletsEvent.add(
         Bullet(
           position: Vector.copy(protagonist.position),
