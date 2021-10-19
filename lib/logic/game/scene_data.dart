@@ -74,10 +74,8 @@ class SceneData implements Updatable {
 
   late Protagonist protagonist;
 
-  // todo Assign in Ctor
   final BulletsBloc bulletsBloc = di.get<BulletsBloc>();
 
-  // todo Assign in Ctor
   final BombsBloc bombsBloc = di.get<BombsBloc>();
 
   final BombSpawnBloc bombSpawnBloc = di.get<BombSpawnBloc>();

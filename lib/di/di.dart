@@ -24,7 +24,7 @@ void diInit() {
     dispose: (GameScoreBloc bloc) => bloc.close(),
   );
 
-  di.registerLazySingleton<BombsClearRepo>(
+  di.registerFactory<BombsClearRepo>(
     () => BombsClearRepoImpl(wavesBloc: di.get<WavesBloc>()),
   );
   di.registerLazySingleton<BombsBloc>(
@@ -37,7 +37,7 @@ void diInit() {
     dispose: (BulletsBloc bloc) => bloc.close(),
   );
 
-  di.registerLazySingleton<WavesRepo>(
+  di.registerFactory<WavesRepo>(
     () => WavesRepoImpl(frameUpdateBloc: di.get<FrameUpdateBloc>()),
   );
   di.registerLazySingleton<WavesBloc>(
@@ -45,7 +45,7 @@ void diInit() {
     dispose: (WavesBloc bloc) => bloc.close(),
   );
 
-  di.registerLazySingleton<BombSpawnRepo>(
+  di.registerFactory<BombSpawnRepo>(
     () => BombSpawnRepoImpl(
       wavesBloc: di.get<WavesBloc>(),
     ),
