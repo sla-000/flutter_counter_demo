@@ -156,7 +156,7 @@ class SceneBloc implements Updatable {
         Bullet(
           position: Vector.copy(protagonist.position),
           angle: protagonist.angle,
-          rotationSpeed: _getBulletRotationSpeed(),
+          rotationSpeed: getBulletRotationSpeed(protagonist.rotationSpeed),
         ),
       );
     }
@@ -184,25 +184,5 @@ class SceneBloc implements Updatable {
     bombsBloc.add(bomb);
   }
 
-  Vector _generateBombPosition() => _getBombPosition(width, height, Random.secure().nextDouble());
-
-  Vector _getBombPosition(double width, double height, double value) {
-    final double perimeter = (width + height) * 2;
-    final double enteringPoint = perimeter * value;
-
-    if (enteringPoint < width) {
-      return Vector(x: enteringPoint, y: 0);
-    } else if (enteringPoint < width + height) {
-      return Vector(x: width, y: enteringPoint - width);
-    } else if (enteringPoint < width * 2 + height) {
-      return Vector(x: enteringPoint - (width + height), y: height);
-    } else {
-      return Vector(x: 0, y: enteringPoint - (width * 2 + height));
-    }
-  }
-
-  double _getBulletRotationSpeed() {
-    final double absSpeed = pow(protagonist.rotationSpeed.abs(), 2.3).toDouble();
-    return protagonist.rotationSpeed > 0 ? -absSpeed : absSpeed;
-  }
+  Vector _generateBombPosition() => getBombPosition(width, height, Random.secure().nextDouble());
 }

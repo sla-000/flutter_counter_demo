@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
 import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
 
@@ -12,4 +14,9 @@ List<Bullet> convertBullets(List<Bullet> bullets, double xCoeff, double yCoeff) 
         ),
       )
       .toList();
+}
+
+double getBulletRotationSpeed(double rotationSpeed) {
+  final double absSpeed = pow(rotationSpeed.abs(), 2.3).toDouble();
+  return rotationSpeed > 0 ? -absSpeed : absSpeed;
 }

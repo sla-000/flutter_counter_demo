@@ -13,3 +13,18 @@ List<Bomb> convertBombs(List<Bomb> bombs, double xCoeff, double yCoeff) {
       )
       .toList();
 }
+
+Vector getBombPosition(double width, double height, double value) {
+  final double perimeter = (width + height) * 2;
+  final double enteringPoint = perimeter * value;
+
+  if (enteringPoint < width) {
+    return Vector(x: enteringPoint, y: 0);
+  } else if (enteringPoint < width + height) {
+    return Vector(x: width, y: enteringPoint - width);
+  } else if (enteringPoint < width * 2 + height) {
+    return Vector(x: enteringPoint - (width + height), y: height);
+  } else {
+    return Vector(x: 0, y: enteringPoint - (width * 2 + height));
+  }
+}
