@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/state.dart';
-import 'package:flutter_counter_shooter/logic/game/scene_data.dart';
+import 'package:flutter_counter_shooter/logic/blocs/scene/scene.dart';
 import 'package:flutter_counter_shooter/ui/game_view.dart';
 
 void main() {
@@ -54,17 +54,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final Size screenSize = MediaQuery.of(context).size;
 
-    late final SceneData sceneData;
+    late final SceneBloc sceneData;
 
-    if (di.isRegistered<SceneData>()) {
-      sceneData = di.get<SceneData>().copyWith(
+    if (di.isRegistered<SceneBloc>()) {
+      sceneData = di.get<SceneBloc>().copyWith(
             height: screenSize.height,
             width: screenSize.width,
           );
 
-      di.unregister<SceneData>();
+      di.unregister<SceneBloc>();
     } else {
-      sceneData = SceneData.init(
+      sceneData = SceneBloc.init(
         height: screenSize.height,
         width: screenSize.width,
       );
@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => di.get<SceneData>().buttonPressed(),
+        onPressed: () => di.get<SceneBloc>().buttonPressed(),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),

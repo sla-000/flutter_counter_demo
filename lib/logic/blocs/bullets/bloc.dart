@@ -20,7 +20,7 @@ class BulletsBloc {
 
   void add(Bullet bullet) => _bullets.add(bullet);
 
-  void remove(Object bullet) => _bullets.remove(bullet);
+  void removeAll(List<Object> bullets) => bullets.forEach(_bullets.remove);
 
   void update(double delta) {
     for (final Bullet bullet in _bullets) {

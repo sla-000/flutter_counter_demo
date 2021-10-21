@@ -28,7 +28,7 @@ class BombsBloc {
 
   void add(Bomb bomb) => _bombs.add(bomb);
 
-  void remove(Object bomb) => _bombs.remove(bomb);
+  void removeAll(List<Object> bombs) => bombs.forEach(_bombs.remove);
 
   void update(double delta) {
     for (final Bomb bomb in _bombs) {

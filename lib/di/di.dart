@@ -5,10 +5,10 @@ import 'package:flutter_counter_shooter/logic/blocs/bombs/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bullets/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame_update/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/scene/scene.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/repo.dart';
 import 'package:flutter_counter_shooter/logic/game/repo.dart';
-import 'package:flutter_counter_shooter/logic/game/scene_data.dart';
 import 'package:get_it/get_it.dart';
 
 final GetIt di = GetIt.I;
@@ -59,4 +59,4 @@ void diDispose() {
   di.reset(dispose: true);
 }
 
-void addSceneDataToDi(SceneData newSceneData) => di.registerLazySingleton<SceneData>(() => newSceneData);
+void addSceneDataToDi(SceneBloc newSceneData) => di.registerLazySingleton<SceneBloc>(() => newSceneData);
