@@ -7,7 +7,6 @@ import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bullets/bloc.dart';
-import 'package:flutter_counter_shooter/logic/blocs/bullets/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame_update/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame_update/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
@@ -44,7 +43,7 @@ class SceneData implements Updatable {
       height: height,
     )
       ..bombsBloc.init()
-      ..bulletsBloc.add(const BulletsEvent.init())
+      ..bulletsBloc.init()
       ..protagonist = Protagonist(position: Vector(x: width / 2, y: height / 2));
   }
 
@@ -60,7 +59,7 @@ class SceneData implements Updatable {
       height: height,
     )
       ..bombsBloc.setAll(_convertBombs(xCoeff, yCoeff))
-      ..bulletsBloc.add(BulletsEvent.setAll(_convertBullets(xCoeff, yCoeff)))
+      ..bulletsBloc.setAll(_convertBullets(xCoeff, yCoeff))
       ..protagonist.copyWith(position: Vector(x: width / 2, y: height / 2));
   }
 
@@ -110,7 +109,7 @@ class SceneData implements Updatable {
   }
 
   List<Bullet> _convertBullets(double xCoeff, double yCoeff) {
-    return bulletsBloc.state.bullets
+    return bulletsBloc.bullets
         .map(
           (Bullet bullet) => bullet.copyWith(
             position: Vector(
@@ -147,7 +146,7 @@ class SceneData implements Updatable {
     final List<Bullet> deleteBullets = <Bullet>[];
     final List<Bomb> deleteBombs = <Bomb>[];
 
-    for (final Bullet bullet in bulletsBloc.state.bullets) {
+    for (final Bullet bullet in bulletsBloc.bullets) {
       bool bulletHaveCollision = false;
 
       for (final Bomb bomb in bombsBloc.bombs) {
@@ -166,9 +165,7 @@ class SceneData implements Updatable {
       di.get<GameScoreBloc>().add(const GameScoreEvent.kill());
     }
 
-    for (final Bullet bullet in deleteBullets) {
-      bulletsBloc.add(BulletsEvent.remove(bullet));
-    }
+    deleteBullets.forEach(bulletsBloc.remove);
 
     deleteBombs.forEach(bombsBloc.remove);
   }
@@ -178,17 +175,15 @@ class SceneData implements Updatable {
   }
 
   void _updateBullets(double delta) {
-    bulletsBloc.add(BulletsEvent.update(delta));
+    bulletsBloc.update(delta);
 
     final List<Bullet> deleteBullets = <Bullet>[];
 
-    for (final Bullet bullet in bulletsBloc.state.bullets) {
+    for (final Bullet bullet in bulletsBloc.bullets) {
       _checkBoundsAddToDeleteList(deleteBullets, bullet);
     }
 
-    for (final Bullet bullet in deleteBullets) {
-      bulletsBloc.add(BulletsEvent.remove(bullet));
-    }
+    deleteBullets.forEach(bulletsBloc.remove);
   }
 
   void _updateBombs(double delta) {
@@ -221,13 +216,13 @@ class SceneData implements Updatable {
     if (di.get<GameScoreBloc>().state.gameStarted) {
       protagonist.shoot();
 
-      bulletsBloc.add(BulletsEvent.add(
+      bulletsBloc.add(
         Bullet(
           position: Vector.copy(protagonist.position),
           angle: protagonist.angle,
           rotationSpeed: _getBulletRotationSpeed(),
         ),
-      ));
+      );
     }
   }
 
