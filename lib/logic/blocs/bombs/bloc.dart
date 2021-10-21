@@ -1,67 +1,38 @@
 import 'dart:async';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/logic/game/enemy/bomb.dart';
 
-import 'event.dart';
 import 'repo.dart';
-import 'state.dart';
 
-class BombsBloc extends Bloc<BombsEvent, BombsState> {
+class BombsBloc {
   BombsBloc({
     required BombsClearRepo bombsClearRepo,
-  }) : super(const BombsState()) {
-    on<BombsEventInit>(_onInit);
-
-    on<BombsEventSetAll>(_onSetAll);
-
-    on<BombsEventAdd>(_onAdd);
-    on<BombsEventRemove>(_onRemove);
-
-    on<BombsEventUpdate>(_onUpdate);
-
-    _bombsClearSubscription = bombsClearRepo.get().listen(
-          (_) => add(const BombsEvent.init()),
-        );
+  }) {
+    _bombsClearSubscription = bombsClearRepo.get().listen((_) => init());
   }
 
   late final StreamSubscription<void> _bombsClearSubscription;
 
-  @override
-  Future<void> close() {
-    _bombsClearSubscription.cancel();
+  final List<Bomb> _bombs = <Bomb>[];
 
-    return super.close();
+  void close() => _bombsClearSubscription.cancel();
+
+  List<Bomb> get bombs => _bombs;
+
+  void init() => _bombs.clear();
+
+  void setAll(Iterable<Bomb> bombs) {
+    _bombs.clear();
+    _bombs.addAll(bombs);
   }
 
-  void _onInit(BombsEventInit event, Emitter<BombsState> emit) {
-    add(const BombsEvent.setAll(<Bomb>[]));
-  }
+  void add(Bomb bomb) => _bombs.add(bomb);
 
-  void _onSetAll(BombsEventSetAll event, Emitter<BombsState> emit) {
-    emit(state.copyWith(
-      bombs: event.bombs,
-    ));
-  }
+  void remove(Object bomb) => _bombs.remove(bomb);
 
-  void _onAdd(BombsEventAdd event, Emitter<BombsState> emit) {
-    emit(state.copyWith(
-      bombs: List<Bomb>.of(state.bombs)..add(event.bomb),
-    ));
-  }
-
-  void _onRemove(BombsEventRemove event, Emitter<BombsState> emit) {
-    emit(state.copyWith(
-      bombs: List<Bomb>.of(state.bombs)..remove(event.bomb),
-    ));
-  }
-
-  void _onUpdate(BombsEventUpdate event, Emitter<BombsState> emit) {
-    emit(state.copyWith(
-      bombs: state.bombs
-        ..forEach(
-          (Bomb element) => element.update(event.delta),
-        ),
-    ));
+  void update(double delta) {
+    for (final Bomb bomb in _bombs) {
+      bomb.update(delta);
+    }
   }
 }
