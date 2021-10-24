@@ -25,7 +25,7 @@ class WaveValue extends StatelessWidget {
                     opacity: 1,
                     child: Text(
                       'Wave: ${wavesState.count + 1}',
-                      style: Theme.of(context).textTheme.headline4,
+                      style: Theme.of(context).textTheme.headline3!.copyWith(fontFamily: 'VT323'),
                     ),
                   )
                 : const AnimatedOpacity(
