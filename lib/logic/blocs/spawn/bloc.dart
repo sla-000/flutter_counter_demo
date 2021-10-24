@@ -6,17 +6,17 @@ import 'event.dart';
 import 'repo.dart';
 import 'state.dart';
 
-class BombSpawnBloc extends Bloc<BombSpawnEvent, BombSpawnState> {
-  BombSpawnBloc({
+class SpawnBloc extends Bloc<SpawnEvent, BombSpawnState> {
+  SpawnBloc({
     required SpawnRepo repo,
   }) : super(const BombSpawnState()) {
-    on<BombSpawnEventInit>(_onInit);
-    on<BombSpawnEventSpawn>(_onSpawn);
+    on<SpawnEventInit>(_onInit);
+    on<SpawnEventSpawn>(_onSpawn);
 
     _subscribe(repo);
   }
 
-  late final StreamSubscription<BombSpawnModel> _repoSubscription;
+  late final StreamSubscription<SpawnModel> _repoSubscription;
 
   @override
   Future<void> close() {
@@ -25,29 +25,29 @@ class BombSpawnBloc extends Bloc<BombSpawnEvent, BombSpawnState> {
     return super.close();
   }
 
-  void _onInit(BombSpawnEventInit _, Emitter<BombSpawnState> emit) {
+  void _onInit(SpawnEventInit _, Emitter<BombSpawnState> emit) {
     emit(state.copyWith(
       lastSpawn: 0,
     ));
   }
 
-  void _onSpawn(BombSpawnEventSpawn event, Emitter<BombSpawnState> emit) {
+  void _onSpawn(SpawnEventSpawn event, Emitter<BombSpawnState> emit) {
     emit(state.copyWith(
       lastSpawn: event.time,
     ));
   }
 
   void _subscribe(SpawnRepo repo) {
-    _repoSubscription = repo.get().listen((BombSpawnModel bombSpawnModel) {
+    _repoSubscription = repo.get().listen((SpawnModel bombSpawnModel) {
       bombSpawnModel.count;
       bombSpawnModel.time;
 
       if (state.lastSpawn == null || bombSpawnModel.time < state.lastSpawn || _calcSpawnPeriod(bombSpawnModel)) {
-        add(BombSpawnEvent.spawn(bombSpawnModel.time));
+        add(SpawnEvent.spawn(bombSpawnModel.time));
       }
     });
   }
 
-  bool _calcSpawnPeriod(BombSpawnModel bombSpawnModel) =>
+  bool _calcSpawnPeriod(SpawnModel bombSpawnModel) =>
       bombSpawnModel.time > state.lastSpawn + 2000 - (bombSpawnModel.count * 50);
 }

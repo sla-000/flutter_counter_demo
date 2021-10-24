@@ -14,25 +14,25 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$BombSpawnEventTearOff {
-  const _$BombSpawnEventTearOff();
+class _$SpawnEventTearOff {
+  const _$SpawnEventTearOff();
 
-  BombSpawnEventInit init() {
-    return const BombSpawnEventInit();
+  SpawnEventInit init() {
+    return const SpawnEventInit();
   }
 
-  BombSpawnEventSpawn spawn(int time) {
-    return BombSpawnEventSpawn(
+  SpawnEventSpawn spawn(int time) {
+    return SpawnEventSpawn(
       time,
     );
   }
 }
 
 /// @nodoc
-const $BombSpawnEvent = _$BombSpawnEventTearOff();
+const $SpawnEvent = _$SpawnEventTearOff();
 
 /// @nodoc
-mixin _$BombSpawnEvent {
+mixin _$SpawnEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
@@ -54,74 +54,72 @@ mixin _$BombSpawnEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BombSpawnEventInit value) init,
-    required TResult Function(BombSpawnEventSpawn value) spawn,
+    required TResult Function(SpawnEventInit value) init,
+    required TResult Function(SpawnEventSpawn value) spawn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BombSpawnEventInit value)? init,
-    TResult Function(BombSpawnEventSpawn value)? spawn,
+    TResult Function(SpawnEventInit value)? init,
+    TResult Function(SpawnEventSpawn value)? spawn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BombSpawnEventInit value)? init,
-    TResult Function(BombSpawnEventSpawn value)? spawn,
+    TResult Function(SpawnEventInit value)? init,
+    TResult Function(SpawnEventSpawn value)? spawn,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BombSpawnEventCopyWith<$Res> {
-  factory $BombSpawnEventCopyWith(
-          BombSpawnEvent value, $Res Function(BombSpawnEvent) then) =
-      _$BombSpawnEventCopyWithImpl<$Res>;
+abstract class $SpawnEventCopyWith<$Res> {
+  factory $SpawnEventCopyWith(
+          SpawnEvent value, $Res Function(SpawnEvent) then) =
+      _$SpawnEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$BombSpawnEventCopyWithImpl<$Res>
-    implements $BombSpawnEventCopyWith<$Res> {
-  _$BombSpawnEventCopyWithImpl(this._value, this._then);
+class _$SpawnEventCopyWithImpl<$Res> implements $SpawnEventCopyWith<$Res> {
+  _$SpawnEventCopyWithImpl(this._value, this._then);
 
-  final BombSpawnEvent _value;
+  final SpawnEvent _value;
   // ignore: unused_field
-  final $Res Function(BombSpawnEvent) _then;
+  final $Res Function(SpawnEvent) _then;
 }
 
 /// @nodoc
-abstract class $BombSpawnEventInitCopyWith<$Res> {
-  factory $BombSpawnEventInitCopyWith(
-          BombSpawnEventInit value, $Res Function(BombSpawnEventInit) then) =
-      _$BombSpawnEventInitCopyWithImpl<$Res>;
+abstract class $SpawnEventInitCopyWith<$Res> {
+  factory $SpawnEventInitCopyWith(
+          SpawnEventInit value, $Res Function(SpawnEventInit) then) =
+      _$SpawnEventInitCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$BombSpawnEventInitCopyWithImpl<$Res>
-    extends _$BombSpawnEventCopyWithImpl<$Res>
-    implements $BombSpawnEventInitCopyWith<$Res> {
-  _$BombSpawnEventInitCopyWithImpl(
-      BombSpawnEventInit _value, $Res Function(BombSpawnEventInit) _then)
-      : super(_value, (v) => _then(v as BombSpawnEventInit));
+class _$SpawnEventInitCopyWithImpl<$Res> extends _$SpawnEventCopyWithImpl<$Res>
+    implements $SpawnEventInitCopyWith<$Res> {
+  _$SpawnEventInitCopyWithImpl(
+      SpawnEventInit _value, $Res Function(SpawnEventInit) _then)
+      : super(_value, (v) => _then(v as SpawnEventInit));
 
   @override
-  BombSpawnEventInit get _value => super._value as BombSpawnEventInit;
+  SpawnEventInit get _value => super._value as SpawnEventInit;
 }
 
 /// @nodoc
 
-class _$BombSpawnEventInit implements BombSpawnEventInit {
-  const _$BombSpawnEventInit();
+class _$SpawnEventInit implements SpawnEventInit {
+  const _$SpawnEventInit();
 
   @override
   String toString() {
-    return 'BombSpawnEvent.init()';
+    return 'SpawnEvent.init()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is BombSpawnEventInit);
+    return identical(this, other) || (other is SpawnEventInit);
   }
 
   @override
@@ -161,8 +159,8 @@ class _$BombSpawnEventInit implements BombSpawnEventInit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BombSpawnEventInit value) init,
-    required TResult Function(BombSpawnEventSpawn value) spawn,
+    required TResult Function(SpawnEventInit value) init,
+    required TResult Function(SpawnEventSpawn value) spawn,
   }) {
     return init(this);
   }
@@ -170,8 +168,8 @@ class _$BombSpawnEventInit implements BombSpawnEventInit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BombSpawnEventInit value)? init,
-    TResult Function(BombSpawnEventSpawn value)? spawn,
+    TResult Function(SpawnEventInit value)? init,
+    TResult Function(SpawnEventSpawn value)? spawn,
   }) {
     return init?.call(this);
   }
@@ -179,8 +177,8 @@ class _$BombSpawnEventInit implements BombSpawnEventInit {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BombSpawnEventInit value)? init,
-    TResult Function(BombSpawnEventSpawn value)? spawn,
+    TResult Function(SpawnEventInit value)? init,
+    TResult Function(SpawnEventSpawn value)? spawn,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -190,34 +188,33 @@ class _$BombSpawnEventInit implements BombSpawnEventInit {
   }
 }
 
-abstract class BombSpawnEventInit implements BombSpawnEvent {
-  const factory BombSpawnEventInit() = _$BombSpawnEventInit;
+abstract class SpawnEventInit implements SpawnEvent {
+  const factory SpawnEventInit() = _$SpawnEventInit;
 }
 
 /// @nodoc
-abstract class $BombSpawnEventSpawnCopyWith<$Res> {
-  factory $BombSpawnEventSpawnCopyWith(
-          BombSpawnEventSpawn value, $Res Function(BombSpawnEventSpawn) then) =
-      _$BombSpawnEventSpawnCopyWithImpl<$Res>;
+abstract class $SpawnEventSpawnCopyWith<$Res> {
+  factory $SpawnEventSpawnCopyWith(
+          SpawnEventSpawn value, $Res Function(SpawnEventSpawn) then) =
+      _$SpawnEventSpawnCopyWithImpl<$Res>;
   $Res call({int time});
 }
 
 /// @nodoc
-class _$BombSpawnEventSpawnCopyWithImpl<$Res>
-    extends _$BombSpawnEventCopyWithImpl<$Res>
-    implements $BombSpawnEventSpawnCopyWith<$Res> {
-  _$BombSpawnEventSpawnCopyWithImpl(
-      BombSpawnEventSpawn _value, $Res Function(BombSpawnEventSpawn) _then)
-      : super(_value, (v) => _then(v as BombSpawnEventSpawn));
+class _$SpawnEventSpawnCopyWithImpl<$Res> extends _$SpawnEventCopyWithImpl<$Res>
+    implements $SpawnEventSpawnCopyWith<$Res> {
+  _$SpawnEventSpawnCopyWithImpl(
+      SpawnEventSpawn _value, $Res Function(SpawnEventSpawn) _then)
+      : super(_value, (v) => _then(v as SpawnEventSpawn));
 
   @override
-  BombSpawnEventSpawn get _value => super._value as BombSpawnEventSpawn;
+  SpawnEventSpawn get _value => super._value as SpawnEventSpawn;
 
   @override
   $Res call({
     Object? time = freezed,
   }) {
-    return _then(BombSpawnEventSpawn(
+    return _then(SpawnEventSpawn(
       time == freezed
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
@@ -228,21 +225,21 @@ class _$BombSpawnEventSpawnCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$BombSpawnEventSpawn implements BombSpawnEventSpawn {
-  const _$BombSpawnEventSpawn(this.time);
+class _$SpawnEventSpawn implements SpawnEventSpawn {
+  const _$SpawnEventSpawn(this.time);
 
   @override
   final int time;
 
   @override
   String toString() {
-    return 'BombSpawnEvent.spawn(time: $time)';
+    return 'SpawnEvent.spawn(time: $time)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is BombSpawnEventSpawn &&
+        (other is SpawnEventSpawn &&
             (identical(other.time, time) ||
                 const DeepCollectionEquality().equals(other.time, time)));
   }
@@ -253,8 +250,8 @@ class _$BombSpawnEventSpawn implements BombSpawnEventSpawn {
 
   @JsonKey(ignore: true)
   @override
-  $BombSpawnEventSpawnCopyWith<BombSpawnEventSpawn> get copyWith =>
-      _$BombSpawnEventSpawnCopyWithImpl<BombSpawnEventSpawn>(this, _$identity);
+  $SpawnEventSpawnCopyWith<SpawnEventSpawn> get copyWith =>
+      _$SpawnEventSpawnCopyWithImpl<SpawnEventSpawn>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -290,8 +287,8 @@ class _$BombSpawnEventSpawn implements BombSpawnEventSpawn {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BombSpawnEventInit value) init,
-    required TResult Function(BombSpawnEventSpawn value) spawn,
+    required TResult Function(SpawnEventInit value) init,
+    required TResult Function(SpawnEventSpawn value) spawn,
   }) {
     return spawn(this);
   }
@@ -299,8 +296,8 @@ class _$BombSpawnEventSpawn implements BombSpawnEventSpawn {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BombSpawnEventInit value)? init,
-    TResult Function(BombSpawnEventSpawn value)? spawn,
+    TResult Function(SpawnEventInit value)? init,
+    TResult Function(SpawnEventSpawn value)? spawn,
   }) {
     return spawn?.call(this);
   }
@@ -308,8 +305,8 @@ class _$BombSpawnEventSpawn implements BombSpawnEventSpawn {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BombSpawnEventInit value)? init,
-    TResult Function(BombSpawnEventSpawn value)? spawn,
+    TResult Function(SpawnEventInit value)? init,
+    TResult Function(SpawnEventSpawn value)? spawn,
     required TResult orElse(),
   }) {
     if (spawn != null) {
@@ -319,11 +316,11 @@ class _$BombSpawnEventSpawn implements BombSpawnEventSpawn {
   }
 }
 
-abstract class BombSpawnEventSpawn implements BombSpawnEvent {
-  const factory BombSpawnEventSpawn(int time) = _$BombSpawnEventSpawn;
+abstract class SpawnEventSpawn implements SpawnEvent {
+  const factory SpawnEventSpawn(int time) = _$SpawnEventSpawn;
 
   int get time => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $BombSpawnEventSpawnCopyWith<BombSpawnEventSpawn> get copyWith =>
+  $SpawnEventSpawnCopyWith<SpawnEventSpawn> get copyWith =>
       throw _privateConstructorUsedError;
 }

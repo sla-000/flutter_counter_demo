@@ -3,13 +3,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'repo.freezed.dart';
 
 @freezed
-class BombSpawnModel with _$BombSpawnModel {
-  const factory BombSpawnModel({
+class SpawnModel with _$SpawnModel {
+  const factory SpawnModel({
     @Default(0) int count,
     @Default(0) int time,
-  }) = _BombSpawnModel;
+  }) = _SpawnModel;
 }
 
 abstract class SpawnRepo {
-  Stream<BombSpawnModel> get();
+  Stream<SpawnModel> get();
 }

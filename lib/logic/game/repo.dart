@@ -1,8 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/bloc.dart';
-import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/event.dart';
-import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame_update/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame_update/state.dart';
@@ -10,6 +7,9 @@ import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/repo.dart';
+import 'package:flutter_counter_shooter/logic/blocs/spawn/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/spawn/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/spawn/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/repo.dart';
@@ -36,7 +36,7 @@ class SpawnRepoImpl implements SpawnRepo {
   final WavesBloc wavesBloc;
 
   @override
-  Stream<BombSpawnModel> get() => wavesBloc.stream.map((WavesState wavesState) => BombSpawnModel(
+  Stream<SpawnModel> get() => wavesBloc.stream.map((WavesState wavesState) => SpawnModel(
         count: wavesState.count,
         time: wavesState.waveTime,
       ));
@@ -87,10 +87,10 @@ class SceneSpawnRepoImpl implements SceneSpawnRepo {
     required this.bombSpawnBloc,
   });
 
-  final BombSpawnBloc bombSpawnBloc;
+  final SpawnBloc bombSpawnBloc;
 
   @override
-  void reset() => bombSpawnBloc.add(const BombSpawnEvent.init());
+  void reset() => bombSpawnBloc.add(const SpawnEvent.init());
 
   @override
   Stream<void> bombSpawnStream() => bombSpawnBloc.stream;

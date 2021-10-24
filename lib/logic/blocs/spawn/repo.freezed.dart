@@ -14,11 +14,11 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$BombSpawnModelTearOff {
-  const _$BombSpawnModelTearOff();
+class _$SpawnModelTearOff {
+  const _$SpawnModelTearOff();
 
-  _BombSpawnModel call({int count = 0, int time = 0}) {
-    return _BombSpawnModel(
+  _SpawnModel call({int count = 0, int time = 0}) {
+    return _SpawnModel(
       count: count,
       time: time,
     );
@@ -26,34 +26,33 @@ class _$BombSpawnModelTearOff {
 }
 
 /// @nodoc
-const $BombSpawnModel = _$BombSpawnModelTearOff();
+const $SpawnModel = _$SpawnModelTearOff();
 
 /// @nodoc
-mixin _$BombSpawnModel {
+mixin _$SpawnModel {
   int get count => throw _privateConstructorUsedError;
   int get time => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $BombSpawnModelCopyWith<BombSpawnModel> get copyWith =>
+  $SpawnModelCopyWith<SpawnModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BombSpawnModelCopyWith<$Res> {
-  factory $BombSpawnModelCopyWith(
-          BombSpawnModel value, $Res Function(BombSpawnModel) then) =
-      _$BombSpawnModelCopyWithImpl<$Res>;
+abstract class $SpawnModelCopyWith<$Res> {
+  factory $SpawnModelCopyWith(
+          SpawnModel value, $Res Function(SpawnModel) then) =
+      _$SpawnModelCopyWithImpl<$Res>;
   $Res call({int count, int time});
 }
 
 /// @nodoc
-class _$BombSpawnModelCopyWithImpl<$Res>
-    implements $BombSpawnModelCopyWith<$Res> {
-  _$BombSpawnModelCopyWithImpl(this._value, this._then);
+class _$SpawnModelCopyWithImpl<$Res> implements $SpawnModelCopyWith<$Res> {
+  _$SpawnModelCopyWithImpl(this._value, this._then);
 
-  final BombSpawnModel _value;
+  final SpawnModel _value;
   // ignore: unused_field
-  final $Res Function(BombSpawnModel) _then;
+  final $Res Function(SpawnModel) _then;
 
   @override
   $Res call({
@@ -74,32 +73,30 @@ class _$BombSpawnModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$BombSpawnModelCopyWith<$Res>
-    implements $BombSpawnModelCopyWith<$Res> {
-  factory _$BombSpawnModelCopyWith(
-          _BombSpawnModel value, $Res Function(_BombSpawnModel) then) =
-      __$BombSpawnModelCopyWithImpl<$Res>;
+abstract class _$SpawnModelCopyWith<$Res> implements $SpawnModelCopyWith<$Res> {
+  factory _$SpawnModelCopyWith(
+          _SpawnModel value, $Res Function(_SpawnModel) then) =
+      __$SpawnModelCopyWithImpl<$Res>;
   @override
   $Res call({int count, int time});
 }
 
 /// @nodoc
-class __$BombSpawnModelCopyWithImpl<$Res>
-    extends _$BombSpawnModelCopyWithImpl<$Res>
-    implements _$BombSpawnModelCopyWith<$Res> {
-  __$BombSpawnModelCopyWithImpl(
-      _BombSpawnModel _value, $Res Function(_BombSpawnModel) _then)
-      : super(_value, (v) => _then(v as _BombSpawnModel));
+class __$SpawnModelCopyWithImpl<$Res> extends _$SpawnModelCopyWithImpl<$Res>
+    implements _$SpawnModelCopyWith<$Res> {
+  __$SpawnModelCopyWithImpl(
+      _SpawnModel _value, $Res Function(_SpawnModel) _then)
+      : super(_value, (v) => _then(v as _SpawnModel));
 
   @override
-  _BombSpawnModel get _value => super._value as _BombSpawnModel;
+  _SpawnModel get _value => super._value as _SpawnModel;
 
   @override
   $Res call({
     Object? count = freezed,
     Object? time = freezed,
   }) {
-    return _then(_BombSpawnModel(
+    return _then(_SpawnModel(
       count: count == freezed
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
@@ -114,8 +111,8 @@ class __$BombSpawnModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_BombSpawnModel implements _BombSpawnModel {
-  const _$_BombSpawnModel({this.count = 0, this.time = 0});
+class _$_SpawnModel implements _SpawnModel {
+  const _$_SpawnModel({this.count = 0, this.time = 0});
 
   @JsonKey(defaultValue: 0)
   @override
@@ -126,13 +123,13 @@ class _$_BombSpawnModel implements _BombSpawnModel {
 
   @override
   String toString() {
-    return 'BombSpawnModel(count: $count, time: $time)';
+    return 'SpawnModel(count: $count, time: $time)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _BombSpawnModel &&
+        (other is _SpawnModel &&
             (identical(other.count, count) ||
                 const DeepCollectionEquality().equals(other.count, count)) &&
             (identical(other.time, time) ||
@@ -147,12 +144,12 @@ class _$_BombSpawnModel implements _BombSpawnModel {
 
   @JsonKey(ignore: true)
   @override
-  _$BombSpawnModelCopyWith<_BombSpawnModel> get copyWith =>
-      __$BombSpawnModelCopyWithImpl<_BombSpawnModel>(this, _$identity);
+  _$SpawnModelCopyWith<_SpawnModel> get copyWith =>
+      __$SpawnModelCopyWithImpl<_SpawnModel>(this, _$identity);
 }
 
-abstract class _BombSpawnModel implements BombSpawnModel {
-  const factory _BombSpawnModel({int count, int time}) = _$_BombSpawnModel;
+abstract class _SpawnModel implements SpawnModel {
+  const factory _SpawnModel({int count, int time}) = _$_SpawnModel;
 
   @override
   int get count => throw _privateConstructorUsedError;
@@ -160,6 +157,6 @@ abstract class _BombSpawnModel implements BombSpawnModel {
   int get time => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$BombSpawnModelCopyWith<_BombSpawnModel> get copyWith =>
+  _$SpawnModelCopyWith<_SpawnModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
