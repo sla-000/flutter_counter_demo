@@ -14,6 +14,8 @@ import 'package:flutter_counter_shooter/logic/blocs/frame_update/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/state.dart';
+import 'package:flutter_counter_shooter/logic/blocs/protagonist/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/protagonist/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/event.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/actor_moving.dart';
@@ -47,7 +49,7 @@ class SceneBloc implements Updatable {
     )
       ..bombsBloc.add(const BombsEvent.init())
       ..bulletsBloc.add(const BulletsEvent.init())
-      ..protagonist = Protagonist(position: Vector(x: width / 2, y: height / 2));
+      ..protagonistBloc.add(ProtagonistEvent.init(Vector(x: width / 2, y: height / 2)));
   }
 
   SceneBloc copyWith({
@@ -75,7 +77,10 @@ class SceneBloc implements Updatable {
           yCoeff,
         ),
       ))
-      ..protagonist.copyWith(position: Vector(x: width / 2, y: height / 2));
+      ..protagonistBloc.add(ProtagonistEvent.init(Vector(
+        x: width / 2,
+        y: height / 2,
+      )));
   }
 
   late final StreamSubscription<void> _gameStartedSubscription;
@@ -85,7 +90,7 @@ class SceneBloc implements Updatable {
   final double height;
   final double width;
 
-  late Protagonist protagonist;
+  final ProtagonistBloc protagonistBloc = di.get<ProtagonistBloc>();
 
   final BulletsBloc bulletsBloc = di.get<BulletsBloc>();
 
@@ -125,7 +130,7 @@ class SceneBloc implements Updatable {
 
   @override
   void update(double delta) {
-    protagonist.update(delta);
+    protagonistBloc.add(ProtagonistEvent.update(delta));
 
     bulletsBloc.add(BulletsEvent.update(delta));
 
@@ -173,7 +178,9 @@ class SceneBloc implements Updatable {
     di.get<GameScoreBloc>().add(const GameScoreEvent.shoot());
 
     if (di.get<GameScoreBloc>().state.gameStarted) {
-      protagonist.shoot();
+      protagonistBloc.add(const ProtagonistEvent.shoot());
+
+      final Protagonist protagonist = protagonistBloc.state.protagonist;
 
       bulletsBloc.add(
         BulletsEvent.add(
