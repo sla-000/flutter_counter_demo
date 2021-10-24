@@ -8,6 +8,7 @@ import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bullets/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/bullets/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame_update/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame_update/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
@@ -45,7 +46,7 @@ class SceneBloc implements Updatable {
       height: height,
     )
       ..bombsBloc.add(const BombsEvent.init())
-      ..bulletsBloc.init()
+      ..bulletsBloc.add(const BulletsEvent.init())
       ..protagonist = Protagonist(position: Vector(x: width / 2, y: height / 2));
   }
 
@@ -60,8 +61,20 @@ class SceneBloc implements Updatable {
       width: width,
       height: height,
     )
-      ..bombsBloc.add(BombsEvent.setAll(convertBombs(bombsBloc.state.bombs, xCoeff, yCoeff)))
-      ..bulletsBloc.setAll(convertBullets(bulletsBloc.bullets, xCoeff, yCoeff))
+      ..bombsBloc.add(BombsEvent.setAll(
+        convertBombs(
+          bombsBloc.state.bombs,
+          xCoeff,
+          yCoeff,
+        ),
+      ))
+      ..bulletsBloc.add(BulletsEvent.setAll(
+        convertBullets(
+          bulletsBloc.state.bullets,
+          xCoeff,
+          yCoeff,
+        ),
+      ))
       ..protagonist.copyWith(position: Vector(x: width / 2, y: height / 2));
   }
 
@@ -114,11 +127,14 @@ class SceneBloc implements Updatable {
   void update(double delta) {
     protagonist.update(delta);
 
-    bulletsBloc.update(delta);
+    bulletsBloc.add(BulletsEvent.update(delta));
 
     bombsBloc.add(BombsEvent.update(delta));
 
-    _checkBounds(bulletsBloc.bullets, bulletsBloc.removeAll);
+    _checkBounds(bulletsBloc.state.bullets, (List<ActorMoving> actors) {
+      bulletsBloc.add(BulletsEvent.removeAll(actors));
+    });
+
     _checkBounds(bombsBloc.state.bombs, (List<ActorMoving> actors) {
       bombsBloc.add(BombsEvent.removeAll(actors));
     });
@@ -128,12 +144,14 @@ class SceneBloc implements Updatable {
 
   void _processCollisions() {
     final int hits = checkCollisions(
-      bullets: bulletsBloc.bullets,
+      bullets: bulletsBloc.state.bullets,
       bombs: bombsBloc.state.bombs,
       onBombRemove: (List<Bomb> bombs) {
         bombsBloc.add(BombsEvent.removeAll(bombs));
       },
-      onBulletRemove: bulletsBloc.removeAll,
+      onBulletRemove: (List<Bullet> bullets) {
+        bulletsBloc.add(BulletsEvent.removeAll(bullets));
+      },
     );
 
     for (int i = 0; i < hits; ++i) {
@@ -158,10 +176,12 @@ class SceneBloc implements Updatable {
       protagonist.shoot();
 
       bulletsBloc.add(
-        Bullet(
-          position: Vector.copy(protagonist.position),
-          angle: protagonist.angle,
-          rotationSpeed: getBulletRotationSpeed(protagonist.rotationSpeed),
+        BulletsEvent.add(
+          Bullet(
+            position: Vector.copy(protagonist.position),
+            angle: protagonist.angle,
+            rotationSpeed: getBulletRotationSpeed(protagonist.rotationSpeed),
+          ),
         ),
       );
     }

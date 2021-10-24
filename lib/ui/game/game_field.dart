@@ -60,6 +60,7 @@ class GameField extends StatelessWidget {
     return di
         .get<SceneBloc>()
         .bulletsBloc
+        .state
         .bullets
         .map(
           (Bullet bullet) => BulletView(

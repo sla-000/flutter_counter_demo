@@ -1,30 +1,47 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
 
-class BulletsBloc {
-  BulletsBloc() {
-    init();
+import 'event.dart';
+import 'state.dart';
+
+class BulletsBloc extends Bloc<BulletsEvent, BulletsState> {
+  BulletsBloc() : super(const BulletsState()) {
+    on<BulletsEventInit>(_onInit);
+    on<BulletsEventSetAll>(_onSetAll);
+    on<BulletsEventAdd>(_onAdd);
+    on<BulletsEventRemoveAll>(_onRemoveAll);
+    on<BulletsEventUpdate>(_onUpdate);
   }
 
-  final List<Bullet> _bullets = <Bullet>[];
-
-  List<Bullet> get bullets => _bullets;
-
-  void init() {
-    _bullets.clear();
+  void _onInit(BulletsEventInit event, Emitter<BulletsState> emit) {
+    emit(state.copyWith(bullets: <Bullet>[]));
   }
 
-  void setAll(Iterable<Bullet> bullets) {
-    _bullets.clear();
-    _bullets.addAll(bullets);
+  void _onSetAll(BulletsEventSetAll event, Emitter<BulletsState> emit) {
+    emit(state.copyWith(bullets: event.bullets.toList()));
   }
 
-  void add(Bullet bullet) => _bullets.add(bullet);
+  void _onAdd(BulletsEventAdd event, Emitter<BulletsState> emit) {
+    final List<Bullet> rez = List<Bullet>.of(state.bullets);
 
-  void removeAll(List<Object> bullets) => bullets.forEach(_bullets.remove);
+    rez.add(event.bullet);
 
-  void update(double delta) {
-    for (final Bullet bullet in _bullets) {
-      bullet.update(delta);
+    emit(state.copyWith(bullets: rez));
+  }
+
+  void _onRemoveAll(BulletsEventRemoveAll event, Emitter<BulletsState> emit) {
+    final List<Bullet> rez = List<Bullet>.of(state.bullets);
+
+    rez.removeWhere((Bullet element) => event.bombs.contains(element));
+
+    emit(state.copyWith(bullets: rez));
+  }
+
+  void _onUpdate(BulletsEventUpdate event, Emitter<BulletsState> emit) {
+    for (final Bullet bomb in state.bullets) {
+      bomb.update(event.delta);
     }
+
+    emit(state.copyWith(bullets: state.bullets));
   }
 }
