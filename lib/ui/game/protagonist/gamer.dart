@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
-import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
-import 'package:flutter_counter_shooter/logic/blocs/game_score/state.dart';
+import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
 import 'package:flutter_counter_shooter/ui/game/protagonist/animate_size.dart';
 import 'package:flutter_counter_shooter/ui/game/protagonist/gamer_icon.dart';
 
