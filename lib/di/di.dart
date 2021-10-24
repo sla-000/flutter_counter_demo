@@ -10,7 +10,7 @@ import 'package:flutter_counter_shooter/logic/blocs/spawn/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/spawn/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/repo.dart';
-import 'package:flutter_counter_shooter/logic/game/repo.dart';
+import 'package:flutter_counter_shooter/logic/repo.dart';
 import 'package:get_it/get_it.dart';
 
 final GetIt di = GetIt.I;
