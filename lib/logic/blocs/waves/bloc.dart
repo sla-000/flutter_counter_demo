@@ -29,7 +29,7 @@ class WavesBloc extends Bloc<WavesEvent, WavesState> {
   }
 
   void _subscribe(WavesRepo wavesRepo) {
-    _deltaSubscription = wavesRepo.get().map((WavesModel wavesModel) => wavesModel.delta).listen((int delta) {
+    _deltaSubscription = wavesRepo.deltaStream().listen((int delta) {
       add(WavesEvent.update(delta));
     });
   }

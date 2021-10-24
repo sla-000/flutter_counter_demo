@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame_update/bloc.dart';
@@ -9,6 +11,7 @@ import 'package:flutter_counter_shooter/logic/blocs/game_score/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/waves/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/state.dart';
 
@@ -20,19 +23,13 @@ class WavesRepoImpl implements WavesRepo {
   final FrameUpdateBloc frameUpdateBloc;
 
   @override
-  Stream<WavesModel> get() {
-    return frameUpdateBloc.stream
-        .map(
-          (FrameUpdateState frameUpdateState) => (frameUpdateState.delta * 1000).toInt(),
-        )
-        .map(
-          (int delta) => WavesModel(delta: delta),
-        );
-  }
+  Stream<int> deltaStream() => frameUpdateBloc.stream.map(
+        (FrameUpdateState frameUpdateState) => (frameUpdateState.delta * 1000).toInt(),
+      );
 }
 
-class BombSpawnRepoImpl implements BombSpawnRepo {
-  BombSpawnRepoImpl({
+class SpawnRepoImpl implements SpawnRepo {
+  SpawnRepoImpl({
     required this.wavesBloc,
   });
 
@@ -56,8 +53,8 @@ class BombsClearRepoImpl implements BombsClearRepo {
   Stream<void> get() => wavesBloc.stream.map((WavesState wavesState) => wavesState.count).distinct();
 }
 
-class GameScoreRepoImpl implements GameScoreRepo {
-  GameScoreRepoImpl({
+class SceneScoreRepoImpl implements SceneScoreRepo {
+  SceneScoreRepoImpl({
     required this.gameScoreBloc,
   });
 
@@ -72,4 +69,29 @@ class GameScoreRepoImpl implements GameScoreRepo {
   void shoot() => gameScoreBloc.add(const GameScoreEvent.shoot());
   @override
   void kill() => gameScoreBloc.add(const GameScoreEvent.kill());
+}
+
+class SceneWavesRepoImpl implements SceneWavesRepo {
+  SceneWavesRepoImpl({
+    required this.wavesBloc,
+  });
+
+  final WavesBloc wavesBloc;
+
+  @override
+  void reset() => wavesBloc.add(const WavesEvent.init());
+}
+
+class SceneSpawnRepoImpl implements SceneSpawnRepo {
+  SceneSpawnRepoImpl({
+    required this.bombSpawnBloc,
+  });
+
+  final BombSpawnBloc bombSpawnBloc;
+
+  @override
+  void reset() => bombSpawnBloc.add(const BombSpawnEvent.init());
+
+  @override
+  Stream<void> bombSpawnStream() => bombSpawnBloc.stream;
 }

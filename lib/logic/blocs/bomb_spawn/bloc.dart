@@ -8,7 +8,7 @@ import 'state.dart';
 
 class BombSpawnBloc extends Bloc<BombSpawnEvent, BombSpawnState> {
   BombSpawnBloc({
-    required BombSpawnRepo repo,
+    required SpawnRepo repo,
   }) : super(const BombSpawnState()) {
     on<BombSpawnEventInit>(_onInit);
     on<BombSpawnEventSpawn>(_onSpawn);
@@ -37,7 +37,7 @@ class BombSpawnBloc extends Bloc<BombSpawnEvent, BombSpawnState> {
     ));
   }
 
-  void _subscribe(BombSpawnRepo repo) {
+  void _subscribe(SpawnRepo repo) {
     _repoSubscription = repo.get().listen((BombSpawnModel bombSpawnModel) {
       bombSpawnModel.count;
       bombSpawnModel.time;

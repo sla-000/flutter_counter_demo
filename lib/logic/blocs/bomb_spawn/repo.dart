@@ -10,6 +10,6 @@ class BombSpawnModel with _$BombSpawnModel {
   }) = _BombSpawnModel;
 }
 
-abstract class BombSpawnRepo {
+abstract class SpawnRepo {
   Stream<BombSpawnModel> get();
 }

@@ -52,18 +52,26 @@ void diInit() {
     dispose: (WavesBloc bloc) => bloc.close(),
   );
 
-  di.registerFactory<BombSpawnRepo>(
-    () => BombSpawnRepoImpl(
+  di.registerFactory<SpawnRepo>(
+    () => SpawnRepoImpl(
       wavesBloc: di.get<WavesBloc>(),
     ),
   );
   di.registerLazySingleton<BombSpawnBloc>(
-    () => BombSpawnBloc(repo: di.get<BombSpawnRepo>()),
+    () => BombSpawnBloc(repo: di.get<SpawnRepo>()),
     dispose: (BombSpawnBloc bloc) => bloc.close(),
   );
 
-  di.registerFactory<GameScoreRepo>(
-    () => GameScoreRepoImpl(gameScoreBloc: di.get<GameScoreBloc>()),
+  di.registerFactory<SceneScoreRepo>(
+    () => SceneScoreRepoImpl(gameScoreBloc: di.get<GameScoreBloc>()),
+  );
+
+  di.registerFactory<SceneWavesRepo>(
+    () => SceneWavesRepoImpl(wavesBloc: di.get<WavesBloc>()),
+  );
+
+  di.registerFactory<SceneSpawnRepo>(
+    () => SceneSpawnRepoImpl(bombSpawnBloc: di.get<BombSpawnBloc>()),
   );
 
   di.registerLazySingleton<SceneBloc>(
@@ -71,7 +79,9 @@ void diInit() {
       bombsBloc: di.get<BombsBloc>(),
       bulletsBloc: di.get<BulletsBloc>(),
       protagonistBloc: di.get<ProtagonistBloc>(),
-      gameScoreRepo: di.get<GameScoreRepo>(),
+      gameScoreRepo: di.get<SceneScoreRepo>(),
+      sceneWavesRepo: di.get<SceneWavesRepo>(),
+      sceneSpawnRepo: di.get<SceneSpawnRepo>(),
     ),
     dispose: (SceneBloc bloc) => bloc.close(),
   );

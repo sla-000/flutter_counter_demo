@@ -3,9 +3,6 @@ import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
-import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/bloc.dart';
-import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/event.dart';
-import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bullets/bloc.dart';
@@ -15,8 +12,6 @@ import 'package:flutter_counter_shooter/logic/blocs/frame_update/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/protagonist/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/protagonist/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/repo.dart';
-import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
-import 'package:flutter_counter_shooter/logic/blocs/waves/event.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/actor_moving.dart';
 import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
 import 'package:flutter_counter_shooter/logic/game/enemy/bomb.dart';
@@ -24,19 +19,19 @@ import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
 import 'package:flutter_counter_shooter/logic/game/protagonist/protagonist.dart';
 import 'package:rxdart/rxdart.dart';
 
-import 'bombs_utils.dart';
-import 'bullets_utils.dart';
-import 'distance_utils.dart';
 import 'event.dart';
 import 'state.dart';
+import 'utils/bombs.dart';
+import 'utils/bullets.dart';
+import 'utils/distance.dart';
 
 class SceneBloc extends Bloc<SceneEvent, SceneState> {
   SceneBloc({
     required this.protagonistBloc,
     required this.bulletsBloc,
     required this.bombsBloc,
-    required this.bombSpawnBloc,
-    required this.wavesBloc,
+    required this.sceneSpawnRepo,
+    required this.sceneWavesRepo,
     required this.gameScoreRepo,
   }) : super(SceneState(
           size: Vector.one(),
@@ -53,7 +48,7 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
   }
 
   late final StreamSubscription<void> _gameStartedSubscription;
-  late final StreamSubscription<BombSpawnState> _bombSpawnSubscription;
+  late final StreamSubscription<void> _bombSpawnSubscription;
 
   final ProtagonistBloc protagonistBloc;
 
@@ -61,10 +56,10 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
 
   final BombsBloc bombsBloc;
 
-  final BombSpawnBloc bombSpawnBloc;
-  final WavesBloc wavesBloc;
+  final SceneSpawnRepo sceneSpawnRepo;
+  final SceneWavesRepo sceneWavesRepo;
 
-  final GameScoreRepo gameScoreRepo;
+  final SceneScoreRepo gameScoreRepo;
 
   @override
   Future<void> close() {
@@ -190,11 +185,11 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
           (bool started) => started,
         )
         .listen((_) {
-      wavesBloc.add(const WavesEvent.init());
-      bombSpawnBloc.add(const BombSpawnEvent.init());
+      sceneWavesRepo.reset();
+      sceneSpawnRepo.reset();
     });
 
-    _bombSpawnSubscription = bombSpawnBloc.stream.listen((_) {
+    _bombSpawnSubscription = sceneSpawnRepo.bombSpawnStream().listen((_) {
       _addBomb();
     });
   }
