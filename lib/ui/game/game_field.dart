@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
-import 'package:flutter_counter_shooter/logic/blocs/frame_update/bloc.dart';
-import 'package:flutter_counter_shooter/logic/blocs/frame_update/event.dart';
-import 'package:flutter_counter_shooter/logic/blocs/frame_update/state.dart';
+import 'package:flutter_counter_shooter/logic/blocs/frame/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/frame/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/frame/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/protagonist/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/scene.dart';
@@ -20,11 +20,11 @@ class GameField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FrameUpdateBloc, FrameUpdateState>(
-      bloc: di.get<FrameUpdateBloc>(),
-      builder: (BuildContext context, FrameUpdateState state) {
+    return BlocBuilder<FrameBloc, FrameState>(
+      bloc: di.get<FrameBloc>(),
+      builder: (BuildContext context, FrameState state) {
         di.get<SceneBloc>().add(SceneEvent.update(state.delta));
-        di.get<FrameUpdateBloc>().add(const FrameUpdateEvent.update());
+        di.get<FrameBloc>().add(const FrameEvent.update());
 
         return Stack(
           children: <Widget>[

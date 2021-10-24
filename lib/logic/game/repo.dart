@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter_counter_shooter/logic/blocs/bombs/repo.dart';
-import 'package:flutter_counter_shooter/logic/blocs/frame_update/bloc.dart';
-import 'package:flutter_counter_shooter/logic/blocs/frame_update/state.dart';
+import 'package:flutter_counter_shooter/logic/blocs/frame/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/frame/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/state.dart';
@@ -20,11 +20,11 @@ class WavesRepoImpl implements WavesRepo {
     required this.frameUpdateBloc,
   });
 
-  final FrameUpdateBloc frameUpdateBloc;
+  final FrameBloc frameUpdateBloc;
 
   @override
   Stream<int> deltaStream() => frameUpdateBloc.stream.map(
-        (FrameUpdateState frameUpdateState) => (frameUpdateState.delta * 1000).toInt(),
+        (FrameState frameUpdateState) => (frameUpdateState.delta * 1000).toInt(),
       );
 }
 

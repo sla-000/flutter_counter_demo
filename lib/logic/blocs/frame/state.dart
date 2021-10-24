@@ -3,9 +3,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'state.freezed.dart';
 
 @freezed
-class FrameUpdateState with _$FrameUpdateState {
-  const factory FrameUpdateState({
+class FrameState with _$FrameState {
+  const factory FrameState({
     @Default(0) double delta,
     @Default(0) int frames,
-  }) = _FrameUpdateState;
+  }) = _FrameState;
 }

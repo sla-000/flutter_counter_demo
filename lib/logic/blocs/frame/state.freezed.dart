@@ -14,11 +14,11 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$FrameUpdateStateTearOff {
-  const _$FrameUpdateStateTearOff();
+class _$FrameStateTearOff {
+  const _$FrameStateTearOff();
 
-  _FrameUpdateState call({double delta = 0, int frames = 0}) {
-    return _FrameUpdateState(
+  _FrameState call({double delta = 0, int frames = 0}) {
+    return _FrameState(
       delta: delta,
       frames: frames,
     );
@@ -26,34 +26,33 @@ class _$FrameUpdateStateTearOff {
 }
 
 /// @nodoc
-const $FrameUpdateState = _$FrameUpdateStateTearOff();
+const $FrameState = _$FrameStateTearOff();
 
 /// @nodoc
-mixin _$FrameUpdateState {
+mixin _$FrameState {
   double get delta => throw _privateConstructorUsedError;
   int get frames => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $FrameUpdateStateCopyWith<FrameUpdateState> get copyWith =>
+  $FrameStateCopyWith<FrameState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FrameUpdateStateCopyWith<$Res> {
-  factory $FrameUpdateStateCopyWith(
-          FrameUpdateState value, $Res Function(FrameUpdateState) then) =
-      _$FrameUpdateStateCopyWithImpl<$Res>;
+abstract class $FrameStateCopyWith<$Res> {
+  factory $FrameStateCopyWith(
+          FrameState value, $Res Function(FrameState) then) =
+      _$FrameStateCopyWithImpl<$Res>;
   $Res call({double delta, int frames});
 }
 
 /// @nodoc
-class _$FrameUpdateStateCopyWithImpl<$Res>
-    implements $FrameUpdateStateCopyWith<$Res> {
-  _$FrameUpdateStateCopyWithImpl(this._value, this._then);
+class _$FrameStateCopyWithImpl<$Res> implements $FrameStateCopyWith<$Res> {
+  _$FrameStateCopyWithImpl(this._value, this._then);
 
-  final FrameUpdateState _value;
+  final FrameState _value;
   // ignore: unused_field
-  final $Res Function(FrameUpdateState) _then;
+  final $Res Function(FrameState) _then;
 
   @override
   $Res call({
@@ -74,32 +73,30 @@ class _$FrameUpdateStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$FrameUpdateStateCopyWith<$Res>
-    implements $FrameUpdateStateCopyWith<$Res> {
-  factory _$FrameUpdateStateCopyWith(
-          _FrameUpdateState value, $Res Function(_FrameUpdateState) then) =
-      __$FrameUpdateStateCopyWithImpl<$Res>;
+abstract class _$FrameStateCopyWith<$Res> implements $FrameStateCopyWith<$Res> {
+  factory _$FrameStateCopyWith(
+          _FrameState value, $Res Function(_FrameState) then) =
+      __$FrameStateCopyWithImpl<$Res>;
   @override
   $Res call({double delta, int frames});
 }
 
 /// @nodoc
-class __$FrameUpdateStateCopyWithImpl<$Res>
-    extends _$FrameUpdateStateCopyWithImpl<$Res>
-    implements _$FrameUpdateStateCopyWith<$Res> {
-  __$FrameUpdateStateCopyWithImpl(
-      _FrameUpdateState _value, $Res Function(_FrameUpdateState) _then)
-      : super(_value, (v) => _then(v as _FrameUpdateState));
+class __$FrameStateCopyWithImpl<$Res> extends _$FrameStateCopyWithImpl<$Res>
+    implements _$FrameStateCopyWith<$Res> {
+  __$FrameStateCopyWithImpl(
+      _FrameState _value, $Res Function(_FrameState) _then)
+      : super(_value, (v) => _then(v as _FrameState));
 
   @override
-  _FrameUpdateState get _value => super._value as _FrameUpdateState;
+  _FrameState get _value => super._value as _FrameState;
 
   @override
   $Res call({
     Object? delta = freezed,
     Object? frames = freezed,
   }) {
-    return _then(_FrameUpdateState(
+    return _then(_FrameState(
       delta: delta == freezed
           ? _value.delta
           : delta // ignore: cast_nullable_to_non_nullable
@@ -114,8 +111,8 @@ class __$FrameUpdateStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FrameUpdateState implements _FrameUpdateState {
-  const _$_FrameUpdateState({this.delta = 0, this.frames = 0});
+class _$_FrameState implements _FrameState {
+  const _$_FrameState({this.delta = 0, this.frames = 0});
 
   @JsonKey(defaultValue: 0)
   @override
@@ -126,13 +123,13 @@ class _$_FrameUpdateState implements _FrameUpdateState {
 
   @override
   String toString() {
-    return 'FrameUpdateState(delta: $delta, frames: $frames)';
+    return 'FrameState(delta: $delta, frames: $frames)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _FrameUpdateState &&
+        (other is _FrameState &&
             (identical(other.delta, delta) ||
                 const DeepCollectionEquality().equals(other.delta, delta)) &&
             (identical(other.frames, frames) ||
@@ -147,13 +144,12 @@ class _$_FrameUpdateState implements _FrameUpdateState {
 
   @JsonKey(ignore: true)
   @override
-  _$FrameUpdateStateCopyWith<_FrameUpdateState> get copyWith =>
-      __$FrameUpdateStateCopyWithImpl<_FrameUpdateState>(this, _$identity);
+  _$FrameStateCopyWith<_FrameState> get copyWith =>
+      __$FrameStateCopyWithImpl<_FrameState>(this, _$identity);
 }
 
-abstract class _FrameUpdateState implements FrameUpdateState {
-  const factory _FrameUpdateState({double delta, int frames}) =
-      _$_FrameUpdateState;
+abstract class _FrameState implements FrameState {
+  const factory _FrameState({double delta, int frames}) = _$_FrameState;
 
   @override
   double get delta => throw _privateConstructorUsedError;
@@ -161,6 +157,6 @@ abstract class _FrameUpdateState implements FrameUpdateState {
   int get frames => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$FrameUpdateStateCopyWith<_FrameUpdateState> get copyWith =>
+  _$FrameStateCopyWith<_FrameState> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -3,15 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'event.dart';
 import 'state.dart';
 
-class FrameUpdateBloc extends Bloc<FrameUpdateEvent, FrameUpdateState> {
-  FrameUpdateBloc() : super(const FrameUpdateState()) {
-    on<FrameUpdateEventControl>(_onControl);
-    on<FrameUpdateEventUpdate>(_onUpdate);
+class FrameBloc extends Bloc<FrameEvent, FrameState> {
+  FrameBloc() : super(const FrameState()) {
+    on<FrameEventControl>(_onControl);
+    on<FrameEventUpdate>(_onUpdate);
   }
 
   final Stopwatch _stopwatch = Stopwatch();
 
-  void _onControl(FrameUpdateEventControl event, Emitter<FrameUpdateState> emit) {
+  void _onControl(FrameEventControl event, Emitter<FrameState> emit) {
     if (event.enable) {
       _stopwatch.stop();
     } else {
@@ -20,7 +20,7 @@ class FrameUpdateBloc extends Bloc<FrameUpdateEvent, FrameUpdateState> {
     }
   }
 
-  void _onUpdate(FrameUpdateEventUpdate event, Emitter<FrameUpdateState> emit) {
+  void _onUpdate(FrameEventUpdate event, Emitter<FrameState> emit) {
     _stopwatch.stop();
     final double delta = _stopwatch.elapsedMilliseconds / 1000.0;
     _stopwatch.reset();
