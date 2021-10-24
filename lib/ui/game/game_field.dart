@@ -46,6 +46,7 @@ class GameField extends StatelessWidget {
     return di
         .get<SceneBloc>()
         .bombsBloc
+        .state
         .bombs
         .map(
           (Bomb bomb) => BombView(

@@ -6,6 +6,7 @@ import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bomb_spawn/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/bombs/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bullets/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame_update/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame_update/event.dart';
@@ -43,7 +44,7 @@ class SceneBloc implements Updatable {
       width: width,
       height: height,
     )
-      ..bombsBloc.init()
+      ..bombsBloc.add(const BombsEvent.init())
       ..bulletsBloc.init()
       ..protagonist = Protagonist(position: Vector(x: width / 2, y: height / 2));
   }
@@ -59,7 +60,7 @@ class SceneBloc implements Updatable {
       width: width,
       height: height,
     )
-      ..bombsBloc.setAll(convertBombs(bombsBloc.bombs, xCoeff, yCoeff))
+      ..bombsBloc.add(BombsEvent.setAll(convertBombs(bombsBloc.state.bombs, xCoeff, yCoeff)))
       ..bulletsBloc.setAll(convertBullets(bulletsBloc.bullets, xCoeff, yCoeff))
       ..protagonist.copyWith(position: Vector(x: width / 2, y: height / 2));
   }
@@ -115,10 +116,12 @@ class SceneBloc implements Updatable {
 
     bulletsBloc.update(delta);
 
-    bombsBloc.update(delta);
+    bombsBloc.add(BombsEvent.update(delta));
 
     _checkBounds(bulletsBloc.bullets, bulletsBloc.removeAll);
-    _checkBounds(bombsBloc.bombs, bombsBloc.removeAll);
+    _checkBounds(bombsBloc.state.bombs, (List<ActorMoving> actors) {
+      bombsBloc.add(BombsEvent.removeAll(actors));
+    });
 
     _processCollisions();
   }
@@ -126,8 +129,10 @@ class SceneBloc implements Updatable {
   void _processCollisions() {
     final int hits = checkCollisions(
       bullets: bulletsBloc.bullets,
-      bombs: bombsBloc.bombs,
-      onBombRemove: bombsBloc.removeAll,
+      bombs: bombsBloc.state.bombs,
+      onBombRemove: (List<Bomb> bombs) {
+        bombsBloc.add(BombsEvent.removeAll(bombs));
+      },
       onBulletRemove: bulletsBloc.removeAll,
     );
 
@@ -181,7 +186,7 @@ class SceneBloc implements Updatable {
       linearSpeed: Vector.fromAngle(angle: angleToCenter, length: 20),
     );
 
-    bombsBloc.add(bomb);
+    bombsBloc.add(BombsEvent.add(bomb));
   }
 
   Vector _generateBombPosition() => getBombPosition(width, height, Random.secure().nextDouble());

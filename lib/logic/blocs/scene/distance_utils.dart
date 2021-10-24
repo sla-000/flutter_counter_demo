@@ -9,7 +9,7 @@ int checkCollisions({
   required List<Bullet> bullets,
   required List<Bomb> bombs,
   required void Function(List<Bullet> bullets) onBulletRemove,
-  required void Function(List<Bomb> bomb) onBombRemove,
+  required void Function(List<Bomb> bombs) onBombRemove,
 }) {
   final List<Bullet> delBullets = <Bullet>[];
   final List<Bomb> delBombs = <Bomb>[];

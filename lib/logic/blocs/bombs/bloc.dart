@@ -1,38 +1,65 @@
 import 'dart:async';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/logic/game/enemy/bomb.dart';
 
+import 'event.dart';
 import 'repo.dart';
+import 'state.dart';
 
-class BombsBloc {
+class BombsBloc extends Bloc<BombsEvent, BombsState> {
   BombsBloc({
     required BombsClearRepo bombsClearRepo,
-  }) {
-    _bombsClearSubscription = bombsClearRepo.get().listen((_) => init());
+  }) : super(const BombsState()) {
+    on<BombsEventInit>(_onInit);
+    on<BombsEventSetAll>(_onSetAll);
+    on<BombsEventAdd>(_onAdd);
+    on<BombsEventRemoveAll>(_onRemoveAll);
+    on<BombsEventUpdate>(_onUpdate);
+
+    _bombsClearSubscription = bombsClearRepo.get().listen((_) {
+      add(const BombsEvent.init());
+    });
   }
 
   late final StreamSubscription<void> _bombsClearSubscription;
 
-  final List<Bomb> _bombs = <Bomb>[];
+  @override
+  Future<void> close() {
+    _bombsClearSubscription.cancel();
 
-  void close() => _bombsClearSubscription.cancel();
-
-  List<Bomb> get bombs => _bombs;
-
-  void init() => _bombs.clear();
-
-  void setAll(Iterable<Bomb> bombs) {
-    _bombs.clear();
-    _bombs.addAll(bombs);
+    return super.close();
   }
 
-  void add(Bomb bomb) => _bombs.add(bomb);
+  void _onInit(BombsEventInit event, Emitter<BombsState> emit) {
+    emit(state.copyWith(bombs: <Bomb>[]));
+  }
 
-  void removeAll(List<Object> bombs) => bombs.forEach(_bombs.remove);
+  void _onSetAll(BombsEventSetAll event, Emitter<BombsState> emit) {
+    emit(state.copyWith(bombs: event.bombs.toList()));
+  }
 
-  void update(double delta) {
-    for (final Bomb bomb in _bombs) {
-      bomb.update(delta);
+  void _onAdd(BombsEventAdd event, Emitter<BombsState> emit) {
+    final List<Bomb> rez = List<Bomb>.of(state.bombs);
+
+    rez.add(event.bomb);
+
+    emit(state.copyWith(bombs: rez));
+  }
+
+  void _onRemoveAll(BombsEventRemoveAll event, Emitter<BombsState> emit) {
+    final List<Bomb> rez = List<Bomb>.of(state.bombs);
+
+    rez.removeWhere((Bomb element) => event.bombs.contains(element));
+
+    emit(state.copyWith(bombs: rez));
+  }
+
+  void _onUpdate(BombsEventUpdate event, Emitter<BombsState> emit) {
+    for (final Bomb bomb in state.bombs) {
+      bomb.update(event.delta);
     }
+
+    emit(state.copyWith(bombs: state.bombs));
   }
 }
