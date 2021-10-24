@@ -6,6 +6,7 @@ import 'package:flutter_counter_shooter/logic/blocs/bullets/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame_update/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/protagonist/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/scene/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/scene.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/repo.dart';
@@ -59,6 +60,20 @@ void diInit() {
   di.registerLazySingleton<BombSpawnBloc>(
     () => BombSpawnBloc(repo: di.get<BombSpawnRepo>()),
     dispose: (BombSpawnBloc bloc) => bloc.close(),
+  );
+
+  di.registerFactory<GameScoreRepo>(
+    () => GameScoreRepoImpl(gameScoreBloc: di.get<GameScoreBloc>()),
+  );
+
+  di.registerLazySingleton<SceneBloc>(
+    () => SceneBloc(
+      bombsBloc: di.get<BombsBloc>(),
+      bulletsBloc: di.get<BulletsBloc>(),
+      protagonistBloc: di.get<ProtagonistBloc>(),
+      gameScoreRepo: di.get<GameScoreRepo>(),
+    ),
+    dispose: (SceneBloc bloc) => bloc.close(),
   );
 }
 

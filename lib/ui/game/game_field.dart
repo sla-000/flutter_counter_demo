@@ -5,6 +5,7 @@ import 'package:flutter_counter_shooter/logic/blocs/frame_update/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame_update/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame_update/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/protagonist/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/scene/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/scene.dart';
 import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
 import 'package:flutter_counter_shooter/logic/game/enemy/bomb.dart';
@@ -22,7 +23,7 @@ class GameField extends StatelessWidget {
     return BlocBuilder<FrameUpdateBloc, FrameUpdateState>(
       bloc: di.get<FrameUpdateBloc>(),
       builder: (BuildContext context, FrameUpdateState state) {
-        di.get<SceneBloc>().update(state.delta);
+        di.get<SceneBloc>().add(SceneEvent.update(state.delta));
         di.get<FrameUpdateBloc>().add(const FrameUpdateEvent.update());
 
         return Stack(

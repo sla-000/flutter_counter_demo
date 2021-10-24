@@ -5,7 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/game_score/state.dart';
+import 'package:flutter_counter_shooter/logic/blocs/scene/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/scene.dart';
+import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
 import 'package:flutter_counter_shooter/ui/game_view.dart';
 
 void main() {
@@ -54,23 +56,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final Size screenSize = MediaQuery.of(context).size;
 
-    late final SceneBloc sceneData;
-
-    if (di.isRegistered<SceneBloc>()) {
-      sceneData = di.get<SceneBloc>().copyWith(
-            height: screenSize.height,
-            width: screenSize.width,
-          );
-
-      di.unregister<SceneBloc>();
-    } else {
-      sceneData = SceneBloc.init(
-        height: screenSize.height,
-        width: screenSize.width,
-      );
-    }
-
-    addSceneDataToDi(sceneData);
+    di.get<SceneBloc>().add(SceneEvent.resize(
+          Vector(
+            x: screenSize.width,
+            y: screenSize.height,
+          ),
+        ));
   }
 
   @override
@@ -85,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => di.get<SceneBloc>().buttonPressed(),
+        onPressed: () => di.get<SceneBloc>().add(const SceneEvent.tapButton()),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
