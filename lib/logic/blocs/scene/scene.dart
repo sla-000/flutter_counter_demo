@@ -17,6 +17,7 @@ import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
 import 'package:flutter_counter_shooter/logic/game/enemy/bomb.dart';
 import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
 import 'package:flutter_counter_shooter/logic/game/protagonist/protagonist.dart';
+import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'event.dart';
@@ -33,6 +34,7 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
     required this.sceneSpawnRepo,
     required this.sceneWavesRepo,
     required this.gameScoreRepo,
+    required this.sceneFrameRepo,
   }) : super(SceneState(
           size: Vector.one(),
           protagonist: protagonistBloc.state.protagonist,
@@ -50,16 +52,19 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
   late final StreamSubscription<void> _gameStartedSubscription;
   late final StreamSubscription<void> _bombSpawnSubscription;
 
+  @protected
   final ProtagonistBloc protagonistBloc;
 
+  @protected
   final BulletsBloc bulletsBloc;
 
+  @protected
   final BombsBloc bombsBloc;
 
   final SceneSpawnRepo sceneSpawnRepo;
   final SceneWavesRepo sceneWavesRepo;
-
   final SceneScoreRepo gameScoreRepo;
+  final SceneFrameRepo sceneFrameRepo;
 
   @override
   Future<void> close() {

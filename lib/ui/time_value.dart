@@ -18,9 +18,9 @@ class TimeValue extends StatelessWidget {
     return BlocBuilder<WavesBloc, WavesState>(
       bloc: di.get<WavesBloc>(),
       builder: (BuildContext context, WavesState wavesState) {
-        return BlocBuilder<GameScoreBloc, GameScoreState>(
-          bloc: di.get<GameScoreBloc>(),
-          builder: (BuildContext context, GameScoreState gameScoreState) {
+        return BlocBuilder<ScoreBloc, ScoreState>(
+          bloc: di.get<ScoreBloc>(),
+          builder: (BuildContext context, ScoreState gameScoreState) {
             final int remainingTime = kWaveTime - wavesState.waveTime;
             final int remainingTime0 = (remainingTime < 0) ? 0 : remainingTime;
             final bool show = remainingTime0 < 10000;

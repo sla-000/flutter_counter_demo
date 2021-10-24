@@ -3,14 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'event.dart';
 import 'state.dart';
 
-class GameScoreBloc extends Bloc<GameScoreEvent, GameScoreState> {
-  GameScoreBloc() : super(const GameScoreState()) {
-    on<GameScoreEventShoot>(_onShoot);
-    on<GameScoreEventKill>(_onKill);
-    on<GameScoreEventDead>(_onDead);
+class ScoreBloc extends Bloc<ScoreEvent, ScoreState> {
+  ScoreBloc() : super(const ScoreState()) {
+    on<ScoreEventShoot>(_onShoot);
+    on<ScoreEventKill>(_onKill);
+    on<ScoreEventDead>(_onDead);
   }
 
-  void _onShoot(GameScoreEventShoot _, Emitter<GameScoreState> emit) {
+  void _onShoot(ScoreEventShoot _, Emitter<ScoreState> emit) {
     if (state.gameStarted) {
       if (state.score > 0) {
         emit(state.copyWith(score: state.score - 1));
@@ -24,13 +24,13 @@ class GameScoreBloc extends Bloc<GameScoreEvent, GameScoreState> {
     }
   }
 
-  void _onKill(GameScoreEventKill _, Emitter<GameScoreState> emit) {
+  void _onKill(ScoreEventKill _, Emitter<ScoreState> emit) {
     if (state.gameStarted) {
       emit(state.copyWith(score: state.score + 5));
     }
   }
 
-  void _onDead(GameScoreEventDead _, Emitter<GameScoreState> emit) {
+  void _onDead(ScoreEventDead _, Emitter<ScoreState> emit) {
     emit(state.copyWith(gameStarted: false));
   }
 }

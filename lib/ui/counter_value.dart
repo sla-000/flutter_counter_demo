@@ -11,9 +11,9 @@ class CounterValue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GameScoreBloc, GameScoreState>(
-      bloc: di.get<GameScoreBloc>(),
-      builder: (BuildContext context, GameScoreState gameScoreState) {
+    return BlocBuilder<ScoreBloc, ScoreState>(
+      bloc: di.get<ScoreBloc>(),
+      builder: (BuildContext context, ScoreState gameScoreState) {
         return AnimatedSwitcher(
           duration: const Duration(milliseconds: 800),
           child: gameScoreState.gameStarted

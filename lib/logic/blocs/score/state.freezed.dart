@@ -14,11 +14,11 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$GameScoreStateTearOff {
-  const _$GameScoreStateTearOff();
+class _$ScoreStateTearOff {
+  const _$ScoreStateTearOff();
 
-  _GameScoreState call({int score = 0, bool gameStarted = false}) {
-    return _GameScoreState(
+  _ScoreState call({int score = 0, bool gameStarted = false}) {
+    return _ScoreState(
       score: score,
       gameStarted: gameStarted,
     );
@@ -26,34 +26,33 @@ class _$GameScoreStateTearOff {
 }
 
 /// @nodoc
-const $GameScoreState = _$GameScoreStateTearOff();
+const $ScoreState = _$ScoreStateTearOff();
 
 /// @nodoc
-mixin _$GameScoreState {
+mixin _$ScoreState {
   int get score => throw _privateConstructorUsedError;
   bool get gameStarted => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $GameScoreStateCopyWith<GameScoreState> get copyWith =>
+  $ScoreStateCopyWith<ScoreState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GameScoreStateCopyWith<$Res> {
-  factory $GameScoreStateCopyWith(
-          GameScoreState value, $Res Function(GameScoreState) then) =
-      _$GameScoreStateCopyWithImpl<$Res>;
+abstract class $ScoreStateCopyWith<$Res> {
+  factory $ScoreStateCopyWith(
+          ScoreState value, $Res Function(ScoreState) then) =
+      _$ScoreStateCopyWithImpl<$Res>;
   $Res call({int score, bool gameStarted});
 }
 
 /// @nodoc
-class _$GameScoreStateCopyWithImpl<$Res>
-    implements $GameScoreStateCopyWith<$Res> {
-  _$GameScoreStateCopyWithImpl(this._value, this._then);
+class _$ScoreStateCopyWithImpl<$Res> implements $ScoreStateCopyWith<$Res> {
+  _$ScoreStateCopyWithImpl(this._value, this._then);
 
-  final GameScoreState _value;
+  final ScoreState _value;
   // ignore: unused_field
-  final $Res Function(GameScoreState) _then;
+  final $Res Function(ScoreState) _then;
 
   @override
   $Res call({
@@ -74,32 +73,30 @@ class _$GameScoreStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$GameScoreStateCopyWith<$Res>
-    implements $GameScoreStateCopyWith<$Res> {
-  factory _$GameScoreStateCopyWith(
-          _GameScoreState value, $Res Function(_GameScoreState) then) =
-      __$GameScoreStateCopyWithImpl<$Res>;
+abstract class _$ScoreStateCopyWith<$Res> implements $ScoreStateCopyWith<$Res> {
+  factory _$ScoreStateCopyWith(
+          _ScoreState value, $Res Function(_ScoreState) then) =
+      __$ScoreStateCopyWithImpl<$Res>;
   @override
   $Res call({int score, bool gameStarted});
 }
 
 /// @nodoc
-class __$GameScoreStateCopyWithImpl<$Res>
-    extends _$GameScoreStateCopyWithImpl<$Res>
-    implements _$GameScoreStateCopyWith<$Res> {
-  __$GameScoreStateCopyWithImpl(
-      _GameScoreState _value, $Res Function(_GameScoreState) _then)
-      : super(_value, (v) => _then(v as _GameScoreState));
+class __$ScoreStateCopyWithImpl<$Res> extends _$ScoreStateCopyWithImpl<$Res>
+    implements _$ScoreStateCopyWith<$Res> {
+  __$ScoreStateCopyWithImpl(
+      _ScoreState _value, $Res Function(_ScoreState) _then)
+      : super(_value, (v) => _then(v as _ScoreState));
 
   @override
-  _GameScoreState get _value => super._value as _GameScoreState;
+  _ScoreState get _value => super._value as _ScoreState;
 
   @override
   $Res call({
     Object? score = freezed,
     Object? gameStarted = freezed,
   }) {
-    return _then(_GameScoreState(
+    return _then(_ScoreState(
       score: score == freezed
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
@@ -114,8 +111,8 @@ class __$GameScoreStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GameScoreState implements _GameScoreState {
-  const _$_GameScoreState({this.score = 0, this.gameStarted = false});
+class _$_ScoreState implements _ScoreState {
+  const _$_ScoreState({this.score = 0, this.gameStarted = false});
 
   @JsonKey(defaultValue: 0)
   @override
@@ -126,13 +123,13 @@ class _$_GameScoreState implements _GameScoreState {
 
   @override
   String toString() {
-    return 'GameScoreState(score: $score, gameStarted: $gameStarted)';
+    return 'ScoreState(score: $score, gameStarted: $gameStarted)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _GameScoreState &&
+        (other is _ScoreState &&
             (identical(other.score, score) ||
                 const DeepCollectionEquality().equals(other.score, score)) &&
             (identical(other.gameStarted, gameStarted) ||
@@ -148,13 +145,12 @@ class _$_GameScoreState implements _GameScoreState {
 
   @JsonKey(ignore: true)
   @override
-  _$GameScoreStateCopyWith<_GameScoreState> get copyWith =>
-      __$GameScoreStateCopyWithImpl<_GameScoreState>(this, _$identity);
+  _$ScoreStateCopyWith<_ScoreState> get copyWith =>
+      __$ScoreStateCopyWithImpl<_ScoreState>(this, _$identity);
 }
 
-abstract class _GameScoreState implements GameScoreState {
-  const factory _GameScoreState({int score, bool gameStarted}) =
-      _$_GameScoreState;
+abstract class _ScoreState implements ScoreState {
+  const factory _ScoreState({int score, bool gameStarted}) = _$_ScoreState;
 
   @override
   int get score => throw _privateConstructorUsedError;
@@ -162,6 +158,6 @@ abstract class _GameScoreState implements GameScoreState {
   bool get gameStarted => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$GameScoreStateCopyWith<_GameScoreState> get copyWith =>
+  _$ScoreStateCopyWith<_ScoreState> get copyWith =>
       throw _privateConstructorUsedError;
 }

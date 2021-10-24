@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_counter_shooter/logic/blocs/bombs/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/frame/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
@@ -58,17 +59,17 @@ class SceneScoreRepoImpl implements SceneScoreRepo {
     required this.gameScoreBloc,
   });
 
-  final GameScoreBloc gameScoreBloc;
+  final ScoreBloc gameScoreBloc;
 
   @override
   bool get isStarted => gameScoreBloc.state.gameStarted;
   @override
-  Stream<bool> isStartedStream() => gameScoreBloc.stream.map((GameScoreState event) => event.gameStarted).distinct();
+  Stream<bool> isStartedStream() => gameScoreBloc.stream.map((ScoreState event) => event.gameStarted).distinct();
 
   @override
-  void shoot() => gameScoreBloc.add(const GameScoreEvent.shoot());
+  void shoot() => gameScoreBloc.add(const ScoreEvent.shoot());
   @override
-  void kill() => gameScoreBloc.add(const GameScoreEvent.kill());
+  void kill() => gameScoreBloc.add(const ScoreEvent.kill());
 }
 
 class SceneWavesRepoImpl implements SceneWavesRepo {
@@ -94,4 +95,18 @@ class SceneSpawnRepoImpl implements SceneSpawnRepo {
 
   @override
   Stream<void> bombSpawnStream() => bombSpawnBloc.stream;
+}
+
+class SceneFrameRepoImpl implements SceneFrameRepo {
+  SceneFrameRepoImpl({
+    required this.frameBloc,
+  });
+
+  final FrameBloc frameBloc;
+
+  @override
+  Stream<double> deltaStream() => frameBloc.stream.map((FrameState frameState) => frameState.delta);
+
+  @override
+  void control(bool enable) => frameBloc.add(FrameEvent.control(enable));
 }

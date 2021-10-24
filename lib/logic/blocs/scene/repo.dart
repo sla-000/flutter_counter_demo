@@ -13,3 +13,8 @@ abstract class SceneSpawnRepo {
   void reset();
   Stream<void> bombSpawnStream();
 }
+
+abstract class SceneFrameRepo {
+  Stream<double> deltaStream();
+  void control(bool enable);
+}

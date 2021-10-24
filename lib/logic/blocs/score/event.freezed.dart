@@ -14,27 +14,27 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$GameScoreEventTearOff {
-  const _$GameScoreEventTearOff();
+class _$ScoreEventTearOff {
+  const _$ScoreEventTearOff();
 
-  GameScoreEventShoot shoot() {
-    return const GameScoreEventShoot();
+  ScoreEventShoot shoot() {
+    return const ScoreEventShoot();
   }
 
-  GameScoreEventKill kill() {
-    return const GameScoreEventKill();
+  ScoreEventKill kill() {
+    return const ScoreEventKill();
   }
 
-  GameScoreEventDead dead() {
-    return const GameScoreEventDead();
+  ScoreEventDead dead() {
+    return const ScoreEventDead();
   }
 }
 
 /// @nodoc
-const $GameScoreEvent = _$GameScoreEventTearOff();
+const $ScoreEvent = _$ScoreEventTearOff();
 
 /// @nodoc
-mixin _$GameScoreEvent {
+mixin _$ScoreEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() shoot,
@@ -59,77 +59,75 @@ mixin _$GameScoreEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(GameScoreEventShoot value) shoot,
-    required TResult Function(GameScoreEventKill value) kill,
-    required TResult Function(GameScoreEventDead value) dead,
+    required TResult Function(ScoreEventShoot value) shoot,
+    required TResult Function(ScoreEventKill value) kill,
+    required TResult Function(ScoreEventDead value) dead,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GameScoreEventShoot value)? shoot,
-    TResult Function(GameScoreEventKill value)? kill,
-    TResult Function(GameScoreEventDead value)? dead,
+    TResult Function(ScoreEventShoot value)? shoot,
+    TResult Function(ScoreEventKill value)? kill,
+    TResult Function(ScoreEventDead value)? dead,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(GameScoreEventShoot value)? shoot,
-    TResult Function(GameScoreEventKill value)? kill,
-    TResult Function(GameScoreEventDead value)? dead,
+    TResult Function(ScoreEventShoot value)? shoot,
+    TResult Function(ScoreEventKill value)? kill,
+    TResult Function(ScoreEventDead value)? dead,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GameScoreEventCopyWith<$Res> {
-  factory $GameScoreEventCopyWith(
-          GameScoreEvent value, $Res Function(GameScoreEvent) then) =
-      _$GameScoreEventCopyWithImpl<$Res>;
+abstract class $ScoreEventCopyWith<$Res> {
+  factory $ScoreEventCopyWith(
+          ScoreEvent value, $Res Function(ScoreEvent) then) =
+      _$ScoreEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$GameScoreEventCopyWithImpl<$Res>
-    implements $GameScoreEventCopyWith<$Res> {
-  _$GameScoreEventCopyWithImpl(this._value, this._then);
+class _$ScoreEventCopyWithImpl<$Res> implements $ScoreEventCopyWith<$Res> {
+  _$ScoreEventCopyWithImpl(this._value, this._then);
 
-  final GameScoreEvent _value;
+  final ScoreEvent _value;
   // ignore: unused_field
-  final $Res Function(GameScoreEvent) _then;
+  final $Res Function(ScoreEvent) _then;
 }
 
 /// @nodoc
-abstract class $GameScoreEventShootCopyWith<$Res> {
-  factory $GameScoreEventShootCopyWith(
-          GameScoreEventShoot value, $Res Function(GameScoreEventShoot) then) =
-      _$GameScoreEventShootCopyWithImpl<$Res>;
+abstract class $ScoreEventShootCopyWith<$Res> {
+  factory $ScoreEventShootCopyWith(
+          ScoreEventShoot value, $Res Function(ScoreEventShoot) then) =
+      _$ScoreEventShootCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$GameScoreEventShootCopyWithImpl<$Res>
-    extends _$GameScoreEventCopyWithImpl<$Res>
-    implements $GameScoreEventShootCopyWith<$Res> {
-  _$GameScoreEventShootCopyWithImpl(
-      GameScoreEventShoot _value, $Res Function(GameScoreEventShoot) _then)
-      : super(_value, (v) => _then(v as GameScoreEventShoot));
+class _$ScoreEventShootCopyWithImpl<$Res> extends _$ScoreEventCopyWithImpl<$Res>
+    implements $ScoreEventShootCopyWith<$Res> {
+  _$ScoreEventShootCopyWithImpl(
+      ScoreEventShoot _value, $Res Function(ScoreEventShoot) _then)
+      : super(_value, (v) => _then(v as ScoreEventShoot));
 
   @override
-  GameScoreEventShoot get _value => super._value as GameScoreEventShoot;
+  ScoreEventShoot get _value => super._value as ScoreEventShoot;
 }
 
 /// @nodoc
 
-class _$GameScoreEventShoot implements GameScoreEventShoot {
-  const _$GameScoreEventShoot();
+class _$ScoreEventShoot implements ScoreEventShoot {
+  const _$ScoreEventShoot();
 
   @override
   String toString() {
-    return 'GameScoreEvent.shoot()';
+    return 'ScoreEvent.shoot()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is GameScoreEventShoot);
+    return identical(this, other) || (other is ScoreEventShoot);
   }
 
   @override
@@ -172,9 +170,9 @@ class _$GameScoreEventShoot implements GameScoreEventShoot {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(GameScoreEventShoot value) shoot,
-    required TResult Function(GameScoreEventKill value) kill,
-    required TResult Function(GameScoreEventDead value) dead,
+    required TResult Function(ScoreEventShoot value) shoot,
+    required TResult Function(ScoreEventKill value) kill,
+    required TResult Function(ScoreEventDead value) dead,
   }) {
     return shoot(this);
   }
@@ -182,9 +180,9 @@ class _$GameScoreEventShoot implements GameScoreEventShoot {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GameScoreEventShoot value)? shoot,
-    TResult Function(GameScoreEventKill value)? kill,
-    TResult Function(GameScoreEventDead value)? dead,
+    TResult Function(ScoreEventShoot value)? shoot,
+    TResult Function(ScoreEventKill value)? kill,
+    TResult Function(ScoreEventDead value)? dead,
   }) {
     return shoot?.call(this);
   }
@@ -192,9 +190,9 @@ class _$GameScoreEventShoot implements GameScoreEventShoot {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(GameScoreEventShoot value)? shoot,
-    TResult Function(GameScoreEventKill value)? kill,
-    TResult Function(GameScoreEventDead value)? dead,
+    TResult Function(ScoreEventShoot value)? shoot,
+    TResult Function(ScoreEventKill value)? kill,
+    TResult Function(ScoreEventDead value)? dead,
     required TResult orElse(),
   }) {
     if (shoot != null) {
@@ -204,42 +202,41 @@ class _$GameScoreEventShoot implements GameScoreEventShoot {
   }
 }
 
-abstract class GameScoreEventShoot implements GameScoreEvent {
-  const factory GameScoreEventShoot() = _$GameScoreEventShoot;
+abstract class ScoreEventShoot implements ScoreEvent {
+  const factory ScoreEventShoot() = _$ScoreEventShoot;
 }
 
 /// @nodoc
-abstract class $GameScoreEventKillCopyWith<$Res> {
-  factory $GameScoreEventKillCopyWith(
-          GameScoreEventKill value, $Res Function(GameScoreEventKill) then) =
-      _$GameScoreEventKillCopyWithImpl<$Res>;
+abstract class $ScoreEventKillCopyWith<$Res> {
+  factory $ScoreEventKillCopyWith(
+          ScoreEventKill value, $Res Function(ScoreEventKill) then) =
+      _$ScoreEventKillCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$GameScoreEventKillCopyWithImpl<$Res>
-    extends _$GameScoreEventCopyWithImpl<$Res>
-    implements $GameScoreEventKillCopyWith<$Res> {
-  _$GameScoreEventKillCopyWithImpl(
-      GameScoreEventKill _value, $Res Function(GameScoreEventKill) _then)
-      : super(_value, (v) => _then(v as GameScoreEventKill));
+class _$ScoreEventKillCopyWithImpl<$Res> extends _$ScoreEventCopyWithImpl<$Res>
+    implements $ScoreEventKillCopyWith<$Res> {
+  _$ScoreEventKillCopyWithImpl(
+      ScoreEventKill _value, $Res Function(ScoreEventKill) _then)
+      : super(_value, (v) => _then(v as ScoreEventKill));
 
   @override
-  GameScoreEventKill get _value => super._value as GameScoreEventKill;
+  ScoreEventKill get _value => super._value as ScoreEventKill;
 }
 
 /// @nodoc
 
-class _$GameScoreEventKill implements GameScoreEventKill {
-  const _$GameScoreEventKill();
+class _$ScoreEventKill implements ScoreEventKill {
+  const _$ScoreEventKill();
 
   @override
   String toString() {
-    return 'GameScoreEvent.kill()';
+    return 'ScoreEvent.kill()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is GameScoreEventKill);
+    return identical(this, other) || (other is ScoreEventKill);
   }
 
   @override
@@ -282,9 +279,9 @@ class _$GameScoreEventKill implements GameScoreEventKill {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(GameScoreEventShoot value) shoot,
-    required TResult Function(GameScoreEventKill value) kill,
-    required TResult Function(GameScoreEventDead value) dead,
+    required TResult Function(ScoreEventShoot value) shoot,
+    required TResult Function(ScoreEventKill value) kill,
+    required TResult Function(ScoreEventDead value) dead,
   }) {
     return kill(this);
   }
@@ -292,9 +289,9 @@ class _$GameScoreEventKill implements GameScoreEventKill {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GameScoreEventShoot value)? shoot,
-    TResult Function(GameScoreEventKill value)? kill,
-    TResult Function(GameScoreEventDead value)? dead,
+    TResult Function(ScoreEventShoot value)? shoot,
+    TResult Function(ScoreEventKill value)? kill,
+    TResult Function(ScoreEventDead value)? dead,
   }) {
     return kill?.call(this);
   }
@@ -302,9 +299,9 @@ class _$GameScoreEventKill implements GameScoreEventKill {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(GameScoreEventShoot value)? shoot,
-    TResult Function(GameScoreEventKill value)? kill,
-    TResult Function(GameScoreEventDead value)? dead,
+    TResult Function(ScoreEventShoot value)? shoot,
+    TResult Function(ScoreEventKill value)? kill,
+    TResult Function(ScoreEventDead value)? dead,
     required TResult orElse(),
   }) {
     if (kill != null) {
@@ -314,42 +311,41 @@ class _$GameScoreEventKill implements GameScoreEventKill {
   }
 }
 
-abstract class GameScoreEventKill implements GameScoreEvent {
-  const factory GameScoreEventKill() = _$GameScoreEventKill;
+abstract class ScoreEventKill implements ScoreEvent {
+  const factory ScoreEventKill() = _$ScoreEventKill;
 }
 
 /// @nodoc
-abstract class $GameScoreEventDeadCopyWith<$Res> {
-  factory $GameScoreEventDeadCopyWith(
-          GameScoreEventDead value, $Res Function(GameScoreEventDead) then) =
-      _$GameScoreEventDeadCopyWithImpl<$Res>;
+abstract class $ScoreEventDeadCopyWith<$Res> {
+  factory $ScoreEventDeadCopyWith(
+          ScoreEventDead value, $Res Function(ScoreEventDead) then) =
+      _$ScoreEventDeadCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$GameScoreEventDeadCopyWithImpl<$Res>
-    extends _$GameScoreEventCopyWithImpl<$Res>
-    implements $GameScoreEventDeadCopyWith<$Res> {
-  _$GameScoreEventDeadCopyWithImpl(
-      GameScoreEventDead _value, $Res Function(GameScoreEventDead) _then)
-      : super(_value, (v) => _then(v as GameScoreEventDead));
+class _$ScoreEventDeadCopyWithImpl<$Res> extends _$ScoreEventCopyWithImpl<$Res>
+    implements $ScoreEventDeadCopyWith<$Res> {
+  _$ScoreEventDeadCopyWithImpl(
+      ScoreEventDead _value, $Res Function(ScoreEventDead) _then)
+      : super(_value, (v) => _then(v as ScoreEventDead));
 
   @override
-  GameScoreEventDead get _value => super._value as GameScoreEventDead;
+  ScoreEventDead get _value => super._value as ScoreEventDead;
 }
 
 /// @nodoc
 
-class _$GameScoreEventDead implements GameScoreEventDead {
-  const _$GameScoreEventDead();
+class _$ScoreEventDead implements ScoreEventDead {
+  const _$ScoreEventDead();
 
   @override
   String toString() {
-    return 'GameScoreEvent.dead()';
+    return 'ScoreEvent.dead()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is GameScoreEventDead);
+    return identical(this, other) || (other is ScoreEventDead);
   }
 
   @override
@@ -392,9 +388,9 @@ class _$GameScoreEventDead implements GameScoreEventDead {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(GameScoreEventShoot value) shoot,
-    required TResult Function(GameScoreEventKill value) kill,
-    required TResult Function(GameScoreEventDead value) dead,
+    required TResult Function(ScoreEventShoot value) shoot,
+    required TResult Function(ScoreEventKill value) kill,
+    required TResult Function(ScoreEventDead value) dead,
   }) {
     return dead(this);
   }
@@ -402,9 +398,9 @@ class _$GameScoreEventDead implements GameScoreEventDead {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GameScoreEventShoot value)? shoot,
-    TResult Function(GameScoreEventKill value)? kill,
-    TResult Function(GameScoreEventDead value)? dead,
+    TResult Function(ScoreEventShoot value)? shoot,
+    TResult Function(ScoreEventKill value)? kill,
+    TResult Function(ScoreEventDead value)? dead,
   }) {
     return dead?.call(this);
   }
@@ -412,9 +408,9 @@ class _$GameScoreEventDead implements GameScoreEventDead {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(GameScoreEventShoot value)? shoot,
-    TResult Function(GameScoreEventKill value)? kill,
-    TResult Function(GameScoreEventDead value)? dead,
+    TResult Function(ScoreEventShoot value)? shoot,
+    TResult Function(ScoreEventKill value)? kill,
+    TResult Function(ScoreEventDead value)? dead,
     required TResult orElse(),
   }) {
     if (dead != null) {
@@ -424,6 +420,6 @@ class _$GameScoreEventDead implements GameScoreEventDead {
   }
 }
 
-abstract class GameScoreEventDead implements GameScoreEvent {
-  const factory GameScoreEventDead() = _$GameScoreEventDead;
+abstract class ScoreEventDead implements ScoreEvent {
+  const factory ScoreEventDead() = _$ScoreEventDead;
 }

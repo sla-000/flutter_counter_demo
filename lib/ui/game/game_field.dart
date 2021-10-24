@@ -4,7 +4,6 @@ import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame/state.dart';
-import 'package:flutter_counter_shooter/logic/blocs/protagonist/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/scene.dart';
 import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
@@ -34,7 +33,7 @@ class GameField extends StatelessWidget {
               child: Text(state.delta.toString()),
             ),
             ProtagonistView(
-              protagonist: di.get<ProtagonistBloc>().state.protagonist,
+              protagonist: di.get<SceneBloc>().state.protagonist,
             ),
             ..._buildBombs(),
             ..._buildBullets(),
@@ -47,7 +46,6 @@ class GameField extends StatelessWidget {
   List<Widget> _buildBombs() {
     return di
         .get<SceneBloc>()
-        .bombsBloc
         .state
         .bombs
         .map(
@@ -61,7 +59,6 @@ class GameField extends StatelessWidget {
   List<Widget> _buildBullets() {
     return di
         .get<SceneBloc>()
-        .bulletsBloc
         .state
         .bullets
         .map(

@@ -21,10 +21,10 @@ class Gamer extends StatefulWidget {
 class _GamerState extends State<Gamer> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GameScoreBloc, GameScoreState>(
-      bloc: di.get<GameScoreBloc>(),
-      buildWhen: (GameScoreState previous, GameScoreState current) => current.gameStarted != previous.gameStarted,
-      builder: (_, GameScoreState state) {
+    return BlocBuilder<ScoreBloc, ScoreState>(
+      bloc: di.get<ScoreBloc>(),
+      buildWhen: (ScoreState previous, ScoreState current) => current.gameStarted != previous.gameStarted,
+      builder: (_, ScoreState state) {
         return AnimateSize(
           duration: const Duration(milliseconds: 1000),
           size: widget.size,

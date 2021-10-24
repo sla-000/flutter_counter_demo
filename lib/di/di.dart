@@ -21,9 +21,9 @@ void diInit() {
     dispose: (FrameBloc bloc) => bloc.close(),
   );
 
-  di.registerLazySingleton<GameScoreBloc>(
-    () => GameScoreBloc(),
-    dispose: (GameScoreBloc bloc) => bloc.close(),
+  di.registerLazySingleton<ScoreBloc>(
+    () => ScoreBloc(),
+    dispose: (ScoreBloc bloc) => bloc.close(),
   );
 
   di.registerLazySingleton<ProtagonistBloc>(
@@ -63,7 +63,7 @@ void diInit() {
   );
 
   di.registerFactory<SceneScoreRepo>(
-    () => SceneScoreRepoImpl(gameScoreBloc: di.get<GameScoreBloc>()),
+    () => SceneScoreRepoImpl(gameScoreBloc: di.get<ScoreBloc>()),
   );
 
   di.registerFactory<SceneWavesRepo>(
@@ -74,6 +74,10 @@ void diInit() {
     () => SceneSpawnRepoImpl(bombSpawnBloc: di.get<SpawnBloc>()),
   );
 
+  di.registerFactory<SceneFrameRepo>(
+    () => SceneFrameRepoImpl(frameBloc: di.get<FrameBloc>()),
+  );
+
   di.registerLazySingleton<SceneBloc>(
     () => SceneBloc(
       bombsBloc: di.get<BombsBloc>(),
@@ -82,6 +86,7 @@ void diInit() {
       gameScoreRepo: di.get<SceneScoreRepo>(),
       sceneWavesRepo: di.get<SceneWavesRepo>(),
       sceneSpawnRepo: di.get<SceneSpawnRepo>(),
+      sceneFrameRepo: di.get<SceneFrameRepo>(),
     ),
     dispose: (SceneBloc bloc) => bloc.close(),
   );

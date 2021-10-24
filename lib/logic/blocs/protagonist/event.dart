@@ -1,4 +1,3 @@
-import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
 import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

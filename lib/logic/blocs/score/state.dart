@@ -3,9 +3,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'state.freezed.dart';
 
 @freezed
-class GameScoreState with _$GameScoreState {
-  const factory GameScoreState({
+class ScoreState with _$ScoreState {
+  const factory ScoreState({
     @Default(0) int score,
     @Default(false) bool gameStarted,
-  }) = _GameScoreState;
+  }) = _ScoreState;
 }
