@@ -2,13 +2,10 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bullets/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bullets/event.dart';
-import 'package:flutter_counter_shooter/logic/blocs/frame/bloc.dart';
-import 'package:flutter_counter_shooter/logic/blocs/frame/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/protagonist/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/protagonist/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/repo.dart';
@@ -184,7 +181,7 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
     _gameStartedSubscription = gameScoreRepo
         .isStartedStream()
         .doOnData(
-          (bool started) => di.get<FrameBloc>().add(FrameEvent.control(started)),
+          (bool started) => sceneFrameRepo.control(started),
         )
         .where(
           (bool started) => started,
