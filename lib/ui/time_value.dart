@@ -49,7 +49,7 @@ class TimeValue extends StatelessWidget {
   }
 
   Color _getColor(int remainingTime) {
-    remainingTime += 1500 - Random.secure().nextInt(2000);
+    remainingTime += 1000 - Random.secure().nextInt(2000);
 
     if (remainingTime > 9000) {
       return Colors.red[700]!;
