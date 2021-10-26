@@ -48,21 +48,25 @@ class TimeValue extends StatelessWidget {
     );
   }
 
-  Color? _getColor(int remainingTime) {
-    remainingTime += 1500 - Random.secure().nextInt(3000);
+  Color _getColor(int remainingTime) {
+    remainingTime += 1500 - Random.secure().nextInt(2000);
 
-    if (remainingTime > 7000) {
-      return Colors.grey[700];
+    if (remainingTime > 9000) {
+      return Colors.red[700]!;
+    } else if (remainingTime > 7000) {
+      return Colors.orange[700]!;
     } else if (remainingTime > 5000) {
-      return Colors.blue[700];
+      return Colors.yellow[600]!;
+    } else if (remainingTime > 4000) {
+      return Colors.yellow[100]!;
     } else if (remainingTime > 3000) {
-      return Colors.green[700];
+      return Colors.blue[100]!;
     } else if (remainingTime > 2000) {
-      return Colors.yellow[700];
+      return Colors.blue[400]!;
     } else if (remainingTime > 1000) {
-      return Colors.orange[700];
+      return Colors.blue[800]!;
     } else {
-      return Colors.red[700];
+      return Colors.grey[800]!;
     }
   }
 }
