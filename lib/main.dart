@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/event.dart';
@@ -44,8 +45,26 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
+  void initState() {
+    super.initState();
+
+    RawKeyboard.instance.addListener(_handleKeyDown);
+  }
+
+  void _handleKeyDown(RawKeyEvent rawKeyEvent) {
+    if (rawKeyEvent is RawKeyDownEvent) {
+      final LogicalKeyboardKey key = rawKeyEvent.logicalKey;
+      if (key == LogicalKeyboardKey.space) {
+        di.get<SceneBloc>().add(const SceneEvent.tapButton());
+      }
+    }
+  }
+
+  @override
   void dispose() {
     diDispose();
+
+    RawKeyboard.instance.removeListener(_handleKeyDown);
 
     super.dispose();
   }
