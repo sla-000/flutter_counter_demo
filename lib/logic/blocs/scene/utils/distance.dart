@@ -2,30 +2,31 @@ import 'package:flutter_counter_shooter/logic/game/actor/actor_moving.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/actor_state.dart';
 import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
 import 'package:flutter_counter_shooter/logic/game/enemy/bomb.dart';
+import 'package:flutter_counter_shooter/logic/game/protagonist/protagonist.dart';
 
 const double kDeleteDistance = 100;
 
-int checkCollisions({
+int checkAllCollisions({
+  required Protagonist protagonist,
   required List<Bullet> bullets,
   required List<Bomb> bombs,
   required void Function(List<Bullet> bullets) onBulletRemove,
   required void Function(List<Bomb> bombs) onBombRemove,
+  required void Function(Bomb bomb) onProtagonistHit,
 }) {
   final List<Bullet> delBullets = <Bullet>[];
   final List<Bomb> delBombs = <Bomb>[];
 
-  for (final Bullet bullet in bullets) {
-    bool bulletHaveCollision = false;
-
-    for (final Bomb bomb in bombs) {
-      if (bulletIsClose(bullet, bomb)) {
-        delBombs.add(bomb);
-        bulletHaveCollision = true;
-      }
+  for (final Bomb bomb in bombs) {
+    if (actorsAreClose(protagonist, bomb, distance: 40)) {
+      onProtagonistHit(bomb);
     }
 
-    if (bulletHaveCollision) {
-      delBullets.add(bullet);
+    for (final Bullet bullet in bullets) {
+      if (actorsAreClose(bullet, bomb)) {
+        delBombs.add(bomb);
+        delBullets.add(bullet);
+      }
     }
   }
 
@@ -36,8 +37,12 @@ int checkCollisions({
   return delBombs.length;
 }
 
-bool bulletIsClose(ActorMoving bullet, ActorMoving bomb) {
-  return bullet.position.distance(bomb.position) < 20;
+bool actorsAreClose(
+  ActorMoving actor0,
+  ActorMoving actor1, {
+  double distance = 20,
+}) {
+  return actor0.position.distance(actor1.position) < distance;
 }
 
 void checkBoundsAddToDeleteList(List<ActorState> delItems, ActorState actor, double width, double height) {

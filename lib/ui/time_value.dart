@@ -25,7 +25,7 @@ class TimeValue extends StatelessWidget {
             final int remainingTime0 = (remainingTime < 0) ? 0 : remainingTime;
             final bool show = remainingTime0 < 10000;
 
-            return (gameScoreState.gameStarted && show)
+            return (gameScoreState.isStarted && show)
                 ? AnimatedOpacity(
                     duration: const Duration(milliseconds: 800),
                     opacity: 1,

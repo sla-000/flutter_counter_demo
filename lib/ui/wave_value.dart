@@ -19,7 +19,7 @@ class WaveValue extends StatelessWidget {
         return BlocBuilder<ScoreBloc, ScoreState>(
           bloc: di.get<ScoreBloc>(),
           builder: (BuildContext context, ScoreState gameScoreState) {
-            return gameScoreState.gameStarted
+            return gameScoreState.isStarted
                 ? AnimatedOpacity(
                     duration: const Duration(milliseconds: 800),
                     opacity: 1,

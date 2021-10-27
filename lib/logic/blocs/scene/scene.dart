@@ -1,5 +1,6 @@
 import 'dart:async';
-import 'dart:math';
+import 'dart:developer';
+import 'dart:math' as math;
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/bloc.dart';
@@ -15,7 +16,6 @@ import 'package:flutter_counter_shooter/logic/game/enemy/bomb.dart';
 import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
 import 'package:flutter_counter_shooter/logic/game/protagonist/protagonist.dart';
 import 'package:meta/meta.dart';
-import 'package:rxdart/rxdart.dart';
 
 import 'event.dart';
 import 'state.dart';
@@ -180,9 +180,6 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
   void _subscribe() {
     _gameStartedSubscription = gameScoreRepo
         .isStartedStream()
-        .doOnData(
-          (bool started) => sceneFrameRepo.control(started),
-        )
         .where(
           (bool started) => started,
         )
@@ -197,7 +194,8 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
   }
 
   void _processCollisions() {
-    final int hits = checkCollisions(
+    final int hits = checkAllCollisions(
+      protagonist: protagonistBloc.state.protagonist,
       bullets: bulletsBloc.state.bullets,
       bombs: bombsBloc.state.bombs,
       onBombRemove: (List<Bomb> bombs) {
@@ -205,6 +203,10 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
       },
       onBulletRemove: (List<Bullet> bullets) {
         bulletsBloc.add(BulletsEvent.removeAll(bullets));
+      },
+      onProtagonistHit: (Bomb bomb) {
+        log('dead');
+        gameScoreRepo.dead();
       },
     );
 
@@ -248,6 +250,6 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
   Vector _generateBombPosition() => getBombPosition(
         state.size.x,
         state.size.y,
-        Random.secure().nextDouble(),
+        math.Random.secure().nextDouble(),
       );
 }

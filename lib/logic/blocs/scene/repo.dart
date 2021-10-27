@@ -3,6 +3,7 @@ abstract class SceneScoreRepo {
   bool get isStarted;
   void shoot();
   void kill();
+  void dead();
 }
 
 abstract class SceneWavesRepo {
@@ -16,5 +17,4 @@ abstract class SceneSpawnRepo {
 
 abstract class SceneFrameRepo {
   Stream<double> deltaStream();
-  void control(bool enable);
 }

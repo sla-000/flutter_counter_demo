@@ -17,10 +17,11 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$FrameStateTearOff {
   const _$FrameStateTearOff();
 
-  _FrameState call({double delta = 0, int frames = 0}) {
+  _FrameState call({double delta = 0, int frame = 0, bool enabled = false}) {
     return _FrameState(
       delta: delta,
-      frames: frames,
+      frame: frame,
+      enabled: enabled,
     );
   }
 }
@@ -31,7 +32,8 @@ const $FrameState = _$FrameStateTearOff();
 /// @nodoc
 mixin _$FrameState {
   double get delta => throw _privateConstructorUsedError;
-  int get frames => throw _privateConstructorUsedError;
+  int get frame => throw _privateConstructorUsedError;
+  bool get enabled => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FrameStateCopyWith<FrameState> get copyWith =>
@@ -43,7 +45,7 @@ abstract class $FrameStateCopyWith<$Res> {
   factory $FrameStateCopyWith(
           FrameState value, $Res Function(FrameState) then) =
       _$FrameStateCopyWithImpl<$Res>;
-  $Res call({double delta, int frames});
+  $Res call({double delta, int frame, bool enabled});
 }
 
 /// @nodoc
@@ -57,17 +59,22 @@ class _$FrameStateCopyWithImpl<$Res> implements $FrameStateCopyWith<$Res> {
   @override
   $Res call({
     Object? delta = freezed,
-    Object? frames = freezed,
+    Object? frame = freezed,
+    Object? enabled = freezed,
   }) {
     return _then(_value.copyWith(
       delta: delta == freezed
           ? _value.delta
           : delta // ignore: cast_nullable_to_non_nullable
               as double,
-      frames: frames == freezed
-          ? _value.frames
-          : frames // ignore: cast_nullable_to_non_nullable
+      frame: frame == freezed
+          ? _value.frame
+          : frame // ignore: cast_nullable_to_non_nullable
               as int,
+      enabled: enabled == freezed
+          ? _value.enabled
+          : enabled // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -78,7 +85,7 @@ abstract class _$FrameStateCopyWith<$Res> implements $FrameStateCopyWith<$Res> {
           _FrameState value, $Res Function(_FrameState) then) =
       __$FrameStateCopyWithImpl<$Res>;
   @override
-  $Res call({double delta, int frames});
+  $Res call({double delta, int frame, bool enabled});
 }
 
 /// @nodoc
@@ -94,17 +101,22 @@ class __$FrameStateCopyWithImpl<$Res> extends _$FrameStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? delta = freezed,
-    Object? frames = freezed,
+    Object? frame = freezed,
+    Object? enabled = freezed,
   }) {
     return _then(_FrameState(
       delta: delta == freezed
           ? _value.delta
           : delta // ignore: cast_nullable_to_non_nullable
               as double,
-      frames: frames == freezed
-          ? _value.frames
-          : frames // ignore: cast_nullable_to_non_nullable
+      frame: frame == freezed
+          ? _value.frame
+          : frame // ignore: cast_nullable_to_non_nullable
               as int,
+      enabled: enabled == freezed
+          ? _value.enabled
+          : enabled // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -112,18 +124,21 @@ class __$FrameStateCopyWithImpl<$Res> extends _$FrameStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_FrameState implements _FrameState {
-  const _$_FrameState({this.delta = 0, this.frames = 0});
+  const _$_FrameState({this.delta = 0, this.frame = 0, this.enabled = false});
 
   @JsonKey(defaultValue: 0)
   @override
   final double delta;
   @JsonKey(defaultValue: 0)
   @override
-  final int frames;
+  final int frame;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool enabled;
 
   @override
   String toString() {
-    return 'FrameState(delta: $delta, frames: $frames)';
+    return 'FrameState(delta: $delta, frame: $frame, enabled: $enabled)';
   }
 
   @override
@@ -132,15 +147,18 @@ class _$_FrameState implements _FrameState {
         (other is _FrameState &&
             (identical(other.delta, delta) ||
                 const DeepCollectionEquality().equals(other.delta, delta)) &&
-            (identical(other.frames, frames) ||
-                const DeepCollectionEquality().equals(other.frames, frames)));
+            (identical(other.frame, frame) ||
+                const DeepCollectionEquality().equals(other.frame, frame)) &&
+            (identical(other.enabled, enabled) ||
+                const DeepCollectionEquality().equals(other.enabled, enabled)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(delta) ^
-      const DeepCollectionEquality().hash(frames);
+      const DeepCollectionEquality().hash(frame) ^
+      const DeepCollectionEquality().hash(enabled);
 
   @JsonKey(ignore: true)
   @override
@@ -149,12 +167,15 @@ class _$_FrameState implements _FrameState {
 }
 
 abstract class _FrameState implements FrameState {
-  const factory _FrameState({double delta, int frames}) = _$_FrameState;
+  const factory _FrameState({double delta, int frame, bool enabled}) =
+      _$_FrameState;
 
   @override
   double get delta => throw _privateConstructorUsedError;
   @override
-  int get frames => throw _privateConstructorUsedError;
+  int get frame => throw _privateConstructorUsedError;
+  @override
+  bool get enabled => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$FrameStateCopyWith<_FrameState> get copyWith =>

@@ -1,12 +1,14 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter_counter_shooter/logic/blocs/bombs/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame/bloc.dart';
-import 'package:flutter_counter_shooter/logic/blocs/frame/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/frame/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/score/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/spawn/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/spawn/event.dart';
@@ -62,14 +64,21 @@ class SceneScoreRepoImpl implements SceneScoreRepo {
   final ScoreBloc gameScoreBloc;
 
   @override
-  bool get isStarted => gameScoreBloc.state.gameStarted;
+  bool get isStarted => gameScoreBloc.state.gameState == GameState.started;
   @override
-  Stream<bool> isStartedStream() => gameScoreBloc.stream.map((ScoreState event) => event.gameStarted).distinct();
+  Stream<bool> isStartedStream() => gameScoreBloc.stream
+      .map(
+        (ScoreState scoreState) => scoreState.gameState == GameState.started,
+      )
+      .distinct();
 
   @override
   void shoot() => gameScoreBloc.add(const ScoreEvent.shoot());
   @override
   void kill() => gameScoreBloc.add(const ScoreEvent.kill());
+
+  @override
+  void dead() => gameScoreBloc.add(const ScoreEvent.dead());
 }
 
 class SceneWavesRepoImpl implements SceneWavesRepo {
@@ -106,7 +115,22 @@ class SceneFrameRepoImpl implements SceneFrameRepo {
 
   @override
   Stream<double> deltaStream() => frameBloc.stream.map((FrameState frameState) => frameState.delta);
+}
+
+class ScoreRepoImpl implements ScoreRepo {
+  @override
+  void saveRecord(int score) {
+    log('saveRecord: score=$score');
+  }
+}
+
+class FrameRepoImpl implements FrameRepo {
+  FrameRepoImpl({
+    required this.scoreBloc,
+  });
+
+  final ScoreBloc scoreBloc;
 
   @override
-  void control(bool enable) => frameBloc.add(FrameEvent.control(enable));
+  Stream<bool> get enabled => scoreBloc.stream.map((ScoreState scoreState) => scoreState.isStarted);
 }

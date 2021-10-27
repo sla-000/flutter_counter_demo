@@ -23,12 +23,12 @@ class _GamerState extends State<Gamer> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return BlocBuilder<ScoreBloc, ScoreState>(
       bloc: di.get<ScoreBloc>(),
-      buildWhen: (ScoreState previous, ScoreState current) => current.gameStarted != previous.gameStarted,
+      buildWhen: (ScoreState previous, ScoreState current) => current.gameState != previous.gameState,
       builder: (_, ScoreState state) {
         return AnimateSize(
           duration: const Duration(milliseconds: 1000),
           size: widget.size,
-          show: state.gameStarted,
+          show: state.isStarted,
           child: GamerIcon(size: widget.size),
         );
       },

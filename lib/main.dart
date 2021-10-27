@@ -112,11 +112,11 @@ class ShiftedAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ScoreBloc, ScoreState>(
       bloc: di.get<ScoreBloc>(),
-      buildWhen: (ScoreState previous, ScoreState current) => current.gameStarted != previous.gameStarted,
+      buildWhen: (ScoreState previous, ScoreState current) => current.gameState != previous.gameState,
       builder: (BuildContext context, ScoreState gameScoreState) {
         return AnimatedSlide(
           duration: const Duration(milliseconds: 1000),
-          offset: gameScoreState.gameStarted ? const Offset(0, -1) : const Offset(0, 0),
+          offset: gameScoreState.isStarted ? const Offset(0, -1) : const Offset(0, 0),
           child: SizedBox(
             height: 50,
             child: AppBar(

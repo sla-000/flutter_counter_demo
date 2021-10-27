@@ -56,9 +56,9 @@ class _GameViewState extends State<GameView> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return BlocListener<ScoreBloc, ScoreState>(
       bloc: di.get<ScoreBloc>(),
-      listenWhen: (ScoreState previous, ScoreState current) => current.gameStarted != previous.gameStarted,
-      listener: (BuildContext context, ScoreState state) {
-        if (state.gameStarted) {
+      listenWhen: (ScoreState previous, ScoreState current) => current.gameState != previous.gameState,
+      listener: (BuildContext context, ScoreState scoreState) {
+        if (scoreState.isStarted) {
           _animationController.forward();
         }
       },

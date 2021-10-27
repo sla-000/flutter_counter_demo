@@ -17,10 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ScoreStateTearOff {
   const _$ScoreStateTearOff();
 
-  _ScoreState call({int score = 0, bool gameStarted = false}) {
+  _ScoreState call({int score = 0, GameState gameState = GameState.waitStart}) {
     return _ScoreState(
       score: score,
-      gameStarted: gameStarted,
+      gameState: gameState,
     );
   }
 }
@@ -31,7 +31,7 @@ const $ScoreState = _$ScoreStateTearOff();
 /// @nodoc
 mixin _$ScoreState {
   int get score => throw _privateConstructorUsedError;
-  bool get gameStarted => throw _privateConstructorUsedError;
+  GameState get gameState => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ScoreStateCopyWith<ScoreState> get copyWith =>
@@ -43,7 +43,7 @@ abstract class $ScoreStateCopyWith<$Res> {
   factory $ScoreStateCopyWith(
           ScoreState value, $Res Function(ScoreState) then) =
       _$ScoreStateCopyWithImpl<$Res>;
-  $Res call({int score, bool gameStarted});
+  $Res call({int score, GameState gameState});
 }
 
 /// @nodoc
@@ -57,17 +57,17 @@ class _$ScoreStateCopyWithImpl<$Res> implements $ScoreStateCopyWith<$Res> {
   @override
   $Res call({
     Object? score = freezed,
-    Object? gameStarted = freezed,
+    Object? gameState = freezed,
   }) {
     return _then(_value.copyWith(
       score: score == freezed
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
               as int,
-      gameStarted: gameStarted == freezed
-          ? _value.gameStarted
-          : gameStarted // ignore: cast_nullable_to_non_nullable
-              as bool,
+      gameState: gameState == freezed
+          ? _value.gameState
+          : gameState // ignore: cast_nullable_to_non_nullable
+              as GameState,
     ));
   }
 }
@@ -78,7 +78,7 @@ abstract class _$ScoreStateCopyWith<$Res> implements $ScoreStateCopyWith<$Res> {
           _ScoreState value, $Res Function(_ScoreState) then) =
       __$ScoreStateCopyWithImpl<$Res>;
   @override
-  $Res call({int score, bool gameStarted});
+  $Res call({int score, GameState gameState});
 }
 
 /// @nodoc
@@ -94,36 +94,37 @@ class __$ScoreStateCopyWithImpl<$Res> extends _$ScoreStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? score = freezed,
-    Object? gameStarted = freezed,
+    Object? gameState = freezed,
   }) {
     return _then(_ScoreState(
       score: score == freezed
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
               as int,
-      gameStarted: gameStarted == freezed
-          ? _value.gameStarted
-          : gameStarted // ignore: cast_nullable_to_non_nullable
-              as bool,
+      gameState: gameState == freezed
+          ? _value.gameState
+          : gameState // ignore: cast_nullable_to_non_nullable
+              as GameState,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_ScoreState implements _ScoreState {
-  const _$_ScoreState({this.score = 0, this.gameStarted = false});
+class _$_ScoreState extends _ScoreState {
+  const _$_ScoreState({this.score = 0, this.gameState = GameState.waitStart})
+      : super._();
 
   @JsonKey(defaultValue: 0)
   @override
   final int score;
-  @JsonKey(defaultValue: false)
+  @JsonKey(defaultValue: GameState.waitStart)
   @override
-  final bool gameStarted;
+  final GameState gameState;
 
   @override
   String toString() {
-    return 'ScoreState(score: $score, gameStarted: $gameStarted)';
+    return 'ScoreState(score: $score, gameState: $gameState)';
   }
 
   @override
@@ -132,16 +133,16 @@ class _$_ScoreState implements _ScoreState {
         (other is _ScoreState &&
             (identical(other.score, score) ||
                 const DeepCollectionEquality().equals(other.score, score)) &&
-            (identical(other.gameStarted, gameStarted) ||
+            (identical(other.gameState, gameState) ||
                 const DeepCollectionEquality()
-                    .equals(other.gameStarted, gameStarted)));
+                    .equals(other.gameState, gameState)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(score) ^
-      const DeepCollectionEquality().hash(gameStarted);
+      const DeepCollectionEquality().hash(gameState);
 
   @JsonKey(ignore: true)
   @override
@@ -149,13 +150,14 @@ class _$_ScoreState implements _ScoreState {
       __$ScoreStateCopyWithImpl<_ScoreState>(this, _$identity);
 }
 
-abstract class _ScoreState implements ScoreState {
-  const factory _ScoreState({int score, bool gameStarted}) = _$_ScoreState;
+abstract class _ScoreState extends ScoreState {
+  const factory _ScoreState({int score, GameState gameState}) = _$_ScoreState;
+  const _ScoreState._() : super._();
 
   @override
   int get score => throw _privateConstructorUsedError;
   @override
-  bool get gameStarted => throw _privateConstructorUsedError;
+  GameState get gameState => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ScoreStateCopyWith<_ScoreState> get copyWith =>
