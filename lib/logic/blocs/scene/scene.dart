@@ -207,6 +207,7 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
       onProtagonistHit: (Bomb bomb) {
         log('dead');
         gameScoreRepo.dead();
+        // bombsBloc.add(const BombsEvent.init());
       },
     );
 

@@ -6,10 +6,8 @@ import 'package:flutter_counter_shooter/logic/blocs/frame/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/scene.dart';
-import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
-import 'package:flutter_counter_shooter/logic/game/enemy/bomb.dart';
-import 'package:flutter_counter_shooter/ui/game/bomb.dart';
-import 'package:flutter_counter_shooter/ui/game/bullet.dart';
+import 'package:flutter_counter_shooter/ui/game/bombs/bombs_view.dart';
+import 'package:flutter_counter_shooter/ui/game/bullets/bullets_view.dart';
 import 'package:flutter_counter_shooter/ui/game/protagonist/protagonist.dart';
 
 class GameField extends StatelessWidget {
@@ -35,37 +33,27 @@ class GameField extends StatelessWidget {
             ProtagonistView(
               protagonist: di.get<SceneBloc>().state.protagonist,
             ),
-            ..._buildBombs(),
-            ..._buildBullets(),
+            BombsView(
+              bombs: di.get<SceneBloc>().state.bombs,
+            ),
+            BulletsView(
+              bullets: di.get<SceneBloc>().state.bullets,
+            ),
+            RecordsTable(),
           ],
         );
       },
     );
   }
+}
 
-  List<Widget> _buildBombs() {
-    return di
-        .get<SceneBloc>()
-        .state
-        .bombs
-        .map(
-          (Bomb bomb) => BombView(
-            bomb: bomb,
-          ),
-        )
-        .toList(growable: false);
-  }
+class RecordsTable extends StatelessWidget {
+  const RecordsTable({
+    Key? key,
+  }) : super(key: key);
 
-  List<Widget> _buildBullets() {
-    return di
-        .get<SceneBloc>()
-        .state
-        .bullets
-        .map(
-          (Bullet bullet) => BulletView(
-            bullet: bullet,
-          ),
-        )
-        .toList(growable: false);
+  @override
+  Widget build(BuildContext context) {
+    return Center();
   }
 }
