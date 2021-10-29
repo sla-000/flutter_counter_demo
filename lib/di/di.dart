@@ -15,6 +15,7 @@ import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/repo.dart';
 import 'package:flutter_counter_shooter/logic/repo/records/memory.dart';
 import 'package:flutter_counter_shooter/logic/repo/repo.dart';
+import 'package:flutter_counter_shooter/logic/repo/scene/scene.dart';
 import 'package:get_it/get_it.dart';
 
 final GetIt di = GetIt.I;
