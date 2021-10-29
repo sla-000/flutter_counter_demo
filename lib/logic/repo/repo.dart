@@ -1,10 +1,11 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter_counter_shooter/logic/blocs/bombs/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame/state.dart';
+import 'package:flutter_counter_shooter/logic/blocs/records/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/records/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
@@ -52,9 +53,16 @@ class BombsClearRepoImpl implements BombsClearRepo {
 }
 
 class ScoreRepoImpl implements ScoreRepo {
+  ScoreRepoImpl({
+    required this.recordsBloc,
+  });
+
+  final RecordsBloc recordsBloc;
+
   @override
   void saveRecord(int score) {
-    log('saveRecord: score=$score');
+    recordsBloc.add(const RecordsEvent.fetch());
+    recordsBloc.add(RecordsEvent.setRecord(score));
   }
 }
 

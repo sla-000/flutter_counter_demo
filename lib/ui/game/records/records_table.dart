@@ -1,0 +1,31 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_counter_shooter/logic/blocs/records/repo.dart';
+
+import 'one_record.dart';
+
+class RecordsTable extends StatelessWidget {
+  const RecordsTable({
+    Key? key,
+    required this.records,
+  }) : super(key: key);
+
+  final List<RecordData> records;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: _buildRecords(),
+      ),
+    );
+  }
+
+  List<OneRecord> _buildRecords() => records
+      .map(
+        (RecordData recordData) => OneRecord(
+          recordData: recordData,
+        ),
+      )
+      .toList();
+}

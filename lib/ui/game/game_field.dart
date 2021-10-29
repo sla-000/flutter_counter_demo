@@ -9,6 +9,7 @@ import 'package:flutter_counter_shooter/logic/blocs/scene/scene.dart';
 import 'package:flutter_counter_shooter/ui/game/bombs/bombs_view.dart';
 import 'package:flutter_counter_shooter/ui/game/bullets/bullets_view.dart';
 import 'package:flutter_counter_shooter/ui/game/protagonist/protagonist.dart';
+import 'package:flutter_counter_shooter/ui/game/records/records_view.dart';
 
 class GameField extends StatelessWidget {
   const GameField({
@@ -39,21 +40,10 @@ class GameField extends StatelessWidget {
             BulletsView(
               bullets: di.get<SceneBloc>().state.bullets,
             ),
-            RecordsTable(),
+            const RecordsView(),
           ],
         );
       },
     );
-  }
-}
-
-class RecordsTable extends StatelessWidget {
-  const RecordsTable({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center();
   }
 }

@@ -5,6 +5,7 @@ import 'package:flutter_counter_shooter/logic/blocs/frame/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/protagonist/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/records/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/scene.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
@@ -30,7 +31,7 @@ void diInit() {
   );
 
   di.registerFactory<ScoreRepo>(
-    () => ScoreRepoImpl(),
+    () => ScoreRepoImpl(recordsBloc: di.get<RecordsBloc>()),
   );
   di.registerLazySingleton<ScoreBloc>(
     () => ScoreBloc(scoreRepo: di.get<ScoreRepo>()),
@@ -97,16 +98,16 @@ void diInit() {
       gameScoreRepo: di.get<SceneScoreRepo>(),
       sceneWavesRepo: di.get<SceneWavesRepo>(),
       sceneSpawnRepo: di.get<SceneSpawnRepo>(),
-      sceneFrameRepo: di.get<SceneFrameRepo>(),
     ),
     dispose: (SceneBloc bloc) => bloc.close(),
   );
 
+  di.registerFactory<RecordsDbRepo>(
+    () => MemoryRecordsDbRepo(),
+  );
+
   di.registerLazySingleton<RecordsBloc>(
-    () => RecordsBloc(
-      // recordsDbRepo: di.get<FirebaseRecordsDbRepo>(),
-      recordsDbRepo: di.get<MemoryRecordsDbRepo>(),
-    ),
+    () => RecordsBloc(recordsDbRepo: di.get<RecordsDbRepo>()),
     dispose: (RecordsBloc bloc) => bloc.close(),
   );
 }

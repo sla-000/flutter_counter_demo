@@ -51,8 +51,8 @@ class MemoryRecordsDbRepo implements RecordsDbRepo {
   }) async {
     await Future<void>.delayed(const Duration(seconds: 1));
     return _records
-        .sorted((MemoryRecord a, MemoryRecord b) => a.name.compareTo(b.name))
-        .sorted((MemoryRecord a, MemoryRecord b) => a.score.compareTo(b.score))
+        .sorted((MemoryRecord a, MemoryRecord b) => a.dateTime!.compareTo(b.dateTime!))
+        .sorted((MemoryRecord a, MemoryRecord b) => b.score.compareTo(a.score))
         .take(10)
         .mapIndexed((int index, MemoryRecord memoryRecord) => RecordData(
               position: index + 1,

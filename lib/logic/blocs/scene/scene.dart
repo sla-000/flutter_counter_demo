@@ -31,7 +31,6 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
     required this.sceneSpawnRepo,
     required this.sceneWavesRepo,
     required this.gameScoreRepo,
-    required this.sceneFrameRepo,
   }) : super(SceneState(
           size: Vector.one(),
           protagonist: protagonistBloc.state.protagonist,
@@ -61,7 +60,6 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
   final SceneSpawnRepo sceneSpawnRepo;
   final SceneWavesRepo sceneWavesRepo;
   final SceneScoreRepo gameScoreRepo;
-  final SceneFrameRepo sceneFrameRepo;
 
   @override
   Future<void> close() {

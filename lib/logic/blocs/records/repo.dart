@@ -7,9 +7,9 @@ part 'repo.freezed.dart';
 @freezed
 class RecordData with _$RecordData {
   const factory RecordData({
-    @Default(kPositionNA) int position,
+    @Default(RecordData.kPositionNA) int position,
     @Default('') String name,
-    @Default(kScoreNA) int score,
+    @Default(RecordData.kScoreNA) int score,
     DateTime? dateTime,
   }) = _RecordData;
 
