@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,49 +8,58 @@ import 'state.dart';
 
 class RecordsBloc extends Bloc<RecordsEvent, RecordsState> {
   RecordsBloc({
-    required this.dbRepo,
+    required this.recordsDbRepo,
   }) : super(const RecordsState()) {
-    on<RecordsEventShowGlobal>(_onShowGlobal);
     on<RecordsEventFetch>(_onFetch);
     on<RecordsEventUpload>(_onUpload);
-    on<RecordsEventAdd>(_onAdd);
+    on<RecordsEventSetRecord>(_onSetRecord);
     on<RecordsEventSetName>(_onSetName);
   }
 
-  final DbRepo dbRepo;
+  final RecordsDbRepo recordsDbRepo;
 
-  void _onShowGlobal(RecordsEventShowGlobal event, Emitter<RecordsState> emit) {
-    emit(state.copyWith(
-        // enabled: event.enable,
-        // delta: 0,
-        ));
+  Future<void> _onFetch(RecordsEventFetch event, Emitter<RecordsState> emit) async {
+    try {
+      emit(state.copyWith(waitNetwork: true));
+
+      final List<RecordData> records = await recordsDbRepo.getRecords(name: state.name);
+
+      emit(state.copyWith(records: records));
+    } on Exception catch (error, stackTrace) {
+      log('_onFetch', name: 'RecordsBloc', error: error, stackTrace: stackTrace);
+      emit(state.copyWith(lastNetworkError: 'Can\'t fetch records'));
+    } finally {
+      emit(state.copyWith(waitNetwork: false));
+    }
   }
 
-  void _onFetch(RecordsEventFetch event, Emitter<RecordsState> emit) {
-    emit(state.copyWith(
-        // enabled: event.enable,
-        // delta: 0,
-        ));
+  Future<void> _onUpload(RecordsEventUpload event, Emitter<RecordsState> emit) async {
+    try {
+      emit(state.copyWith(waitNetwork: true));
+
+      if (state.name.isEmpty || state.lastRecord == 0) {
+        return;
+      }
+
+      await recordsDbRepo.addRecord(
+        name: state.name,
+        score: state.lastRecord,
+      );
+    } on Exception catch (error, stackTrace) {
+      log('_onUpload', name: 'RecordsBloc', error: error, stackTrace: stackTrace);
+      emit(state.copyWith(lastNetworkError: 'Can\'t upload records'));
+    } finally {
+      emit(state.copyWith(waitNetwork: false));
+    }
   }
 
-  void _onUpload(RecordsEventUpload event, Emitter<RecordsState> emit) {
-    emit(state.copyWith(
-        // enabled: event.enable,
-        // delta: 0,
-        ));
-  }
-
-  void _onAdd(RecordsEventAdd event, Emitter<RecordsState> emit) {
-    emit(state.copyWith(
-        // enabled: event.enable,
-        // delta: 0,
-        ));
+  void _onSetRecord(RecordsEventSetRecord event, Emitter<RecordsState> emit) {
+    emit(state.copyWith(lastRecord: event.value));
   }
 
   void _onSetName(RecordsEventSetName event, Emitter<RecordsState> emit) {
-    emit(state.copyWith(
-        // enabled: event.enable,
-        // delta: 0,
-        ));
+    emit(state.copyWith(name: event.name));
+
+    add(const RecordsEvent.upload());
   }
 }

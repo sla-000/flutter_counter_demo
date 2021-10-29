@@ -17,12 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$RecordsEventTearOff {
   const _$RecordsEventTearOff();
 
-  RecordsEventShowGlobal showGlobal(bool show) {
-    return RecordsEventShowGlobal(
-      show,
-    );
-  }
-
   RecordsEventFetch fetch() {
     return const RecordsEventFetch();
   }
@@ -31,15 +25,15 @@ class _$RecordsEventTearOff {
     return const RecordsEventUpload();
   }
 
-  RecordsEventAdd add(int value) {
-    return RecordsEventAdd(
+  RecordsEventSetRecord setRecord(int value) {
+    return RecordsEventSetRecord(
       value,
     );
   }
 
-  RecordsEventSetName setName(int value) {
+  RecordsEventSetName setName(String name) {
     return RecordsEventSetName(
-      value,
+      name,
     );
   }
 }
@@ -51,56 +45,50 @@ const $RecordsEvent = _$RecordsEventTearOff();
 mixin _$RecordsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool show) showGlobal,
     required TResult Function() fetch,
     required TResult Function() upload,
-    required TResult Function(int value) add,
-    required TResult Function(int value) setName,
+    required TResult Function(int value) setRecord,
+    required TResult Function(String name) setName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool show)? showGlobal,
     TResult Function()? fetch,
     TResult Function()? upload,
-    TResult Function(int value)? add,
-    TResult Function(int value)? setName,
+    TResult Function(int value)? setRecord,
+    TResult Function(String name)? setName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool show)? showGlobal,
     TResult Function()? fetch,
     TResult Function()? upload,
-    TResult Function(int value)? add,
-    TResult Function(int value)? setName,
+    TResult Function(int value)? setRecord,
+    TResult Function(String name)? setName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(RecordsEventShowGlobal value) showGlobal,
     required TResult Function(RecordsEventFetch value) fetch,
     required TResult Function(RecordsEventUpload value) upload,
-    required TResult Function(RecordsEventAdd value) add,
+    required TResult Function(RecordsEventSetRecord value) setRecord,
     required TResult Function(RecordsEventSetName value) setName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RecordsEventShowGlobal value)? showGlobal,
     TResult Function(RecordsEventFetch value)? fetch,
     TResult Function(RecordsEventUpload value)? upload,
-    TResult Function(RecordsEventAdd value)? add,
+    TResult Function(RecordsEventSetRecord value)? setRecord,
     TResult Function(RecordsEventSetName value)? setName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(RecordsEventShowGlobal value)? showGlobal,
     TResult Function(RecordsEventFetch value)? fetch,
     TResult Function(RecordsEventUpload value)? upload,
-    TResult Function(RecordsEventAdd value)? add,
+    TResult Function(RecordsEventSetRecord value)? setRecord,
     TResult Function(RecordsEventSetName value)? setName,
     required TResult orElse(),
   }) =>
@@ -121,159 +109,6 @@ class _$RecordsEventCopyWithImpl<$Res> implements $RecordsEventCopyWith<$Res> {
   final RecordsEvent _value;
   // ignore: unused_field
   final $Res Function(RecordsEvent) _then;
-}
-
-/// @nodoc
-abstract class $RecordsEventShowGlobalCopyWith<$Res> {
-  factory $RecordsEventShowGlobalCopyWith(RecordsEventShowGlobal value,
-          $Res Function(RecordsEventShowGlobal) then) =
-      _$RecordsEventShowGlobalCopyWithImpl<$Res>;
-  $Res call({bool show});
-}
-
-/// @nodoc
-class _$RecordsEventShowGlobalCopyWithImpl<$Res>
-    extends _$RecordsEventCopyWithImpl<$Res>
-    implements $RecordsEventShowGlobalCopyWith<$Res> {
-  _$RecordsEventShowGlobalCopyWithImpl(RecordsEventShowGlobal _value,
-      $Res Function(RecordsEventShowGlobal) _then)
-      : super(_value, (v) => _then(v as RecordsEventShowGlobal));
-
-  @override
-  RecordsEventShowGlobal get _value => super._value as RecordsEventShowGlobal;
-
-  @override
-  $Res call({
-    Object? show = freezed,
-  }) {
-    return _then(RecordsEventShowGlobal(
-      show == freezed
-          ? _value.show
-          : show // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$RecordsEventShowGlobal implements RecordsEventShowGlobal {
-  const _$RecordsEventShowGlobal(this.show);
-
-  @override
-  final bool show;
-
-  @override
-  String toString() {
-    return 'RecordsEvent.showGlobal(show: $show)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is RecordsEventShowGlobal &&
-            (identical(other.show, show) ||
-                const DeepCollectionEquality().equals(other.show, show)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(show);
-
-  @JsonKey(ignore: true)
-  @override
-  $RecordsEventShowGlobalCopyWith<RecordsEventShowGlobal> get copyWith =>
-      _$RecordsEventShowGlobalCopyWithImpl<RecordsEventShowGlobal>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(bool show) showGlobal,
-    required TResult Function() fetch,
-    required TResult Function() upload,
-    required TResult Function(int value) add,
-    required TResult Function(int value) setName,
-  }) {
-    return showGlobal(show);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool show)? showGlobal,
-    TResult Function()? fetch,
-    TResult Function()? upload,
-    TResult Function(int value)? add,
-    TResult Function(int value)? setName,
-  }) {
-    return showGlobal?.call(show);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool show)? showGlobal,
-    TResult Function()? fetch,
-    TResult Function()? upload,
-    TResult Function(int value)? add,
-    TResult Function(int value)? setName,
-    required TResult orElse(),
-  }) {
-    if (showGlobal != null) {
-      return showGlobal(show);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RecordsEventShowGlobal value) showGlobal,
-    required TResult Function(RecordsEventFetch value) fetch,
-    required TResult Function(RecordsEventUpload value) upload,
-    required TResult Function(RecordsEventAdd value) add,
-    required TResult Function(RecordsEventSetName value) setName,
-  }) {
-    return showGlobal(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RecordsEventShowGlobal value)? showGlobal,
-    TResult Function(RecordsEventFetch value)? fetch,
-    TResult Function(RecordsEventUpload value)? upload,
-    TResult Function(RecordsEventAdd value)? add,
-    TResult Function(RecordsEventSetName value)? setName,
-  }) {
-    return showGlobal?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RecordsEventShowGlobal value)? showGlobal,
-    TResult Function(RecordsEventFetch value)? fetch,
-    TResult Function(RecordsEventUpload value)? upload,
-    TResult Function(RecordsEventAdd value)? add,
-    TResult Function(RecordsEventSetName value)? setName,
-    required TResult orElse(),
-  }) {
-    if (showGlobal != null) {
-      return showGlobal(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class RecordsEventShowGlobal implements RecordsEvent {
-  const factory RecordsEventShowGlobal(bool show) = _$RecordsEventShowGlobal;
-
-  bool get show => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $RecordsEventShowGlobalCopyWith<RecordsEventShowGlobal> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -316,11 +151,10 @@ class _$RecordsEventFetch implements RecordsEventFetch {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool show) showGlobal,
     required TResult Function() fetch,
     required TResult Function() upload,
-    required TResult Function(int value) add,
-    required TResult Function(int value) setName,
+    required TResult Function(int value) setRecord,
+    required TResult Function(String name) setName,
   }) {
     return fetch();
   }
@@ -328,11 +162,10 @@ class _$RecordsEventFetch implements RecordsEventFetch {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool show)? showGlobal,
     TResult Function()? fetch,
     TResult Function()? upload,
-    TResult Function(int value)? add,
-    TResult Function(int value)? setName,
+    TResult Function(int value)? setRecord,
+    TResult Function(String name)? setName,
   }) {
     return fetch?.call();
   }
@@ -340,11 +173,10 @@ class _$RecordsEventFetch implements RecordsEventFetch {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool show)? showGlobal,
     TResult Function()? fetch,
     TResult Function()? upload,
-    TResult Function(int value)? add,
-    TResult Function(int value)? setName,
+    TResult Function(int value)? setRecord,
+    TResult Function(String name)? setName,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -356,10 +188,9 @@ class _$RecordsEventFetch implements RecordsEventFetch {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(RecordsEventShowGlobal value) showGlobal,
     required TResult Function(RecordsEventFetch value) fetch,
     required TResult Function(RecordsEventUpload value) upload,
-    required TResult Function(RecordsEventAdd value) add,
+    required TResult Function(RecordsEventSetRecord value) setRecord,
     required TResult Function(RecordsEventSetName value) setName,
   }) {
     return fetch(this);
@@ -368,10 +199,9 @@ class _$RecordsEventFetch implements RecordsEventFetch {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RecordsEventShowGlobal value)? showGlobal,
     TResult Function(RecordsEventFetch value)? fetch,
     TResult Function(RecordsEventUpload value)? upload,
-    TResult Function(RecordsEventAdd value)? add,
+    TResult Function(RecordsEventSetRecord value)? setRecord,
     TResult Function(RecordsEventSetName value)? setName,
   }) {
     return fetch?.call(this);
@@ -380,10 +210,9 @@ class _$RecordsEventFetch implements RecordsEventFetch {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(RecordsEventShowGlobal value)? showGlobal,
     TResult Function(RecordsEventFetch value)? fetch,
     TResult Function(RecordsEventUpload value)? upload,
-    TResult Function(RecordsEventAdd value)? add,
+    TResult Function(RecordsEventSetRecord value)? setRecord,
     TResult Function(RecordsEventSetName value)? setName,
     required TResult orElse(),
   }) {
@@ -438,11 +267,10 @@ class _$RecordsEventUpload implements RecordsEventUpload {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool show) showGlobal,
     required TResult Function() fetch,
     required TResult Function() upload,
-    required TResult Function(int value) add,
-    required TResult Function(int value) setName,
+    required TResult Function(int value) setRecord,
+    required TResult Function(String name) setName,
   }) {
     return upload();
   }
@@ -450,11 +278,10 @@ class _$RecordsEventUpload implements RecordsEventUpload {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool show)? showGlobal,
     TResult Function()? fetch,
     TResult Function()? upload,
-    TResult Function(int value)? add,
-    TResult Function(int value)? setName,
+    TResult Function(int value)? setRecord,
+    TResult Function(String name)? setName,
   }) {
     return upload?.call();
   }
@@ -462,11 +289,10 @@ class _$RecordsEventUpload implements RecordsEventUpload {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool show)? showGlobal,
     TResult Function()? fetch,
     TResult Function()? upload,
-    TResult Function(int value)? add,
-    TResult Function(int value)? setName,
+    TResult Function(int value)? setRecord,
+    TResult Function(String name)? setName,
     required TResult orElse(),
   }) {
     if (upload != null) {
@@ -478,10 +304,9 @@ class _$RecordsEventUpload implements RecordsEventUpload {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(RecordsEventShowGlobal value) showGlobal,
     required TResult Function(RecordsEventFetch value) fetch,
     required TResult Function(RecordsEventUpload value) upload,
-    required TResult Function(RecordsEventAdd value) add,
+    required TResult Function(RecordsEventSetRecord value) setRecord,
     required TResult Function(RecordsEventSetName value) setName,
   }) {
     return upload(this);
@@ -490,10 +315,9 @@ class _$RecordsEventUpload implements RecordsEventUpload {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RecordsEventShowGlobal value)? showGlobal,
     TResult Function(RecordsEventFetch value)? fetch,
     TResult Function(RecordsEventUpload value)? upload,
-    TResult Function(RecordsEventAdd value)? add,
+    TResult Function(RecordsEventSetRecord value)? setRecord,
     TResult Function(RecordsEventSetName value)? setName,
   }) {
     return upload?.call(this);
@@ -502,10 +326,9 @@ class _$RecordsEventUpload implements RecordsEventUpload {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(RecordsEventShowGlobal value)? showGlobal,
     TResult Function(RecordsEventFetch value)? fetch,
     TResult Function(RecordsEventUpload value)? upload,
-    TResult Function(RecordsEventAdd value)? add,
+    TResult Function(RecordsEventSetRecord value)? setRecord,
     TResult Function(RecordsEventSetName value)? setName,
     required TResult orElse(),
   }) {
@@ -521,29 +344,29 @@ abstract class RecordsEventUpload implements RecordsEvent {
 }
 
 /// @nodoc
-abstract class $RecordsEventAddCopyWith<$Res> {
-  factory $RecordsEventAddCopyWith(
-          RecordsEventAdd value, $Res Function(RecordsEventAdd) then) =
-      _$RecordsEventAddCopyWithImpl<$Res>;
+abstract class $RecordsEventSetRecordCopyWith<$Res> {
+  factory $RecordsEventSetRecordCopyWith(RecordsEventSetRecord value,
+          $Res Function(RecordsEventSetRecord) then) =
+      _$RecordsEventSetRecordCopyWithImpl<$Res>;
   $Res call({int value});
 }
 
 /// @nodoc
-class _$RecordsEventAddCopyWithImpl<$Res>
+class _$RecordsEventSetRecordCopyWithImpl<$Res>
     extends _$RecordsEventCopyWithImpl<$Res>
-    implements $RecordsEventAddCopyWith<$Res> {
-  _$RecordsEventAddCopyWithImpl(
-      RecordsEventAdd _value, $Res Function(RecordsEventAdd) _then)
-      : super(_value, (v) => _then(v as RecordsEventAdd));
+    implements $RecordsEventSetRecordCopyWith<$Res> {
+  _$RecordsEventSetRecordCopyWithImpl(
+      RecordsEventSetRecord _value, $Res Function(RecordsEventSetRecord) _then)
+      : super(_value, (v) => _then(v as RecordsEventSetRecord));
 
   @override
-  RecordsEventAdd get _value => super._value as RecordsEventAdd;
+  RecordsEventSetRecord get _value => super._value as RecordsEventSetRecord;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(RecordsEventAdd(
+    return _then(RecordsEventSetRecord(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -554,21 +377,21 @@ class _$RecordsEventAddCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RecordsEventAdd implements RecordsEventAdd {
-  const _$RecordsEventAdd(this.value);
+class _$RecordsEventSetRecord implements RecordsEventSetRecord {
+  const _$RecordsEventSetRecord(this.value);
 
   @override
   final int value;
 
   @override
   String toString() {
-    return 'RecordsEvent.add(value: $value)';
+    return 'RecordsEvent.setRecord(value: $value)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is RecordsEventAdd &&
+        (other is RecordsEventSetRecord &&
             (identical(other.value, value) ||
                 const DeepCollectionEquality().equals(other.value, value)));
   }
@@ -579,45 +402,43 @@ class _$RecordsEventAdd implements RecordsEventAdd {
 
   @JsonKey(ignore: true)
   @override
-  $RecordsEventAddCopyWith<RecordsEventAdd> get copyWith =>
-      _$RecordsEventAddCopyWithImpl<RecordsEventAdd>(this, _$identity);
+  $RecordsEventSetRecordCopyWith<RecordsEventSetRecord> get copyWith =>
+      _$RecordsEventSetRecordCopyWithImpl<RecordsEventSetRecord>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool show) showGlobal,
     required TResult Function() fetch,
     required TResult Function() upload,
-    required TResult Function(int value) add,
-    required TResult Function(int value) setName,
+    required TResult Function(int value) setRecord,
+    required TResult Function(String name) setName,
   }) {
-    return add(value);
+    return setRecord(value);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool show)? showGlobal,
     TResult Function()? fetch,
     TResult Function()? upload,
-    TResult Function(int value)? add,
-    TResult Function(int value)? setName,
+    TResult Function(int value)? setRecord,
+    TResult Function(String name)? setName,
   }) {
-    return add?.call(value);
+    return setRecord?.call(value);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool show)? showGlobal,
     TResult Function()? fetch,
     TResult Function()? upload,
-    TResult Function(int value)? add,
-    TResult Function(int value)? setName,
+    TResult Function(int value)? setRecord,
+    TResult Function(String name)? setName,
     required TResult orElse(),
   }) {
-    if (add != null) {
-      return add(value);
+    if (setRecord != null) {
+      return setRecord(value);
     }
     return orElse();
   }
@@ -625,50 +446,47 @@ class _$RecordsEventAdd implements RecordsEventAdd {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(RecordsEventShowGlobal value) showGlobal,
     required TResult Function(RecordsEventFetch value) fetch,
     required TResult Function(RecordsEventUpload value) upload,
-    required TResult Function(RecordsEventAdd value) add,
+    required TResult Function(RecordsEventSetRecord value) setRecord,
     required TResult Function(RecordsEventSetName value) setName,
   }) {
-    return add(this);
+    return setRecord(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RecordsEventShowGlobal value)? showGlobal,
     TResult Function(RecordsEventFetch value)? fetch,
     TResult Function(RecordsEventUpload value)? upload,
-    TResult Function(RecordsEventAdd value)? add,
+    TResult Function(RecordsEventSetRecord value)? setRecord,
     TResult Function(RecordsEventSetName value)? setName,
   }) {
-    return add?.call(this);
+    return setRecord?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(RecordsEventShowGlobal value)? showGlobal,
     TResult Function(RecordsEventFetch value)? fetch,
     TResult Function(RecordsEventUpload value)? upload,
-    TResult Function(RecordsEventAdd value)? add,
+    TResult Function(RecordsEventSetRecord value)? setRecord,
     TResult Function(RecordsEventSetName value)? setName,
     required TResult orElse(),
   }) {
-    if (add != null) {
-      return add(this);
+    if (setRecord != null) {
+      return setRecord(this);
     }
     return orElse();
   }
 }
 
-abstract class RecordsEventAdd implements RecordsEvent {
-  const factory RecordsEventAdd(int value) = _$RecordsEventAdd;
+abstract class RecordsEventSetRecord implements RecordsEvent {
+  const factory RecordsEventSetRecord(int value) = _$RecordsEventSetRecord;
 
   int get value => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $RecordsEventAddCopyWith<RecordsEventAdd> get copyWith =>
+  $RecordsEventSetRecordCopyWith<RecordsEventSetRecord> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -677,7 +495,7 @@ abstract class $RecordsEventSetNameCopyWith<$Res> {
   factory $RecordsEventSetNameCopyWith(
           RecordsEventSetName value, $Res Function(RecordsEventSetName) then) =
       _$RecordsEventSetNameCopyWithImpl<$Res>;
-  $Res call({int value});
+  $Res call({String name});
 }
 
 /// @nodoc
@@ -693,13 +511,13 @@ class _$RecordsEventSetNameCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? value = freezed,
+    Object? name = freezed,
   }) {
     return _then(RecordsEventSetName(
-      value == freezed
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as int,
+      name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -707,27 +525,27 @@ class _$RecordsEventSetNameCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RecordsEventSetName implements RecordsEventSetName {
-  const _$RecordsEventSetName(this.value);
+  const _$RecordsEventSetName(this.name);
 
   @override
-  final int value;
+  final String name;
 
   @override
   String toString() {
-    return 'RecordsEvent.setName(value: $value)';
+    return 'RecordsEvent.setName(name: $name)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is RecordsEventSetName &&
-            (identical(other.value, value) ||
-                const DeepCollectionEquality().equals(other.value, value)));
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(value);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
 
   @JsonKey(ignore: true)
   @override
@@ -737,39 +555,36 @@ class _$RecordsEventSetName implements RecordsEventSetName {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool show) showGlobal,
     required TResult Function() fetch,
     required TResult Function() upload,
-    required TResult Function(int value) add,
-    required TResult Function(int value) setName,
+    required TResult Function(int value) setRecord,
+    required TResult Function(String name) setName,
   }) {
-    return setName(value);
+    return setName(name);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool show)? showGlobal,
     TResult Function()? fetch,
     TResult Function()? upload,
-    TResult Function(int value)? add,
-    TResult Function(int value)? setName,
+    TResult Function(int value)? setRecord,
+    TResult Function(String name)? setName,
   }) {
-    return setName?.call(value);
+    return setName?.call(name);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool show)? showGlobal,
     TResult Function()? fetch,
     TResult Function()? upload,
-    TResult Function(int value)? add,
-    TResult Function(int value)? setName,
+    TResult Function(int value)? setRecord,
+    TResult Function(String name)? setName,
     required TResult orElse(),
   }) {
     if (setName != null) {
-      return setName(value);
+      return setName(name);
     }
     return orElse();
   }
@@ -777,10 +592,9 @@ class _$RecordsEventSetName implements RecordsEventSetName {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(RecordsEventShowGlobal value) showGlobal,
     required TResult Function(RecordsEventFetch value) fetch,
     required TResult Function(RecordsEventUpload value) upload,
-    required TResult Function(RecordsEventAdd value) add,
+    required TResult Function(RecordsEventSetRecord value) setRecord,
     required TResult Function(RecordsEventSetName value) setName,
   }) {
     return setName(this);
@@ -789,10 +603,9 @@ class _$RecordsEventSetName implements RecordsEventSetName {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RecordsEventShowGlobal value)? showGlobal,
     TResult Function(RecordsEventFetch value)? fetch,
     TResult Function(RecordsEventUpload value)? upload,
-    TResult Function(RecordsEventAdd value)? add,
+    TResult Function(RecordsEventSetRecord value)? setRecord,
     TResult Function(RecordsEventSetName value)? setName,
   }) {
     return setName?.call(this);
@@ -801,10 +614,9 @@ class _$RecordsEventSetName implements RecordsEventSetName {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(RecordsEventShowGlobal value)? showGlobal,
     TResult Function(RecordsEventFetch value)? fetch,
     TResult Function(RecordsEventUpload value)? upload,
-    TResult Function(RecordsEventAdd value)? add,
+    TResult Function(RecordsEventSetRecord value)? setRecord,
     TResult Function(RecordsEventSetName value)? setName,
     required TResult orElse(),
   }) {
@@ -816,9 +628,9 @@ class _$RecordsEventSetName implements RecordsEventSetName {
 }
 
 abstract class RecordsEventSetName implements RecordsEvent {
-  const factory RecordsEventSetName(int value) = _$RecordsEventSetName;
+  const factory RecordsEventSetName(String name) = _$RecordsEventSetName;
 
-  int get value => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $RecordsEventSetNameCopyWith<RecordsEventSetName> get copyWith =>
       throw _privateConstructorUsedError;
