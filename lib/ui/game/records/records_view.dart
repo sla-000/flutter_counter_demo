@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
@@ -41,7 +43,7 @@ class _RecordsView extends StatelessWidget {
       builder: (_, RecordsState state) {
         return Center(
           child: SizedBox(
-            width: MediaQuery.of(context).size.width * 0.66,
+            width: min(MediaQuery.of(context).size.width * 0.66, 350),
             height: MediaQuery.of(context).size.height * 0.8,
             child: Column(
               children: <Widget>[
@@ -54,7 +56,7 @@ class _RecordsView extends StatelessWidget {
                     duration: const Duration(milliseconds: 800),
                     child: state.waitNetwork
                         ? const SizedBox.square(
-                            dimension: 80,
+                            dimension: 50,
                             child: CircularProgressIndicator(),
                           )
                         : RecordsTable(

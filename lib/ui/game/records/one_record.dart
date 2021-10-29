@@ -11,6 +11,21 @@ class OneRecord extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('#${recordData.position} ${recordData.name} ${recordData.score}');
+    return Row(
+      children: <Widget>[
+        SizedBox(
+          width: 70,
+          child: Text('#${recordData.position}'),
+        ),
+        Expanded(
+          child: Text(
+            recordData.name,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+        const SizedBox(width: 16),
+        Text('${recordData.score}'),
+      ],
+    );
   }
 }

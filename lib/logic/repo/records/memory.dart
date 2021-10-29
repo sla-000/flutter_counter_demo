@@ -16,35 +16,20 @@ class MemoryRecord with _$MemoryRecord {
   const MemoryRecord._();
 }
 
-final List<MemoryRecord> _records = <MemoryRecord>[
-  MemoryRecord(
-    name: 'Noname',
-    score: 80,
-    dateTime: DateTime.now().subtract(const Duration(hours: 1)),
-  ),
-  MemoryRecord(
-    name: 'Noname',
-    score: 40,
-    dateTime: DateTime.now().subtract(const Duration(hours: 2)),
-  ),
-  MemoryRecord(
-    name: 'Noname',
-    score: 20,
-    dateTime: DateTime.now().subtract(const Duration(hours: 3)),
-  ),
-  MemoryRecord(
-    name: 'Noname',
-    score: 10,
-    dateTime: DateTime.now().subtract(const Duration(hours: 4)),
-  ),
-  MemoryRecord(
-    name: 'Noname',
-    score: 5,
-    dateTime: DateTime.now().subtract(const Duration(hours: 5)),
-  ),
-];
+final List<MemoryRecord> _records = <MemoryRecord>[];
 
 class MemoryRecordsDbRepo implements RecordsDbRepo {
+  MemoryRecordsDbRepo() {
+    for (int q = 10; q <= 500; q += 10)
+      _records.add(
+        MemoryRecord(
+          name: 'Noname',
+          score: q,
+          dateTime: DateTime.now().subtract(Duration(hours: q)),
+        ),
+      );
+  }
+
   @override
   Future<List<RecordData>> getRecords({
     String name = '',
@@ -53,7 +38,7 @@ class MemoryRecordsDbRepo implements RecordsDbRepo {
     return _records
         .sorted((MemoryRecord a, MemoryRecord b) => a.dateTime!.compareTo(b.dateTime!))
         .sorted((MemoryRecord a, MemoryRecord b) => b.score.compareTo(a.score))
-        .take(10)
+        .take(100)
         .mapIndexed((int index, MemoryRecord memoryRecord) => RecordData(
               position: index + 1,
               dateTime: memoryRecord.dateTime,
