@@ -22,7 +22,10 @@ class RecordsView extends StatelessWidget {
       buildWhen: (ScoreState previous, ScoreState current) => current.gameState != previous.gameState,
       builder: (_, ScoreState state) {
         if (state.isFinished) {
-          return const _RecordsView();
+          return const Padding(
+            padding: EdgeInsets.only(top: 50),
+            child: _RecordsView(),
+          );
         }
 
         return const SizedBox.shrink();
@@ -38,37 +41,66 @@ class _RecordsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RecordsBloc, RecordsState>(
-      bloc: di.get<RecordsBloc>(),
-      builder: (_, RecordsState state) {
-        return Center(
-          child: SizedBox(
-            width: min(MediaQuery.of(context).size.width * 0.66, 350),
-            height: MediaQuery.of(context).size.height * 0.8,
-            child: Column(
-              children: <Widget>[
-                const SizedBox(height: 50),
-                const Text('Records table'),
-                Text('Your score: ${state.lastRecord}'),
-                Text('Enter your name: ${state.name}'),
-                Expanded(
-                  child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 800),
-                    child: state.waitNetwork
-                        ? const SizedBox.square(
-                            dimension: 50,
-                            child: CircularProgressIndicator(),
-                          )
-                        : RecordsTable(
-                            records: state.records,
-                          ),
-                  ),
-                ),
-              ],
+    return Center(
+      child: SizedBox(
+        width: min(MediaQuery.of(context).size.width * 0.66, 350),
+        child: BlocBuilder<RecordsBloc, RecordsState>(
+          bloc: di.get<RecordsBloc>(),
+          builder: (_, RecordsState state) {
+            return _RecordsFrame(
+              recordsState: state,
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class _RecordsFrame extends StatelessWidget {
+  const _RecordsFrame({
+    Key? key,
+    required this.recordsState,
+  }) : super(key: key);
+
+  final RecordsState recordsState;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text(
+            'Records table',
+            style: Theme.of(context).textTheme.headline4,
+          ),
+          const SizedBox(height: 16),
+          Text(
+            'Your score: ${recordsState.lastRecord}',
+            style: Theme.of(context).textTheme.headline5,
+          ),
+          const SizedBox(height: 16),
+          Text('Enter your name: ${recordsState.name}'),
+          const SizedBox(height: 16),
+          Flexible(
+            fit: FlexFit.loose,
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 800),
+              child: recordsState.waitNetwork
+                  ? const Center(
+                      child: SizedBox.square(
+                        dimension: 50,
+                        child: CircularProgressIndicator(),
+                      ),
+                    )
+                  : RecordsTable(
+                      records: recordsState.records,
+                    ),
             ),
           ),
-        );
-      },
+        ],
+      ),
     );
   }
 }
