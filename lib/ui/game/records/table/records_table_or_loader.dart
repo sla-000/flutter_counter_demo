@@ -12,6 +12,7 @@ class RecordsTableOrLoader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<RecordsBloc, RecordsState>(
+      buildWhen: (RecordsState previous, RecordsState current) => current.waitNetwork != previous.waitNetwork,
       builder: (_, RecordsState recordsState) {
         return AnimatedSwitcher(
           duration: const Duration(milliseconds: 800),
@@ -22,11 +23,9 @@ class RecordsTableOrLoader extends StatelessWidget {
                     child: CircularProgressIndicator(),
                   ),
                 )
-              : Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: RecordsTable(
-                    records: recordsState.records,
-                  ),
+              : const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8),
+                  child: RecordsTable(),
                 ),
         );
       },

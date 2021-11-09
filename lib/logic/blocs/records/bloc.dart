@@ -25,7 +25,7 @@ class RecordsBloc extends Bloc<RecordsEvent, RecordsState> {
     try {
       emit(state.copyWith(waitNetwork: true));
 
-      final List<RecordData> records = await recordsDbRepo.getRecords(name: state.name);
+      final List<RecordData> records = await recordsDbRepo.getRecords();
 
       emit(state.copyWith(records: records));
     } on Exception catch (error, stackTrace) {
@@ -44,10 +44,12 @@ class RecordsBloc extends Bloc<RecordsEvent, RecordsState> {
         return;
       }
 
-      await recordsDbRepo.addRecord(
+      final List<RecordData> records = await recordsDbRepo.addRecord(
         name: state.name,
         score: state.lastRecord,
       );
+
+      emit(state.copyWith(records: records));
     } on Exception catch (error, stackTrace) {
       log('_onUpload', name: 'RecordsBloc', error: error, stackTrace: stackTrace);
       emit(state.copyWith(lastNetworkError: 'Can\'t upload records'));
@@ -76,6 +78,13 @@ class RecordsBloc extends Bloc<RecordsEvent, RecordsState> {
       lastNames: lastNames.toList(growable: false),
     ));
 
-    add(const RecordsEvent.upload());
+    final bool isNewScore = state.records.where((RecordData recordData) => _isInTable(recordData, event.name)).isEmpty;
+
+    if (isNewScore) {
+      add(const RecordsEvent.upload());
+    }
   }
+
+  bool _isInTable(RecordData recordData, String name) =>
+      recordData.name == name && recordData.score == state.lastRecord;
 }

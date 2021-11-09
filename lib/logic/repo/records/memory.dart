@@ -20,7 +20,7 @@ final List<MemoryRecord> _records = <MemoryRecord>[];
 
 class MemoryRecordsDbRepo implements RecordsDbRepo {
   MemoryRecordsDbRepo() {
-    for (int q = 10; q <= 500; q += 10)
+    for (int q = 5; q <= 100; q += 5)
       _records.add(
         MemoryRecord(
           name: 'Noname',
@@ -35,9 +35,11 @@ class MemoryRecordsDbRepo implements RecordsDbRepo {
     String name = '',
   }) async {
     await Future<void>.delayed(const Duration(seconds: 1));
+
     return _records
-        .sorted((MemoryRecord a, MemoryRecord b) => a.dateTime!.compareTo(b.dateTime!))
-        .sorted((MemoryRecord a, MemoryRecord b) => b.score.compareTo(a.score))
+        .where((MemoryRecord memoryRecord) => name == '' || name == memoryRecord.name)
+        .sorted(_oldestFirst)
+        .sorted(_biggestScoreFirst)
         .take(100)
         .mapIndexed((int index, MemoryRecord memoryRecord) => RecordData(
               position: index + 1,
@@ -48,16 +50,23 @@ class MemoryRecordsDbRepo implements RecordsDbRepo {
         .toList(growable: false);
   }
 
+  int _biggestScoreFirst(MemoryRecord a, MemoryRecord b) => b.score.compareTo(a.score);
+
+  int _oldestFirst(MemoryRecord a, MemoryRecord b) => a.dateTime!.compareTo(b.dateTime!);
+
   @override
-  Future<void> addRecord({
+  Future<List<RecordData>> addRecord({
     required String name,
     required int score,
   }) async {
     await Future<void>.delayed(const Duration(seconds: 1));
+
     _records.add(MemoryRecord(
       name: name,
       score: score,
       dateTime: DateTime.now().toUtc(),
     ));
+
+    return getRecords();
   }
 }

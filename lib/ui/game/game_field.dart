@@ -31,7 +31,9 @@ class GameField extends StatelessWidget {
                 top: 0,
                 child: Text(frameState.delta.toString()),
               ),
-            const GameElements(),
+            GameElements(
+              delta: frameState.delta,
+            ),
             const RecordsView(),
           ],
         );

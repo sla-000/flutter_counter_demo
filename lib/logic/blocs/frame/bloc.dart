@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,7 +14,6 @@ class FrameBloc extends Bloc<FrameEvent, FrameState> {
     on<FrameEventUpdate>(_onUpdate);
 
     _enabledSubscription = frameRepo.enabled.distinct().listen((bool enable) {
-      log('enable=$enable');
       add(FrameEvent.control(enable));
     });
   }

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'dart:math' as math;
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -203,7 +202,6 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
         bulletsBloc.add(BulletsEvent.removeAll(bullets));
       },
       onProtagonistHit: (Bomb bomb) {
-        log('dead');
         gameScoreRepo.dead();
         // bombsBloc.add(const BombsEvent.init());
       },

@@ -9,7 +9,10 @@ import 'package:flutter_counter_shooter/ui/game/protagonist/protagonist.dart';
 class GameElements extends StatelessWidget {
   const GameElements({
     Key? key,
+    required this.delta,
   }) : super(key: key);
+
+  final double delta;
 
   @override
   Widget build(BuildContext context) {

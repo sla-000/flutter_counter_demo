@@ -24,7 +24,7 @@ abstract class RecordsDbRepo {
     String name = '',
   });
 
-  FutureOr<void> addRecord({
+  FutureOr<List<RecordData>> addRecord({
     required String name,
     required int score,
   });
