@@ -43,7 +43,7 @@ class _RecordsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        width: min(MediaQuery.of(context).size.width * 0.66, 350),
+        width: min(MediaQuery.of(context).size.width * 0.66, 400),
         child: BlocBuilder<RecordsBloc, RecordsState>(
           bloc: di.get<RecordsBloc>(),
           builder: (_, RecordsState state) {
@@ -80,8 +80,10 @@ class _RecordsFrame extends StatelessWidget {
           style: Theme.of(context).textTheme.headline5,
         ),
         const SizedBox(height: 16),
-        Text('Enter your name: ${recordsState.name}'),
-        const SizedBox(height: 16),
+        NameField(
+          currentName: recordsState.name,
+        ),
+        const SizedBox(height: 8),
         Expanded(
           child: AnimatedSwitcher(
             duration: const Duration(milliseconds: 800),
@@ -92,12 +94,29 @@ class _RecordsFrame extends StatelessWidget {
                       child: CircularProgressIndicator(),
                     ),
                   )
-                : RecordsTable(
-                    records: recordsState.records,
+                : Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: RecordsTable(
+                      records: recordsState.records,
+                    ),
                   ),
           ),
         ),
       ],
     );
+  }
+}
+
+class NameField extends StatelessWidget {
+  const NameField({
+    Key? key,
+    required this.currentName,
+  }) : super(key: key);
+
+  final String currentName;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text('Enter your name: $currentName');
   }
 }
