@@ -67,40 +67,37 @@ class _RecordsFrame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Text(
-            'Records table',
-            style: Theme.of(context).textTheme.headline4,
-          ),
-          const SizedBox(height: 16),
-          Text(
-            'Your score: ${recordsState.lastRecord}',
-            style: Theme.of(context).textTheme.headline5,
-          ),
-          const SizedBox(height: 16),
-          Text('Enter your name: ${recordsState.name}'),
-          const SizedBox(height: 16),
-          Flexible(
-            fit: FlexFit.loose,
-            child: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 800),
-              child: recordsState.waitNetwork
-                  ? const Center(
-                      child: SizedBox.square(
-                        dimension: 50,
-                        child: CircularProgressIndicator(),
-                      ),
-                    )
-                  : RecordsTable(
-                      records: recordsState.records,
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: <Widget>[
+        Text(
+          'Records table',
+          style: Theme.of(context).textTheme.headline4,
+        ),
+        const SizedBox(height: 16),
+        Text(
+          'Your score: ${recordsState.lastRecord}',
+          style: Theme.of(context).textTheme.headline5,
+        ),
+        const SizedBox(height: 16),
+        Text('Enter your name: ${recordsState.name}'),
+        const SizedBox(height: 16),
+        Expanded(
+          child: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 800),
+            child: recordsState.waitNetwork
+                ? const Center(
+                    child: SizedBox.square(
+                      dimension: 50,
+                      child: CircularProgressIndicator(),
                     ),
-            ),
+                  )
+                : RecordsTable(
+                    records: recordsState.records,
+                  ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
