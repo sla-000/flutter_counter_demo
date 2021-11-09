@@ -1,10 +1,13 @@
 import 'dart:developer';
+import 'dart:math' as math;
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'event.dart';
 import 'repo.dart';
 import 'state.dart';
+
+const int kMaxNames = 5;
 
 class RecordsBloc extends Bloc<RecordsEvent, RecordsState> {
   RecordsBloc({
@@ -58,7 +61,20 @@ class RecordsBloc extends Bloc<RecordsEvent, RecordsState> {
   }
 
   void _onSetName(RecordsEventSetName event, Emitter<RecordsState> emit) {
-    emit(state.copyWith(name: event.name));
+    List<String> lastNames = List<String>.of(state.lastNames);
+
+    if (lastNames.contains(event.name)) {
+      lastNames.remove(event.name);
+      lastNames.insert(0, event.name);
+    } else {
+      lastNames.insert(0, event.name);
+      lastNames = lastNames.sublist(0, math.min(kMaxNames, lastNames.length));
+    }
+
+    emit(state.copyWith(
+      name: event.name,
+      lastNames: lastNames.toList(growable: false),
+    ));
 
     add(const RecordsEvent.upload());
   }

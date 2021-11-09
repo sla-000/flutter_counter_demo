@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/bloc.dart';
-import 'package:flutter_counter_shooter/logic/blocs/records/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
-
-import 'records_table.dart';
+import 'package:flutter_counter_shooter/ui/common/screen_title.dart';
+import 'package:flutter_counter_shooter/ui/game/records/name/name_input.dart';
+import 'package:flutter_counter_shooter/ui/game/records/table/records_table_or_loader.dart';
+import 'package:flutter_counter_shooter/ui/game/records/your_score.dart';
 
 class RecordsView extends StatelessWidget {
   const RecordsView({
@@ -41,16 +42,12 @@ class _RecordsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SizedBox(
-        width: min(MediaQuery.of(context).size.width * 0.66, 400),
-        child: BlocBuilder<RecordsBloc, RecordsState>(
-          bloc: di.get<RecordsBloc>(),
-          builder: (_, RecordsState state) {
-            return _RecordsFrame(
-              recordsState: state,
-            );
-          },
+    return BlocProvider<RecordsBloc>(
+      create: (_) => di.get<RecordsBloc>(),
+      child: Center(
+        child: SizedBox(
+          width: min(MediaQuery.of(context).size.width * 0.66, 400),
+          child: const _RecordsFrame(),
         ),
       ),
     );
@@ -60,63 +57,24 @@ class _RecordsView extends StatelessWidget {
 class _RecordsFrame extends StatelessWidget {
   const _RecordsFrame({
     Key? key,
-    required this.recordsState,
   }) : super(key: key);
-
-  final RecordsState recordsState;
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: <Widget>[
-        Text(
-          'Records table',
-          style: Theme.of(context).textTheme.headline4,
+      children: const <Widget>[
+        ScreenTitle(
+          text: 'Records table',
         ),
-        const SizedBox(height: 16),
-        Text(
-          'Your score: ${recordsState.lastRecord}',
-          style: Theme.of(context).textTheme.headline5,
-        ),
-        const SizedBox(height: 16),
-        NameField(
-          currentName: recordsState.name,
-        ),
-        const SizedBox(height: 8),
+        SizedBox(height: 16),
+        YourScore(),
+        SizedBox(height: 16),
+        NameInput(),
+        SizedBox(height: 8),
         Expanded(
-          child: AnimatedSwitcher(
-            duration: const Duration(milliseconds: 800),
-            child: recordsState.waitNetwork
-                ? const Center(
-                    child: SizedBox.square(
-                      dimension: 50,
-                      child: CircularProgressIndicator(),
-                    ),
-                  )
-                : Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: RecordsTable(
-                      records: recordsState.records,
-                    ),
-                  ),
-          ),
+          child: RecordsTableOrLoader(),
         ),
       ],
     );
-  }
-}
-
-class NameField extends StatelessWidget {
-  const NameField({
-    Key? key,
-    required this.currentName,
-  }) : super(key: key);
-
-  final String currentName;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text('Enter your name: $currentName');
   }
 }

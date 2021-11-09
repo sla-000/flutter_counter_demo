@@ -20,12 +20,14 @@ class _$RecordsStateTearOff {
   _RecordsState call(
       {int lastRecord = 0,
       String name = '',
+      List<String> lastNames = const <String>[],
       List<RecordData> records = const <RecordData>[],
       bool waitNetwork = false,
       String lastNetworkError = ''}) {
     return _RecordsState(
       lastRecord: lastRecord,
       name: name,
+      lastNames: lastNames,
       records: records,
       waitNetwork: waitNetwork,
       lastNetworkError: lastNetworkError,
@@ -40,6 +42,7 @@ const $RecordsState = _$RecordsStateTearOff();
 mixin _$RecordsState {
   int get lastRecord => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  List<String> get lastNames => throw _privateConstructorUsedError;
   List<RecordData> get records => throw _privateConstructorUsedError;
   bool get waitNetwork => throw _privateConstructorUsedError;
   String get lastNetworkError => throw _privateConstructorUsedError;
@@ -57,6 +60,7 @@ abstract class $RecordsStateCopyWith<$Res> {
   $Res call(
       {int lastRecord,
       String name,
+      List<String> lastNames,
       List<RecordData> records,
       bool waitNetwork,
       String lastNetworkError});
@@ -74,6 +78,7 @@ class _$RecordsStateCopyWithImpl<$Res> implements $RecordsStateCopyWith<$Res> {
   $Res call({
     Object? lastRecord = freezed,
     Object? name = freezed,
+    Object? lastNames = freezed,
     Object? records = freezed,
     Object? waitNetwork = freezed,
     Object? lastNetworkError = freezed,
@@ -87,6 +92,10 @@ class _$RecordsStateCopyWithImpl<$Res> implements $RecordsStateCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      lastNames: lastNames == freezed
+          ? _value.lastNames
+          : lastNames // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       records: records == freezed
           ? _value.records
           : records // ignore: cast_nullable_to_non_nullable
@@ -113,6 +122,7 @@ abstract class _$RecordsStateCopyWith<$Res>
   $Res call(
       {int lastRecord,
       String name,
+      List<String> lastNames,
       List<RecordData> records,
       bool waitNetwork,
       String lastNetworkError});
@@ -132,6 +142,7 @@ class __$RecordsStateCopyWithImpl<$Res> extends _$RecordsStateCopyWithImpl<$Res>
   $Res call({
     Object? lastRecord = freezed,
     Object? name = freezed,
+    Object? lastNames = freezed,
     Object? records = freezed,
     Object? waitNetwork = freezed,
     Object? lastNetworkError = freezed,
@@ -145,6 +156,10 @@ class __$RecordsStateCopyWithImpl<$Res> extends _$RecordsStateCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      lastNames: lastNames == freezed
+          ? _value.lastNames
+          : lastNames // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       records: records == freezed
           ? _value.records
           : records // ignore: cast_nullable_to_non_nullable
@@ -167,6 +182,7 @@ class _$_RecordsState extends _RecordsState {
   const _$_RecordsState(
       {this.lastRecord = 0,
       this.name = '',
+      this.lastNames = const <String>[],
       this.records = const <RecordData>[],
       this.waitNetwork = false,
       this.lastNetworkError = ''})
@@ -178,6 +194,9 @@ class _$_RecordsState extends _RecordsState {
   @JsonKey(defaultValue: '')
   @override
   final String name;
+  @JsonKey(defaultValue: const <String>[])
+  @override
+  final List<String> lastNames;
   @JsonKey(defaultValue: const <RecordData>[])
   @override
   final List<RecordData> records;
@@ -190,7 +209,7 @@ class _$_RecordsState extends _RecordsState {
 
   @override
   String toString() {
-    return 'RecordsState(lastRecord: $lastRecord, name: $name, records: $records, waitNetwork: $waitNetwork, lastNetworkError: $lastNetworkError)';
+    return 'RecordsState(lastRecord: $lastRecord, name: $name, lastNames: $lastNames, records: $records, waitNetwork: $waitNetwork, lastNetworkError: $lastNetworkError)';
   }
 
   @override
@@ -202,6 +221,9 @@ class _$_RecordsState extends _RecordsState {
                     .equals(other.lastRecord, lastRecord)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.lastNames, lastNames) ||
+                const DeepCollectionEquality()
+                    .equals(other.lastNames, lastNames)) &&
             (identical(other.records, records) ||
                 const DeepCollectionEquality()
                     .equals(other.records, records)) &&
@@ -218,6 +240,7 @@ class _$_RecordsState extends _RecordsState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(lastRecord) ^
       const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(lastNames) ^
       const DeepCollectionEquality().hash(records) ^
       const DeepCollectionEquality().hash(waitNetwork) ^
       const DeepCollectionEquality().hash(lastNetworkError);
@@ -232,6 +255,7 @@ abstract class _RecordsState extends RecordsState {
   const factory _RecordsState(
       {int lastRecord,
       String name,
+      List<String> lastNames,
       List<RecordData> records,
       bool waitNetwork,
       String lastNetworkError}) = _$_RecordsState;
@@ -241,6 +265,8 @@ abstract class _RecordsState extends RecordsState {
   int get lastRecord => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
+  @override
+  List<String> get lastNames => throw _privateConstructorUsedError;
   @override
   List<RecordData> get records => throw _privateConstructorUsedError;
   @override

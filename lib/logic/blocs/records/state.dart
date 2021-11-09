@@ -8,6 +8,7 @@ class RecordsState with _$RecordsState {
   const factory RecordsState({
     @Default(0) int lastRecord,
     @Default('') String name,
+    @Default(<String>[]) List<String> lastNames,
     @Default(<RecordData>[]) List<RecordData> records,
     @Default(false) bool waitNetwork,
     @Default('') String lastNetworkError,
