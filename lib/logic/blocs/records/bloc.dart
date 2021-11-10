@@ -44,10 +44,12 @@ class RecordsBloc extends Bloc<RecordsEvent, RecordsState> {
         return;
       }
 
-      final List<RecordData> records = await recordsDbRepo.addRecord(
+      await recordsDbRepo.addRecord(
         name: state.name,
         score: state.lastRecord,
       );
+
+      final List<RecordData> records = await recordsDbRepo.getRecords();
 
       emit(state.copyWith(records: records));
     } on Exception catch (error, stackTrace) {

@@ -12,11 +12,10 @@ class FirebaseRecordsDbRepo implements RecordsDbRepo {
   }
 
   @override
-  Future<List<RecordData>> addRecord({
+  Future<void> addRecord({
     required String name,
     required int score,
   }) async {
     await Future<void>.delayed(const Duration(seconds: 1));
-    return <RecordData>[];
   }
 }

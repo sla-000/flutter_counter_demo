@@ -55,7 +55,7 @@ class MemoryRecordsDbRepo implements RecordsDbRepo {
   int _oldestFirst(MemoryRecord a, MemoryRecord b) => a.dateTime!.compareTo(b.dateTime!);
 
   @override
-  Future<List<RecordData>> addRecord({
+  Future<void> addRecord({
     required String name,
     required int score,
   }) async {
@@ -66,7 +66,5 @@ class MemoryRecordsDbRepo implements RecordsDbRepo {
       score: score,
       dateTime: DateTime.now().toUtc(),
     ));
-
-    return getRecords();
   }
 }
