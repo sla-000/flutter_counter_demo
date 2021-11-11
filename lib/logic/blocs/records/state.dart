@@ -3,6 +3,11 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'state.freezed.dart';
 
+enum RecordViewState {
+  enterName,
+  showTable,
+}
+
 @freezed
 class RecordsState with _$RecordsState {
   const factory RecordsState({
@@ -12,6 +17,7 @@ class RecordsState with _$RecordsState {
     @Default(<RecordData>[]) List<RecordData> records,
     @Default(false) bool waitNetwork,
     @Default('') String lastNetworkError,
+    @Default(RecordViewState.enterName) RecordViewState recordViewState,
   }) = _RecordsState;
 
   const RecordsState._();
