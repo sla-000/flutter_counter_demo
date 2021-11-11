@@ -16,5 +16,12 @@ class RecordsState with _$RecordsState {
 
   const RecordsState._();
 
-  bool get isScoreGoodForTable => records.any((RecordData recordData) => lastRecord > recordData.score);
+  bool get isScoreGoodForTable {
+    return _isScoreBigger && !_isAlreadyInTable;
+  }
+
+  bool get _isScoreBigger => records.any((RecordData recordData) => lastRecord > recordData.score);
+
+  bool get _isAlreadyInTable =>
+      records.any((RecordData recordData) => lastRecord == recordData.score && name == recordData.name);
 }
