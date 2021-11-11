@@ -5,10 +5,12 @@ class NameEdit extends StatefulWidget {
     Key? key,
     required this.name,
     this.onSubmitted,
+    this.onChanged,
   }) : super(key: key);
 
   final String name;
   final void Function(String name)? onSubmitted;
+  final void Function(String)? onChanged;
 
   @override
   State<NameEdit> createState() => _NameEditState();
@@ -38,6 +40,7 @@ class _NameEditState extends State<NameEdit> {
         labelText: 'Player name',
       ),
       onSubmitted: widget.onSubmitted,
+      onChanged: widget.onChanged,
     );
   }
 }

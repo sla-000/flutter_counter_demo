@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/records/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
 import 'package:flutter_counter_shooter/ui/common/screen_title.dart';
@@ -47,15 +48,58 @@ class _RecordsView extends StatelessWidget {
       child: Center(
         child: SizedBox(
           width: min(MediaQuery.of(context).size.width * 0.66, 400),
-          child: const _RecordsFrame(),
+          child: const _SelectAddOrShowRecord(),
         ),
       ),
     );
   }
 }
 
-class _RecordsFrame extends StatelessWidget {
-  const _RecordsFrame({
+class _SelectAddOrShowRecord extends StatelessWidget {
+  const _SelectAddOrShowRecord({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<RecordsBloc, RecordsState>(
+      buildWhen: (RecordsState previous, RecordsState current) =>
+          current.isScoreGoodForTable != previous.isScoreGoodForTable,
+      builder: (_, RecordsState recordsState) {
+        return AnimatedSwitcher(
+          duration: const Duration(milliseconds: 800),
+          child: recordsState.isScoreGoodForTable ? const _AddRecordFrame() : const _ShowRecordsFrame(),
+        );
+      },
+    );
+  }
+}
+
+class _ShowRecordsFrame extends StatelessWidget {
+  const _ShowRecordsFrame({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: const <Widget>[
+        ScreenTitle(
+          text: 'Records table',
+        ),
+        SizedBox(height: 16),
+        YourScore(),
+        SizedBox(height: 8),
+        Expanded(
+          child: RecordsTableOrLoader(),
+        ),
+      ],
+    );
+  }
+}
+
+class _AddRecordFrame extends StatelessWidget {
+  const _AddRecordFrame({
     Key? key,
   }) : super(key: key);
 

@@ -15,4 +15,6 @@ class RecordsState with _$RecordsState {
   }) = _RecordsState;
 
   const RecordsState._();
+
+  bool get isScoreGoodForTable => records.any((RecordData recordData) => lastRecord > recordData.score);
 }
