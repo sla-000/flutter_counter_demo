@@ -48,77 +48,56 @@ class _RecordsView extends StatelessWidget {
       child: Center(
         child: SizedBox(
           width: min(MediaQuery.of(context).size.width * 0.66, 400),
-          child: const _SelectAddOrShowRecord(),
+          child: const _AddOrShowRecord(),
         ),
       ),
     );
   }
 }
 
-class _SelectAddOrShowRecord extends StatelessWidget {
-  const _SelectAddOrShowRecord({
+class _AddOrShowRecord extends StatelessWidget {
+  const _AddOrShowRecord({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: const <Widget>[
+        ScreenTitle(
+          text: 'Records table',
+        ),
+        SizedBox(height: 16),
+        YourScore(),
+        SizedBox(height: 16),
+        _NameInputOrNothing(),
+        SizedBox(height: 8),
+        Expanded(
+          child: RecordsTableOrLoader(),
+        ),
+      ],
+    );
+  }
+}
+
+class _NameInputOrNothing extends StatelessWidget {
+  const _NameInputOrNothing({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<RecordsBloc, RecordsState>(
-      buildWhen: (RecordsState previous, RecordsState current) =>
-          current.isScoreGoodForTable != previous.isScoreGoodForTable,
+      buildWhen: (RecordsState previous, RecordsState current) => current.showNameInput != previous.showNameInput,
       builder: (_, RecordsState recordsState) {
-        return AnimatedSwitcher(
+        print('recordsState.showNameInput=${recordsState.showNameInput}');
+        return AnimatedCrossFade(
           duration: const Duration(milliseconds: 800),
-          child: recordsState.isScoreGoodForTable ? const _AddRecordFrame() : const _ShowRecordsFrame(),
+          crossFadeState: recordsState.showNameInput ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+          firstChild: const NameInput(),
+          secondChild: const SizedBox.shrink(),
         );
       },
-    );
-  }
-}
-
-class _ShowRecordsFrame extends StatelessWidget {
-  const _ShowRecordsFrame({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: const <Widget>[
-        ScreenTitle(
-          text: 'Records table',
-        ),
-        SizedBox(height: 16),
-        YourScore(),
-        SizedBox(height: 8),
-        Expanded(
-          child: RecordsTableOrLoader(),
-        ),
-      ],
-    );
-  }
-}
-
-class _AddRecordFrame extends StatelessWidget {
-  const _AddRecordFrame({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: const <Widget>[
-        ScreenTitle(
-          text: 'Records table',
-        ),
-        SizedBox(height: 16),
-        YourScore(),
-        SizedBox(height: 16),
-        NameInput(),
-        SizedBox(height: 8),
-        Expanded(
-          child: RecordsTableOrLoader(),
-        ),
-      ],
     );
   }
 }

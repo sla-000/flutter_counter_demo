@@ -24,7 +24,7 @@ class _$RecordsStateTearOff {
       List<RecordData> records = const <RecordData>[],
       bool waitNetwork = false,
       String lastNetworkError = '',
-      RecordViewState recordViewState = RecordViewState.enterName}) {
+      bool showNameInput = false}) {
     return _RecordsState(
       lastRecord: lastRecord,
       name: name,
@@ -32,7 +32,7 @@ class _$RecordsStateTearOff {
       records: records,
       waitNetwork: waitNetwork,
       lastNetworkError: lastNetworkError,
-      recordViewState: recordViewState,
+      showNameInput: showNameInput,
     );
   }
 }
@@ -48,7 +48,7 @@ mixin _$RecordsState {
   List<RecordData> get records => throw _privateConstructorUsedError;
   bool get waitNetwork => throw _privateConstructorUsedError;
   String get lastNetworkError => throw _privateConstructorUsedError;
-  RecordViewState get recordViewState => throw _privateConstructorUsedError;
+  bool get showNameInput => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RecordsStateCopyWith<RecordsState> get copyWith =>
@@ -67,7 +67,7 @@ abstract class $RecordsStateCopyWith<$Res> {
       List<RecordData> records,
       bool waitNetwork,
       String lastNetworkError,
-      RecordViewState recordViewState});
+      bool showNameInput});
 }
 
 /// @nodoc
@@ -86,7 +86,7 @@ class _$RecordsStateCopyWithImpl<$Res> implements $RecordsStateCopyWith<$Res> {
     Object? records = freezed,
     Object? waitNetwork = freezed,
     Object? lastNetworkError = freezed,
-    Object? recordViewState = freezed,
+    Object? showNameInput = freezed,
   }) {
     return _then(_value.copyWith(
       lastRecord: lastRecord == freezed
@@ -113,10 +113,10 @@ class _$RecordsStateCopyWithImpl<$Res> implements $RecordsStateCopyWith<$Res> {
           ? _value.lastNetworkError
           : lastNetworkError // ignore: cast_nullable_to_non_nullable
               as String,
-      recordViewState: recordViewState == freezed
-          ? _value.recordViewState
-          : recordViewState // ignore: cast_nullable_to_non_nullable
-              as RecordViewState,
+      showNameInput: showNameInput == freezed
+          ? _value.showNameInput
+          : showNameInput // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -135,7 +135,7 @@ abstract class _$RecordsStateCopyWith<$Res>
       List<RecordData> records,
       bool waitNetwork,
       String lastNetworkError,
-      RecordViewState recordViewState});
+      bool showNameInput});
 }
 
 /// @nodoc
@@ -156,7 +156,7 @@ class __$RecordsStateCopyWithImpl<$Res> extends _$RecordsStateCopyWithImpl<$Res>
     Object? records = freezed,
     Object? waitNetwork = freezed,
     Object? lastNetworkError = freezed,
-    Object? recordViewState = freezed,
+    Object? showNameInput = freezed,
   }) {
     return _then(_RecordsState(
       lastRecord: lastRecord == freezed
@@ -183,10 +183,10 @@ class __$RecordsStateCopyWithImpl<$Res> extends _$RecordsStateCopyWithImpl<$Res>
           ? _value.lastNetworkError
           : lastNetworkError // ignore: cast_nullable_to_non_nullable
               as String,
-      recordViewState: recordViewState == freezed
-          ? _value.recordViewState
-          : recordViewState // ignore: cast_nullable_to_non_nullable
-              as RecordViewState,
+      showNameInput: showNameInput == freezed
+          ? _value.showNameInput
+          : showNameInput // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -201,7 +201,7 @@ class _$_RecordsState extends _RecordsState {
       this.records = const <RecordData>[],
       this.waitNetwork = false,
       this.lastNetworkError = '',
-      this.recordViewState = RecordViewState.enterName})
+      this.showNameInput = false})
       : super._();
 
   @JsonKey(defaultValue: 0)
@@ -222,13 +222,13 @@ class _$_RecordsState extends _RecordsState {
   @JsonKey(defaultValue: '')
   @override
   final String lastNetworkError;
-  @JsonKey(defaultValue: RecordViewState.enterName)
+  @JsonKey(defaultValue: false)
   @override
-  final RecordViewState recordViewState;
+  final bool showNameInput;
 
   @override
   String toString() {
-    return 'RecordsState(lastRecord: $lastRecord, name: $name, lastNames: $lastNames, records: $records, waitNetwork: $waitNetwork, lastNetworkError: $lastNetworkError, recordViewState: $recordViewState)';
+    return 'RecordsState(lastRecord: $lastRecord, name: $name, lastNames: $lastNames, records: $records, waitNetwork: $waitNetwork, lastNetworkError: $lastNetworkError, showNameInput: $showNameInput)';
   }
 
   @override
@@ -252,9 +252,9 @@ class _$_RecordsState extends _RecordsState {
             (identical(other.lastNetworkError, lastNetworkError) ||
                 const DeepCollectionEquality()
                     .equals(other.lastNetworkError, lastNetworkError)) &&
-            (identical(other.recordViewState, recordViewState) ||
+            (identical(other.showNameInput, showNameInput) ||
                 const DeepCollectionEquality()
-                    .equals(other.recordViewState, recordViewState)));
+                    .equals(other.showNameInput, showNameInput)));
   }
 
   @override
@@ -266,7 +266,7 @@ class _$_RecordsState extends _RecordsState {
       const DeepCollectionEquality().hash(records) ^
       const DeepCollectionEquality().hash(waitNetwork) ^
       const DeepCollectionEquality().hash(lastNetworkError) ^
-      const DeepCollectionEquality().hash(recordViewState);
+      const DeepCollectionEquality().hash(showNameInput);
 
   @JsonKey(ignore: true)
   @override
@@ -282,7 +282,7 @@ abstract class _RecordsState extends RecordsState {
       List<RecordData> records,
       bool waitNetwork,
       String lastNetworkError,
-      RecordViewState recordViewState}) = _$_RecordsState;
+      bool showNameInput}) = _$_RecordsState;
   const _RecordsState._() : super._();
 
   @override
@@ -298,7 +298,7 @@ abstract class _RecordsState extends RecordsState {
   @override
   String get lastNetworkError => throw _privateConstructorUsedError;
   @override
-  RecordViewState get recordViewState => throw _privateConstructorUsedError;
+  bool get showNameInput => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$RecordsStateCopyWith<_RecordsState> get copyWith =>

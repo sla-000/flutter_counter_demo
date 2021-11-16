@@ -23,11 +23,17 @@ class RecordsBloc extends Bloc<RecordsEvent, RecordsState> {
 
   Future<void> _onFetch(RecordsEventFetch event, Emitter<RecordsState> emit) async {
     try {
-      emit(state.copyWith(waitNetwork: true));
+      emit(state.copyWith(
+        waitNetwork: true,
+        showNameInput: false,
+      ));
 
       final List<RecordData> records = await recordsDbRepo.getRecords();
 
-      emit(state.copyWith(records: records));
+      emit(state.copyWith(
+        records: records,
+        showNameInput: RecordsState.isScoreInTable(state.lastRecord, records),
+      ));
     } on Exception catch (error, stackTrace) {
       log('_onFetch', name: 'RecordsBloc', error: error, stackTrace: stackTrace);
       emit(state.copyWith(lastNetworkError: 'Can\'t fetch records'));
@@ -61,7 +67,10 @@ class RecordsBloc extends Bloc<RecordsEvent, RecordsState> {
   }
 
   void _onSetRecord(RecordsEventSetRecord event, Emitter<RecordsState> emit) {
-    emit(state.copyWith(lastRecord: event.value));
+    emit(state.copyWith(
+      lastRecord: event.value,
+      showNameInput: RecordsState.isScoreInTable(event.value, state.records),
+    ));
   }
 
   void _onSetName(RecordsEventSetName event, Emitter<RecordsState> emit) {
@@ -78,6 +87,7 @@ class RecordsBloc extends Bloc<RecordsEvent, RecordsState> {
     emit(state.copyWith(
       name: event.name,
       lastNames: lastNames.toList(growable: false),
+      showNameInput: false,
     ));
 
     final bool isNewScore = state.records.where((RecordData recordData) => _isInTable(recordData, event.name)).isEmpty;
