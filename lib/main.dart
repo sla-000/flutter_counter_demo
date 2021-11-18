@@ -12,27 +12,49 @@ import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
 import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
 import 'package:flutter_counter_shooter/ui/game_view.dart';
 
-void main() async {
+void main() {
   diInit();
-
-  await Firebase.initializeApp();
 
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late final Future<FirebaseApp> firebaseApp;
+
+  @override
+  void initState() {
+    super.initState();
+
+    firebaseApp = Firebase.initializeApp();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter counter demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
+    return FutureBuilder<FirebaseApp>(
+      future: firebaseApp,
+      builder: (BuildContext context, AsyncSnapshot<FirebaseApp> snapshot) {
+        if (snapshot.hasData) {
+          return MaterialApp(
+            title: 'Flutter counter demo',
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            home: const MyHomePage(),
+          );
+        }
+        return const MaterialApp(
+          home: Center(),
+        );
+      },
     );
   }
 }
