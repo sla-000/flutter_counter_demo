@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_counter_shooter/logic/repo/records/firebase.dart';
+import 'package:flutter_counter_shooter/logic/repo/records/firebase/score_record.dart';
 import 'package:flutter_counter_shooter/utils/firebase_utils.dart';
 
 FirebaseFirestore get firestore => FirebaseFirestore.instance;
@@ -9,7 +9,7 @@ Future<void> debugTap() async {
       await firestore.collection('scores').orderBy('score', descending: true).limit(10).get();
 
   snapshot.docs.map((QueryDocumentSnapshot<Map<String, dynamic>> e) {
-    final ScoreRecord scoreRecord = ScoreRecord.fromJsonX(e.id, e.data());
+    final ScoreRecord scoreRecord = ScoreRecord.fromJsonId(e.id, e.data());
     print('scoreRecord=$scoreRecord');
   }).toList();
 

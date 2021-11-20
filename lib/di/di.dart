@@ -14,7 +14,7 @@ import 'package:flutter_counter_shooter/logic/blocs/spawn/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/spawn/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/repo.dart';
-import 'package:flutter_counter_shooter/logic/repo/records/firebase.dart';
+import 'package:flutter_counter_shooter/logic/repo/records/firebase/firebase.dart';
 import 'package:flutter_counter_shooter/logic/repo/repo.dart';
 import 'package:flutter_counter_shooter/logic/repo/scene/scene.dart';
 import 'package:get_it/get_it.dart';

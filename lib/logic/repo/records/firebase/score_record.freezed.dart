@@ -2,7 +2,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'firebase.dart';
+part of 'score_record.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -47,9 +47,11 @@ const $ScoreRecord = _$ScoreRecordTearOff();
 /// @nodoc
 mixin _$ScoreRecord {
   String get name => throw _privateConstructorUsedError;
-  int get score => throw _privateConstructorUsedError;
+  int get score =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(fromJson: timestampFromJson, toJson: timestampToJson)
-  Timestamp? get date => throw _privateConstructorUsedError;
+  Timestamp? get date =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
 
@@ -182,10 +184,10 @@ class _$_ScoreRecord extends _ScoreRecord {
   @JsonKey(defaultValue: 0)
   @override
   final int score;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(fromJson: timestampFromJson, toJson: timestampToJson)
   final Timestamp? date;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(ignore: true)
   final String? id;
 
@@ -244,10 +246,10 @@ abstract class _ScoreRecord extends ScoreRecord {
   String get name => throw _privateConstructorUsedError;
   @override
   int get score => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(fromJson: timestampFromJson, toJson: timestampToJson)
   Timestamp? get date => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
   @override

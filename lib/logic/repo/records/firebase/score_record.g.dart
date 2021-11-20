@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'firebase.dart';
+part of 'score_record.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
