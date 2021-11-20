@@ -8,7 +8,6 @@ part of 'firebase.dart';
 
 _$_ScoreRecord _$$_ScoreRecordFromJson(Map<String, dynamic> json) =>
     _$_ScoreRecord(
-      id: json['id'] as String?,
       name: json['name'] as String? ?? '',
       score: json['score'] as int? ?? 0,
       date: timestampFromJson(json['date']),
@@ -16,7 +15,6 @@ _$_ScoreRecord _$$_ScoreRecordFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_ScoreRecordToJson(_$_ScoreRecord instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'name': instance.name,
       'score': instance.score,
       'date': timestampToJson(instance.date),
