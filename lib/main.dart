@@ -52,6 +52,7 @@ class _MyAppState extends State<MyApp> {
             home: const MyHomePage(),
           );
         }
+
         return const MaterialApp(
           home: Center(),
         );
