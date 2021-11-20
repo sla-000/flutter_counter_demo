@@ -11,6 +11,12 @@
 - Google fonts
   2h
 
+- Theme
+  2h
+
+- Add dark theme
+  2h
+
 - L10n
   2h
   
