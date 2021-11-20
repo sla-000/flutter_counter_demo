@@ -25,5 +25,7 @@ class ScoreRecord with _$ScoreRecord {
   ) =>
       ScoreRecord.fromJson(json).copyWith(id: id);
 
+  static const String kCollectionName = 'scores';
+
   DateTime? get dateTime => date?.toDate();
 }

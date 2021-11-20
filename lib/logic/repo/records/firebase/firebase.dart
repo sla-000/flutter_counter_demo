@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/repo.dart';
 import 'package:flutter_counter_shooter/logic/repo/records/firebase/score_record.dart';
+import 'package:flutter_counter_shooter/utils/firebase_utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 FirebaseFirestore get firestore => FirebaseFirestore.instance;
@@ -13,7 +14,7 @@ class FirebaseRecordsDbRepo implements RecordsDbRepo {
     String name = '',
   }) async {
     final QuerySnapshot<Map<String, dynamic>> scoresSnapshot = await firestore
-        .collection('scores')
+        .collection(ScoreRecord.kCollectionName)
         .orderBy(
           'score',
           descending: true,
@@ -46,7 +47,13 @@ class FirebaseRecordsDbRepo implements RecordsDbRepo {
     required String name,
     required int score,
   }) async {
-    await Future<void>.delayed(const Duration(seconds: 1));
+    await firestore.collection(ScoreRecord.kCollectionName).add(
+          ScoreRecord(
+            name: name,
+            score: score,
+            date: timestampFromDateTime(DateTime.now()),
+          ).toJson(),
+        );
   }
 }
 
