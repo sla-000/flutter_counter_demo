@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bullets/bloc.dart';
@@ -16,7 +15,6 @@ import 'package:flutter_counter_shooter/logic/blocs/spawn/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/repo.dart';
 import 'package:flutter_counter_shooter/logic/repo/records/firebase.dart';
-import 'package:flutter_counter_shooter/logic/repo/records/memory.dart';
 import 'package:flutter_counter_shooter/logic/repo/repo.dart';
 import 'package:flutter_counter_shooter/logic/repo/scene/scene.dart';
 import 'package:get_it/get_it.dart';
@@ -104,9 +102,7 @@ void diInit() {
     dispose: (SceneBloc bloc) => bloc.close(),
   );
 
-  di.registerFactory<RecordsDbRepo>(
-    kDebugMode ? () => MemoryRecordsDbRepo() : () => FirebaseRecordsDbRepo(),
-  );
+  di.registerFactory<RecordsDbRepo>(() => FirebaseRecordsDbRepo());
 
   di.registerLazySingleton<RecordsBloc>(
     () => RecordsBloc(recordsDbRepo: di.get<RecordsDbRepo>()),

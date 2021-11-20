@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_counter_shooter/debug.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/scene.dart';
@@ -120,7 +121,10 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => di.get<SceneBloc>().add(const SceneEvent.tapButton()),
+        onPressed: () {
+          debugTap();
+          di.get<SceneBloc>().add(const SceneEvent.tapButton());
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
