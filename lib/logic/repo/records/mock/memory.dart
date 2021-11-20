@@ -38,8 +38,8 @@ class MemoryRecordsDbRepo implements RecordsDbRepo {
 
     return _records
         .where((MemoryRecord memoryRecord) => name == '' || name == memoryRecord.name)
-        .sorted(_oldestFirst)
-        .sorted(_biggestScoreFirst)
+        .sorted(oldestFirst)
+        .sorted(biggestScoreFirst)
         .take(100)
         .mapIndexed((int index, MemoryRecord memoryRecord) => RecordData(
               position: index + 1,
@@ -49,10 +49,6 @@ class MemoryRecordsDbRepo implements RecordsDbRepo {
             ))
         .toList(growable: false);
   }
-
-  int _biggestScoreFirst(MemoryRecord a, MemoryRecord b) => b.score.compareTo(a.score);
-
-  int _oldestFirst(MemoryRecord a, MemoryRecord b) => a.dateTime!.compareTo(b.dateTime!);
 
   @override
   Future<void> addRecord({
@@ -67,4 +63,15 @@ class MemoryRecordsDbRepo implements RecordsDbRepo {
       dateTime: DateTime.now().toUtc(),
     ));
   }
+}
+
+@visibleForTesting
+int biggestScoreFirst(MemoryRecord a, MemoryRecord b) => b.score.compareTo(a.score);
+
+@visibleForTesting
+int oldestFirst(MemoryRecord a, MemoryRecord b) {
+  if (a.dateTime == null || b.dateTime == null) {
+    return -1;
+  }
+  return a.dateTime!.compareTo(b.dateTime!);
 }

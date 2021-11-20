@@ -12,8 +12,14 @@ class FirebaseRecordsDbRepo implements RecordsDbRepo {
   Future<List<RecordData>> getRecords({
     String name = '',
   }) async {
-    final QuerySnapshot<Map<String, dynamic>> scoresSnapshot =
-        await firestore.collection('scores').orderBy('score', descending: true).limit(10).get();
+    final QuerySnapshot<Map<String, dynamic>> scoresSnapshot = await firestore
+        .collection('scores')
+        .orderBy(
+          'score',
+          descending: true,
+        )
+        .limit(100)
+        .get();
 
     return scoresSnapshot.docs
         .map(
@@ -22,6 +28,8 @@ class FirebaseRecordsDbRepo implements RecordsDbRepo {
             scoreSnapshot.data(),
           ),
         )
+        .sorted(oldestFirst)
+        .sorted(biggestScoreFirst)
         .mapIndexed(
           (int index, ScoreRecord scoreRecord) => RecordData(
             position: index,
@@ -40,4 +48,15 @@ class FirebaseRecordsDbRepo implements RecordsDbRepo {
   }) async {
     await Future<void>.delayed(const Duration(seconds: 1));
   }
+}
+
+@visibleForTesting
+int biggestScoreFirst(ScoreRecord a, ScoreRecord b) => b.score.compareTo(a.score);
+
+@visibleForTesting
+int oldestFirst(ScoreRecord a, ScoreRecord b) {
+  if (a.dateTime == null || b.dateTime == null) {
+    return -1;
+  }
+  return a.dateTime!.compareTo(b.dateTime!);
 }
