@@ -136,7 +136,14 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
       bulletsBloc.add(
         BulletsEvent.add(
           Bullet(
-            position: Vector.copy(protagonist.position),
+            position: Vector.copy(
+              protagonist.position.add(
+                Vector.fromAngle(
+                  angle: protagonist.angle,
+                  length: 20,
+                ),
+              ),
+            ),
             angle: protagonist.angle,
             rotationSpeed: getBulletRotationSpeed(protagonist.rotationSpeed),
           ),

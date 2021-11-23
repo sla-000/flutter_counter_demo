@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_counter_shooter/utils/context_extensions.dart';
 
 class GamerIcon extends StatelessWidget {
   const GamerIcon({
@@ -10,13 +11,13 @@ class GamerIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Transform.translate(
-      offset: const Offset(0, -5),
-      child: Icon(
-        Icons.android_outlined,
-        color: Colors.green[600],
-        size: size,
-      ),
+    return Image.asset(
+      'assets/images/android_robot.png',
+      fit: BoxFit.contain,
+      width: size,
+      height: size,
+      cacheHeight: context.cacheSize(size),
+      cacheWidth: context.cacheSize(size),
     );
   }
 }

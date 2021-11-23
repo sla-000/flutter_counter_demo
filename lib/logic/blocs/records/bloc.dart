@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:math' as math;
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,8 +33,7 @@ class RecordsBloc extends Bloc<RecordsEvent, RecordsState> {
         records: records,
         showNameInput: RecordsState.isScoreInTable(state.lastRecord, records),
       ));
-    } on Exception catch (error, stackTrace) {
-      log('_onFetch', name: 'RecordsBloc', error: error, stackTrace: stackTrace);
+    } on Exception catch (_) {
       emit(state.copyWith(lastNetworkError: 'Can\'t fetch records'));
     } finally {
       emit(state.copyWith(waitNetwork: false));
@@ -58,8 +56,7 @@ class RecordsBloc extends Bloc<RecordsEvent, RecordsState> {
       final List<RecordData> records = await recordsDbRepo.getRecords();
 
       emit(state.copyWith(records: records));
-    } on Exception catch (error, stackTrace) {
-      log('_onUpload', name: 'RecordsBloc', error: error, stackTrace: stackTrace);
+    } on Exception catch (_) {
       emit(state.copyWith(lastNetworkError: 'Can\'t upload records'));
     } finally {
       emit(state.copyWith(waitNetwork: false));
