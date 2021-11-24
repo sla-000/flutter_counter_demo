@@ -10,9 +10,6 @@
   
 - Google fonts
   2h
-
-- L10n
-  2h
   
 - WEB: Ключи от Firebase в environment
   2h
