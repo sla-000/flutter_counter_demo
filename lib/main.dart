@@ -6,12 +6,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/debug.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
+import 'package:flutter_counter_shooter/l10n/generated/l10n.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/scene.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
 import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
 import 'package:flutter_counter_shooter/ui/game_view.dart';
+import 'package:flutter_counter_shooter/utils/context_extensions.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   diInit();
@@ -45,11 +48,18 @@ class _MyAppState extends State<MyApp> {
       builder: (BuildContext context, AsyncSnapshot<FirebaseApp> snapshot) {
         if (snapshot.hasData) {
           return MaterialApp(
-            title: 'Flutter counter demo',
+            title: context.l10n.flutterCounterDemo,
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
             home: const MyHomePage(),
+            localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: AppLocalizations.delegate.supportedLocales,
           );
         }
 
@@ -126,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
           debugTap();
           di.get<SceneBloc>().add(const SceneEvent.tapButton());
         },
-        tooltip: 'Increment',
+        tooltip: context.l10n.increment,
         child: const Icon(Icons.add),
       ),
     );
@@ -150,7 +160,7 @@ class ShiftedAppBar extends StatelessWidget {
           child: SizedBox(
             height: 50,
             child: AppBar(
-              title: const Text('Flutter counter demo'),
+              title: Text(context.l10n.flutterCounterDemo),
             ),
           ),
         );

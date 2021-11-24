@@ -13,6 +13,8 @@ dependencies:
   freezed_annotation: ^0.14.3
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   get_it: ^7.2.0
   json_annotation: ^4.3.0
   meta: ^1.7.0
@@ -24,6 +26,14 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   json_serializable: ^6.0.1
+
+flutter_intl:
+  enabled: true # Required. Must be set to true to activate the plugin. Default: false
+  class_name: AppLocalizations # Optional. Sets the name for the generated localization class. Default: S
+  main_locale: en # Optional. Sets the main locale used for generating localization files. Provided value should consist of language code and optional script and country codes separated with underscore (e.g. 'en', 'en_GB', 'zh_Hans', 'zh_Hans_CN'). Default: en
+  arb_dir: lib/l10n # Optional. Sets the directory of your ARB resource files. Provided value should be a valid path on your system. Default: lib/l10n
+  output_dir: lib/l10n/generated # Optional. Sets the directory of generated localization files. Provided value should be a valid path on your system. Default: lib/generated
+  use_deferred_loading: false # Optional. Must be set to true to generate localization code that is loaded with deferred loading. Default: false
 
 flutter:
   uses-material-design: true

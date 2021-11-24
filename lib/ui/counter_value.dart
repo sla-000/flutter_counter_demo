@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
+import 'package:flutter_counter_shooter/utils/context_extensions.dart';
 
 class CounterValue extends StatelessWidget {
   const CounterValue({
@@ -21,15 +22,15 @@ class CounterValue extends StatelessWidget {
             widget = Text(
               '${gameScoreState.score}',
               style: Theme.of(context).textTheme.headline4,
-              key: const Key('ade99e892f137424c04a36dbf01a205b'),
+              key: const Key('waitStart'),
             );
 
             break;
           case GameState.started:
             widget = Text(
-              'Score: ${gameScoreState.score}',
+              '${context.l10n.score} ${gameScoreState.score}',
               style: Theme.of(context).textTheme.headline3!.copyWith(fontFamily: 'VT323'),
-              key: const Key('f63a54b4a5b54a9cd0c8a49d5fa58e88'),
+              key: const Key('started'),
             );
             break;
           case GameState.finished:
