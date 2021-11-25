@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-ThemeData defaultTheme(BuildContext context) {
+ThemeData digitalTheme(BuildContext context) {
   final TextTheme textTheme = Theme.of(context).textTheme;
 
   return ThemeData(
