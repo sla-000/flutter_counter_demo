@@ -22,7 +22,7 @@ class CounterValue extends StatelessWidget {
             widget = Text(
               '${gameScoreState.score}',
               style: Theme.of(context).textTheme.headline4,
-              key: const Key('waitStart'),
+              key: const Key('CounterValue-waitStart'),
             );
 
             break;
@@ -30,7 +30,7 @@ class CounterValue extends StatelessWidget {
             widget = Text(
               '${context.l10n.score} ${gameScoreState.score}',
               style: Theme.of(context).textTheme.headline3!.copyWith(fontFamily: 'VT323'),
-              key: const Key('started'),
+              key: const Key('CounterValue-started'),
             );
             break;
           case GameState.finished:

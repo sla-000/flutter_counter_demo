@@ -12,7 +12,9 @@ import 'package:flutter_counter_shooter/logic/blocs/scene/scene.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
 import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
+import 'package:flutter_counter_shooter/theme/durations.dart';
 import 'package:flutter_counter_shooter/ui/game_view.dart';
+import 'package:flutter_counter_shooter/ui/splash/splash.dart';
 import 'package:flutter_counter_shooter/utils/context_extensions.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -42,29 +44,46 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
+  void dispose() {
+    diDispose();
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return FutureBuilder<FirebaseApp>(
       future: firebaseApp,
       builder: (BuildContext context, AsyncSnapshot<FirebaseApp> snapshot) {
         if (snapshot.hasData) {
-          return MaterialApp(
-            title: context.l10n.flutterCounterDemo,
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
+          return AnimatedSwitcher(
+            duration: xlDuration,
+            child: MaterialApp(
+              onGenerateTitle: (BuildContext context) => context.l10n.flutterCounterDemo,
+              theme: di.get<ThemeData>(param1: context),
+              home: const MyHomePage(),
+              localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: AppLocalizations.delegate.supportedLocales,
+              key: const Key('MyApp-MyHomePage'),
             ),
-            home: const MyHomePage(),
-            localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: AppLocalizations.delegate.supportedLocales,
           );
         }
 
-        return const MaterialApp(
-          home: Center(),
+        return AnimatedSwitcher(
+          duration: xlDuration,
+          child: MaterialApp(
+            home: const SplashScreen(),
+            localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+              AppLocalizations.delegate,
+            ],
+            supportedLocales: AppLocalizations.delegate.supportedLocales,
+            key: const Key('MyApp-SplashScreen'),
+          ),
         );
       },
     );
@@ -99,8 +118,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void dispose() {
-    diDispose();
-
     RawKeyboard.instance.removeListener(_handleKeyDown);
 
     super.dispose();

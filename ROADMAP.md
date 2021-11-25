@@ -9,7 +9,7 @@
   2h
   
 - Google fonts
-  2h
+  1h
   
 - WEB: Ключи от Firebase в environment
   2h

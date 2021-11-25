@@ -16,6 +16,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   get_it: ^7.2.0
+  google_fonts: ^2.1.0
   json_annotation: ^4.3.0
   meta: ^1.7.0
   rxdart: ^0.27.0
@@ -28,7 +29,7 @@ dev_dependencies:
   json_serializable: ^6.0.1
 
 flutter_intl:
-  enabled: true # Required. Must be set to true to activate the plugin. Default: false
+  enabled: false # Required. Must be set to true to activate the plugin. Default: false
   class_name: AppLocalizations # Optional. Sets the name for the generated localization class. Default: S
   main_locale: en # Optional. Sets the main locale used for generating localization files. Provided value should consist of language code and optional script and country codes separated with underscore (e.g. 'en', 'en_GB', 'zh_Hans', 'zh_Hans_CN'). Default: en
   arb_dir: lib/l10n # Optional. Sets the directory of your ARB resource files. Provided value should be a valid path on your system. Default: lib/l10n

@@ -5,6 +5,7 @@ import 'package:flutter_counter_shooter/logic/blocs/records/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/state.dart';
 import 'package:flutter_counter_shooter/ui/game/records/name/name_edit.dart';
 import 'package:flutter_counter_shooter/ui/game/records/name/saved_name.dart';
+import 'package:flutter_counter_shooter/utils/context_extensions.dart';
 
 class NameInput extends StatefulWidget {
   const NameInput({
@@ -42,9 +43,9 @@ class _NameInputState extends State<NameInput> {
                 SizedBox(
                   width: 100,
                   child: ElevatedButton(
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text('Submit'),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(context.l10n.submit),
                     ),
                     onPressed: () {
                       if (_currentName.isNotEmpty) {

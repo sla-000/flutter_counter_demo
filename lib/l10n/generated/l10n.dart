@@ -79,6 +79,56 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Loading...`
+  String get loading {
+    return Intl.message(
+      'Loading...',
+      name: 'loading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your score:`
+  String get yourScore {
+    return Intl.message(
+      'Your score:',
+      name: 'yourScore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have pushed the button this many times:`
+  String get youHavePushed {
+    return Intl.message(
+      'You have pushed the button this many times:',
+      name: 'youHavePushed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit`
+  String get submit {
+    return Intl.message(
+      'Submit',
+      name: 'submit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wave:`
+  String get wave {
+    return Intl.message(
+      'Wave:',
+      name: 'wave',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

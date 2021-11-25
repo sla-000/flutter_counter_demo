@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "flutterCounterDemo": MessageLookupByLibrary.simpleMessage(
             "Демонстрация счётчика на Flutter"),
         "increment": MessageLookupByLibrary.simpleMessage("Увеличить"),
+        "loading": MessageLookupByLibrary.simpleMessage("Загрузка..."),
         "score": MessageLookupByLibrary.simpleMessage("Счёт:")
       };
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_counter_shooter/utils/context_extensions.dart';
 
 class YouPushedTheButtonText extends StatelessWidget {
   const YouPushedTheButtonText({
@@ -7,6 +8,9 @@ class YouPushedTheButtonText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('You have pushed the button this many times:');
+    return Text(
+      context.l10n.youHavePushed,
+      style: Theme.of(context).textTheme.bodyText2,
+    );
   }
 }
