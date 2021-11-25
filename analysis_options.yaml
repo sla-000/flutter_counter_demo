@@ -42,7 +42,7 @@ analyzer:
     - "bin/cache/**"
     - "lib/**.freezed.dart"
     - "lib/**.g.dart"
-    - "lib/l10n/generated/intl/*.dart"
+    - "lib/l10n/generated/**.dart"
 
 linter:
   rules:
