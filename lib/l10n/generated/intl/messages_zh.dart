@@ -25,6 +25,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "flutterCounterDemo":
             MessageLookupByLibrary.simpleMessage("Flutter计数器演示"),
         "increment": MessageLookupByLibrary.simpleMessage("增量"),
-        "score": MessageLookupByLibrary.simpleMessage("分数:")
+        "loading": MessageLookupByLibrary.simpleMessage("正在加载..."),
+        "score": MessageLookupByLibrary.simpleMessage("分数:"),
+        "submit": MessageLookupByLibrary.simpleMessage("提交"),
+        "wave": MessageLookupByLibrary.simpleMessage("海浪："),
+        "youHavePushed": MessageLookupByLibrary.simpleMessage("你已经多次按下按钮："),
+        "yourScore": MessageLookupByLibrary.simpleMessage("你的分数：")
       };
 }

@@ -25,6 +25,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "flutterCounterDemo":
             MessageLookupByLibrary.simpleMessage("フラッターカウンターデモ"),
         "increment": MessageLookupByLibrary.simpleMessage("インクリメント"),
-        "score": MessageLookupByLibrary.simpleMessage("スコア:")
+        "loading": MessageLookupByLibrary.simpleMessage("読み込んでいます..."),
+        "score": MessageLookupByLibrary.simpleMessage("スコア:"),
+        "submit": MessageLookupByLibrary.simpleMessage("送信"),
+        "wave": MessageLookupByLibrary.simpleMessage("波："),
+        "youHavePushed": MessageLookupByLibrary.simpleMessage("ボタンを何度も押しました。"),
+        "yourScore": MessageLookupByLibrary.simpleMessage("あなたのスコア：")
       };
 }

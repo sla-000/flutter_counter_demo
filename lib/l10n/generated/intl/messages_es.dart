@@ -25,6 +25,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "flutterCounterDemo": MessageLookupByLibrary.simpleMessage(
             "Demostración del contador Flutter"),
         "increment": MessageLookupByLibrary.simpleMessage("Incremento"),
-        "score": MessageLookupByLibrary.simpleMessage("Puntaje:")
+        "loading": MessageLookupByLibrary.simpleMessage("Cargando..."),
+        "score": MessageLookupByLibrary.simpleMessage("Puntaje:"),
+        "submit": MessageLookupByLibrary.simpleMessage("Enviar"),
+        "wave": MessageLookupByLibrary.simpleMessage("Ola:"),
+        "youHavePushed": MessageLookupByLibrary.simpleMessage(
+            "Has pulsado el botón tantas veces:"),
+        "yourScore": MessageLookupByLibrary.simpleMessage("Tu puntuación:")
       };
 }

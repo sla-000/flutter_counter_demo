@@ -25,6 +25,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "flutterCounterDemo":
             MessageLookupByLibrary.simpleMessage("عرض توضيحي مضاد للرفرفة"),
         "increment": MessageLookupByLibrary.simpleMessage("زيادة راتب"),
-        "score": MessageLookupByLibrary.simpleMessage("نتيجة:")
+        "loading": MessageLookupByLibrary.simpleMessage("تحميل..."),
+        "score": MessageLookupByLibrary.simpleMessage("نتيجة:"),
+        "submit": MessageLookupByLibrary.simpleMessage("يقدم"),
+        "wave": MessageLookupByLibrary.simpleMessage("موجة:"),
+        "youHavePushed":
+            MessageLookupByLibrary.simpleMessage("لقد ضغطت على الزر عدة مرات:"),
+        "yourScore": MessageLookupByLibrary.simpleMessage("درجاتك:")
       };
 }

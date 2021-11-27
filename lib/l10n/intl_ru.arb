@@ -2,5 +2,9 @@
   "flutterCounterDemo": "Демонстрация счётчика на Flutter",
   "increment": "Увеличить",
   "score": "Счёт:",
-  "loading": "Загрузка..."
+  "loading": "Загрузка...",
+  "yourScore": "Ваш результат:",
+  "youHavePushed": "Вы нажали кнопку столько раз:",
+  "submit": "Отправить",
+  "wave": "Волна:"
 }
