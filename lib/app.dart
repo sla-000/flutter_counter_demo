@@ -5,6 +5,7 @@ import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/l10n/generated/l10n.dart';
 import 'package:flutter_counter_shooter/theme/bloc.dart';
 import 'package:flutter_counter_shooter/theme/durations.dart';
+import 'package:flutter_counter_shooter/theme/event.dart';
 import 'package:flutter_counter_shooter/theme/state.dart';
 import 'package:flutter_counter_shooter/ui/home/main.dart';
 import 'package:flutter_counter_shooter/ui/splash/splash_screen.dart';
@@ -22,15 +23,6 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  late final Future<FirebaseApp> firebaseApp;
-
-  @override
-  void initState() {
-    super.initState();
-
-    firebaseApp = Firebase.initializeApp();
-  }
-
   @override
   void dispose() {
     diDispose();
@@ -42,8 +34,9 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return SplashWhileWaitFuture(
       splashFuture: Future.wait<dynamic>(<Future<dynamic>>[
-        firebaseApp,
         Future<void>.delayed(const Duration(milliseconds: 1000)),
+        Firebase.initializeApp(),
+        Future<void>(() => di.get<ThemeBloc>().add(ThemeEvent.gameOff(context))),
       ]),
       splashScreen: AnimatedSwitcher(
         duration: xlDuration,
