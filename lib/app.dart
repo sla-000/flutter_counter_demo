@@ -39,7 +39,7 @@ class _AppState extends State<App> {
         Future<void>(() => di.get<ThemeBloc>().add(ThemeEvent.gameOff(context))),
       ]),
       splashScreen: AnimatedSwitcher(
-        duration: xlDuration,
+        duration: kXlDuration,
         child: MaterialApp(
           home: const SplashScreen(),
           localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
@@ -49,7 +49,7 @@ class _AppState extends State<App> {
         ),
       ),
       child: AnimatedSwitcher(
-        duration: xlDuration,
+        duration: kXlDuration,
         child: BlocBuilder<ThemeBloc, ThemeState>(
           bloc: di.get<ThemeBloc>(),
           builder: (BuildContext context, ThemeState themeState) {
