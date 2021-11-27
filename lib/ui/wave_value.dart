@@ -5,6 +5,7 @@ import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/state.dart';
+import 'package:flutter_counter_shooter/theme/durations.dart';
 import 'package:flutter_counter_shooter/utils/context_extensions.dart';
 
 class WaveValue extends StatelessWidget {
@@ -22,15 +23,15 @@ class WaveValue extends StatelessWidget {
           builder: (BuildContext context, ScoreState gameScoreState) {
             return gameScoreState.isStarted
                 ? AnimatedOpacity(
-                    duration: const Duration(milliseconds: 800),
+                    duration: kXlDuration,
                     opacity: 1,
                     child: Text(
                       '${context.l10n.wave} ${wavesState.count + 1}',
-                      style: Theme.of(context).textTheme.headline3!.copyWith(fontFamily: 'VT323'),
+                      style: Theme.of(context).textTheme.headline3,
                     ),
                   )
                 : const AnimatedOpacity(
-                    duration: Duration(milliseconds: 800),
+                    duration: kXlDuration,
                     opacity: 0,
                     child: SizedBox.shrink(),
                   );

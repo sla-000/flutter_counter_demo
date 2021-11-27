@@ -31,10 +31,7 @@ class TimeValue extends StatelessWidget {
                     opacity: 1,
                     child: Text(
                       (remainingTime0 / 1000).toStringAsFixed(3),
-                      style: Theme.of(context).textTheme.headline3!.copyWith(
-                            color: _getColor(remainingTime0),
-                            fontFamily: 'VT323',
-                          ),
+                      style: Theme.of(context).textTheme.headline3?.copyWith(color: _getColor(remainingTime0)),
                     ),
                   )
                 : const AnimatedOpacity(

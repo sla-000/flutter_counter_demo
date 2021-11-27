@@ -7,7 +7,7 @@ ThemeData digitalTheme(BuildContext context) {
   return ThemeData(
     primarySwatch: Colors.blue,
     textTheme: GoogleFonts.vt323TextTheme(textTheme).copyWith(
-      bodyText1: GoogleFonts.oswald(textStyle: textTheme.bodyText1!.copyWith(fontSize: 24)),
+      bodyText1: GoogleFonts.oswald(textStyle: textTheme.bodyText1?.copyWith(fontSize: 24)),
     ),
   );
 }

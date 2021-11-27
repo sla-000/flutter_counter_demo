@@ -33,7 +33,7 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return SplashWhileWaitFuture(
-      splashFuture: Future.wait<dynamic>(<Future<dynamic>>[
+      splashFuture: Future.wait<void>(<Future<void>>[
         Future<void>.delayed(const Duration(milliseconds: 1000)),
         Firebase.initializeApp(),
         Future<void>(() => di.get<ThemeBloc>().add(ThemeEvent.gameOff(context))),

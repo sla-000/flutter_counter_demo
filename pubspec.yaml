@@ -42,8 +42,3 @@ flutter:
   assets:
     - assets/
     - assets/images/
-
-  fonts:
-    - family: VT323
-      fonts:
-        - asset: assets/fonts/VT323-Regular.ttf
