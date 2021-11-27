@@ -1,3 +1,5 @@
 import 'package:flutter/material.dart';
 
-ThemeData defaultTheme(BuildContext context) => ThemeData(primarySwatch: Colors.blue);
+ThemeData defaultTheme(BuildContext context) => ThemeData(
+      primarySwatch: Colors.blue,
+    );

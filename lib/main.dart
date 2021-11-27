@@ -1,19 +1,12 @@
-import 'dart:ui';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_counter_shooter/debug.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/l10n/generated/l10n.dart';
-import 'package:flutter_counter_shooter/logic/blocs/scene/event.dart';
-import 'package:flutter_counter_shooter/logic/blocs/scene/scene.dart';
-import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
-import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
-import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
+import 'package:flutter_counter_shooter/theme/bloc.dart';
 import 'package:flutter_counter_shooter/theme/durations.dart';
-import 'package:flutter_counter_shooter/ui/game_view.dart';
+import 'package:flutter_counter_shooter/theme/state.dart';
+import 'package:flutter_counter_shooter/ui/home/main.dart';
 import 'package:flutter_counter_shooter/ui/splash/splash.dart';
 import 'package:flutter_counter_shooter/utils/context_extensions.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -58,18 +51,23 @@ class _MyAppState extends State<MyApp> {
         if (snapshot.hasData) {
           return AnimatedSwitcher(
             duration: xlDuration,
-            child: MaterialApp(
-              onGenerateTitle: (BuildContext context) => context.l10n.flutterCounterDemo,
-              theme: di.get<ThemeData>(param1: context),
-              home: const MyHomePage(),
-              localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
-                AppLocalizations.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: AppLocalizations.delegate.supportedLocales,
-              key: const Key('MyApp-MyHomePage'),
+            child: BlocBuilder<ThemeBloc, ThemeState>(
+              bloc: di.get<ThemeBloc>(),
+              builder: (BuildContext context, ThemeState themeState) {
+                return MaterialApp(
+                  onGenerateTitle: (BuildContext context) => context.l10n.flutterCounterDemo,
+                  theme: themeState.theme,
+                  home: const HomePage(),
+                  localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+                    AppLocalizations.delegate,
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    GlobalCupertinoLocalizations.delegate,
+                  ],
+                  supportedLocales: AppLocalizations.delegate.supportedLocales,
+                  key: const Key('MyApp-MyHomePage'),
+                );
+              },
             ),
           );
         }
@@ -83,102 +81,6 @@ class _MyAppState extends State<MyApp> {
             ],
             supportedLocales: AppLocalizations.delegate.supportedLocales,
             key: const Key('MyApp-SplashScreen'),
-          ),
-        );
-      },
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  void initState() {
-    super.initState();
-
-    RawKeyboard.instance.addListener(_handleKeyDown);
-  }
-
-  void _handleKeyDown(RawKeyEvent rawKeyEvent) {
-    if (rawKeyEvent is RawKeyDownEvent) {
-      final LogicalKeyboardKey key = rawKeyEvent.logicalKey;
-      if (key == LogicalKeyboardKey.space) {
-        di.get<SceneBloc>().add(const SceneEvent.tapButton());
-      }
-    }
-  }
-
-  @override
-  void dispose() {
-    RawKeyboard.instance.removeListener(_handleKeyDown);
-
-    super.dispose();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    final Size screenSize = MediaQuery.of(context).size;
-
-    di.get<SceneBloc>().add(SceneEvent.resize(
-          Vector(
-            x: screenSize.width,
-            y: screenSize.height,
-          ),
-        ));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: ClipRect(
-        child: Stack(
-          children: const <Widget>[
-            GameView(),
-            ShiftedAppBar(),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          debugTap();
-          di.get<SceneBloc>().add(const SceneEvent.tapButton());
-        },
-        tooltip: context.l10n.increment,
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
-}
-
-class ShiftedAppBar extends StatelessWidget {
-  const ShiftedAppBar({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<ScoreBloc, ScoreState>(
-      bloc: di.get<ScoreBloc>(),
-      buildWhen: (ScoreState previous, ScoreState current) => current.gameState != previous.gameState,
-      builder: (BuildContext context, ScoreState gameScoreState) {
-        return AnimatedSlide(
-          duration: const Duration(milliseconds: 1000),
-          offset: gameScoreState.isStarted ? const Offset(0, -1) : const Offset(0, 0),
-          child: SizedBox(
-            height: 50,
-            child: AppBar(
-              title: Text(context.l10n.flutterCounterDemo),
-            ),
           ),
         );
       },
