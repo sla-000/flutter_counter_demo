@@ -29,7 +29,7 @@ class FrameBloc extends Bloc<FrameEvent, FrameState> {
 
   final Stopwatch _frameStopwatch = Stopwatch();
 
-  final ExponentialMovingAverage _ema = ExponentialMovingAverage(n: 10);
+  final ExponentialMovingAverage _ema = ExponentialMovingAverage(n: 180);
 
   @override
   Future<void> close() {
