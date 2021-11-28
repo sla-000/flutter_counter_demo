@@ -7,6 +7,8 @@ import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/state.dart';
+import 'package:flutter_counter_shooter/theme/default_theme.dart';
+import 'package:flutter_counter_shooter/theme/durations.dart';
 
 class TimeValue extends StatelessWidget {
   const TimeValue({
@@ -27,15 +29,17 @@ class TimeValue extends StatelessWidget {
 
             return (gameScoreState.isStarted && show)
                 ? AnimatedOpacity(
-                    duration: const Duration(milliseconds: 800),
+                    duration: kXlDuration,
                     opacity: 1,
                     child: Text(
                       (remainingTime0 / 1000).toStringAsFixed(3),
-                      style: Theme.of(context).textTheme.headline3?.copyWith(color: _getColor(remainingTime0)),
+                      style: labelTextStyle(context).copyWith(
+                        color: _getColor(remainingTime0),
+                      ),
                     ),
                   )
                 : const AnimatedOpacity(
-                    duration: Duration(milliseconds: 800),
+                    duration: kXlDuration,
                     opacity: 0,
                     child: SizedBox.shrink(),
                   );

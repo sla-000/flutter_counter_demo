@@ -5,6 +5,7 @@ import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/state.dart';
+import 'package:flutter_counter_shooter/theme/default_theme.dart';
 import 'package:flutter_counter_shooter/theme/durations.dart';
 import 'package:flutter_counter_shooter/utils/context_extensions.dart';
 
@@ -27,7 +28,7 @@ class WaveValue extends StatelessWidget {
                     opacity: 1,
                     child: Text(
                       '${context.l10n.wave} ${wavesState.count + 1}',
-                      style: Theme.of(context).textTheme.headline3,
+                      style: labelTextStyle(context),
                     ),
                   )
                 : const AnimatedOpacity(

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_counter_shooter/theme/durations.dart';
 
 class AnimateSize extends StatefulWidget {
   const AnimateSize({
     Key? key,
     required this.child,
-    this.duration = const Duration(milliseconds: 800),
+    this.duration = kXlDuration,
     required this.size,
     this.show = false,
   }) : super(key: key);

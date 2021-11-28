@@ -7,6 +7,7 @@ import 'package:flutter_counter_shooter/logic/blocs/records/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
+import 'package:flutter_counter_shooter/theme/durations.dart';
 import 'package:flutter_counter_shooter/ui/common/screen_title.dart';
 import 'package:flutter_counter_shooter/ui/game/records/name/name_input.dart';
 import 'package:flutter_counter_shooter/ui/game/records/table/records_table_or_loader.dart';
@@ -90,9 +91,8 @@ class _NameInputOrNothing extends StatelessWidget {
     return BlocBuilder<RecordsBloc, RecordsState>(
       buildWhen: (RecordsState previous, RecordsState current) => current.showNameInput != previous.showNameInput,
       builder: (_, RecordsState recordsState) {
-        print('recordsState.showNameInput=${recordsState.showNameInput}');
         return AnimatedCrossFade(
-          duration: const Duration(milliseconds: 800),
+          duration: kXlDuration,
           crossFadeState: recordsState.showNameInput ? CrossFadeState.showFirst : CrossFadeState.showSecond,
           firstChild: const NameInput(),
           secondChild: const SizedBox.shrink(),

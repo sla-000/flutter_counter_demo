@@ -3,8 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
+import 'package:flutter_counter_shooter/theme/default_theme.dart';
+import 'package:flutter_counter_shooter/theme/durations.dart';
 import 'package:flutter_counter_shooter/utils/context_extensions.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CounterValue extends StatelessWidget {
   const CounterValue({
@@ -30,10 +31,7 @@ class CounterValue extends StatelessWidget {
           case GameState.started:
             widget = Text(
               '${context.l10n.score} ${gameScoreState.score}',
-              style: GoogleFonts.vt323(
-                fontSize: 42,
-                textStyle: Theme.of(context).textTheme.headline4,
-              ),
+              style: labelTextStyle(context),
               key: const Key('CounterValue-started'),
             );
             break;
@@ -43,7 +41,7 @@ class CounterValue extends StatelessWidget {
         }
 
         return AnimatedSwitcher(
-          duration: const Duration(milliseconds: 800),
+          duration: kXlDuration,
           child: widget,
         );
       },

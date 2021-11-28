@@ -13,10 +13,11 @@ void main() {
   late ExponentialMovingAverage ema;
 
   setUp(() {
-    ema = ExponentialMovingAverage(n: 10);
+    ema = ExponentialMovingAverage(n: 5);
   });
 
   group('EMA test, fail', () {
+    ema.update(1);
     test('EMA test, fail, 1', () {});
   });
 
