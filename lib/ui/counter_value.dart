@@ -4,6 +4,7 @@ import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
 import 'package:flutter_counter_shooter/utils/context_extensions.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CounterValue extends StatelessWidget {
   const CounterValue({
@@ -29,7 +30,10 @@ class CounterValue extends StatelessWidget {
           case GameState.started:
             widget = Text(
               '${context.l10n.score} ${gameScoreState.score}',
-              style: Theme.of(context).textTheme.headline4,
+              style: GoogleFonts.vt323(
+                fontSize: 42,
+                textStyle: Theme.of(context).textTheme.headline4,
+              ),
               key: const Key('CounterValue-started'),
             );
             break;

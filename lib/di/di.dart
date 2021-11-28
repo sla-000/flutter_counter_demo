@@ -18,7 +18,6 @@ import 'package:flutter_counter_shooter/logic/blocs/waves/repo.dart';
 import 'package:flutter_counter_shooter/logic/repo/records/firebase/firebase.dart';
 import 'package:flutter_counter_shooter/logic/repo/repo.dart';
 import 'package:flutter_counter_shooter/logic/repo/scene/scene.dart';
-import 'package:flutter_counter_shooter/theme/bloc.dart';
 import 'package:flutter_counter_shooter/theme/default_theme.dart';
 import 'package:get_it/get_it.dart';
 
@@ -114,11 +113,6 @@ void diInit() {
 
   di.registerFactoryParam<ThemeData, BuildContext, void>(
     (BuildContext context, _) => defaultTheme(context),
-  );
-
-  di.registerLazySingleton<ThemeBloc>(
-    () => ThemeBloc(),
-    dispose: (ThemeBloc bloc) => bloc.close(),
   );
 }
 
