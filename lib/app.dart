@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/l10n/generated/l10n.dart';
@@ -9,6 +8,8 @@ import 'package:flutter_counter_shooter/ui/splash/splash_screen.dart';
 import 'package:flutter_counter_shooter/ui/splash/splash_while_wait_future.dart';
 import 'package:flutter_counter_shooter/utils/context_extensions.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'firebase.dart';
 
 class App extends StatefulWidget {
   const App({
@@ -32,7 +33,7 @@ class _AppState extends State<App> {
     return SplashWhileWaitFuture(
       splashFuture: Future.wait<void>(<Future<void>>[
         Future<void>.delayed(const Duration(milliseconds: 1000)),
-        Firebase.initializeApp(),
+        firebaseInit(),
       ]),
       splashScreen: AnimatedSwitcher(
         duration: kXlDuration,

@@ -8,9 +8,6 @@
 - Увеличение пули с ростом растояния от центра
   2h
   
-- Google fonts
-  1h
-  
 - WEB: Ключи от Firebase в environment
   2h
   
