@@ -29,7 +29,7 @@ class GameField extends StatelessWidget {
               Positioned(
                 left: 0,
                 top: 0,
-                child: Text(frameState.delta.toString()),
+                child: Text(frameState.fps.toInt().toString()),
               ),
             GameElements(
               delta: frameState.delta,

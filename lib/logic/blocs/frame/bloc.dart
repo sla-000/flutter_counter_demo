@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_counter_shooter/utils/math/ema.dart';
 
 import 'event.dart';
 import 'repo.dart';
@@ -20,9 +22,14 @@ class FrameBloc extends Bloc<FrameEvent, FrameState> {
 
   final FrameRepo frameRepo;
 
+  /// 0.05 => 20fps
+  static const double kMaxDelta = 0.05;
+
   late final StreamSubscription<bool> _enabledSubscription;
 
-  final Stopwatch _stopwatch = Stopwatch();
+  final Stopwatch _frameStopwatch = Stopwatch();
+
+  final ExponentialMovingAverage _ema = ExponentialMovingAverage(n: 10);
 
   @override
   Future<void> close() {
@@ -38,7 +45,7 @@ class FrameBloc extends Bloc<FrameEvent, FrameState> {
     ));
 
     if (!event.enable) {
-      _stopwatch.stop();
+      _frameStopwatch.stop();
     }
   }
 
@@ -47,14 +54,19 @@ class FrameBloc extends Bloc<FrameEvent, FrameState> {
       return;
     }
 
-    _stopwatch.stop();
-    final double delta = _stopwatch.elapsedMilliseconds / 1000.0;
-    _stopwatch.reset();
-    _stopwatch.start();
+    _frameStopwatch.stop();
+    final double delta = _frameStopwatch.elapsedMilliseconds / 1000.0;
+    _frameStopwatch.reset();
+    _frameStopwatch.start();
+
+    if (delta != 0) {
+      _ema.update(1 / delta);
+    }
 
     emit(state.copyWith(
-      delta: delta,
+      delta: min(delta, kMaxDelta),
       frame: state.frame + 1,
+      fps: _ema.ema,
     ));
   }
 }
