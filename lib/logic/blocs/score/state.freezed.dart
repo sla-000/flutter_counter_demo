@@ -34,15 +34,12 @@ mixin _$ScoreState {
   GameState get gameState => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ScoreStateCopyWith<ScoreState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ScoreStateCopyWith<ScoreState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ScoreStateCopyWith<$Res> {
-  factory $ScoreStateCopyWith(
-          ScoreState value, $Res Function(ScoreState) then) =
-      _$ScoreStateCopyWithImpl<$Res>;
+  factory $ScoreStateCopyWith(ScoreState value, $Res Function(ScoreState) then) = _$ScoreStateCopyWithImpl<$Res>;
   $Res call({int score, GameState gameState});
 }
 
@@ -74,18 +71,14 @@ class _$ScoreStateCopyWithImpl<$Res> implements $ScoreStateCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$ScoreStateCopyWith<$Res> implements $ScoreStateCopyWith<$Res> {
-  factory _$ScoreStateCopyWith(
-          _ScoreState value, $Res Function(_ScoreState) then) =
-      __$ScoreStateCopyWithImpl<$Res>;
+  factory _$ScoreStateCopyWith(_ScoreState value, $Res Function(_ScoreState) then) = __$ScoreStateCopyWithImpl<$Res>;
   @override
   $Res call({int score, GameState gameState});
 }
 
 /// @nodoc
-class __$ScoreStateCopyWithImpl<$Res> extends _$ScoreStateCopyWithImpl<$Res>
-    implements _$ScoreStateCopyWith<$Res> {
-  __$ScoreStateCopyWithImpl(
-      _ScoreState _value, $Res Function(_ScoreState) _then)
+class __$ScoreStateCopyWithImpl<$Res> extends _$ScoreStateCopyWithImpl<$Res> implements _$ScoreStateCopyWith<$Res> {
+  __$ScoreStateCopyWithImpl(_ScoreState _value, $Res Function(_ScoreState) _then)
       : super(_value, (v) => _then(v as _ScoreState));
 
   @override
@@ -112,8 +105,7 @@ class __$ScoreStateCopyWithImpl<$Res> extends _$ScoreStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ScoreState extends _ScoreState {
-  const _$_ScoreState({this.score = 0, this.gameState = GameState.waitStart})
-      : super._();
+  const _$_ScoreState({this.score = 0, this.gameState = GameState.waitStart}) : super._();
 
   @JsonKey(defaultValue: 0)
   @override
@@ -131,11 +123,9 @@ class _$_ScoreState extends _ScoreState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _ScoreState &&
-            (identical(other.score, score) ||
-                const DeepCollectionEquality().equals(other.score, score)) &&
+            (identical(other.score, score) || const DeepCollectionEquality().equals(other.score, score)) &&
             (identical(other.gameState, gameState) ||
-                const DeepCollectionEquality()
-                    .equals(other.gameState, gameState)));
+                const DeepCollectionEquality().equals(other.gameState, gameState)));
   }
 
   @override
@@ -146,8 +136,7 @@ class _$_ScoreState extends _ScoreState {
 
   @JsonKey(ignore: true)
   @override
-  _$ScoreStateCopyWith<_ScoreState> get copyWith =>
-      __$ScoreStateCopyWithImpl<_ScoreState>(this, _$identity);
+  _$ScoreStateCopyWith<_ScoreState> get copyWith => __$ScoreStateCopyWithImpl<_ScoreState>(this, _$identity);
 }
 
 abstract class _ScoreState extends ScoreState {
@@ -160,6 +149,5 @@ abstract class _ScoreState extends ScoreState {
   GameState get gameState => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ScoreStateCopyWith<_ScoreState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$ScoreStateCopyWith<_ScoreState> get copyWith => throw _privateConstructorUsedError;
 }

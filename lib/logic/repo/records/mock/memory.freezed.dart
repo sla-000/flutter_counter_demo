@@ -36,14 +36,12 @@ mixin _$MemoryRecord {
   DateTime? get dateTime => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MemoryRecordCopyWith<MemoryRecord> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MemoryRecordCopyWith<MemoryRecord> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MemoryRecordCopyWith<$Res> {
-  factory $MemoryRecordCopyWith(
-          MemoryRecord value, $Res Function(MemoryRecord) then) =
+  factory $MemoryRecordCopyWith(MemoryRecord value, $Res Function(MemoryRecord) then) =
       _$MemoryRecordCopyWithImpl<$Res>;
   $Res call({String name, int score, DateTime? dateTime});
 }
@@ -80,10 +78,8 @@ class _$MemoryRecordCopyWithImpl<$Res> implements $MemoryRecordCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$MemoryRecordCopyWith<$Res>
-    implements $MemoryRecordCopyWith<$Res> {
-  factory _$MemoryRecordCopyWith(
-          _MemoryRecord value, $Res Function(_MemoryRecord) then) =
+abstract class _$MemoryRecordCopyWith<$Res> implements $MemoryRecordCopyWith<$Res> {
+  factory _$MemoryRecordCopyWith(_MemoryRecord value, $Res Function(_MemoryRecord) then) =
       __$MemoryRecordCopyWithImpl<$Res>;
   @override
   $Res call({String name, int score, DateTime? dateTime});
@@ -92,8 +88,7 @@ abstract class _$MemoryRecordCopyWith<$Res>
 /// @nodoc
 class __$MemoryRecordCopyWithImpl<$Res> extends _$MemoryRecordCopyWithImpl<$Res>
     implements _$MemoryRecordCopyWith<$Res> {
-  __$MemoryRecordCopyWithImpl(
-      _MemoryRecord _value, $Res Function(_MemoryRecord) _then)
+  __$MemoryRecordCopyWithImpl(_MemoryRecord _value, $Res Function(_MemoryRecord) _then)
       : super(_value, (v) => _then(v as _MemoryRecord));
 
   @override
@@ -125,8 +120,7 @@ class __$MemoryRecordCopyWithImpl<$Res> extends _$MemoryRecordCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_MemoryRecord extends _MemoryRecord {
-  const _$_MemoryRecord({this.name = '', this.score = 0, this.dateTime})
-      : super._();
+  const _$_MemoryRecord({this.name = '', this.score = 0, this.dateTime}) : super._();
 
   @JsonKey(defaultValue: '')
   @override
@@ -146,13 +140,9 @@ class _$_MemoryRecord extends _MemoryRecord {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _MemoryRecord &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.score, score) ||
-                const DeepCollectionEquality().equals(other.score, score)) &&
-            (identical(other.dateTime, dateTime) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateTime, dateTime)));
+            (identical(other.name, name) || const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.score, score) || const DeepCollectionEquality().equals(other.score, score)) &&
+            (identical(other.dateTime, dateTime) || const DeepCollectionEquality().equals(other.dateTime, dateTime)));
   }
 
   @override
@@ -164,13 +154,11 @@ class _$_MemoryRecord extends _MemoryRecord {
 
   @JsonKey(ignore: true)
   @override
-  _$MemoryRecordCopyWith<_MemoryRecord> get copyWith =>
-      __$MemoryRecordCopyWithImpl<_MemoryRecord>(this, _$identity);
+  _$MemoryRecordCopyWith<_MemoryRecord> get copyWith => __$MemoryRecordCopyWithImpl<_MemoryRecord>(this, _$identity);
 }
 
 abstract class _MemoryRecord extends MemoryRecord {
-  const factory _MemoryRecord({String name, int score, DateTime? dateTime}) =
-      _$_MemoryRecord;
+  const factory _MemoryRecord({String name, int score, DateTime? dateTime}) = _$_MemoryRecord;
   const _MemoryRecord._() : super._();
 
   @override
@@ -181,6 +169,5 @@ abstract class _MemoryRecord extends MemoryRecord {
   DateTime? get dateTime => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MemoryRecordCopyWith<_MemoryRecord> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$MemoryRecordCopyWith<_MemoryRecord> get copyWith => throw _privateConstructorUsedError;
 }

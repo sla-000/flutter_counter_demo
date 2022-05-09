@@ -87,14 +87,12 @@ mixin _$ProtagonistEvent {
 
 /// @nodoc
 abstract class $ProtagonistEventCopyWith<$Res> {
-  factory $ProtagonistEventCopyWith(
-          ProtagonistEvent value, $Res Function(ProtagonistEvent) then) =
+  factory $ProtagonistEventCopyWith(ProtagonistEvent value, $Res Function(ProtagonistEvent) then) =
       _$ProtagonistEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ProtagonistEventCopyWithImpl<$Res>
-    implements $ProtagonistEventCopyWith<$Res> {
+class _$ProtagonistEventCopyWithImpl<$Res> implements $ProtagonistEventCopyWith<$Res> {
   _$ProtagonistEventCopyWithImpl(this._value, this._then);
 
   final ProtagonistEvent _value;
@@ -104,18 +102,15 @@ class _$ProtagonistEventCopyWithImpl<$Res>
 
 /// @nodoc
 abstract class $ProtagonistEventInitCopyWith<$Res> {
-  factory $ProtagonistEventInitCopyWith(ProtagonistEventInit value,
-          $Res Function(ProtagonistEventInit) then) =
+  factory $ProtagonistEventInitCopyWith(ProtagonistEventInit value, $Res Function(ProtagonistEventInit) then) =
       _$ProtagonistEventInitCopyWithImpl<$Res>;
   $Res call({Vector center});
 }
 
 /// @nodoc
-class _$ProtagonistEventInitCopyWithImpl<$Res>
-    extends _$ProtagonistEventCopyWithImpl<$Res>
+class _$ProtagonistEventInitCopyWithImpl<$Res> extends _$ProtagonistEventCopyWithImpl<$Res>
     implements $ProtagonistEventInitCopyWith<$Res> {
-  _$ProtagonistEventInitCopyWithImpl(
-      ProtagonistEventInit _value, $Res Function(ProtagonistEventInit) _then)
+  _$ProtagonistEventInitCopyWithImpl(ProtagonistEventInit _value, $Res Function(ProtagonistEventInit) _then)
       : super(_value, (v) => _then(v as ProtagonistEventInit));
 
   @override
@@ -151,19 +146,16 @@ class _$ProtagonistEventInit implements ProtagonistEventInit {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is ProtagonistEventInit &&
-            (identical(other.center, center) ||
-                const DeepCollectionEquality().equals(other.center, center)));
+            (identical(other.center, center) || const DeepCollectionEquality().equals(other.center, center)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(center);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(center);
 
   @JsonKey(ignore: true)
   @override
   $ProtagonistEventInitCopyWith<ProtagonistEventInit> get copyWith =>
-      _$ProtagonistEventInitCopyWithImpl<ProtagonistEventInit>(
-          this, _$identity);
+      _$ProtagonistEventInitCopyWithImpl<ProtagonistEventInit>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -239,23 +231,19 @@ abstract class ProtagonistEventInit implements ProtagonistEvent {
 
   Vector get center => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ProtagonistEventInitCopyWith<ProtagonistEventInit> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ProtagonistEventInitCopyWith<ProtagonistEventInit> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ProtagonistEventShootCopyWith<$Res> {
-  factory $ProtagonistEventShootCopyWith(ProtagonistEventShoot value,
-          $Res Function(ProtagonistEventShoot) then) =
+  factory $ProtagonistEventShootCopyWith(ProtagonistEventShoot value, $Res Function(ProtagonistEventShoot) then) =
       _$ProtagonistEventShootCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ProtagonistEventShootCopyWithImpl<$Res>
-    extends _$ProtagonistEventCopyWithImpl<$Res>
+class _$ProtagonistEventShootCopyWithImpl<$Res> extends _$ProtagonistEventCopyWithImpl<$Res>
     implements $ProtagonistEventShootCopyWith<$Res> {
-  _$ProtagonistEventShootCopyWithImpl(
-      ProtagonistEventShoot _value, $Res Function(ProtagonistEventShoot) _then)
+  _$ProtagonistEventShootCopyWithImpl(ProtagonistEventShoot _value, $Res Function(ProtagonistEventShoot) _then)
       : super(_value, (v) => _then(v as ProtagonistEventShoot));
 
   @override
@@ -355,18 +343,15 @@ abstract class ProtagonistEventShoot implements ProtagonistEvent {
 
 /// @nodoc
 abstract class $ProtagonistEventUpdateCopyWith<$Res> {
-  factory $ProtagonistEventUpdateCopyWith(ProtagonistEventUpdate value,
-          $Res Function(ProtagonistEventUpdate) then) =
+  factory $ProtagonistEventUpdateCopyWith(ProtagonistEventUpdate value, $Res Function(ProtagonistEventUpdate) then) =
       _$ProtagonistEventUpdateCopyWithImpl<$Res>;
   $Res call({double delta});
 }
 
 /// @nodoc
-class _$ProtagonistEventUpdateCopyWithImpl<$Res>
-    extends _$ProtagonistEventCopyWithImpl<$Res>
+class _$ProtagonistEventUpdateCopyWithImpl<$Res> extends _$ProtagonistEventCopyWithImpl<$Res>
     implements $ProtagonistEventUpdateCopyWith<$Res> {
-  _$ProtagonistEventUpdateCopyWithImpl(ProtagonistEventUpdate _value,
-      $Res Function(ProtagonistEventUpdate) _then)
+  _$ProtagonistEventUpdateCopyWithImpl(ProtagonistEventUpdate _value, $Res Function(ProtagonistEventUpdate) _then)
       : super(_value, (v) => _then(v as ProtagonistEventUpdate));
 
   @override
@@ -402,19 +387,16 @@ class _$ProtagonistEventUpdate implements ProtagonistEventUpdate {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is ProtagonistEventUpdate &&
-            (identical(other.delta, delta) ||
-                const DeepCollectionEquality().equals(other.delta, delta)));
+            (identical(other.delta, delta) || const DeepCollectionEquality().equals(other.delta, delta)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(delta);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(delta);
 
   @JsonKey(ignore: true)
   @override
   $ProtagonistEventUpdateCopyWith<ProtagonistEventUpdate> get copyWith =>
-      _$ProtagonistEventUpdateCopyWithImpl<ProtagonistEventUpdate>(
-          this, _$identity);
+      _$ProtagonistEventUpdateCopyWithImpl<ProtagonistEventUpdate>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -490,6 +472,5 @@ abstract class ProtagonistEventUpdate implements ProtagonistEvent {
 
   double get delta => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ProtagonistEventUpdateCopyWith<ProtagonistEventUpdate> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ProtagonistEventUpdateCopyWith<ProtagonistEventUpdate> get copyWith => throw _privateConstructorUsedError;
 }

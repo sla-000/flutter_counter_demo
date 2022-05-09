@@ -111,9 +111,7 @@ mixin _$BombsEvent {
 
 /// @nodoc
 abstract class $BombsEventCopyWith<$Res> {
-  factory $BombsEventCopyWith(
-          BombsEvent value, $Res Function(BombsEvent) then) =
-      _$BombsEventCopyWithImpl<$Res>;
+  factory $BombsEventCopyWith(BombsEvent value, $Res Function(BombsEvent) then) = _$BombsEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -127,16 +125,14 @@ class _$BombsEventCopyWithImpl<$Res> implements $BombsEventCopyWith<$Res> {
 
 /// @nodoc
 abstract class $BombsEventInitCopyWith<$Res> {
-  factory $BombsEventInitCopyWith(
-          BombsEventInit value, $Res Function(BombsEventInit) then) =
+  factory $BombsEventInitCopyWith(BombsEventInit value, $Res Function(BombsEventInit) then) =
       _$BombsEventInitCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class _$BombsEventInitCopyWithImpl<$Res> extends _$BombsEventCopyWithImpl<$Res>
     implements $BombsEventInitCopyWith<$Res> {
-  _$BombsEventInitCopyWithImpl(
-      BombsEventInit _value, $Res Function(BombsEventInit) _then)
+  _$BombsEventInitCopyWithImpl(BombsEventInit _value, $Res Function(BombsEventInit) _then)
       : super(_value, (v) => _then(v as BombsEventInit));
 
   @override
@@ -248,18 +244,15 @@ abstract class BombsEventInit implements BombsEvent {
 
 /// @nodoc
 abstract class $BombsEventSetAllCopyWith<$Res> {
-  factory $BombsEventSetAllCopyWith(
-          BombsEventSetAll value, $Res Function(BombsEventSetAll) then) =
+  factory $BombsEventSetAllCopyWith(BombsEventSetAll value, $Res Function(BombsEventSetAll) then) =
       _$BombsEventSetAllCopyWithImpl<$Res>;
   $Res call({Iterable<Bomb> bombs});
 }
 
 /// @nodoc
-class _$BombsEventSetAllCopyWithImpl<$Res>
-    extends _$BombsEventCopyWithImpl<$Res>
+class _$BombsEventSetAllCopyWithImpl<$Res> extends _$BombsEventCopyWithImpl<$Res>
     implements $BombsEventSetAllCopyWith<$Res> {
-  _$BombsEventSetAllCopyWithImpl(
-      BombsEventSetAll _value, $Res Function(BombsEventSetAll) _then)
+  _$BombsEventSetAllCopyWithImpl(BombsEventSetAll _value, $Res Function(BombsEventSetAll) _then)
       : super(_value, (v) => _then(v as BombsEventSetAll));
 
   @override
@@ -295,13 +288,11 @@ class _$BombsEventSetAll implements BombsEventSetAll {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is BombsEventSetAll &&
-            (identical(other.bombs, bombs) ||
-                const DeepCollectionEquality().equals(other.bombs, bombs)));
+            (identical(other.bombs, bombs) || const DeepCollectionEquality().equals(other.bombs, bombs)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(bombs);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(bombs);
 
   @JsonKey(ignore: true)
   @override
@@ -394,23 +385,19 @@ abstract class BombsEventSetAll implements BombsEvent {
 
   Iterable<Bomb> get bombs => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $BombsEventSetAllCopyWith<BombsEventSetAll> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BombsEventSetAllCopyWith<BombsEventSetAll> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BombsEventAddCopyWith<$Res> {
-  factory $BombsEventAddCopyWith(
-          BombsEventAdd value, $Res Function(BombsEventAdd) then) =
+  factory $BombsEventAddCopyWith(BombsEventAdd value, $Res Function(BombsEventAdd) then) =
       _$BombsEventAddCopyWithImpl<$Res>;
   $Res call({Bomb bomb});
 }
 
 /// @nodoc
-class _$BombsEventAddCopyWithImpl<$Res> extends _$BombsEventCopyWithImpl<$Res>
-    implements $BombsEventAddCopyWith<$Res> {
-  _$BombsEventAddCopyWithImpl(
-      BombsEventAdd _value, $Res Function(BombsEventAdd) _then)
+class _$BombsEventAddCopyWithImpl<$Res> extends _$BombsEventCopyWithImpl<$Res> implements $BombsEventAddCopyWith<$Res> {
+  _$BombsEventAddCopyWithImpl(BombsEventAdd _value, $Res Function(BombsEventAdd) _then)
       : super(_value, (v) => _then(v as BombsEventAdd));
 
   @override
@@ -446,18 +433,15 @@ class _$BombsEventAdd implements BombsEventAdd {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is BombsEventAdd &&
-            (identical(other.bomb, bomb) ||
-                const DeepCollectionEquality().equals(other.bomb, bomb)));
+            (identical(other.bomb, bomb) || const DeepCollectionEquality().equals(other.bomb, bomb)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(bomb);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(bomb);
 
   @JsonKey(ignore: true)
   @override
-  $BombsEventAddCopyWith<BombsEventAdd> get copyWith =>
-      _$BombsEventAddCopyWithImpl<BombsEventAdd>(this, _$identity);
+  $BombsEventAddCopyWith<BombsEventAdd> get copyWith => _$BombsEventAddCopyWithImpl<BombsEventAdd>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -545,24 +529,20 @@ abstract class BombsEventAdd implements BombsEvent {
 
   Bomb get bomb => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $BombsEventAddCopyWith<BombsEventAdd> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BombsEventAddCopyWith<BombsEventAdd> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BombsEventRemoveAllCopyWith<$Res> {
-  factory $BombsEventRemoveAllCopyWith(
-          BombsEventRemoveAll value, $Res Function(BombsEventRemoveAll) then) =
+  factory $BombsEventRemoveAllCopyWith(BombsEventRemoveAll value, $Res Function(BombsEventRemoveAll) then) =
       _$BombsEventRemoveAllCopyWithImpl<$Res>;
   $Res call({Iterable<Object> bombs});
 }
 
 /// @nodoc
-class _$BombsEventRemoveAllCopyWithImpl<$Res>
-    extends _$BombsEventCopyWithImpl<$Res>
+class _$BombsEventRemoveAllCopyWithImpl<$Res> extends _$BombsEventCopyWithImpl<$Res>
     implements $BombsEventRemoveAllCopyWith<$Res> {
-  _$BombsEventRemoveAllCopyWithImpl(
-      BombsEventRemoveAll _value, $Res Function(BombsEventRemoveAll) _then)
+  _$BombsEventRemoveAllCopyWithImpl(BombsEventRemoveAll _value, $Res Function(BombsEventRemoveAll) _then)
       : super(_value, (v) => _then(v as BombsEventRemoveAll));
 
   @override
@@ -598,13 +578,11 @@ class _$BombsEventRemoveAll implements BombsEventRemoveAll {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is BombsEventRemoveAll &&
-            (identical(other.bombs, bombs) ||
-                const DeepCollectionEquality().equals(other.bombs, bombs)));
+            (identical(other.bombs, bombs) || const DeepCollectionEquality().equals(other.bombs, bombs)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(bombs);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(bombs);
 
   @JsonKey(ignore: true)
   @override
@@ -693,29 +671,24 @@ class _$BombsEventRemoveAll implements BombsEventRemoveAll {
 }
 
 abstract class BombsEventRemoveAll implements BombsEvent {
-  const factory BombsEventRemoveAll(Iterable<Object> bombs) =
-      _$BombsEventRemoveAll;
+  const factory BombsEventRemoveAll(Iterable<Object> bombs) = _$BombsEventRemoveAll;
 
   Iterable<Object> get bombs => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $BombsEventRemoveAllCopyWith<BombsEventRemoveAll> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BombsEventRemoveAllCopyWith<BombsEventRemoveAll> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BombsEventUpdateCopyWith<$Res> {
-  factory $BombsEventUpdateCopyWith(
-          BombsEventUpdate value, $Res Function(BombsEventUpdate) then) =
+  factory $BombsEventUpdateCopyWith(BombsEventUpdate value, $Res Function(BombsEventUpdate) then) =
       _$BombsEventUpdateCopyWithImpl<$Res>;
   $Res call({double delta});
 }
 
 /// @nodoc
-class _$BombsEventUpdateCopyWithImpl<$Res>
-    extends _$BombsEventCopyWithImpl<$Res>
+class _$BombsEventUpdateCopyWithImpl<$Res> extends _$BombsEventCopyWithImpl<$Res>
     implements $BombsEventUpdateCopyWith<$Res> {
-  _$BombsEventUpdateCopyWithImpl(
-      BombsEventUpdate _value, $Res Function(BombsEventUpdate) _then)
+  _$BombsEventUpdateCopyWithImpl(BombsEventUpdate _value, $Res Function(BombsEventUpdate) _then)
       : super(_value, (v) => _then(v as BombsEventUpdate));
 
   @override
@@ -751,13 +724,11 @@ class _$BombsEventUpdate implements BombsEventUpdate {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is BombsEventUpdate &&
-            (identical(other.delta, delta) ||
-                const DeepCollectionEquality().equals(other.delta, delta)));
+            (identical(other.delta, delta) || const DeepCollectionEquality().equals(other.delta, delta)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(delta);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(delta);
 
   @JsonKey(ignore: true)
   @override
@@ -850,6 +821,5 @@ abstract class BombsEventUpdate implements BombsEvent {
 
   double get delta => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $BombsEventUpdateCopyWith<BombsEventUpdate> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BombsEventUpdateCopyWith<BombsEventUpdate> get copyWith => throw _privateConstructorUsedError;
 }

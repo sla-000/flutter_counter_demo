@@ -32,21 +32,18 @@ mixin _$ProtagonistState {
   Protagonist get protagonist => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ProtagonistStateCopyWith<ProtagonistState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ProtagonistStateCopyWith<ProtagonistState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ProtagonistStateCopyWith<$Res> {
-  factory $ProtagonistStateCopyWith(
-          ProtagonistState value, $Res Function(ProtagonistState) then) =
+  factory $ProtagonistStateCopyWith(ProtagonistState value, $Res Function(ProtagonistState) then) =
       _$ProtagonistStateCopyWithImpl<$Res>;
   $Res call({Protagonist protagonist});
 }
 
 /// @nodoc
-class _$ProtagonistStateCopyWithImpl<$Res>
-    implements $ProtagonistStateCopyWith<$Res> {
+class _$ProtagonistStateCopyWithImpl<$Res> implements $ProtagonistStateCopyWith<$Res> {
   _$ProtagonistStateCopyWithImpl(this._value, this._then);
 
   final ProtagonistState _value;
@@ -67,21 +64,17 @@ class _$ProtagonistStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ProtagonistStateCopyWith<$Res>
-    implements $ProtagonistStateCopyWith<$Res> {
-  factory _$ProtagonistStateCopyWith(
-          _ProtagonistState value, $Res Function(_ProtagonistState) then) =
+abstract class _$ProtagonistStateCopyWith<$Res> implements $ProtagonistStateCopyWith<$Res> {
+  factory _$ProtagonistStateCopyWith(_ProtagonistState value, $Res Function(_ProtagonistState) then) =
       __$ProtagonistStateCopyWithImpl<$Res>;
   @override
   $Res call({Protagonist protagonist});
 }
 
 /// @nodoc
-class __$ProtagonistStateCopyWithImpl<$Res>
-    extends _$ProtagonistStateCopyWithImpl<$Res>
+class __$ProtagonistStateCopyWithImpl<$Res> extends _$ProtagonistStateCopyWithImpl<$Res>
     implements _$ProtagonistStateCopyWith<$Res> {
-  __$ProtagonistStateCopyWithImpl(
-      _ProtagonistState _value, $Res Function(_ProtagonistState) _then)
+  __$ProtagonistStateCopyWithImpl(_ProtagonistState _value, $Res Function(_ProtagonistState) _then)
       : super(_value, (v) => _then(v as _ProtagonistState));
 
   @override
@@ -118,13 +111,11 @@ class _$_ProtagonistState implements _ProtagonistState {
     return identical(this, other) ||
         (other is _ProtagonistState &&
             (identical(other.protagonist, protagonist) ||
-                const DeepCollectionEquality()
-                    .equals(other.protagonist, protagonist)));
+                const DeepCollectionEquality().equals(other.protagonist, protagonist)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(protagonist);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(protagonist);
 
   @JsonKey(ignore: true)
   @override
@@ -133,13 +124,11 @@ class _$_ProtagonistState implements _ProtagonistState {
 }
 
 abstract class _ProtagonistState implements ProtagonistState {
-  const factory _ProtagonistState({required Protagonist protagonist}) =
-      _$_ProtagonistState;
+  const factory _ProtagonistState({required Protagonist protagonist}) = _$_ProtagonistState;
 
   @override
   Protagonist get protagonist => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ProtagonistStateCopyWith<_ProtagonistState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$ProtagonistStateCopyWith<_ProtagonistState> get copyWith => throw _privateConstructorUsedError;
 }

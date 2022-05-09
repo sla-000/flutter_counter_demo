@@ -24,10 +24,8 @@ class _$ScoreRecordTearOff {
   _ScoreRecord call(
       {String name = '',
       int score = 0,
-      @JsonKey(fromJson: timestampFromJson, toJson: timestampToJson)
-          Timestamp? date,
-      @JsonKey(ignore: true)
-          String? id}) {
+      @JsonKey(fromJson: timestampFromJson, toJson: timestampToJson) Timestamp? date,
+      @JsonKey(ignore: true) String? id}) {
     return _ScoreRecord(
       name: name,
       score: score,
@@ -47,32 +45,25 @@ const $ScoreRecord = _$ScoreRecordTearOff();
 /// @nodoc
 mixin _$ScoreRecord {
   String get name => throw _privateConstructorUsedError;
-  int get score =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  int get score => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(fromJson: timestampFromJson, toJson: timestampToJson)
-  Timestamp? get date =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  Timestamp? get date => throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ScoreRecordCopyWith<ScoreRecord> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ScoreRecordCopyWith<ScoreRecord> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ScoreRecordCopyWith<$Res> {
-  factory $ScoreRecordCopyWith(
-          ScoreRecord value, $Res Function(ScoreRecord) then) =
-      _$ScoreRecordCopyWithImpl<$Res>;
+  factory $ScoreRecordCopyWith(ScoreRecord value, $Res Function(ScoreRecord) then) = _$ScoreRecordCopyWithImpl<$Res>;
   $Res call(
       {String name,
       int score,
-      @JsonKey(fromJson: timestampFromJson, toJson: timestampToJson)
-          Timestamp? date,
-      @JsonKey(ignore: true)
-          String? id});
+      @JsonKey(fromJson: timestampFromJson, toJson: timestampToJson) Timestamp? date,
+      @JsonKey(ignore: true) String? id});
 }
 
 /// @nodoc
@@ -112,26 +103,20 @@ class _$ScoreRecordCopyWithImpl<$Res> implements $ScoreRecordCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ScoreRecordCopyWith<$Res>
-    implements $ScoreRecordCopyWith<$Res> {
-  factory _$ScoreRecordCopyWith(
-          _ScoreRecord value, $Res Function(_ScoreRecord) then) =
+abstract class _$ScoreRecordCopyWith<$Res> implements $ScoreRecordCopyWith<$Res> {
+  factory _$ScoreRecordCopyWith(_ScoreRecord value, $Res Function(_ScoreRecord) then) =
       __$ScoreRecordCopyWithImpl<$Res>;
   @override
   $Res call(
       {String name,
       int score,
-      @JsonKey(fromJson: timestampFromJson, toJson: timestampToJson)
-          Timestamp? date,
-      @JsonKey(ignore: true)
-          String? id});
+      @JsonKey(fromJson: timestampFromJson, toJson: timestampToJson) Timestamp? date,
+      @JsonKey(ignore: true) String? id});
 }
 
 /// @nodoc
-class __$ScoreRecordCopyWithImpl<$Res> extends _$ScoreRecordCopyWithImpl<$Res>
-    implements _$ScoreRecordCopyWith<$Res> {
-  __$ScoreRecordCopyWithImpl(
-      _ScoreRecord _value, $Res Function(_ScoreRecord) _then)
+class __$ScoreRecordCopyWithImpl<$Res> extends _$ScoreRecordCopyWithImpl<$Res> implements _$ScoreRecordCopyWith<$Res> {
+  __$ScoreRecordCopyWithImpl(_ScoreRecord _value, $Res Function(_ScoreRecord) _then)
       : super(_value, (v) => _then(v as _ScoreRecord));
 
   @override
@@ -175,8 +160,7 @@ class _$_ScoreRecord extends _ScoreRecord {
       @JsonKey(ignore: true) this.id})
       : super._();
 
-  factory _$_ScoreRecord.fromJson(Map<String, dynamic> json) =>
-      _$$_ScoreRecordFromJson(json);
+  factory _$_ScoreRecord.fromJson(Map<String, dynamic> json) => _$$_ScoreRecordFromJson(json);
 
   @JsonKey(defaultValue: '')
   @override
@@ -200,14 +184,10 @@ class _$_ScoreRecord extends _ScoreRecord {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _ScoreRecord &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.score, score) ||
-                const DeepCollectionEquality().equals(other.score, score)) &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+            (identical(other.name, name) || const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.score, score) || const DeepCollectionEquality().equals(other.score, score)) &&
+            (identical(other.date, date) || const DeepCollectionEquality().equals(other.date, date)) &&
+            (identical(other.id, id) || const DeepCollectionEquality().equals(other.id, id)));
   }
 
   @override
@@ -220,8 +200,7 @@ class _$_ScoreRecord extends _ScoreRecord {
 
   @JsonKey(ignore: true)
   @override
-  _$ScoreRecordCopyWith<_ScoreRecord> get copyWith =>
-      __$ScoreRecordCopyWithImpl<_ScoreRecord>(this, _$identity);
+  _$ScoreRecordCopyWith<_ScoreRecord> get copyWith => __$ScoreRecordCopyWithImpl<_ScoreRecord>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -233,14 +212,11 @@ abstract class _ScoreRecord extends ScoreRecord {
   const factory _ScoreRecord(
       {String name,
       int score,
-      @JsonKey(fromJson: timestampFromJson, toJson: timestampToJson)
-          Timestamp? date,
-      @JsonKey(ignore: true)
-          String? id}) = _$_ScoreRecord;
+      @JsonKey(fromJson: timestampFromJson, toJson: timestampToJson) Timestamp? date,
+      @JsonKey(ignore: true) String? id}) = _$_ScoreRecord;
   const _ScoreRecord._() : super._();
 
-  factory _ScoreRecord.fromJson(Map<String, dynamic> json) =
-      _$_ScoreRecord.fromJson;
+  factory _ScoreRecord.fromJson(Map<String, dynamic> json) = _$_ScoreRecord.fromJson;
 
   @override
   String get name => throw _privateConstructorUsedError;
@@ -254,6 +230,5 @@ abstract class _ScoreRecord extends ScoreRecord {
   String? get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ScoreRecordCopyWith<_ScoreRecord> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$ScoreRecordCopyWith<_ScoreRecord> get copyWith => throw _privateConstructorUsedError;
 }

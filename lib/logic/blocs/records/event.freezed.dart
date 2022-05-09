@@ -97,8 +97,7 @@ mixin _$RecordsEvent {
 
 /// @nodoc
 abstract class $RecordsEventCopyWith<$Res> {
-  factory $RecordsEventCopyWith(
-          RecordsEvent value, $Res Function(RecordsEvent) then) =
+  factory $RecordsEventCopyWith(RecordsEvent value, $Res Function(RecordsEvent) then) =
       _$RecordsEventCopyWithImpl<$Res>;
 }
 
@@ -113,17 +112,14 @@ class _$RecordsEventCopyWithImpl<$Res> implements $RecordsEventCopyWith<$Res> {
 
 /// @nodoc
 abstract class $RecordsEventFetchCopyWith<$Res> {
-  factory $RecordsEventFetchCopyWith(
-          RecordsEventFetch value, $Res Function(RecordsEventFetch) then) =
+  factory $RecordsEventFetchCopyWith(RecordsEventFetch value, $Res Function(RecordsEventFetch) then) =
       _$RecordsEventFetchCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RecordsEventFetchCopyWithImpl<$Res>
-    extends _$RecordsEventCopyWithImpl<$Res>
+class _$RecordsEventFetchCopyWithImpl<$Res> extends _$RecordsEventCopyWithImpl<$Res>
     implements $RecordsEventFetchCopyWith<$Res> {
-  _$RecordsEventFetchCopyWithImpl(
-      RecordsEventFetch _value, $Res Function(RecordsEventFetch) _then)
+  _$RecordsEventFetchCopyWithImpl(RecordsEventFetch _value, $Res Function(RecordsEventFetch) _then)
       : super(_value, (v) => _then(v as RecordsEventFetch));
 
   @override
@@ -229,17 +225,14 @@ abstract class RecordsEventFetch implements RecordsEvent {
 
 /// @nodoc
 abstract class $RecordsEventUploadCopyWith<$Res> {
-  factory $RecordsEventUploadCopyWith(
-          RecordsEventUpload value, $Res Function(RecordsEventUpload) then) =
+  factory $RecordsEventUploadCopyWith(RecordsEventUpload value, $Res Function(RecordsEventUpload) then) =
       _$RecordsEventUploadCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RecordsEventUploadCopyWithImpl<$Res>
-    extends _$RecordsEventCopyWithImpl<$Res>
+class _$RecordsEventUploadCopyWithImpl<$Res> extends _$RecordsEventCopyWithImpl<$Res>
     implements $RecordsEventUploadCopyWith<$Res> {
-  _$RecordsEventUploadCopyWithImpl(
-      RecordsEventUpload _value, $Res Function(RecordsEventUpload) _then)
+  _$RecordsEventUploadCopyWithImpl(RecordsEventUpload _value, $Res Function(RecordsEventUpload) _then)
       : super(_value, (v) => _then(v as RecordsEventUpload));
 
   @override
@@ -345,18 +338,15 @@ abstract class RecordsEventUpload implements RecordsEvent {
 
 /// @nodoc
 abstract class $RecordsEventSetRecordCopyWith<$Res> {
-  factory $RecordsEventSetRecordCopyWith(RecordsEventSetRecord value,
-          $Res Function(RecordsEventSetRecord) then) =
+  factory $RecordsEventSetRecordCopyWith(RecordsEventSetRecord value, $Res Function(RecordsEventSetRecord) then) =
       _$RecordsEventSetRecordCopyWithImpl<$Res>;
   $Res call({int value});
 }
 
 /// @nodoc
-class _$RecordsEventSetRecordCopyWithImpl<$Res>
-    extends _$RecordsEventCopyWithImpl<$Res>
+class _$RecordsEventSetRecordCopyWithImpl<$Res> extends _$RecordsEventCopyWithImpl<$Res>
     implements $RecordsEventSetRecordCopyWith<$Res> {
-  _$RecordsEventSetRecordCopyWithImpl(
-      RecordsEventSetRecord _value, $Res Function(RecordsEventSetRecord) _then)
+  _$RecordsEventSetRecordCopyWithImpl(RecordsEventSetRecord _value, $Res Function(RecordsEventSetRecord) _then)
       : super(_value, (v) => _then(v as RecordsEventSetRecord));
 
   @override
@@ -392,19 +382,16 @@ class _$RecordsEventSetRecord implements RecordsEventSetRecord {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is RecordsEventSetRecord &&
-            (identical(other.value, value) ||
-                const DeepCollectionEquality().equals(other.value, value)));
+            (identical(other.value, value) || const DeepCollectionEquality().equals(other.value, value)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(value);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(value);
 
   @JsonKey(ignore: true)
   @override
   $RecordsEventSetRecordCopyWith<RecordsEventSetRecord> get copyWith =>
-      _$RecordsEventSetRecordCopyWithImpl<RecordsEventSetRecord>(
-          this, _$identity);
+      _$RecordsEventSetRecordCopyWithImpl<RecordsEventSetRecord>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -486,24 +473,20 @@ abstract class RecordsEventSetRecord implements RecordsEvent {
 
   int get value => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $RecordsEventSetRecordCopyWith<RecordsEventSetRecord> get copyWith =>
-      throw _privateConstructorUsedError;
+  $RecordsEventSetRecordCopyWith<RecordsEventSetRecord> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $RecordsEventSetNameCopyWith<$Res> {
-  factory $RecordsEventSetNameCopyWith(
-          RecordsEventSetName value, $Res Function(RecordsEventSetName) then) =
+  factory $RecordsEventSetNameCopyWith(RecordsEventSetName value, $Res Function(RecordsEventSetName) then) =
       _$RecordsEventSetNameCopyWithImpl<$Res>;
   $Res call({String name});
 }
 
 /// @nodoc
-class _$RecordsEventSetNameCopyWithImpl<$Res>
-    extends _$RecordsEventCopyWithImpl<$Res>
+class _$RecordsEventSetNameCopyWithImpl<$Res> extends _$RecordsEventCopyWithImpl<$Res>
     implements $RecordsEventSetNameCopyWith<$Res> {
-  _$RecordsEventSetNameCopyWithImpl(
-      RecordsEventSetName _value, $Res Function(RecordsEventSetName) _then)
+  _$RecordsEventSetNameCopyWithImpl(RecordsEventSetName _value, $Res Function(RecordsEventSetName) _then)
       : super(_value, (v) => _then(v as RecordsEventSetName));
 
   @override
@@ -539,13 +522,11 @@ class _$RecordsEventSetName implements RecordsEventSetName {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is RecordsEventSetName &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+            (identical(other.name, name) || const DeepCollectionEquality().equals(other.name, name)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
 
   @JsonKey(ignore: true)
   @override
@@ -632,6 +613,5 @@ abstract class RecordsEventSetName implements RecordsEvent {
 
   String get name => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $RecordsEventSetNameCopyWith<RecordsEventSetName> get copyWith =>
-      throw _privateConstructorUsedError;
+  $RecordsEventSetNameCopyWith<RecordsEventSetName> get copyWith => throw _privateConstructorUsedError;
 }

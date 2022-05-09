@@ -75,9 +75,7 @@ mixin _$SpawnEvent {
 
 /// @nodoc
 abstract class $SpawnEventCopyWith<$Res> {
-  factory $SpawnEventCopyWith(
-          SpawnEvent value, $Res Function(SpawnEvent) then) =
-      _$SpawnEventCopyWithImpl<$Res>;
+  factory $SpawnEventCopyWith(SpawnEvent value, $Res Function(SpawnEvent) then) = _$SpawnEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -91,16 +89,14 @@ class _$SpawnEventCopyWithImpl<$Res> implements $SpawnEventCopyWith<$Res> {
 
 /// @nodoc
 abstract class $SpawnEventInitCopyWith<$Res> {
-  factory $SpawnEventInitCopyWith(
-          SpawnEventInit value, $Res Function(SpawnEventInit) then) =
+  factory $SpawnEventInitCopyWith(SpawnEventInit value, $Res Function(SpawnEventInit) then) =
       _$SpawnEventInitCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class _$SpawnEventInitCopyWithImpl<$Res> extends _$SpawnEventCopyWithImpl<$Res>
     implements $SpawnEventInitCopyWith<$Res> {
-  _$SpawnEventInitCopyWithImpl(
-      SpawnEventInit _value, $Res Function(SpawnEventInit) _then)
+  _$SpawnEventInitCopyWithImpl(SpawnEventInit _value, $Res Function(SpawnEventInit) _then)
       : super(_value, (v) => _then(v as SpawnEventInit));
 
   @override
@@ -194,8 +190,7 @@ abstract class SpawnEventInit implements SpawnEvent {
 
 /// @nodoc
 abstract class $SpawnEventSpawnCopyWith<$Res> {
-  factory $SpawnEventSpawnCopyWith(
-          SpawnEventSpawn value, $Res Function(SpawnEventSpawn) then) =
+  factory $SpawnEventSpawnCopyWith(SpawnEventSpawn value, $Res Function(SpawnEventSpawn) then) =
       _$SpawnEventSpawnCopyWithImpl<$Res>;
   $Res call({int time});
 }
@@ -203,8 +198,7 @@ abstract class $SpawnEventSpawnCopyWith<$Res> {
 /// @nodoc
 class _$SpawnEventSpawnCopyWithImpl<$Res> extends _$SpawnEventCopyWithImpl<$Res>
     implements $SpawnEventSpawnCopyWith<$Res> {
-  _$SpawnEventSpawnCopyWithImpl(
-      SpawnEventSpawn _value, $Res Function(SpawnEventSpawn) _then)
+  _$SpawnEventSpawnCopyWithImpl(SpawnEventSpawn _value, $Res Function(SpawnEventSpawn) _then)
       : super(_value, (v) => _then(v as SpawnEventSpawn));
 
   @override
@@ -240,13 +234,11 @@ class _$SpawnEventSpawn implements SpawnEventSpawn {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is SpawnEventSpawn &&
-            (identical(other.time, time) ||
-                const DeepCollectionEquality().equals(other.time, time)));
+            (identical(other.time, time) || const DeepCollectionEquality().equals(other.time, time)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(time);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(time);
 
   @JsonKey(ignore: true)
   @override
@@ -321,6 +313,5 @@ abstract class SpawnEventSpawn implements SpawnEvent {
 
   int get time => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SpawnEventSpawnCopyWith<SpawnEventSpawn> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SpawnEventSpawnCopyWith<SpawnEventSpawn> get copyWith => throw _privateConstructorUsedError;
 }

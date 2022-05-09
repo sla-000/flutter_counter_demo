@@ -32,21 +32,18 @@ mixin _$BombSpawnState {
   int get lastSpawn => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $BombSpawnStateCopyWith<BombSpawnState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BombSpawnStateCopyWith<BombSpawnState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BombSpawnStateCopyWith<$Res> {
-  factory $BombSpawnStateCopyWith(
-          BombSpawnState value, $Res Function(BombSpawnState) then) =
+  factory $BombSpawnStateCopyWith(BombSpawnState value, $Res Function(BombSpawnState) then) =
       _$BombSpawnStateCopyWithImpl<$Res>;
   $Res call({int lastSpawn});
 }
 
 /// @nodoc
-class _$BombSpawnStateCopyWithImpl<$Res>
-    implements $BombSpawnStateCopyWith<$Res> {
+class _$BombSpawnStateCopyWithImpl<$Res> implements $BombSpawnStateCopyWith<$Res> {
   _$BombSpawnStateCopyWithImpl(this._value, this._then);
 
   final BombSpawnState _value;
@@ -67,21 +64,17 @@ class _$BombSpawnStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$BombSpawnStateCopyWith<$Res>
-    implements $BombSpawnStateCopyWith<$Res> {
-  factory _$BombSpawnStateCopyWith(
-          _BombSpawnState value, $Res Function(_BombSpawnState) then) =
+abstract class _$BombSpawnStateCopyWith<$Res> implements $BombSpawnStateCopyWith<$Res> {
+  factory _$BombSpawnStateCopyWith(_BombSpawnState value, $Res Function(_BombSpawnState) then) =
       __$BombSpawnStateCopyWithImpl<$Res>;
   @override
   $Res call({int lastSpawn});
 }
 
 /// @nodoc
-class __$BombSpawnStateCopyWithImpl<$Res>
-    extends _$BombSpawnStateCopyWithImpl<$Res>
+class __$BombSpawnStateCopyWithImpl<$Res> extends _$BombSpawnStateCopyWithImpl<$Res>
     implements _$BombSpawnStateCopyWith<$Res> {
-  __$BombSpawnStateCopyWithImpl(
-      _BombSpawnState _value, $Res Function(_BombSpawnState) _then)
+  __$BombSpawnStateCopyWithImpl(_BombSpawnState _value, $Res Function(_BombSpawnState) _then)
       : super(_value, (v) => _then(v as _BombSpawnState));
 
   @override
@@ -119,13 +112,11 @@ class _$_BombSpawnState implements _BombSpawnState {
     return identical(this, other) ||
         (other is _BombSpawnState &&
             (identical(other.lastSpawn, lastSpawn) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastSpawn, lastSpawn)));
+                const DeepCollectionEquality().equals(other.lastSpawn, lastSpawn)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(lastSpawn);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(lastSpawn);
 
   @JsonKey(ignore: true)
   @override
@@ -140,6 +131,5 @@ abstract class _BombSpawnState implements BombSpawnState {
   int get lastSpawn => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$BombSpawnStateCopyWith<_BombSpawnState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$BombSpawnStateCopyWith<_BombSpawnState> get copyWith => throw _privateConstructorUsedError;
 }

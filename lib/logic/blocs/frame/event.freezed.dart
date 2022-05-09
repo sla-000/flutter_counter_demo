@@ -75,9 +75,7 @@ mixin _$FrameEvent {
 
 /// @nodoc
 abstract class $FrameEventCopyWith<$Res> {
-  factory $FrameEventCopyWith(
-          FrameEvent value, $Res Function(FrameEvent) then) =
-      _$FrameEventCopyWithImpl<$Res>;
+  factory $FrameEventCopyWith(FrameEvent value, $Res Function(FrameEvent) then) = _$FrameEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -91,18 +89,15 @@ class _$FrameEventCopyWithImpl<$Res> implements $FrameEventCopyWith<$Res> {
 
 /// @nodoc
 abstract class $FrameEventControlCopyWith<$Res> {
-  factory $FrameEventControlCopyWith(
-          FrameEventControl value, $Res Function(FrameEventControl) then) =
+  factory $FrameEventControlCopyWith(FrameEventControl value, $Res Function(FrameEventControl) then) =
       _$FrameEventControlCopyWithImpl<$Res>;
   $Res call({bool enable});
 }
 
 /// @nodoc
-class _$FrameEventControlCopyWithImpl<$Res>
-    extends _$FrameEventCopyWithImpl<$Res>
+class _$FrameEventControlCopyWithImpl<$Res> extends _$FrameEventCopyWithImpl<$Res>
     implements $FrameEventControlCopyWith<$Res> {
-  _$FrameEventControlCopyWithImpl(
-      FrameEventControl _value, $Res Function(FrameEventControl) _then)
+  _$FrameEventControlCopyWithImpl(FrameEventControl _value, $Res Function(FrameEventControl) _then)
       : super(_value, (v) => _then(v as FrameEventControl));
 
   @override
@@ -138,13 +133,11 @@ class _$FrameEventControl implements FrameEventControl {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is FrameEventControl &&
-            (identical(other.enable, enable) ||
-                const DeepCollectionEquality().equals(other.enable, enable)));
+            (identical(other.enable, enable) || const DeepCollectionEquality().equals(other.enable, enable)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(enable);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(enable);
 
   @JsonKey(ignore: true)
   @override
@@ -219,23 +212,19 @@ abstract class FrameEventControl implements FrameEvent {
 
   bool get enable => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $FrameEventControlCopyWith<FrameEventControl> get copyWith =>
-      throw _privateConstructorUsedError;
+  $FrameEventControlCopyWith<FrameEventControl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $FrameEventUpdateCopyWith<$Res> {
-  factory $FrameEventUpdateCopyWith(
-          FrameEventUpdate value, $Res Function(FrameEventUpdate) then) =
+  factory $FrameEventUpdateCopyWith(FrameEventUpdate value, $Res Function(FrameEventUpdate) then) =
       _$FrameEventUpdateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$FrameEventUpdateCopyWithImpl<$Res>
-    extends _$FrameEventCopyWithImpl<$Res>
+class _$FrameEventUpdateCopyWithImpl<$Res> extends _$FrameEventCopyWithImpl<$Res>
     implements $FrameEventUpdateCopyWith<$Res> {
-  _$FrameEventUpdateCopyWithImpl(
-      FrameEventUpdate _value, $Res Function(FrameEventUpdate) _then)
+  _$FrameEventUpdateCopyWithImpl(FrameEventUpdate _value, $Res Function(FrameEventUpdate) _then)
       : super(_value, (v) => _then(v as FrameEventUpdate));
 
   @override

@@ -51,14 +51,12 @@ mixin _$RecordsState {
   bool get showNameInput => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RecordsStateCopyWith<RecordsState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $RecordsStateCopyWith<RecordsState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $RecordsStateCopyWith<$Res> {
-  factory $RecordsStateCopyWith(
-          RecordsState value, $Res Function(RecordsState) then) =
+  factory $RecordsStateCopyWith(RecordsState value, $Res Function(RecordsState) then) =
       _$RecordsStateCopyWithImpl<$Res>;
   $Res call(
       {int lastRecord,
@@ -122,10 +120,8 @@ class _$RecordsStateCopyWithImpl<$Res> implements $RecordsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$RecordsStateCopyWith<$Res>
-    implements $RecordsStateCopyWith<$Res> {
-  factory _$RecordsStateCopyWith(
-          _RecordsState value, $Res Function(_RecordsState) then) =
+abstract class _$RecordsStateCopyWith<$Res> implements $RecordsStateCopyWith<$Res> {
+  factory _$RecordsStateCopyWith(_RecordsState value, $Res Function(_RecordsState) then) =
       __$RecordsStateCopyWithImpl<$Res>;
   @override
   $Res call(
@@ -141,8 +137,7 @@ abstract class _$RecordsStateCopyWith<$Res>
 /// @nodoc
 class __$RecordsStateCopyWithImpl<$Res> extends _$RecordsStateCopyWithImpl<$Res>
     implements _$RecordsStateCopyWith<$Res> {
-  __$RecordsStateCopyWithImpl(
-      _RecordsState _value, $Res Function(_RecordsState) _then)
+  __$RecordsStateCopyWithImpl(_RecordsState _value, $Res Function(_RecordsState) _then)
       : super(_value, (v) => _then(v as _RecordsState));
 
   @override
@@ -236,25 +231,17 @@ class _$_RecordsState extends _RecordsState {
     return identical(this, other) ||
         (other is _RecordsState &&
             (identical(other.lastRecord, lastRecord) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastRecord, lastRecord)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
+                const DeepCollectionEquality().equals(other.lastRecord, lastRecord)) &&
+            (identical(other.name, name) || const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.lastNames, lastNames) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastNames, lastNames)) &&
-            (identical(other.records, records) ||
-                const DeepCollectionEquality()
-                    .equals(other.records, records)) &&
+                const DeepCollectionEquality().equals(other.lastNames, lastNames)) &&
+            (identical(other.records, records) || const DeepCollectionEquality().equals(other.records, records)) &&
             (identical(other.waitNetwork, waitNetwork) ||
-                const DeepCollectionEquality()
-                    .equals(other.waitNetwork, waitNetwork)) &&
+                const DeepCollectionEquality().equals(other.waitNetwork, waitNetwork)) &&
             (identical(other.lastNetworkError, lastNetworkError) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastNetworkError, lastNetworkError)) &&
+                const DeepCollectionEquality().equals(other.lastNetworkError, lastNetworkError)) &&
             (identical(other.showNameInput, showNameInput) ||
-                const DeepCollectionEquality()
-                    .equals(other.showNameInput, showNameInput)));
+                const DeepCollectionEquality().equals(other.showNameInput, showNameInput)));
   }
 
   @override
@@ -270,8 +257,7 @@ class _$_RecordsState extends _RecordsState {
 
   @JsonKey(ignore: true)
   @override
-  _$RecordsStateCopyWith<_RecordsState> get copyWith =>
-      __$RecordsStateCopyWithImpl<_RecordsState>(this, _$identity);
+  _$RecordsStateCopyWith<_RecordsState> get copyWith => __$RecordsStateCopyWithImpl<_RecordsState>(this, _$identity);
 }
 
 abstract class _RecordsState extends RecordsState {
@@ -301,6 +287,5 @@ abstract class _RecordsState extends RecordsState {
   bool get showNameInput => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RecordsStateCopyWith<_RecordsState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$RecordsStateCopyWith<_RecordsState> get copyWith => throw _privateConstructorUsedError;
 }

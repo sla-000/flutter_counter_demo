@@ -18,10 +18,7 @@ class _$RecordDataTearOff {
   const _$RecordDataTearOff();
 
   _RecordData call(
-      {int position = RecordData.kPositionNA,
-      String name = '',
-      int score = RecordData.kScoreNA,
-      DateTime? dateTime}) {
+      {int position = RecordData.kPositionNA, String name = '', int score = RecordData.kScoreNA, DateTime? dateTime}) {
     return _RecordData(
       position: position,
       name: name,
@@ -42,15 +39,12 @@ mixin _$RecordData {
   DateTime? get dateTime => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RecordDataCopyWith<RecordData> get copyWith =>
-      throw _privateConstructorUsedError;
+  $RecordDataCopyWith<RecordData> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $RecordDataCopyWith<$Res> {
-  factory $RecordDataCopyWith(
-          RecordData value, $Res Function(RecordData) then) =
-      _$RecordDataCopyWithImpl<$Res>;
+  factory $RecordDataCopyWith(RecordData value, $Res Function(RecordData) then) = _$RecordDataCopyWithImpl<$Res>;
   $Res call({int position, String name, int score, DateTime? dateTime});
 }
 
@@ -92,18 +86,14 @@ class _$RecordDataCopyWithImpl<$Res> implements $RecordDataCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$RecordDataCopyWith<$Res> implements $RecordDataCopyWith<$Res> {
-  factory _$RecordDataCopyWith(
-          _RecordData value, $Res Function(_RecordData) then) =
-      __$RecordDataCopyWithImpl<$Res>;
+  factory _$RecordDataCopyWith(_RecordData value, $Res Function(_RecordData) then) = __$RecordDataCopyWithImpl<$Res>;
   @override
   $Res call({int position, String name, int score, DateTime? dateTime});
 }
 
 /// @nodoc
-class __$RecordDataCopyWithImpl<$Res> extends _$RecordDataCopyWithImpl<$Res>
-    implements _$RecordDataCopyWith<$Res> {
-  __$RecordDataCopyWithImpl(
-      _RecordData _value, $Res Function(_RecordData) _then)
+class __$RecordDataCopyWithImpl<$Res> extends _$RecordDataCopyWithImpl<$Res> implements _$RecordDataCopyWith<$Res> {
+  __$RecordDataCopyWithImpl(_RecordData _value, $Res Function(_RecordData) _then)
       : super(_value, (v) => _then(v as _RecordData));
 
   @override
@@ -141,10 +131,7 @@ class __$RecordDataCopyWithImpl<$Res> extends _$RecordDataCopyWithImpl<$Res>
 
 class _$_RecordData extends _RecordData {
   const _$_RecordData(
-      {this.position = RecordData.kPositionNA,
-      this.name = '',
-      this.score = RecordData.kScoreNA,
-      this.dateTime})
+      {this.position = RecordData.kPositionNA, this.name = '', this.score = RecordData.kScoreNA, this.dateTime})
       : super._();
 
   @JsonKey(defaultValue: RecordData.kPositionNA)
@@ -168,16 +155,10 @@ class _$_RecordData extends _RecordData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _RecordData &&
-            (identical(other.position, position) ||
-                const DeepCollectionEquality()
-                    .equals(other.position, position)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.score, score) ||
-                const DeepCollectionEquality().equals(other.score, score)) &&
-            (identical(other.dateTime, dateTime) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateTime, dateTime)));
+            (identical(other.position, position) || const DeepCollectionEquality().equals(other.position, position)) &&
+            (identical(other.name, name) || const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.score, score) || const DeepCollectionEquality().equals(other.score, score)) &&
+            (identical(other.dateTime, dateTime) || const DeepCollectionEquality().equals(other.dateTime, dateTime)));
   }
 
   @override
@@ -190,16 +171,11 @@ class _$_RecordData extends _RecordData {
 
   @JsonKey(ignore: true)
   @override
-  _$RecordDataCopyWith<_RecordData> get copyWith =>
-      __$RecordDataCopyWithImpl<_RecordData>(this, _$identity);
+  _$RecordDataCopyWith<_RecordData> get copyWith => __$RecordDataCopyWithImpl<_RecordData>(this, _$identity);
 }
 
 abstract class _RecordData extends RecordData {
-  const factory _RecordData(
-      {int position,
-      String name,
-      int score,
-      DateTime? dateTime}) = _$_RecordData;
+  const factory _RecordData({int position, String name, int score, DateTime? dateTime}) = _$_RecordData;
   const _RecordData._() : super._();
 
   @override
@@ -212,6 +188,5 @@ abstract class _RecordData extends RecordData {
   DateTime? get dateTime => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RecordDataCopyWith<_RecordData> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$RecordDataCopyWith<_RecordData> get copyWith => throw _privateConstructorUsedError;
 }

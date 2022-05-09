@@ -85,9 +85,7 @@ mixin _$WavesEvent {
 
 /// @nodoc
 abstract class $WavesEventCopyWith<$Res> {
-  factory $WavesEventCopyWith(
-          WavesEvent value, $Res Function(WavesEvent) then) =
-      _$WavesEventCopyWithImpl<$Res>;
+  factory $WavesEventCopyWith(WavesEvent value, $Res Function(WavesEvent) then) = _$WavesEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -101,16 +99,14 @@ class _$WavesEventCopyWithImpl<$Res> implements $WavesEventCopyWith<$Res> {
 
 /// @nodoc
 abstract class $WavesEventInitCopyWith<$Res> {
-  factory $WavesEventInitCopyWith(
-          WavesEventInit value, $Res Function(WavesEventInit) then) =
+  factory $WavesEventInitCopyWith(WavesEventInit value, $Res Function(WavesEventInit) then) =
       _$WavesEventInitCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class _$WavesEventInitCopyWithImpl<$Res> extends _$WavesEventCopyWithImpl<$Res>
     implements $WavesEventInitCopyWith<$Res> {
-  _$WavesEventInitCopyWithImpl(
-      WavesEventInit _value, $Res Function(WavesEventInit) _then)
+  _$WavesEventInitCopyWithImpl(WavesEventInit _value, $Res Function(WavesEventInit) _then)
       : super(_value, (v) => _then(v as WavesEventInit));
 
   @override
@@ -210,17 +206,14 @@ abstract class WavesEventInit implements WavesEvent {
 
 /// @nodoc
 abstract class $WavesEventNextWaveCopyWith<$Res> {
-  factory $WavesEventNextWaveCopyWith(
-          WavesEventNextWave value, $Res Function(WavesEventNextWave) then) =
+  factory $WavesEventNextWaveCopyWith(WavesEventNextWave value, $Res Function(WavesEventNextWave) then) =
       _$WavesEventNextWaveCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$WavesEventNextWaveCopyWithImpl<$Res>
-    extends _$WavesEventCopyWithImpl<$Res>
+class _$WavesEventNextWaveCopyWithImpl<$Res> extends _$WavesEventCopyWithImpl<$Res>
     implements $WavesEventNextWaveCopyWith<$Res> {
-  _$WavesEventNextWaveCopyWithImpl(
-      WavesEventNextWave _value, $Res Function(WavesEventNextWave) _then)
+  _$WavesEventNextWaveCopyWithImpl(WavesEventNextWave _value, $Res Function(WavesEventNextWave) _then)
       : super(_value, (v) => _then(v as WavesEventNextWave));
 
   @override
@@ -320,18 +313,15 @@ abstract class WavesEventNextWave implements WavesEvent {
 
 /// @nodoc
 abstract class $WavesEventUpdateCopyWith<$Res> {
-  factory $WavesEventUpdateCopyWith(
-          WavesEventUpdate value, $Res Function(WavesEventUpdate) then) =
+  factory $WavesEventUpdateCopyWith(WavesEventUpdate value, $Res Function(WavesEventUpdate) then) =
       _$WavesEventUpdateCopyWithImpl<$Res>;
   $Res call({int delta});
 }
 
 /// @nodoc
-class _$WavesEventUpdateCopyWithImpl<$Res>
-    extends _$WavesEventCopyWithImpl<$Res>
+class _$WavesEventUpdateCopyWithImpl<$Res> extends _$WavesEventCopyWithImpl<$Res>
     implements $WavesEventUpdateCopyWith<$Res> {
-  _$WavesEventUpdateCopyWithImpl(
-      WavesEventUpdate _value, $Res Function(WavesEventUpdate) _then)
+  _$WavesEventUpdateCopyWithImpl(WavesEventUpdate _value, $Res Function(WavesEventUpdate) _then)
       : super(_value, (v) => _then(v as WavesEventUpdate));
 
   @override
@@ -367,13 +357,11 @@ class _$WavesEventUpdate implements WavesEventUpdate {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is WavesEventUpdate &&
-            (identical(other.delta, delta) ||
-                const DeepCollectionEquality().equals(other.delta, delta)));
+            (identical(other.delta, delta) || const DeepCollectionEquality().equals(other.delta, delta)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(delta);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(delta);
 
   @JsonKey(ignore: true)
   @override
@@ -454,6 +442,5 @@ abstract class WavesEventUpdate implements WavesEvent {
 
   int get delta => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $WavesEventUpdateCopyWith<WavesEventUpdate> get copyWith =>
-      throw _privateConstructorUsedError;
+  $WavesEventUpdateCopyWith<WavesEventUpdate> get copyWith => throw _privateConstructorUsedError;
 }

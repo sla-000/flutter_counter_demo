@@ -32,14 +32,12 @@ mixin _$BulletsState {
   List<Bullet> get bullets => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $BulletsStateCopyWith<BulletsState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BulletsStateCopyWith<BulletsState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BulletsStateCopyWith<$Res> {
-  factory $BulletsStateCopyWith(
-          BulletsState value, $Res Function(BulletsState) then) =
+  factory $BulletsStateCopyWith(BulletsState value, $Res Function(BulletsState) then) =
       _$BulletsStateCopyWithImpl<$Res>;
   $Res call({List<Bullet> bullets});
 }
@@ -66,10 +64,8 @@ class _$BulletsStateCopyWithImpl<$Res> implements $BulletsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$BulletsStateCopyWith<$Res>
-    implements $BulletsStateCopyWith<$Res> {
-  factory _$BulletsStateCopyWith(
-          _BulletsState value, $Res Function(_BulletsState) then) =
+abstract class _$BulletsStateCopyWith<$Res> implements $BulletsStateCopyWith<$Res> {
+  factory _$BulletsStateCopyWith(_BulletsState value, $Res Function(_BulletsState) then) =
       __$BulletsStateCopyWithImpl<$Res>;
   @override
   $Res call({List<Bullet> bullets});
@@ -78,8 +74,7 @@ abstract class _$BulletsStateCopyWith<$Res>
 /// @nodoc
 class __$BulletsStateCopyWithImpl<$Res> extends _$BulletsStateCopyWithImpl<$Res>
     implements _$BulletsStateCopyWith<$Res> {
-  __$BulletsStateCopyWithImpl(
-      _BulletsState _value, $Res Function(_BulletsState) _then)
+  __$BulletsStateCopyWithImpl(_BulletsState _value, $Res Function(_BulletsState) _then)
       : super(_value, (v) => _then(v as _BulletsState));
 
   @override
@@ -116,18 +111,15 @@ class _$_BulletsState implements _BulletsState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _BulletsState &&
-            (identical(other.bullets, bullets) ||
-                const DeepCollectionEquality().equals(other.bullets, bullets)));
+            (identical(other.bullets, bullets) || const DeepCollectionEquality().equals(other.bullets, bullets)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(bullets);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(bullets);
 
   @JsonKey(ignore: true)
   @override
-  _$BulletsStateCopyWith<_BulletsState> get copyWith =>
-      __$BulletsStateCopyWithImpl<_BulletsState>(this, _$identity);
+  _$BulletsStateCopyWith<_BulletsState> get copyWith => __$BulletsStateCopyWithImpl<_BulletsState>(this, _$identity);
 }
 
 abstract class _BulletsState implements BulletsState {
@@ -137,6 +129,5 @@ abstract class _BulletsState implements BulletsState {
   List<Bullet> get bullets => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$BulletsStateCopyWith<_BulletsState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$BulletsStateCopyWith<_BulletsState> get copyWith => throw _privateConstructorUsedError;
 }

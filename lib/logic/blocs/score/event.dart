@@ -7,4 +7,5 @@ class ScoreEvent with _$ScoreEvent {
   const factory ScoreEvent.shoot() = ScoreEventShoot;
   const factory ScoreEvent.kill() = ScoreEventKill;
   const factory ScoreEvent.dead() = ScoreEventDead;
+  const factory ScoreEvent.restart() = ScoreEventRestart;
 }

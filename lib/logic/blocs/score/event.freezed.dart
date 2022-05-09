@@ -28,6 +28,10 @@ class _$ScoreEventTearOff {
   ScoreEventDead dead() {
     return const ScoreEventDead();
   }
+
+  ScoreEventRestart restart() {
+    return const ScoreEventRestart();
+  }
 }
 
 /// @nodoc
@@ -40,6 +44,7 @@ mixin _$ScoreEvent {
     required TResult Function() shoot,
     required TResult Function() kill,
     required TResult Function() dead,
+    required TResult Function() restart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +52,7 @@ mixin _$ScoreEvent {
     TResult Function()? shoot,
     TResult Function()? kill,
     TResult Function()? dead,
+    TResult Function()? restart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +60,7 @@ mixin _$ScoreEvent {
     TResult Function()? shoot,
     TResult Function()? kill,
     TResult Function()? dead,
+    TResult Function()? restart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +69,7 @@ mixin _$ScoreEvent {
     required TResult Function(ScoreEventShoot value) shoot,
     required TResult Function(ScoreEventKill value) kill,
     required TResult Function(ScoreEventDead value) dead,
+    required TResult Function(ScoreEventRestart value) restart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +77,7 @@ mixin _$ScoreEvent {
     TResult Function(ScoreEventShoot value)? shoot,
     TResult Function(ScoreEventKill value)? kill,
     TResult Function(ScoreEventDead value)? dead,
+    TResult Function(ScoreEventRestart value)? restart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -76,6 +85,7 @@ mixin _$ScoreEvent {
     TResult Function(ScoreEventShoot value)? shoot,
     TResult Function(ScoreEventKill value)? kill,
     TResult Function(ScoreEventDead value)? dead,
+    TResult Function(ScoreEventRestart value)? restart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -83,9 +93,7 @@ mixin _$ScoreEvent {
 
 /// @nodoc
 abstract class $ScoreEventCopyWith<$Res> {
-  factory $ScoreEventCopyWith(
-          ScoreEvent value, $Res Function(ScoreEvent) then) =
-      _$ScoreEventCopyWithImpl<$Res>;
+  factory $ScoreEventCopyWith(ScoreEvent value, $Res Function(ScoreEvent) then) = _$ScoreEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -99,16 +107,14 @@ class _$ScoreEventCopyWithImpl<$Res> implements $ScoreEventCopyWith<$Res> {
 
 /// @nodoc
 abstract class $ScoreEventShootCopyWith<$Res> {
-  factory $ScoreEventShootCopyWith(
-          ScoreEventShoot value, $Res Function(ScoreEventShoot) then) =
+  factory $ScoreEventShootCopyWith(ScoreEventShoot value, $Res Function(ScoreEventShoot) then) =
       _$ScoreEventShootCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class _$ScoreEventShootCopyWithImpl<$Res> extends _$ScoreEventCopyWithImpl<$Res>
     implements $ScoreEventShootCopyWith<$Res> {
-  _$ScoreEventShootCopyWithImpl(
-      ScoreEventShoot _value, $Res Function(ScoreEventShoot) _then)
+  _$ScoreEventShootCopyWithImpl(ScoreEventShoot _value, $Res Function(ScoreEventShoot) _then)
       : super(_value, (v) => _then(v as ScoreEventShoot));
 
   @override
@@ -139,6 +145,7 @@ class _$ScoreEventShoot implements ScoreEventShoot {
     required TResult Function() shoot,
     required TResult Function() kill,
     required TResult Function() dead,
+    required TResult Function() restart,
   }) {
     return shoot();
   }
@@ -149,6 +156,7 @@ class _$ScoreEventShoot implements ScoreEventShoot {
     TResult Function()? shoot,
     TResult Function()? kill,
     TResult Function()? dead,
+    TResult Function()? restart,
   }) {
     return shoot?.call();
   }
@@ -159,6 +167,7 @@ class _$ScoreEventShoot implements ScoreEventShoot {
     TResult Function()? shoot,
     TResult Function()? kill,
     TResult Function()? dead,
+    TResult Function()? restart,
     required TResult orElse(),
   }) {
     if (shoot != null) {
@@ -173,6 +182,7 @@ class _$ScoreEventShoot implements ScoreEventShoot {
     required TResult Function(ScoreEventShoot value) shoot,
     required TResult Function(ScoreEventKill value) kill,
     required TResult Function(ScoreEventDead value) dead,
+    required TResult Function(ScoreEventRestart value) restart,
   }) {
     return shoot(this);
   }
@@ -183,6 +193,7 @@ class _$ScoreEventShoot implements ScoreEventShoot {
     TResult Function(ScoreEventShoot value)? shoot,
     TResult Function(ScoreEventKill value)? kill,
     TResult Function(ScoreEventDead value)? dead,
+    TResult Function(ScoreEventRestart value)? restart,
   }) {
     return shoot?.call(this);
   }
@@ -193,6 +204,7 @@ class _$ScoreEventShoot implements ScoreEventShoot {
     TResult Function(ScoreEventShoot value)? shoot,
     TResult Function(ScoreEventKill value)? kill,
     TResult Function(ScoreEventDead value)? dead,
+    TResult Function(ScoreEventRestart value)? restart,
     required TResult orElse(),
   }) {
     if (shoot != null) {
@@ -208,16 +220,14 @@ abstract class ScoreEventShoot implements ScoreEvent {
 
 /// @nodoc
 abstract class $ScoreEventKillCopyWith<$Res> {
-  factory $ScoreEventKillCopyWith(
-          ScoreEventKill value, $Res Function(ScoreEventKill) then) =
+  factory $ScoreEventKillCopyWith(ScoreEventKill value, $Res Function(ScoreEventKill) then) =
       _$ScoreEventKillCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class _$ScoreEventKillCopyWithImpl<$Res> extends _$ScoreEventCopyWithImpl<$Res>
     implements $ScoreEventKillCopyWith<$Res> {
-  _$ScoreEventKillCopyWithImpl(
-      ScoreEventKill _value, $Res Function(ScoreEventKill) _then)
+  _$ScoreEventKillCopyWithImpl(ScoreEventKill _value, $Res Function(ScoreEventKill) _then)
       : super(_value, (v) => _then(v as ScoreEventKill));
 
   @override
@@ -248,6 +258,7 @@ class _$ScoreEventKill implements ScoreEventKill {
     required TResult Function() shoot,
     required TResult Function() kill,
     required TResult Function() dead,
+    required TResult Function() restart,
   }) {
     return kill();
   }
@@ -258,6 +269,7 @@ class _$ScoreEventKill implements ScoreEventKill {
     TResult Function()? shoot,
     TResult Function()? kill,
     TResult Function()? dead,
+    TResult Function()? restart,
   }) {
     return kill?.call();
   }
@@ -268,6 +280,7 @@ class _$ScoreEventKill implements ScoreEventKill {
     TResult Function()? shoot,
     TResult Function()? kill,
     TResult Function()? dead,
+    TResult Function()? restart,
     required TResult orElse(),
   }) {
     if (kill != null) {
@@ -282,6 +295,7 @@ class _$ScoreEventKill implements ScoreEventKill {
     required TResult Function(ScoreEventShoot value) shoot,
     required TResult Function(ScoreEventKill value) kill,
     required TResult Function(ScoreEventDead value) dead,
+    required TResult Function(ScoreEventRestart value) restart,
   }) {
     return kill(this);
   }
@@ -292,6 +306,7 @@ class _$ScoreEventKill implements ScoreEventKill {
     TResult Function(ScoreEventShoot value)? shoot,
     TResult Function(ScoreEventKill value)? kill,
     TResult Function(ScoreEventDead value)? dead,
+    TResult Function(ScoreEventRestart value)? restart,
   }) {
     return kill?.call(this);
   }
@@ -302,6 +317,7 @@ class _$ScoreEventKill implements ScoreEventKill {
     TResult Function(ScoreEventShoot value)? shoot,
     TResult Function(ScoreEventKill value)? kill,
     TResult Function(ScoreEventDead value)? dead,
+    TResult Function(ScoreEventRestart value)? restart,
     required TResult orElse(),
   }) {
     if (kill != null) {
@@ -317,16 +333,14 @@ abstract class ScoreEventKill implements ScoreEvent {
 
 /// @nodoc
 abstract class $ScoreEventDeadCopyWith<$Res> {
-  factory $ScoreEventDeadCopyWith(
-          ScoreEventDead value, $Res Function(ScoreEventDead) then) =
+  factory $ScoreEventDeadCopyWith(ScoreEventDead value, $Res Function(ScoreEventDead) then) =
       _$ScoreEventDeadCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class _$ScoreEventDeadCopyWithImpl<$Res> extends _$ScoreEventCopyWithImpl<$Res>
     implements $ScoreEventDeadCopyWith<$Res> {
-  _$ScoreEventDeadCopyWithImpl(
-      ScoreEventDead _value, $Res Function(ScoreEventDead) _then)
+  _$ScoreEventDeadCopyWithImpl(ScoreEventDead _value, $Res Function(ScoreEventDead) _then)
       : super(_value, (v) => _then(v as ScoreEventDead));
 
   @override
@@ -357,6 +371,7 @@ class _$ScoreEventDead implements ScoreEventDead {
     required TResult Function() shoot,
     required TResult Function() kill,
     required TResult Function() dead,
+    required TResult Function() restart,
   }) {
     return dead();
   }
@@ -367,6 +382,7 @@ class _$ScoreEventDead implements ScoreEventDead {
     TResult Function()? shoot,
     TResult Function()? kill,
     TResult Function()? dead,
+    TResult Function()? restart,
   }) {
     return dead?.call();
   }
@@ -377,6 +393,7 @@ class _$ScoreEventDead implements ScoreEventDead {
     TResult Function()? shoot,
     TResult Function()? kill,
     TResult Function()? dead,
+    TResult Function()? restart,
     required TResult orElse(),
   }) {
     if (dead != null) {
@@ -391,6 +408,7 @@ class _$ScoreEventDead implements ScoreEventDead {
     required TResult Function(ScoreEventShoot value) shoot,
     required TResult Function(ScoreEventKill value) kill,
     required TResult Function(ScoreEventDead value) dead,
+    required TResult Function(ScoreEventRestart value) restart,
   }) {
     return dead(this);
   }
@@ -401,6 +419,7 @@ class _$ScoreEventDead implements ScoreEventDead {
     TResult Function(ScoreEventShoot value)? shoot,
     TResult Function(ScoreEventKill value)? kill,
     TResult Function(ScoreEventDead value)? dead,
+    TResult Function(ScoreEventRestart value)? restart,
   }) {
     return dead?.call(this);
   }
@@ -411,6 +430,7 @@ class _$ScoreEventDead implements ScoreEventDead {
     TResult Function(ScoreEventShoot value)? shoot,
     TResult Function(ScoreEventKill value)? kill,
     TResult Function(ScoreEventDead value)? dead,
+    TResult Function(ScoreEventRestart value)? restart,
     required TResult orElse(),
   }) {
     if (dead != null) {
@@ -422,4 +442,117 @@ class _$ScoreEventDead implements ScoreEventDead {
 
 abstract class ScoreEventDead implements ScoreEvent {
   const factory ScoreEventDead() = _$ScoreEventDead;
+}
+
+/// @nodoc
+abstract class $ScoreEventRestartCopyWith<$Res> {
+  factory $ScoreEventRestartCopyWith(ScoreEventRestart value, $Res Function(ScoreEventRestart) then) =
+      _$ScoreEventRestartCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ScoreEventRestartCopyWithImpl<$Res> extends _$ScoreEventCopyWithImpl<$Res>
+    implements $ScoreEventRestartCopyWith<$Res> {
+  _$ScoreEventRestartCopyWithImpl(ScoreEventRestart _value, $Res Function(ScoreEventRestart) _then)
+      : super(_value, (v) => _then(v as ScoreEventRestart));
+
+  @override
+  ScoreEventRestart get _value => super._value as ScoreEventRestart;
+}
+
+/// @nodoc
+
+class _$ScoreEventRestart implements ScoreEventRestart {
+  const _$ScoreEventRestart();
+
+  @override
+  String toString() {
+    return 'ScoreEvent.restart()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ScoreEventRestart);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() shoot,
+    required TResult Function() kill,
+    required TResult Function() dead,
+    required TResult Function() restart,
+  }) {
+    return restart();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? shoot,
+    TResult Function()? kill,
+    TResult Function()? dead,
+    TResult Function()? restart,
+  }) {
+    return restart?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? shoot,
+    TResult Function()? kill,
+    TResult Function()? dead,
+    TResult Function()? restart,
+    required TResult orElse(),
+  }) {
+    if (restart != null) {
+      return restart();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ScoreEventShoot value) shoot,
+    required TResult Function(ScoreEventKill value) kill,
+    required TResult Function(ScoreEventDead value) dead,
+    required TResult Function(ScoreEventRestart value) restart,
+  }) {
+    return restart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ScoreEventShoot value)? shoot,
+    TResult Function(ScoreEventKill value)? kill,
+    TResult Function(ScoreEventDead value)? dead,
+    TResult Function(ScoreEventRestart value)? restart,
+  }) {
+    return restart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ScoreEventShoot value)? shoot,
+    TResult Function(ScoreEventKill value)? kill,
+    TResult Function(ScoreEventDead value)? dead,
+    TResult Function(ScoreEventRestart value)? restart,
+    required TResult orElse(),
+  }) {
+    if (restart != null) {
+      return restart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ScoreEventRestart implements ScoreEvent {
+  const factory ScoreEventRestart() = _$ScoreEventRestart;
 }

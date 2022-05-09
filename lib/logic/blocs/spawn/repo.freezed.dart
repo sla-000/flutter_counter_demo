@@ -34,15 +34,12 @@ mixin _$SpawnModel {
   int get time => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SpawnModelCopyWith<SpawnModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SpawnModelCopyWith<SpawnModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SpawnModelCopyWith<$Res> {
-  factory $SpawnModelCopyWith(
-          SpawnModel value, $Res Function(SpawnModel) then) =
-      _$SpawnModelCopyWithImpl<$Res>;
+  factory $SpawnModelCopyWith(SpawnModel value, $Res Function(SpawnModel) then) = _$SpawnModelCopyWithImpl<$Res>;
   $Res call({int count, int time});
 }
 
@@ -74,18 +71,14 @@ class _$SpawnModelCopyWithImpl<$Res> implements $SpawnModelCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$SpawnModelCopyWith<$Res> implements $SpawnModelCopyWith<$Res> {
-  factory _$SpawnModelCopyWith(
-          _SpawnModel value, $Res Function(_SpawnModel) then) =
-      __$SpawnModelCopyWithImpl<$Res>;
+  factory _$SpawnModelCopyWith(_SpawnModel value, $Res Function(_SpawnModel) then) = __$SpawnModelCopyWithImpl<$Res>;
   @override
   $Res call({int count, int time});
 }
 
 /// @nodoc
-class __$SpawnModelCopyWithImpl<$Res> extends _$SpawnModelCopyWithImpl<$Res>
-    implements _$SpawnModelCopyWith<$Res> {
-  __$SpawnModelCopyWithImpl(
-      _SpawnModel _value, $Res Function(_SpawnModel) _then)
+class __$SpawnModelCopyWithImpl<$Res> extends _$SpawnModelCopyWithImpl<$Res> implements _$SpawnModelCopyWith<$Res> {
+  __$SpawnModelCopyWithImpl(_SpawnModel _value, $Res Function(_SpawnModel) _then)
       : super(_value, (v) => _then(v as _SpawnModel));
 
   @override
@@ -130,22 +123,17 @@ class _$_SpawnModel implements _SpawnModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _SpawnModel &&
-            (identical(other.count, count) ||
-                const DeepCollectionEquality().equals(other.count, count)) &&
-            (identical(other.time, time) ||
-                const DeepCollectionEquality().equals(other.time, time)));
+            (identical(other.count, count) || const DeepCollectionEquality().equals(other.count, count)) &&
+            (identical(other.time, time) || const DeepCollectionEquality().equals(other.time, time)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(count) ^
-      const DeepCollectionEquality().hash(time);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(count) ^ const DeepCollectionEquality().hash(time);
 
   @JsonKey(ignore: true)
   @override
-  _$SpawnModelCopyWith<_SpawnModel> get copyWith =>
-      __$SpawnModelCopyWithImpl<_SpawnModel>(this, _$identity);
+  _$SpawnModelCopyWith<_SpawnModel> get copyWith => __$SpawnModelCopyWithImpl<_SpawnModel>(this, _$identity);
 }
 
 abstract class _SpawnModel implements SpawnModel {
@@ -157,6 +145,5 @@ abstract class _SpawnModel implements SpawnModel {
   int get time => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SpawnModelCopyWith<_SpawnModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$SpawnModelCopyWith<_SpawnModel> get copyWith => throw _privateConstructorUsedError;
 }

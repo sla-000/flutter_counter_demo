@@ -99,9 +99,7 @@ mixin _$SceneEvent {
 
 /// @nodoc
 abstract class $SceneEventCopyWith<$Res> {
-  factory $SceneEventCopyWith(
-          SceneEvent value, $Res Function(SceneEvent) then) =
-      _$SceneEventCopyWithImpl<$Res>;
+  factory $SceneEventCopyWith(SceneEvent value, $Res Function(SceneEvent) then) = _$SceneEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -115,8 +113,7 @@ class _$SceneEventCopyWithImpl<$Res> implements $SceneEventCopyWith<$Res> {
 
 /// @nodoc
 abstract class $SceneEventInitCopyWith<$Res> {
-  factory $SceneEventInitCopyWith(
-          SceneEventInit value, $Res Function(SceneEventInit) then) =
+  factory $SceneEventInitCopyWith(SceneEventInit value, $Res Function(SceneEventInit) then) =
       _$SceneEventInitCopyWithImpl<$Res>;
   $Res call({Vector size});
 }
@@ -124,8 +121,7 @@ abstract class $SceneEventInitCopyWith<$Res> {
 /// @nodoc
 class _$SceneEventInitCopyWithImpl<$Res> extends _$SceneEventCopyWithImpl<$Res>
     implements $SceneEventInitCopyWith<$Res> {
-  _$SceneEventInitCopyWithImpl(
-      SceneEventInit _value, $Res Function(SceneEventInit) _then)
+  _$SceneEventInitCopyWithImpl(SceneEventInit _value, $Res Function(SceneEventInit) _then)
       : super(_value, (v) => _then(v as SceneEventInit));
 
   @override
@@ -161,13 +157,11 @@ class _$SceneEventInit implements SceneEventInit {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is SceneEventInit &&
-            (identical(other.size, size) ||
-                const DeepCollectionEquality().equals(other.size, size)));
+            (identical(other.size, size) || const DeepCollectionEquality().equals(other.size, size)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(size);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(size);
 
   @JsonKey(ignore: true)
   @override
@@ -254,24 +248,20 @@ abstract class SceneEventInit implements SceneEvent {
 
   Vector get size => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SceneEventInitCopyWith<SceneEventInit> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SceneEventInitCopyWith<SceneEventInit> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SceneEventResizeCopyWith<$Res> {
-  factory $SceneEventResizeCopyWith(
-          SceneEventResize value, $Res Function(SceneEventResize) then) =
+  factory $SceneEventResizeCopyWith(SceneEventResize value, $Res Function(SceneEventResize) then) =
       _$SceneEventResizeCopyWithImpl<$Res>;
   $Res call({Vector size});
 }
 
 /// @nodoc
-class _$SceneEventResizeCopyWithImpl<$Res>
-    extends _$SceneEventCopyWithImpl<$Res>
+class _$SceneEventResizeCopyWithImpl<$Res> extends _$SceneEventCopyWithImpl<$Res>
     implements $SceneEventResizeCopyWith<$Res> {
-  _$SceneEventResizeCopyWithImpl(
-      SceneEventResize _value, $Res Function(SceneEventResize) _then)
+  _$SceneEventResizeCopyWithImpl(SceneEventResize _value, $Res Function(SceneEventResize) _then)
       : super(_value, (v) => _then(v as SceneEventResize));
 
   @override
@@ -307,13 +297,11 @@ class _$SceneEventResize implements SceneEventResize {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is SceneEventResize &&
-            (identical(other.size, size) ||
-                const DeepCollectionEquality().equals(other.size, size)));
+            (identical(other.size, size) || const DeepCollectionEquality().equals(other.size, size)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(size);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(size);
 
   @JsonKey(ignore: true)
   @override
@@ -400,23 +388,19 @@ abstract class SceneEventResize implements SceneEvent {
 
   Vector get size => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SceneEventResizeCopyWith<SceneEventResize> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SceneEventResizeCopyWith<SceneEventResize> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SceneEventTapButtonCopyWith<$Res> {
-  factory $SceneEventTapButtonCopyWith(
-          SceneEventTapButton value, $Res Function(SceneEventTapButton) then) =
+  factory $SceneEventTapButtonCopyWith(SceneEventTapButton value, $Res Function(SceneEventTapButton) then) =
       _$SceneEventTapButtonCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$SceneEventTapButtonCopyWithImpl<$Res>
-    extends _$SceneEventCopyWithImpl<$Res>
+class _$SceneEventTapButtonCopyWithImpl<$Res> extends _$SceneEventCopyWithImpl<$Res>
     implements $SceneEventTapButtonCopyWith<$Res> {
-  _$SceneEventTapButtonCopyWithImpl(
-      SceneEventTapButton _value, $Res Function(SceneEventTapButton) _then)
+  _$SceneEventTapButtonCopyWithImpl(SceneEventTapButton _value, $Res Function(SceneEventTapButton) _then)
       : super(_value, (v) => _then(v as SceneEventTapButton));
 
   @override
@@ -522,18 +506,15 @@ abstract class SceneEventTapButton implements SceneEvent {
 
 /// @nodoc
 abstract class $SceneEventUpdateCopyWith<$Res> {
-  factory $SceneEventUpdateCopyWith(
-          SceneEventUpdate value, $Res Function(SceneEventUpdate) then) =
+  factory $SceneEventUpdateCopyWith(SceneEventUpdate value, $Res Function(SceneEventUpdate) then) =
       _$SceneEventUpdateCopyWithImpl<$Res>;
   $Res call({double delta});
 }
 
 /// @nodoc
-class _$SceneEventUpdateCopyWithImpl<$Res>
-    extends _$SceneEventCopyWithImpl<$Res>
+class _$SceneEventUpdateCopyWithImpl<$Res> extends _$SceneEventCopyWithImpl<$Res>
     implements $SceneEventUpdateCopyWith<$Res> {
-  _$SceneEventUpdateCopyWithImpl(
-      SceneEventUpdate _value, $Res Function(SceneEventUpdate) _then)
+  _$SceneEventUpdateCopyWithImpl(SceneEventUpdate _value, $Res Function(SceneEventUpdate) _then)
       : super(_value, (v) => _then(v as SceneEventUpdate));
 
   @override
@@ -569,13 +550,11 @@ class _$SceneEventUpdate implements SceneEventUpdate {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is SceneEventUpdate &&
-            (identical(other.delta, delta) ||
-                const DeepCollectionEquality().equals(other.delta, delta)));
+            (identical(other.delta, delta) || const DeepCollectionEquality().equals(other.delta, delta)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(delta);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(delta);
 
   @JsonKey(ignore: true)
   @override
@@ -662,6 +641,5 @@ abstract class SceneEventUpdate implements SceneEvent {
 
   double get delta => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SceneEventUpdateCopyWith<SceneEventUpdate> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SceneEventUpdateCopyWith<SceneEventUpdate> get copyWith => throw _privateConstructorUsedError;
 }

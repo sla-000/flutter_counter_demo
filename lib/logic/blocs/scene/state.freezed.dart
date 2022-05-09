@@ -42,20 +42,13 @@ mixin _$SceneState {
   List<Bomb> get bombs => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SceneStateCopyWith<SceneState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SceneStateCopyWith<SceneState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SceneStateCopyWith<$Res> {
-  factory $SceneStateCopyWith(
-          SceneState value, $Res Function(SceneState) then) =
-      _$SceneStateCopyWithImpl<$Res>;
-  $Res call(
-      {Vector size,
-      Protagonist protagonist,
-      List<Bullet> bullets,
-      List<Bomb> bombs});
+  factory $SceneStateCopyWith(SceneState value, $Res Function(SceneState) then) = _$SceneStateCopyWithImpl<$Res>;
+  $Res call({Vector size, Protagonist protagonist, List<Bullet> bullets, List<Bomb> bombs});
 }
 
 /// @nodoc
@@ -96,22 +89,14 @@ class _$SceneStateCopyWithImpl<$Res> implements $SceneStateCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$SceneStateCopyWith<$Res> implements $SceneStateCopyWith<$Res> {
-  factory _$SceneStateCopyWith(
-          _SceneState value, $Res Function(_SceneState) then) =
-      __$SceneStateCopyWithImpl<$Res>;
+  factory _$SceneStateCopyWith(_SceneState value, $Res Function(_SceneState) then) = __$SceneStateCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {Vector size,
-      Protagonist protagonist,
-      List<Bullet> bullets,
-      List<Bomb> bombs});
+  $Res call({Vector size, Protagonist protagonist, List<Bullet> bullets, List<Bomb> bombs});
 }
 
 /// @nodoc
-class __$SceneStateCopyWithImpl<$Res> extends _$SceneStateCopyWithImpl<$Res>
-    implements _$SceneStateCopyWith<$Res> {
-  __$SceneStateCopyWithImpl(
-      _SceneState _value, $Res Function(_SceneState) _then)
+class __$SceneStateCopyWithImpl<$Res> extends _$SceneStateCopyWithImpl<$Res> implements _$SceneStateCopyWith<$Res> {
+  __$SceneStateCopyWithImpl(_SceneState _value, $Res Function(_SceneState) _then)
       : super(_value, (v) => _then(v as _SceneState));
 
   @override
@@ -148,11 +133,7 @@ class __$SceneStateCopyWithImpl<$Res> extends _$SceneStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SceneState implements _SceneState {
-  const _$_SceneState(
-      {required this.size,
-      required this.protagonist,
-      required this.bullets,
-      required this.bombs});
+  const _$_SceneState({required this.size, required this.protagonist, required this.bullets, required this.bombs});
 
   @override
   final Vector size;
@@ -172,16 +153,11 @@ class _$_SceneState implements _SceneState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _SceneState &&
-            (identical(other.size, size) ||
-                const DeepCollectionEquality().equals(other.size, size)) &&
+            (identical(other.size, size) || const DeepCollectionEquality().equals(other.size, size)) &&
             (identical(other.protagonist, protagonist) ||
-                const DeepCollectionEquality()
-                    .equals(other.protagonist, protagonist)) &&
-            (identical(other.bullets, bullets) ||
-                const DeepCollectionEquality()
-                    .equals(other.bullets, bullets)) &&
-            (identical(other.bombs, bombs) ||
-                const DeepCollectionEquality().equals(other.bombs, bombs)));
+                const DeepCollectionEquality().equals(other.protagonist, protagonist)) &&
+            (identical(other.bullets, bullets) || const DeepCollectionEquality().equals(other.bullets, bullets)) &&
+            (identical(other.bombs, bombs) || const DeepCollectionEquality().equals(other.bombs, bombs)));
   }
 
   @override
@@ -194,8 +170,7 @@ class _$_SceneState implements _SceneState {
 
   @JsonKey(ignore: true)
   @override
-  _$SceneStateCopyWith<_SceneState> get copyWith =>
-      __$SceneStateCopyWithImpl<_SceneState>(this, _$identity);
+  _$SceneStateCopyWith<_SceneState> get copyWith => __$SceneStateCopyWithImpl<_SceneState>(this, _$identity);
 }
 
 abstract class _SceneState implements SceneState {
@@ -215,6 +190,5 @@ abstract class _SceneState implements SceneState {
   List<Bomb> get bombs => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SceneStateCopyWith<_SceneState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$SceneStateCopyWith<_SceneState> get copyWith => throw _privateConstructorUsedError;
 }
