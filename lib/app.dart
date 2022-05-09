@@ -50,6 +50,8 @@ class _AppState extends State<App> {
         child: MaterialApp(
           onGenerateTitle: (BuildContext context) => context.l10n.flutterCounterDemo,
           theme: defaultTheme(context),
+          darkTheme: darkTheme(context),
+          themeMode: ThemeMode.dark,
           home: const HomePage(),
           localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
             AppLocalizations.delegate,

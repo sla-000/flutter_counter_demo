@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bullets/bloc.dart';
@@ -18,7 +17,6 @@ import 'package:flutter_counter_shooter/logic/blocs/waves/repo.dart';
 import 'package:flutter_counter_shooter/logic/repo/records/firebase/firebase.dart';
 import 'package:flutter_counter_shooter/logic/repo/repo.dart';
 import 'package:flutter_counter_shooter/logic/repo/scene/scene.dart';
-import 'package:flutter_counter_shooter/theme/default_theme.dart';
 import 'package:get_it/get_it.dart';
 
 final GetIt di = GetIt.I;
@@ -106,10 +104,6 @@ void diInit() {
   di.registerLazySingleton<RecordsBloc>(
     () => RecordsBloc(recordsDbRepo: di.get<RecordsDbRepo>()),
     dispose: (RecordsBloc bloc) => bloc.close(),
-  );
-
-  di.registerFactoryParam<ThemeData, BuildContext, void>(
-    (BuildContext context, _) => defaultTheme(context),
   );
 }
 
