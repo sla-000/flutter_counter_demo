@@ -9,6 +9,8 @@ import 'package:flutter_counter_shooter/logic/blocs/frame/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/scene.dart';
+import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/score/event.dart';
 import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
 import 'package:flutter_counter_shooter/ui/app_bar/shifted_app_bar.dart';
 import 'package:flutter_counter_shooter/ui/game_view.dart';
@@ -24,7 +26,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Size _lastScreenSize = Size.square(0);
+  Size _lastScreenSize = const Size.square(0);
+  bool _isInited = false;
 
   @override
   void initState() {
@@ -75,17 +78,23 @@ class _HomePageState extends State<HomePage> {
                     if (screenSize != _lastScreenSize) {
                       _lastScreenSize = screenSize;
 
+                      final Vector size = Vector(x: screenSize.width, y: screenSize.height);
+
                       di.get<SceneBloc>().add(
-                            SceneEvent.resize(
-                              Vector(x: screenSize.width, y: screenSize.height),
-                            ),
+                            _isInited ? SceneEvent.resize(size) : SceneEvent.init(size),
                           );
+
+                      _isInited = true;
                     }
 
                     return GameView(
-                      onRestart: () => SceneEvent.init(
-                        Vector(x: screenSize.width, y: screenSize.height),
-                      ),
+                      onRestart: () {
+                        di<SceneBloc>().add(SceneEvent.init(
+                          Vector(x: screenSize.width, y: screenSize.height),
+                        ));
+
+                        di<ScoreBloc>().add(const ScoreEvent.restart());
+                      },
                     );
                   },
                 ),

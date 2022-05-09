@@ -10,6 +10,10 @@ import 'package:flutter_counter_shooter/logic/blocs/bullets/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/protagonist/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/protagonist/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/repo.dart';
+import 'package:flutter_counter_shooter/logic/blocs/spawn/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/spawn/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/waves/event.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/actor_moving.dart';
 import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
 import 'package:flutter_counter_shooter/logic/game/enemy/bomb.dart';
@@ -64,6 +68,9 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
     di<BulletsBloc>().add(const BulletsEvent.init());
 
     di<BombsBloc>().add(const BombsEvent.init());
+
+    di<SpawnBloc>().add(const SpawnEvent.init());
+    di<WavesBloc>().add(const WavesEvent.init());
 
     emit(state.copyWith(
       size: event.size,

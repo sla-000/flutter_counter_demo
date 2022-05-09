@@ -3,10 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/state.dart';
-import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
-import 'package:flutter_counter_shooter/logic/blocs/score/event.dart';
-import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
-import 'package:flutter_counter_shooter/logic/blocs/waves/event.dart';
 import 'package:flutter_counter_shooter/theme/durations.dart';
 import 'package:flutter_counter_shooter/ui/common/screen_title.dart';
 import 'package:flutter_counter_shooter/ui/game/records/name/name_input.dart';
@@ -78,9 +74,7 @@ class RestartGame extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Text(context.l10n.restart),
       ),
-      onPressed: () async {
-        di<WavesBloc>().add(const WavesEvent.init());
-        di<ScoreBloc>().add(const ScoreEvent.restart());
+      onPressed: () {
         onRestart();
       },
     );
