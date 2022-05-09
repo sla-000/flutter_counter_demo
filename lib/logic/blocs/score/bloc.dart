@@ -11,6 +11,7 @@ class ScoreBloc extends Bloc<ScoreEvent, ScoreState> {
     on<ScoreEventShoot>(_onShoot);
     on<ScoreEventKill>(_onKill);
     on<ScoreEventDead>(_onDead);
+    on<ScoreEventRestart>(_onRestart);
   }
 
   final ScoreRepo scoreRepo;
@@ -45,4 +46,11 @@ class ScoreBloc extends Bloc<ScoreEvent, ScoreState> {
       ));
     }
   }
+
+  void _onRestart(ScoreEventRestart _, Emitter<ScoreState> emit) => emit(
+        state.copyWith(
+          gameState: GameState.started,
+          score: 0,
+        ),
+      );
 }

@@ -49,34 +49,6 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  // BlocBuilder<FrameBloc, FrameState>(
-  //       bloc: di.get<FrameBloc>(),
-  //       builder: (BuildContext context, FrameState frameState) {
-  //         di.get<SceneBloc>().add(SceneEvent.update(frameState.delta));
-  //         di.get<FrameBloc>().add(const FrameEvent.update());
-  //
-  //         return Stack(
-  //           children: <Widget>[
-  //             if (kDebugMode)
-  //               Positioned(
-  //                 left: 0,
-  //                 top: 0,
-  //                 child: Text(
-  //                   frameState.fps.toInt().toString(),
-  //                   style: Theme.of(context).textTheme.bodyText2?.copyWith(
-  //                         color: Theme.of(context).textTheme.bodyText2?.color?.withAlpha(30),
-  //                       ),
-  //                 ),
-  //               ),
-  //             GameElements(
-  //               delta: frameState.delta,
-  //             ),
-  //             const RecordsView(),
-  //           ],
-  //         );
-  //       },
-  //     );
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,7 +82,11 @@ class _HomePageState extends State<HomePage> {
                           );
                     }
 
-                    return const GameView();
+                    return GameView(
+                      onRestart: () => SceneEvent.init(
+                        Vector(x: screenSize.width, y: screenSize.height),
+                      ),
+                    );
                   },
                 ),
               ),

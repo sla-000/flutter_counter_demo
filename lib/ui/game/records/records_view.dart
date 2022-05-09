@@ -1,56 +1,33 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
-import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
+import 'package:flutter_counter_shooter/logic/blocs/score/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/waves/event.dart';
 import 'package:flutter_counter_shooter/theme/durations.dart';
 import 'package:flutter_counter_shooter/ui/common/screen_title.dart';
 import 'package:flutter_counter_shooter/ui/game/records/name/name_input.dart';
 import 'package:flutter_counter_shooter/ui/game/records/table/records_table_or_loader.dart';
 import 'package:flutter_counter_shooter/ui/game/records/your_score.dart';
+import 'package:flutter_counter_shooter/utils/context_extensions.dart';
 
 class RecordsView extends StatelessWidget {
   const RecordsView({
     Key? key,
+    required this.onRestart,
   }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<ScoreBloc, ScoreState>(
-      bloc: di.get<ScoreBloc>(),
-      buildWhen: (ScoreState previous, ScoreState current) => current.gameState != previous.gameState,
-      builder: (_, ScoreState state) {
-        if (state.isFinished) {
-          return const Padding(
-            padding: EdgeInsets.only(top: 50),
-            child: _RecordsView(),
-          );
-        }
-
-        return const SizedBox.shrink();
-      },
-    );
-  }
-}
-
-class _RecordsView extends StatelessWidget {
-  const _RecordsView({
-    Key? key,
-  }) : super(key: key);
+  final void Function() onRestart;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<RecordsBloc>(
       create: (_) => di.get<RecordsBloc>(),
-      child: Center(
-        child: SizedBox(
-          width: min(MediaQuery.of(context).size.width * 0.66, 400),
-          child: const _AddOrShowRecord(),
-        ),
+      child: _AddOrShowRecord(
+        onRestart: onRestart,
       ),
     );
   }
@@ -59,24 +36,53 @@ class _RecordsView extends StatelessWidget {
 class _AddOrShowRecord extends StatelessWidget {
   const _AddOrShowRecord({
     Key? key,
+    required this.onRestart,
   }) : super(key: key);
+
+  final void Function() onRestart;
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: const <Widget>[
+      children: <Widget>[
         ScreenTitle(
-          text: 'Records table',
+          text: context.l10n.recordsTable,
         ),
-        SizedBox(height: 16),
-        YourScore(),
-        SizedBox(height: 16),
-        _NameInputOrNothing(),
-        SizedBox(height: 8),
-        Expanded(
+        const SizedBox(height: 16),
+        const YourScore(),
+        const SizedBox(height: 16),
+        RestartGame(onRestart: onRestart),
+        const SizedBox(height: 16),
+        const _NameInputOrNothing(),
+        const SizedBox(height: 8),
+        const Expanded(
           child: RecordsTableOrLoader(),
         ),
       ],
+    );
+  }
+}
+
+class RestartGame extends StatelessWidget {
+  const RestartGame({
+    Key? key,
+    required this.onRestart,
+  }) : super(key: key);
+
+  final void Function() onRestart;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(context.l10n.restart),
+      ),
+      onPressed: () async {
+        di<WavesBloc>().add(const WavesEvent.init());
+        di<ScoreBloc>().add(const ScoreEvent.restart());
+        onRestart();
+      },
     );
   }
 }

@@ -12,7 +12,10 @@ import 'package:flutter_counter_shooter/ui/you_pushed_the_button_text.dart';
 class GameView extends StatefulWidget {
   const GameView({
     Key? key,
+    required this.onRestart,
   }) : super(key: key);
+
+  final void Function() onRestart;
 
   @override
   _GameViewState createState() => _GameViewState();
@@ -73,7 +76,9 @@ class _GameViewState extends State<GameView> with TickerProviderStateMixin {
               ),
             ),
           ),
-          const GameField(),
+          GameField(
+            onRestart: widget.onRestart,
+          ),
           AlignTransition(
             alignment: _alignmentAnimation,
             child: const Padding(

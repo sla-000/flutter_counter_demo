@@ -7,13 +7,18 @@ import 'package:flutter_counter_shooter/logic/blocs/frame/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/frame/state.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/scene.dart';
+import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
 import 'package:flutter_counter_shooter/ui/game/game_elements.dart';
 import 'package:flutter_counter_shooter/ui/game/records/records_view.dart';
 
 class GameField extends StatelessWidget {
   const GameField({
     Key? key,
+    required this.onRestart,
   }) : super(key: key);
+
+  final void Function() onRestart;
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +28,20 @@ class GameField extends StatelessWidget {
         di.get<SceneBloc>().add(SceneEvent.update(frameState.delta));
         di.get<FrameBloc>().add(const FrameEvent.update());
 
-        return Stack(
-          children: <Widget>[
-            GameElements(
+        return BlocBuilder<ScoreBloc, ScoreState>(
+          bloc: di.get<ScoreBloc>(),
+          buildWhen: (ScoreState previous, ScoreState current) => current.gameState != previous.gameState,
+          builder: (BuildContext context, ScoreState scoreState) {
+            if (scoreState.gameState == GameState.finished) {
+              return RecordsView(
+                onRestart: onRestart,
+              );
+            }
+
+            return GameElements(
               delta: frameState.delta,
-            ),
-            const RecordsView(),
-          ],
+            );
+          },
         );
       },
     );
