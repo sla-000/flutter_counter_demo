@@ -25,12 +25,6 @@ class GameField extends StatelessWidget {
 
         return Stack(
           children: <Widget>[
-            if (kDebugMode)
-              Positioned(
-                left: 0,
-                top: 0,
-                child: Text(frameState.fps.toInt().toString()),
-              ),
             GameElements(
               delta: frameState.delta,
             ),
