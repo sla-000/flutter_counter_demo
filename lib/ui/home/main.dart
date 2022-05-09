@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                 constraints: const BoxConstraints(
                   minWidth: 300,
                   maxWidth: 600,
-                  minHeight: 500,
+                  minHeight: 400,
                   maxHeight: 800,
                 ),
                 child: LayoutBuilder(
