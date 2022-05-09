@@ -94,9 +94,6 @@ void diInit() {
 
   di.registerLazySingleton<SceneBloc>(
     () => SceneBloc(
-      bombsBloc: di.get<BombsBloc>(),
-      bulletsBloc: di.get<BulletsBloc>(),
-      protagonistBloc: di.get<ProtagonistBloc>(),
       gameScoreRepo: di.get<SceneScoreRepo>(),
       sceneWavesRepo: di.get<SceneWavesRepo>(),
       sceneSpawnRepo: di.get<SceneSpawnRepo>(),

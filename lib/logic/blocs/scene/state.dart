@@ -10,8 +10,5 @@ part 'state.freezed.dart';
 class SceneState with _$SceneState {
   const factory SceneState({
     required Vector size,
-    required Protagonist protagonist,
-    required List<Bullet> bullets,
-    required List<Bomb> bombs,
   }) = _SceneState;
 }
