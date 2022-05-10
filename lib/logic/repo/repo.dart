@@ -61,8 +61,8 @@ class ScoreRepoImpl implements ScoreRepo {
 
   @override
   void saveRecord(int score) {
-    recordsBloc.add(const RecordsEvent.fetch());
     recordsBloc.add(RecordsEvent.setRecord(score));
+    recordsBloc.add(const RecordsEvent.fetch());
   }
 }
 
