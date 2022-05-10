@@ -17,6 +17,8 @@ class Bullet extends ActorMoving implements Updatable {
           size: size ?? Vector.square(size: 20),
         );
 
+  double animation = 0;
+
   @override
   Bullet copyWith({
     required Vector position,
@@ -28,6 +30,24 @@ class Bullet extends ActorMoving implements Updatable {
         rotationSpeed: rotationSpeed,
         size: size,
       );
+
+  @override
+  void update(double delta) {
+    super.update(delta);
+
+    _updateAnimation(delta);
+  }
+
+  void _updateAnimation(double delta) {
+    double calcAnimation = animation;
+
+    calcAnimation += delta * 2;
+    while (calcAnimation > 1) {
+      calcAnimation -= 1;
+    }
+
+    animation = calcAnimation;
+  }
 
   @override
   String toString() {
