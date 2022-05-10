@@ -14,6 +14,8 @@ class Bomb extends ActorMoving implements Updatable {
           size: Vector.square(size: 50),
         );
 
+  double animation = 0;
+
   @override
   Bomb copyWith({
     required Vector position,
@@ -23,6 +25,24 @@ class Bomb extends ActorMoving implements Updatable {
         angle: angle,
         linearSpeed: linearSpeed,
       );
+
+  @override
+  void update(double delta) {
+    super.update(delta);
+
+    _updateAnimation(delta);
+  }
+
+  void _updateAnimation(double delta) {
+    double calcAnimation = animation;
+
+    calcAnimation += delta * 1.2;
+    while (calcAnimation > 1) {
+      calcAnimation -= 1;
+    }
+
+    animation = calcAnimation;
+  }
 
   @override
   String toString() {
