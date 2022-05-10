@@ -20,25 +20,6 @@ class RecordsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<RecordsBloc>(
-      create: (_) => di.get<RecordsBloc>(),
-      child: _AddOrShowRecord(
-        onRestart: onRestart,
-      ),
-    );
-  }
-}
-
-class _AddOrShowRecord extends StatelessWidget {
-  const _AddOrShowRecord({
-    Key? key,
-    required this.onRestart,
-  }) : super(key: key);
-
-  final void Function() onRestart;
-
-  @override
-  Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         ScreenTitle(
@@ -89,6 +70,7 @@ class _NameInputOrNothing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<RecordsBloc, RecordsState>(
+      bloc: di<RecordsBloc>(),
       buildWhen: (RecordsState previous, RecordsState current) => current.showNameInput != previous.showNameInput,
       builder: (_, RecordsState recordsState) {
         return AnimatedCrossFade(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/state.dart';
@@ -22,6 +23,7 @@ class _NameInputState extends State<NameInput> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<RecordsBloc, RecordsState>(
+      bloc: di<RecordsBloc>(),
       builder: (BuildContext context, RecordsState recordsState) {
         return Column(
           mainAxisSize: MainAxisSize.min,
@@ -33,7 +35,7 @@ class _NameInputState extends State<NameInput> {
                     name: recordsState.name,
                     onSubmitted: (String name) {
                       if (name.isNotEmpty) {
-                        context.read<RecordsBloc>().add(RecordsEvent.setName(name));
+                        di<RecordsBloc>().add(RecordsEvent.setName(name));
                       }
                     },
                     onChanged: (String name) => _currentName = name,
@@ -49,7 +51,7 @@ class _NameInputState extends State<NameInput> {
                     ),
                     onPressed: () {
                       if (_currentName.isNotEmpty) {
-                        context.read<RecordsBloc>().add(RecordsEvent.setName(_currentName));
+                        di<RecordsBloc>().add(RecordsEvent.setName(_currentName));
                       }
                     },
                   ),
@@ -60,7 +62,7 @@ class _NameInputState extends State<NameInput> {
             SavedNames(
               names: recordsState.lastNames,
               onSelected: (String name) {
-                context.read<RecordsBloc>().add(RecordsEvent.setName(name));
+                di<RecordsBloc>().add(RecordsEvent.setName(name));
               },
             ),
           ],

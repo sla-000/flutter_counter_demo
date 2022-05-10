@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/state.dart';
 import 'package:flutter_counter_shooter/theme/durations.dart';
@@ -13,6 +14,7 @@ class RecordsTableOrLoader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<RecordsBloc, RecordsState>(
+      bloc: di<RecordsBloc>(),
       buildWhen: (RecordsState previous, RecordsState current) => current.waitNetwork != previous.waitNetwork,
       builder: (_, RecordsState recordsState) {
         return AnimatedSwitcher(

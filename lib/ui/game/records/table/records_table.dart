@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/state.dart';
@@ -29,6 +30,7 @@ class RecordsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<RecordsBloc, RecordsState>(
+      bloc: di<RecordsBloc>(),
       buildWhen: (RecordsState previous, RecordsState current) => current.records != previous.records,
       builder: (_, RecordsState recordsState) {
         return Column(
