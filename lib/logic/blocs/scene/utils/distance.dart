@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter_counter_shooter/logic/game/actor/actor_moving.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/actor_state.dart';
 import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
@@ -23,7 +25,11 @@ int checkAllCollisions({
     }
 
     for (final Bullet bullet in bullets) {
-      if (actorsAreClose(bullet, bomb)) {
+      if (actorsAreClose(
+        bullet,
+        bomb,
+        distance: max(bullet.size.x / 2, bomb.size.x / 2),
+      )) {
         delBombs.add(bomb);
         delBullets.add(bullet);
       }
