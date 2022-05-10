@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meta/meta.dart';
 
 import 'event.dart';
 import 'repo.dart';
@@ -18,6 +19,7 @@ class RecordsBloc extends Bloc<RecordsEvent, RecordsState> {
     on<RecordsEventSetName>(_onSetName);
   }
 
+  @protected
   final RecordsDbRepo recordsDbRepo;
 
   Future<void> _onFetch(RecordsEventFetch event, Emitter<RecordsState> emit) async {

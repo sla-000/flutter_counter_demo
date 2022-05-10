@@ -10,12 +10,14 @@ import 'package:flutter_counter_shooter/logic/blocs/spawn/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/spawn/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/event.dart';
+import 'package:meta/meta.dart';
 
 class SceneScoreRepoImpl implements SceneScoreRepo {
   SceneScoreRepoImpl({
     required this.gameScoreBloc,
   });
 
+  @protected
   final ScoreBloc gameScoreBloc;
 
   @override
@@ -41,6 +43,7 @@ class SceneWavesRepoImpl implements SceneWavesRepo {
     required this.wavesBloc,
   });
 
+  @protected
   final WavesBloc wavesBloc;
 
   @override
@@ -52,6 +55,7 @@ class SceneSpawnRepoImpl implements SceneSpawnRepo {
     required this.bombSpawnBloc,
   });
 
+  @protected
   final SpawnBloc bombSpawnBloc;
 
   @override
@@ -66,6 +70,7 @@ class SceneFrameRepoImpl implements SceneFrameRepo {
     required this.frameBloc,
   });
 
+  @protected
   final FrameBloc frameBloc;
 
   @override
