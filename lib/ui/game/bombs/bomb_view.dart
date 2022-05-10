@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_counter_shooter/logic/game/enemy/bomb.dart';
 import 'package:flutter_counter_shooter/ui/common/gradient_icon.dart';
 
-class BombView extends StatelessWidget {
+class BombView extends StatefulWidget {
   const BombView({
     Key? key,
     required this.bomb,
@@ -11,8 +11,24 @@ class BombView extends StatelessWidget {
   final Bomb bomb;
 
   @override
+  State<BombView> createState() => _BombViewState();
+}
+
+class _BombViewState extends State<BombView> with TickerProviderStateMixin {
+  late final AnimationController _animationController = AnimationController(
+    duration: const Duration(milliseconds: 3000),
+    vsync: this,
+  )..forward();
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final bool firstPart = bomb.animation < 0.5;
+    final bool firstPart = widget.bomb.animation < 0.5;
 
     late final List<Color> colors = firstPart
         ? <Color>[
@@ -24,21 +40,24 @@ class BombView extends StatelessWidget {
             Colors.lightBlueAccent.shade400,
           ];
 
-    late final double animation = firstPart ? bomb.animation * 2 : (bomb.animation - 0.5) * 2;
+    late final double animation = firstPart ? widget.bomb.animation * 2 : (widget.bomb.animation - 0.5) * 2;
 
     return Positioned(
-      left: bomb.xOrigin,
-      top: bomb.yOrigin,
-      child: Transform.rotate(
-        angle: bomb.angle,
-        child: GradientIcon(
-          Icons.bolt,
-          size: bomb.size.x,
-          gradient: LinearGradient(
-            colors: colors,
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
-            stops: <double>[0, animation],
+      left: widget.bomb.xOrigin,
+      top: widget.bomb.yOrigin,
+      child: FadeTransition(
+        opacity: _animationController,
+        child: Transform.rotate(
+          angle: widget.bomb.angle,
+          child: GradientIcon(
+            Icons.bolt,
+            size: widget.bomb.size.x,
+            gradient: LinearGradient(
+              colors: colors,
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+              stops: <double>[0, animation],
+            ),
           ),
         ),
       ),
