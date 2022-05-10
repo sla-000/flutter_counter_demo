@@ -35,7 +35,10 @@ class WavesBloc extends Bloc<WavesEvent, WavesState> {
   }
 
   void _onInit(WavesEventInit _, Emitter<WavesState> emit) {
-    emit(state.copyWith(count: 0));
+    emit(state.copyWith(
+      count: 0,
+      waveTime: 0,
+    ));
   }
 
   void _onNextWave(WavesEventNextWave _, Emitter<WavesState> emit) {
