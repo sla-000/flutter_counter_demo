@@ -36,6 +36,12 @@ class Bullet extends ActorMoving implements Updatable {
     super.update(delta);
 
     _updateAnimation(delta);
+
+    _updateSize(delta);
+  }
+
+  void _updateSize(double delta) {
+    size.applyMultiply(1 + delta * 0.1);
   }
 
   void _updateAnimation(double delta) {
