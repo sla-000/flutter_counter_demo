@@ -11,6 +11,7 @@ import 'package:flutter_counter_shooter/logic/blocs/scene/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/scene.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/score/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
 import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
 import 'package:flutter_counter_shooter/ui/app_bar/shifted_app_bar.dart';
 import 'package:flutter_counter_shooter/ui/game_view.dart';
@@ -104,14 +105,37 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          debugTap();
-          di.get<SceneBloc>().add(const SceneEvent.tapButton());
-        },
-        tooltip: context.l10n.increment,
-        child: const Icon(Icons.add),
-      ),
+      floatingActionButton: const ShootButton(),
+    );
+  }
+}
+
+class ShootButton extends StatelessWidget {
+  const ShootButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ScoreBloc, ScoreState>(
+      bloc: di.get<ScoreBloc>(),
+      buildWhen: (ScoreState previous, ScoreState current) => current.gameState != previous.gameState,
+      builder: (BuildContext context, ScoreState scoreState) {
+        return AnimatedCrossFade(
+          firstChild: const SizedBox.shrink(),
+          secondChild: FloatingActionButton(
+            onPressed: () {
+              debugTap();
+              di.get<SceneBloc>().add(const SceneEvent.tapButton());
+            },
+            tooltip: context.l10n.increment,
+            child: const Icon(Icons.add),
+          ),
+          crossFadeState:
+              scoreState.gameState == GameState.finished ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+          duration: const Duration(milliseconds: 200),
+        );
+      },
     );
   }
 }
