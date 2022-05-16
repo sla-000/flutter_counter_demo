@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'event.dart';
@@ -151,7 +152,7 @@ class _$BombsEventInit implements BombsEventInit {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is BombsEventInit);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is BombsEventInit);
   }
 
   @override
@@ -287,12 +288,13 @@ class _$BombsEventSetAll implements BombsEventSetAll {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is BombsEventSetAll &&
-            (identical(other.bombs, bombs) || const DeepCollectionEquality().equals(other.bombs, bombs)));
+        (other.runtimeType == runtimeType &&
+            other is BombsEventSetAll &&
+            const DeepCollectionEquality().equals(other.bombs, bombs));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(bombs);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(bombs));
 
   @JsonKey(ignore: true)
   @override
@@ -383,7 +385,7 @@ class _$BombsEventSetAll implements BombsEventSetAll {
 abstract class BombsEventSetAll implements BombsEvent {
   const factory BombsEventSetAll(Iterable<Bomb> bombs) = _$BombsEventSetAll;
 
-  Iterable<Bomb> get bombs => throw _privateConstructorUsedError;
+  Iterable<Bomb> get bombs;
   @JsonKey(ignore: true)
   $BombsEventSetAllCopyWith<BombsEventSetAll> get copyWith => throw _privateConstructorUsedError;
 }
@@ -432,12 +434,13 @@ class _$BombsEventAdd implements BombsEventAdd {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is BombsEventAdd &&
-            (identical(other.bomb, bomb) || const DeepCollectionEquality().equals(other.bomb, bomb)));
+        (other.runtimeType == runtimeType &&
+            other is BombsEventAdd &&
+            const DeepCollectionEquality().equals(other.bomb, bomb));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(bomb);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(bomb));
 
   @JsonKey(ignore: true)
   @override
@@ -527,7 +530,7 @@ class _$BombsEventAdd implements BombsEventAdd {
 abstract class BombsEventAdd implements BombsEvent {
   const factory BombsEventAdd(Bomb bomb) = _$BombsEventAdd;
 
-  Bomb get bomb => throw _privateConstructorUsedError;
+  Bomb get bomb;
   @JsonKey(ignore: true)
   $BombsEventAddCopyWith<BombsEventAdd> get copyWith => throw _privateConstructorUsedError;
 }
@@ -577,12 +580,13 @@ class _$BombsEventRemoveAll implements BombsEventRemoveAll {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is BombsEventRemoveAll &&
-            (identical(other.bombs, bombs) || const DeepCollectionEquality().equals(other.bombs, bombs)));
+        (other.runtimeType == runtimeType &&
+            other is BombsEventRemoveAll &&
+            const DeepCollectionEquality().equals(other.bombs, bombs));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(bombs);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(bombs));
 
   @JsonKey(ignore: true)
   @override
@@ -673,7 +677,7 @@ class _$BombsEventRemoveAll implements BombsEventRemoveAll {
 abstract class BombsEventRemoveAll implements BombsEvent {
   const factory BombsEventRemoveAll(Iterable<Object> bombs) = _$BombsEventRemoveAll;
 
-  Iterable<Object> get bombs => throw _privateConstructorUsedError;
+  Iterable<Object> get bombs;
   @JsonKey(ignore: true)
   $BombsEventRemoveAllCopyWith<BombsEventRemoveAll> get copyWith => throw _privateConstructorUsedError;
 }
@@ -723,12 +727,13 @@ class _$BombsEventUpdate implements BombsEventUpdate {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is BombsEventUpdate &&
-            (identical(other.delta, delta) || const DeepCollectionEquality().equals(other.delta, delta)));
+        (other.runtimeType == runtimeType &&
+            other is BombsEventUpdate &&
+            const DeepCollectionEquality().equals(other.delta, delta));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(delta);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(delta));
 
   @JsonKey(ignore: true)
   @override
@@ -819,7 +824,7 @@ class _$BombsEventUpdate implements BombsEventUpdate {
 abstract class BombsEventUpdate implements BombsEvent {
   const factory BombsEventUpdate(double delta) = _$BombsEventUpdate;
 
-  double get delta => throw _privateConstructorUsedError;
+  double get delta;
   @JsonKey(ignore: true)
   $BombsEventUpdateCopyWith<BombsEventUpdate> get copyWith => throw _privateConstructorUsedError;
 }

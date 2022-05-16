@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'event.dart';
@@ -125,7 +126,7 @@ class _$WavesEventInit implements WavesEventInit {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is WavesEventInit);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is WavesEventInit);
   }
 
   @override
@@ -232,7 +233,7 @@ class _$WavesEventNextWave implements WavesEventNextWave {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is WavesEventNextWave);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is WavesEventNextWave);
   }
 
   @override
@@ -356,12 +357,13 @@ class _$WavesEventUpdate implements WavesEventUpdate {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is WavesEventUpdate &&
-            (identical(other.delta, delta) || const DeepCollectionEquality().equals(other.delta, delta)));
+        (other.runtimeType == runtimeType &&
+            other is WavesEventUpdate &&
+            const DeepCollectionEquality().equals(other.delta, delta));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(delta);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(delta));
 
   @JsonKey(ignore: true)
   @override
@@ -440,7 +442,7 @@ class _$WavesEventUpdate implements WavesEventUpdate {
 abstract class WavesEventUpdate implements WavesEvent {
   const factory WavesEventUpdate(int delta) = _$WavesEventUpdate;
 
-  int get delta => throw _privateConstructorUsedError;
+  int get delta;
   @JsonKey(ignore: true)
   $WavesEventUpdateCopyWith<WavesEventUpdate> get copyWith => throw _privateConstructorUsedError;
 }

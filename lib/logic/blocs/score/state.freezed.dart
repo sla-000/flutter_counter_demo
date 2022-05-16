@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'state.dart';
@@ -107,10 +108,10 @@ class __$ScoreStateCopyWithImpl<$Res> extends _$ScoreStateCopyWithImpl<$Res> imp
 class _$_ScoreState extends _ScoreState {
   const _$_ScoreState({this.score = 0, this.gameState = GameState.waitStart}) : super._();
 
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int score;
-  @JsonKey(defaultValue: GameState.waitStart)
+  @JsonKey()
   @override
   final GameState gameState;
 
@@ -122,17 +123,15 @@ class _$_ScoreState extends _ScoreState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ScoreState &&
-            (identical(other.score, score) || const DeepCollectionEquality().equals(other.score, score)) &&
-            (identical(other.gameState, gameState) ||
-                const DeepCollectionEquality().equals(other.gameState, gameState)));
+        (other.runtimeType == runtimeType &&
+            other is _ScoreState &&
+            const DeepCollectionEquality().equals(other.score, score) &&
+            const DeepCollectionEquality().equals(other.gameState, gameState));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(score) ^
-      const DeepCollectionEquality().hash(gameState);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(score), const DeepCollectionEquality().hash(gameState));
 
   @JsonKey(ignore: true)
   @override
@@ -144,9 +143,9 @@ abstract class _ScoreState extends ScoreState {
   const _ScoreState._() : super._();
 
   @override
-  int get score => throw _privateConstructorUsedError;
+  int get score;
   @override
-  GameState get gameState => throw _privateConstructorUsedError;
+  GameState get gameState;
   @override
   @JsonKey(ignore: true)
   _$ScoreStateCopyWith<_ScoreState> get copyWith => throw _privateConstructorUsedError;

@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'repo.dart';
@@ -107,10 +108,10 @@ class __$SpawnModelCopyWithImpl<$Res> extends _$SpawnModelCopyWithImpl<$Res> imp
 class _$_SpawnModel implements _SpawnModel {
   const _$_SpawnModel({this.count = 0, this.time = 0});
 
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int count;
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int time;
 
@@ -122,14 +123,15 @@ class _$_SpawnModel implements _SpawnModel {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SpawnModel &&
-            (identical(other.count, count) || const DeepCollectionEquality().equals(other.count, count)) &&
-            (identical(other.time, time) || const DeepCollectionEquality().equals(other.time, time)));
+        (other.runtimeType == runtimeType &&
+            other is _SpawnModel &&
+            const DeepCollectionEquality().equals(other.count, count) &&
+            const DeepCollectionEquality().equals(other.time, time));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(count) ^ const DeepCollectionEquality().hash(time);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(count), const DeepCollectionEquality().hash(time));
 
   @JsonKey(ignore: true)
   @override
@@ -140,9 +142,9 @@ abstract class _SpawnModel implements SpawnModel {
   const factory _SpawnModel({int count, int time}) = _$_SpawnModel;
 
   @override
-  int get count => throw _privateConstructorUsedError;
+  int get count;
   @override
-  int get time => throw _privateConstructorUsedError;
+  int get time;
   @override
   @JsonKey(ignore: true)
   _$SpawnModelCopyWith<_SpawnModel> get copyWith => throw _privateConstructorUsedError;

@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'event.dart';
@@ -138,7 +139,7 @@ class _$RecordsEventFetch implements RecordsEventFetch {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is RecordsEventFetch);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is RecordsEventFetch);
   }
 
   @override
@@ -251,7 +252,7 @@ class _$RecordsEventUpload implements RecordsEventUpload {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is RecordsEventUpload);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is RecordsEventUpload);
   }
 
   @override
@@ -381,12 +382,13 @@ class _$RecordsEventSetRecord implements RecordsEventSetRecord {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is RecordsEventSetRecord &&
-            (identical(other.value, value) || const DeepCollectionEquality().equals(other.value, value)));
+        (other.runtimeType == runtimeType &&
+            other is RecordsEventSetRecord &&
+            const DeepCollectionEquality().equals(other.value, value));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(value);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
 
   @JsonKey(ignore: true)
   @override
@@ -471,7 +473,7 @@ class _$RecordsEventSetRecord implements RecordsEventSetRecord {
 abstract class RecordsEventSetRecord implements RecordsEvent {
   const factory RecordsEventSetRecord(int value) = _$RecordsEventSetRecord;
 
-  int get value => throw _privateConstructorUsedError;
+  int get value;
   @JsonKey(ignore: true)
   $RecordsEventSetRecordCopyWith<RecordsEventSetRecord> get copyWith => throw _privateConstructorUsedError;
 }
@@ -521,12 +523,13 @@ class _$RecordsEventSetName implements RecordsEventSetName {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is RecordsEventSetName &&
-            (identical(other.name, name) || const DeepCollectionEquality().equals(other.name, name)));
+        (other.runtimeType == runtimeType &&
+            other is RecordsEventSetName &&
+            const DeepCollectionEquality().equals(other.name, name));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
 
   @JsonKey(ignore: true)
   @override
@@ -611,7 +614,7 @@ class _$RecordsEventSetName implements RecordsEventSetName {
 abstract class RecordsEventSetName implements RecordsEvent {
   const factory RecordsEventSetName(String name) = _$RecordsEventSetName;
 
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @JsonKey(ignore: true)
   $RecordsEventSetNameCopyWith<RecordsEventSetName> get copyWith => throw _privateConstructorUsedError;
 }

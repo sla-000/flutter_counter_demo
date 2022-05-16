@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'event.dart';
@@ -132,12 +133,13 @@ class _$FrameEventControl implements FrameEventControl {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is FrameEventControl &&
-            (identical(other.enable, enable) || const DeepCollectionEquality().equals(other.enable, enable)));
+        (other.runtimeType == runtimeType &&
+            other is FrameEventControl &&
+            const DeepCollectionEquality().equals(other.enable, enable));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(enable);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(enable));
 
   @JsonKey(ignore: true)
   @override
@@ -210,7 +212,7 @@ class _$FrameEventControl implements FrameEventControl {
 abstract class FrameEventControl implements FrameEvent {
   const factory FrameEventControl(bool enable) = _$FrameEventControl;
 
-  bool get enable => throw _privateConstructorUsedError;
+  bool get enable;
   @JsonKey(ignore: true)
   $FrameEventControlCopyWith<FrameEventControl> get copyWith => throw _privateConstructorUsedError;
 }
@@ -243,7 +245,7 @@ class _$FrameEventUpdate implements FrameEventUpdate {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is FrameEventUpdate);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is FrameEventUpdate);
   }
 
   @override

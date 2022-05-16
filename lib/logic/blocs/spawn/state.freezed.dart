@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'state.dart';
@@ -98,7 +99,7 @@ class __$BombSpawnStateCopyWithImpl<$Res> extends _$BombSpawnStateCopyWithImpl<$
 class _$_BombSpawnState implements _BombSpawnState {
   const _$_BombSpawnState({this.lastSpawn = 0});
 
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int lastSpawn;
 
@@ -110,13 +111,13 @@ class _$_BombSpawnState implements _BombSpawnState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _BombSpawnState &&
-            (identical(other.lastSpawn, lastSpawn) ||
-                const DeepCollectionEquality().equals(other.lastSpawn, lastSpawn)));
+        (other.runtimeType == runtimeType &&
+            other is _BombSpawnState &&
+            const DeepCollectionEquality().equals(other.lastSpawn, lastSpawn));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(lastSpawn);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(lastSpawn));
 
   @JsonKey(ignore: true)
   @override
@@ -128,7 +129,7 @@ abstract class _BombSpawnState implements BombSpawnState {
   const factory _BombSpawnState({int lastSpawn}) = _$_BombSpawnState;
 
   @override
-  int get lastSpawn => throw _privateConstructorUsedError;
+  int get lastSpawn;
   @override
   @JsonKey(ignore: true)
   _$BombSpawnStateCopyWith<_BombSpawnState> get copyWith => throw _privateConstructorUsedError;

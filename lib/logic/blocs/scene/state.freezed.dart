@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'state.dart';
@@ -106,12 +107,13 @@ class _$_SceneState implements _SceneState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SceneState &&
-            (identical(other.size, size) || const DeepCollectionEquality().equals(other.size, size)));
+        (other.runtimeType == runtimeType &&
+            other is _SceneState &&
+            const DeepCollectionEquality().equals(other.size, size));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(size);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(size));
 
   @JsonKey(ignore: true)
   @override
@@ -122,7 +124,7 @@ abstract class _SceneState implements SceneState {
   const factory _SceneState({required Vector size}) = _$_SceneState;
 
   @override
-  Vector get size => throw _privateConstructorUsedError;
+  Vector get size;
   @override
   @JsonKey(ignore: true)
   _$SceneStateCopyWith<_SceneState> get copyWith => throw _privateConstructorUsedError;

@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'score_record.dart';
@@ -34,7 +35,7 @@ class _$ScoreRecordTearOff {
     );
   }
 
-  ScoreRecord fromJson(Map<String, Object> json) {
+  ScoreRecord fromJson(Map<String, Object?> json) {
     return ScoreRecord.fromJson(json);
   }
 }
@@ -162,10 +163,10 @@ class _$_ScoreRecord extends _ScoreRecord {
 
   factory _$_ScoreRecord.fromJson(Map<String, dynamic> json) => _$$_ScoreRecordFromJson(json);
 
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String name;
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int score;
   @override // ignore: invalid_annotation_target
@@ -183,20 +184,21 @@ class _$_ScoreRecord extends _ScoreRecord {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ScoreRecord &&
-            (identical(other.name, name) || const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.score, score) || const DeepCollectionEquality().equals(other.score, score)) &&
-            (identical(other.date, date) || const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.id, id) || const DeepCollectionEquality().equals(other.id, id)));
+        (other.runtimeType == runtimeType &&
+            other is _ScoreRecord &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.score, score) &&
+            const DeepCollectionEquality().equals(other.date, date) &&
+            const DeepCollectionEquality().equals(other.id, id));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(score) ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(id);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(score),
+      const DeepCollectionEquality().hash(date),
+      const DeepCollectionEquality().hash(id));
 
   @JsonKey(ignore: true)
   @override
@@ -219,15 +221,15 @@ abstract class _ScoreRecord extends ScoreRecord {
   factory _ScoreRecord.fromJson(Map<String, dynamic> json) = _$_ScoreRecord.fromJson;
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  int get score => throw _privateConstructorUsedError;
+  int get score;
   @override // ignore: invalid_annotation_target
   @JsonKey(fromJson: timestampFromJson, toJson: timestampToJson)
-  Timestamp? get date => throw _privateConstructorUsedError;
+  Timestamp? get date;
   @override // ignore: invalid_annotation_target
   @JsonKey(ignore: true)
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
   @JsonKey(ignore: true)
   _$ScoreRecordCopyWith<_ScoreRecord> get copyWith => throw _privateConstructorUsedError;

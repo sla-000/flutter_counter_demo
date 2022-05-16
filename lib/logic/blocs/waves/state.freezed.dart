@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'state.dart';
@@ -107,10 +108,10 @@ class __$WavesStateCopyWithImpl<$Res> extends _$WavesStateCopyWithImpl<$Res> imp
 class _$_WavesState implements _WavesState {
   const _$_WavesState({this.count = 0, this.waveTime = 0});
 
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int count;
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int waveTime;
 
@@ -122,14 +123,15 @@ class _$_WavesState implements _WavesState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _WavesState &&
-            (identical(other.count, count) || const DeepCollectionEquality().equals(other.count, count)) &&
-            (identical(other.waveTime, waveTime) || const DeepCollectionEquality().equals(other.waveTime, waveTime)));
+        (other.runtimeType == runtimeType &&
+            other is _WavesState &&
+            const DeepCollectionEquality().equals(other.count, count) &&
+            const DeepCollectionEquality().equals(other.waveTime, waveTime));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(count) ^ const DeepCollectionEquality().hash(waveTime);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(count), const DeepCollectionEquality().hash(waveTime));
 
   @JsonKey(ignore: true)
   @override
@@ -140,9 +142,9 @@ abstract class _WavesState implements WavesState {
   const factory _WavesState({int count, int waveTime}) = _$_WavesState;
 
   @override
-  int get count => throw _privateConstructorUsedError;
+  int get count;
   @override
-  int get waveTime => throw _privateConstructorUsedError;
+  int get waveTime;
   @override
   @JsonKey(ignore: true)
   _$WavesStateCopyWith<_WavesState> get copyWith => throw _privateConstructorUsedError;

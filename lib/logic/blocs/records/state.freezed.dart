@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'state.dart';
@@ -199,25 +200,25 @@ class _$_RecordsState extends _RecordsState {
       this.showNameInput = false})
       : super._();
 
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int lastRecord;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String name;
-  @JsonKey(defaultValue: const <String>[])
+  @JsonKey()
   @override
   final List<String> lastNames;
-  @JsonKey(defaultValue: const <RecordData>[])
+  @JsonKey()
   @override
   final List<RecordData> records;
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
   final bool waitNetwork;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String lastNetworkError;
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
   final bool showNameInput;
 
@@ -229,31 +230,27 @@ class _$_RecordsState extends _RecordsState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _RecordsState &&
-            (identical(other.lastRecord, lastRecord) ||
-                const DeepCollectionEquality().equals(other.lastRecord, lastRecord)) &&
-            (identical(other.name, name) || const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.lastNames, lastNames) ||
-                const DeepCollectionEquality().equals(other.lastNames, lastNames)) &&
-            (identical(other.records, records) || const DeepCollectionEquality().equals(other.records, records)) &&
-            (identical(other.waitNetwork, waitNetwork) ||
-                const DeepCollectionEquality().equals(other.waitNetwork, waitNetwork)) &&
-            (identical(other.lastNetworkError, lastNetworkError) ||
-                const DeepCollectionEquality().equals(other.lastNetworkError, lastNetworkError)) &&
-            (identical(other.showNameInput, showNameInput) ||
-                const DeepCollectionEquality().equals(other.showNameInput, showNameInput)));
+        (other.runtimeType == runtimeType &&
+            other is _RecordsState &&
+            const DeepCollectionEquality().equals(other.lastRecord, lastRecord) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.lastNames, lastNames) &&
+            const DeepCollectionEquality().equals(other.records, records) &&
+            const DeepCollectionEquality().equals(other.waitNetwork, waitNetwork) &&
+            const DeepCollectionEquality().equals(other.lastNetworkError, lastNetworkError) &&
+            const DeepCollectionEquality().equals(other.showNameInput, showNameInput));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(lastRecord) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(lastNames) ^
-      const DeepCollectionEquality().hash(records) ^
-      const DeepCollectionEquality().hash(waitNetwork) ^
-      const DeepCollectionEquality().hash(lastNetworkError) ^
-      const DeepCollectionEquality().hash(showNameInput);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(lastRecord),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(lastNames),
+      const DeepCollectionEquality().hash(records),
+      const DeepCollectionEquality().hash(waitNetwork),
+      const DeepCollectionEquality().hash(lastNetworkError),
+      const DeepCollectionEquality().hash(showNameInput));
 
   @JsonKey(ignore: true)
   @override
@@ -272,19 +269,19 @@ abstract class _RecordsState extends RecordsState {
   const _RecordsState._() : super._();
 
   @override
-  int get lastRecord => throw _privateConstructorUsedError;
+  int get lastRecord;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  List<String> get lastNames => throw _privateConstructorUsedError;
+  List<String> get lastNames;
   @override
-  List<RecordData> get records => throw _privateConstructorUsedError;
+  List<RecordData> get records;
   @override
-  bool get waitNetwork => throw _privateConstructorUsedError;
+  bool get waitNetwork;
   @override
-  String get lastNetworkError => throw _privateConstructorUsedError;
+  String get lastNetworkError;
   @override
-  bool get showNameInput => throw _privateConstructorUsedError;
+  bool get showNameInput;
   @override
   @JsonKey(ignore: true)
   _$RecordsStateCopyWith<_RecordsState> get copyWith => throw _privateConstructorUsedError;

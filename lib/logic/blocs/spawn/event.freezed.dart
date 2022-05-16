@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'event.dart';
@@ -115,7 +116,7 @@ class _$SpawnEventInit implements SpawnEventInit {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is SpawnEventInit);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is SpawnEventInit);
   }
 
   @override
@@ -233,12 +234,13 @@ class _$SpawnEventSpawn implements SpawnEventSpawn {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is SpawnEventSpawn &&
-            (identical(other.time, time) || const DeepCollectionEquality().equals(other.time, time)));
+        (other.runtimeType == runtimeType &&
+            other is SpawnEventSpawn &&
+            const DeepCollectionEquality().equals(other.time, time));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(time);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(time));
 
   @JsonKey(ignore: true)
   @override
@@ -311,7 +313,7 @@ class _$SpawnEventSpawn implements SpawnEventSpawn {
 abstract class SpawnEventSpawn implements SpawnEvent {
   const factory SpawnEventSpawn(int time) = _$SpawnEventSpawn;
 
-  int get time => throw _privateConstructorUsedError;
+  int get time;
   @JsonKey(ignore: true)
   $SpawnEventSpawnCopyWith<SpawnEventSpawn> get copyWith => throw _privateConstructorUsedError;
 }

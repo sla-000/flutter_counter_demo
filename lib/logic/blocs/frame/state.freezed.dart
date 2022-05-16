@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'state.dart';
@@ -131,16 +132,16 @@ class __$FrameStateCopyWithImpl<$Res> extends _$FrameStateCopyWithImpl<$Res> imp
 class _$_FrameState implements _FrameState {
   const _$_FrameState({this.delta = 0, this.fps = 0, this.frame = 0, this.enabled = false});
 
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final double delta;
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final double fps;
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int frame;
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
   final bool enabled;
 
@@ -152,20 +153,21 @@ class _$_FrameState implements _FrameState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _FrameState &&
-            (identical(other.delta, delta) || const DeepCollectionEquality().equals(other.delta, delta)) &&
-            (identical(other.fps, fps) || const DeepCollectionEquality().equals(other.fps, fps)) &&
-            (identical(other.frame, frame) || const DeepCollectionEquality().equals(other.frame, frame)) &&
-            (identical(other.enabled, enabled) || const DeepCollectionEquality().equals(other.enabled, enabled)));
+        (other.runtimeType == runtimeType &&
+            other is _FrameState &&
+            const DeepCollectionEquality().equals(other.delta, delta) &&
+            const DeepCollectionEquality().equals(other.fps, fps) &&
+            const DeepCollectionEquality().equals(other.frame, frame) &&
+            const DeepCollectionEquality().equals(other.enabled, enabled));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(delta) ^
-      const DeepCollectionEquality().hash(fps) ^
-      const DeepCollectionEquality().hash(frame) ^
-      const DeepCollectionEquality().hash(enabled);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(delta),
+      const DeepCollectionEquality().hash(fps),
+      const DeepCollectionEquality().hash(frame),
+      const DeepCollectionEquality().hash(enabled));
 
   @JsonKey(ignore: true)
   @override
@@ -176,13 +178,13 @@ abstract class _FrameState implements FrameState {
   const factory _FrameState({double delta, double fps, int frame, bool enabled}) = _$_FrameState;
 
   @override
-  double get delta => throw _privateConstructorUsedError;
+  double get delta;
   @override
-  double get fps => throw _privateConstructorUsedError;
+  double get fps;
   @override
-  int get frame => throw _privateConstructorUsedError;
+  int get frame;
   @override
-  bool get enabled => throw _privateConstructorUsedError;
+  bool get enabled;
   @override
   @JsonKey(ignore: true)
   _$FrameStateCopyWith<_FrameState> get copyWith => throw _privateConstructorUsedError;

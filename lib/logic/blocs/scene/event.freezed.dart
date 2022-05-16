@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'event.dart';
@@ -156,12 +157,13 @@ class _$SceneEventInit implements SceneEventInit {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is SceneEventInit &&
-            (identical(other.size, size) || const DeepCollectionEquality().equals(other.size, size)));
+        (other.runtimeType == runtimeType &&
+            other is SceneEventInit &&
+            const DeepCollectionEquality().equals(other.size, size));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(size);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(size));
 
   @JsonKey(ignore: true)
   @override
@@ -246,7 +248,7 @@ class _$SceneEventInit implements SceneEventInit {
 abstract class SceneEventInit implements SceneEvent {
   const factory SceneEventInit(Vector size) = _$SceneEventInit;
 
-  Vector get size => throw _privateConstructorUsedError;
+  Vector get size;
   @JsonKey(ignore: true)
   $SceneEventInitCopyWith<SceneEventInit> get copyWith => throw _privateConstructorUsedError;
 }
@@ -296,12 +298,13 @@ class _$SceneEventResize implements SceneEventResize {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is SceneEventResize &&
-            (identical(other.size, size) || const DeepCollectionEquality().equals(other.size, size)));
+        (other.runtimeType == runtimeType &&
+            other is SceneEventResize &&
+            const DeepCollectionEquality().equals(other.size, size));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(size);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(size));
 
   @JsonKey(ignore: true)
   @override
@@ -386,7 +389,7 @@ class _$SceneEventResize implements SceneEventResize {
 abstract class SceneEventResize implements SceneEvent {
   const factory SceneEventResize(Vector size) = _$SceneEventResize;
 
-  Vector get size => throw _privateConstructorUsedError;
+  Vector get size;
   @JsonKey(ignore: true)
   $SceneEventResizeCopyWith<SceneEventResize> get copyWith => throw _privateConstructorUsedError;
 }
@@ -419,7 +422,7 @@ class _$SceneEventTapButton implements SceneEventTapButton {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is SceneEventTapButton);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is SceneEventTapButton);
   }
 
   @override
@@ -549,12 +552,13 @@ class _$SceneEventUpdate implements SceneEventUpdate {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is SceneEventUpdate &&
-            (identical(other.delta, delta) || const DeepCollectionEquality().equals(other.delta, delta)));
+        (other.runtimeType == runtimeType &&
+            other is SceneEventUpdate &&
+            const DeepCollectionEquality().equals(other.delta, delta));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(delta);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(delta));
 
   @JsonKey(ignore: true)
   @override
@@ -639,7 +643,7 @@ class _$SceneEventUpdate implements SceneEventUpdate {
 abstract class SceneEventUpdate implements SceneEvent {
   const factory SceneEventUpdate(double delta) = _$SceneEventUpdate;
 
-  double get delta => throw _privateConstructorUsedError;
+  double get delta;
   @JsonKey(ignore: true)
   $SceneEventUpdateCopyWith<SceneEventUpdate> get copyWith => throw _privateConstructorUsedError;
 }

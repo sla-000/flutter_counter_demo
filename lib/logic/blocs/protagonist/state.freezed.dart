@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'state.dart';
@@ -109,13 +110,13 @@ class _$_ProtagonistState implements _ProtagonistState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ProtagonistState &&
-            (identical(other.protagonist, protagonist) ||
-                const DeepCollectionEquality().equals(other.protagonist, protagonist)));
+        (other.runtimeType == runtimeType &&
+            other is _ProtagonistState &&
+            const DeepCollectionEquality().equals(other.protagonist, protagonist));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(protagonist);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(protagonist));
 
   @JsonKey(ignore: true)
   @override
@@ -127,7 +128,7 @@ abstract class _ProtagonistState implements ProtagonistState {
   const factory _ProtagonistState({required Protagonist protagonist}) = _$_ProtagonistState;
 
   @override
-  Protagonist get protagonist => throw _privateConstructorUsedError;
+  Protagonist get protagonist;
   @override
   @JsonKey(ignore: true)
   _$ProtagonistStateCopyWith<_ProtagonistState> get copyWith => throw _privateConstructorUsedError;

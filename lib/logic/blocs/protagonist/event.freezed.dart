@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'event.dart';
@@ -145,12 +146,13 @@ class _$ProtagonistEventInit implements ProtagonistEventInit {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ProtagonistEventInit &&
-            (identical(other.center, center) || const DeepCollectionEquality().equals(other.center, center)));
+        (other.runtimeType == runtimeType &&
+            other is ProtagonistEventInit &&
+            const DeepCollectionEquality().equals(other.center, center));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(center);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(center));
 
   @JsonKey(ignore: true)
   @override
@@ -229,7 +231,7 @@ class _$ProtagonistEventInit implements ProtagonistEventInit {
 abstract class ProtagonistEventInit implements ProtagonistEvent {
   const factory ProtagonistEventInit(Vector center) = _$ProtagonistEventInit;
 
-  Vector get center => throw _privateConstructorUsedError;
+  Vector get center;
   @JsonKey(ignore: true)
   $ProtagonistEventInitCopyWith<ProtagonistEventInit> get copyWith => throw _privateConstructorUsedError;
 }
@@ -262,7 +264,7 @@ class _$ProtagonistEventShoot implements ProtagonistEventShoot {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ProtagonistEventShoot);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is ProtagonistEventShoot);
   }
 
   @override
@@ -386,12 +388,13 @@ class _$ProtagonistEventUpdate implements ProtagonistEventUpdate {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ProtagonistEventUpdate &&
-            (identical(other.delta, delta) || const DeepCollectionEquality().equals(other.delta, delta)));
+        (other.runtimeType == runtimeType &&
+            other is ProtagonistEventUpdate &&
+            const DeepCollectionEquality().equals(other.delta, delta));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(delta);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(delta));
 
   @JsonKey(ignore: true)
   @override
@@ -470,7 +473,7 @@ class _$ProtagonistEventUpdate implements ProtagonistEventUpdate {
 abstract class ProtagonistEventUpdate implements ProtagonistEvent {
   const factory ProtagonistEventUpdate(double delta) = _$ProtagonistEventUpdate;
 
-  double get delta => throw _privateConstructorUsedError;
+  double get delta;
   @JsonKey(ignore: true)
   $ProtagonistEventUpdateCopyWith<ProtagonistEventUpdate> get copyWith => throw _privateConstructorUsedError;
 }
