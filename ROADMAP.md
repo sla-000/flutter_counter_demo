@@ -1,2 +1,2 @@
-- Бомба взрывается при попадании
-  2h 
+- Bomb is exploading after hit
+  4h 
