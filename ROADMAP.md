@@ -6,3 +6,6 @@
 
 - Add background music
   2h 
+
+- Emoji instead of Android icon
+  4h 
