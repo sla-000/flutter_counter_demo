@@ -21,6 +21,18 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  late final Future<void> _splashFuture = Future.wait<void>(<Future<void>>[
+    Future<void>.delayed(const Duration(milliseconds: 1000)),
+    firebaseInit(),
+  ]);
+
+  @override
+  void initState() {
+    super.initState();
+
+    diInit();
+  }
+
   @override
   void dispose() {
     diDispose();
@@ -31,10 +43,7 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return SplashWhileWaitFuture(
-      splashFuture: Future.wait<void>(<Future<void>>[
-        Future<void>.delayed(const Duration(milliseconds: 1000)),
-        firebaseInit(),
-      ]),
+      splashFuture: _splashFuture,
       splashScreen: AnimatedSwitcher(
         duration: kXlDuration,
         child: MaterialApp(
@@ -48,7 +57,8 @@ class _AppState extends State<App> {
       child: AnimatedSwitcher(
         duration: kXlDuration,
         child: MaterialApp(
-          onGenerateTitle: (BuildContext context) => context.l10n.flutterCounterDemo,
+          onGenerateTitle: (BuildContext context) =>
+              context.l10n.flutterCounterDemo,
           theme: defaultTheme(context),
           darkTheme: darkTheme(context),
           themeMode: ThemeMode.dark,
