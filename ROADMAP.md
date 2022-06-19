@@ -1,3 +1,9 @@
+- Add Crashlytics
+  1h
+
+- Add Analytics
+  2h
+
 - Bomb is exploding after hit
   4h 
 
