@@ -1,15 +1,33 @@
+import 'dart:async';
+
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_counter_shooter/firebase.dart';
 
 import 'app.dart';
 
 void main() {
-  LicenseRegistry.addLicense(() async* {
-    final String license =
-        await rootBundle.loadString('assets/google_fonts/OFL.txt');
-    yield LicenseEntryWithLineBreaks(<String>['google_fonts'], license);
-  });
+  runZonedGuarded<Future<void>>(
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const App());
+      LicenseRegistry.addLicense(() async* {
+        final String license = await rootBundle.loadString('assets/google_fonts/OFL.txt');
+        yield LicenseEntryWithLineBreaks(<String>['google_fonts'], license);
+      });
+
+      runApp(
+        App(
+          onInit: () async {
+            await firebaseInit();
+            FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+          },
+        ),
+      );
+    },
+    (Object error, StackTrace stack) =>
+        FirebaseCrashlytics.instance.recordError(error, stack, fatal: true),
+  );
 }

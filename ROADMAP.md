@@ -1,6 +1,3 @@
-- Add Crashlytics
-  1h
-
 - Add Analytics
   2h
 

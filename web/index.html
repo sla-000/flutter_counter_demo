@@ -23,13 +23,13 @@
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="example">
+  <meta name="apple-mobile-web-app-title" content="Flutter counter shooter">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>example</title>
+  <title>Flutter counter shooter</title>
   <link rel="manifest" href="manifest.json">
 
   <script>
@@ -40,33 +40,6 @@
   <script src="flutter.js" defer></script>
 </head>
 <body>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.0/firebase-app.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-
-    const firebase = require("firebase");
-    // Required for side-effects
-    require("firebase/firestore");
-
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyCl1cCtM6ODsBbqMfMSy-BH64psoPHjR2c",
-      authDomain: "flutter-counter-demo-9209c.firebaseapp.com",
-      projectId: "flutter-counter-demo-9209c",
-      storageBucket: "flutter-counter-demo-9209c.appspot.com",
-      messagingSenderId: "903842230586",
-      appId: "1:903842230586:web:9763870886b40b291ca003"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-  </script>
-
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js

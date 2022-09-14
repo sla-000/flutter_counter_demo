@@ -9,22 +9,25 @@ import 'package:flutter_counter_shooter/ui/splash/splash_while_wait_future.dart'
 import 'package:flutter_counter_shooter/utils/context_extensions.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'firebase.dart';
-
 class App extends StatefulWidget {
   const App({
     Key? key,
+    required this.onInit,
   }) : super(key: key);
+
+  final Future<void> Function() onInit;
 
   @override
   State<App> createState() => _AppState();
 }
 
 class _AppState extends State<App> {
-  late final Future<void> _splashFuture = Future.wait<void>(<Future<void>>[
-    Future<void>.delayed(const Duration(milliseconds: 1000)),
-    firebaseInit(),
-  ]);
+  late final Future<void> _splashFuture = Future.wait<void>(
+    <Future<void>>[
+      Future<void>.delayed(const Duration(milliseconds: 1000)),
+      widget.onInit(),
+    ],
+  );
 
   @override
   void initState() {
@@ -57,8 +60,7 @@ class _AppState extends State<App> {
       child: AnimatedSwitcher(
         duration: kXlDuration,
         child: MaterialApp(
-          onGenerateTitle: (BuildContext context) =>
-              context.l10n.flutterCounterDemo,
+          onGenerateTitle: (BuildContext context) => context.l10n.flutterCounterDemo,
           theme: defaultTheme(context),
           darkTheme: darkTheme(context),
           themeMode: ThemeMode.dark,
