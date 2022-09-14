@@ -22,12 +22,18 @@ void main() {
         App(
           onInit: () async {
             await firebaseInit();
-            FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+
+            if (!kIsWeb) {
+              FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+            }
           },
         ),
       );
     },
-    (Object error, StackTrace stack) =>
-        FirebaseCrashlytics.instance.recordError(error, stack, fatal: true),
+    (Object error, StackTrace stack) {
+      if (!kIsWeb) {
+        FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      }
+    },
   );
 }
