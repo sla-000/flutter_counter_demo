@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
@@ -16,7 +14,8 @@ class ShiftedAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ScoreBloc, ScoreState>(
       bloc: di.get<ScoreBloc>(),
-      buildWhen: (ScoreState previous, ScoreState current) => current.gameState != previous.gameState,
+      buildWhen: (ScoreState previous, ScoreState current) =>
+          current.gameState != previous.gameState,
       builder: (BuildContext context, ScoreState gameScoreState) {
         return AnimatedSlide(
           duration: const Duration(milliseconds: 1000),

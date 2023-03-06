@@ -17,7 +17,7 @@ class YourScore extends StatelessWidget {
       builder: (BuildContext context, RecordsState recordsState) {
         return Text(
           '${context.l10n.yourScore} ${recordsState.lastRecord}',
-          style: Theme.of(context).textTheme.headline5,
+          style: Theme.of(context).textTheme.headlineSmall,
         );
       },
     );

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
@@ -30,7 +29,8 @@ class GameField extends StatelessWidget {
 
         return BlocBuilder<ScoreBloc, ScoreState>(
           bloc: di.get<ScoreBloc>(),
-          buildWhen: (ScoreState previous, ScoreState current) => current.gameState != previous.gameState,
+          buildWhen: (ScoreState previous, ScoreState current) =>
+              current.gameState != previous.gameState,
           builder: (BuildContext context, ScoreState scoreState) {
             if (scoreState.gameState == GameState.finished) {
               return RecordsView(

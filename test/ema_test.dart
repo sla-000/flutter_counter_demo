@@ -8,7 +8,6 @@
 import 'package:flutter_counter_shooter/utils/math/ema.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-/// todo ExponentialMovingAverage tests
 void main() {
   late ExponentialMovingAverage ema;
 

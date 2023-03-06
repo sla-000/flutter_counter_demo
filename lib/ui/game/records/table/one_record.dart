@@ -17,21 +17,21 @@ class OneRecord extends StatelessWidget {
           width: 70,
           child: Text(
             '#${recordData.position}',
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.titleSmall,
           ),
         ),
         Expanded(
           child: Text(
             recordData.name,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.subtitle1,
+            style: Theme.of(context).textTheme.titleMedium,
           ),
         ),
         const SizedBox(width: 16),
         Text(
           '${recordData.score}',
           textAlign: TextAlign.right,
-          style: Theme.of(context).textTheme.subtitle2,
+          style: Theme.of(context).textTheme.titleSmall,
         ),
       ],
     );

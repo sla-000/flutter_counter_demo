@@ -23,7 +23,7 @@ class CounterValue extends StatelessWidget {
           case GameState.waitStart:
             widget = Text(
               '${gameScoreState.score}',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineMedium,
               key: const Key('CounterValue-waitStart'),
             );
 

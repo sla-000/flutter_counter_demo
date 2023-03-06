@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -119,7 +117,8 @@ class ShootButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ScoreBloc, ScoreState>(
       bloc: di.get<ScoreBloc>(),
-      buildWhen: (ScoreState previous, ScoreState current) => current.gameState != previous.gameState,
+      buildWhen: (ScoreState previous, ScoreState current) =>
+          current.gameState != previous.gameState,
       builder: (BuildContext context, ScoreState scoreState) {
         return AnimatedCrossFade(
           firstChild: const SizedBox.shrink(),
@@ -131,8 +130,9 @@ class ShootButton extends StatelessWidget {
             tooltip: context.l10n.increment,
             child: const Icon(Icons.add),
           ),
-          crossFadeState:
-              scoreState.gameState == GameState.finished ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+          crossFadeState: scoreState.gameState == GameState.finished
+              ? CrossFadeState.showFirst
+              : CrossFadeState.showSecond,
           duration: const Duration(milliseconds: 200),
         );
       },
@@ -153,8 +153,8 @@ class FpsGauge extends StatelessWidget {
       builder: (BuildContext context, FrameState frameState) {
         return Text(
           '${frameState.fps.toInt()} fps',
-          style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                color: Theme.of(context).textTheme.bodyText2?.color?.withAlpha(30),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).textTheme.bodyMedium?.color?.withAlpha(30),
               ),
         );
       },

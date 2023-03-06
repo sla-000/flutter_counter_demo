@@ -20,7 +20,7 @@ class SplashScreen extends StatelessWidget {
           const SizedBox(height: 32),
           Text(
             context.l10n.loading,
-            style: Theme.of(context).textTheme.headline4,
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
         ],
       ),
