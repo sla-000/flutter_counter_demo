@@ -1,3 +1,6 @@
+- Critical!!! Fix freeze after 50 seconds of play
+  2h
+
 - Add Analytics
   2h
 
