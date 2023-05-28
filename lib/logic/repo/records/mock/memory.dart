@@ -21,7 +21,7 @@ final List<MemoryRecord> _records = <MemoryRecord>[];
 
 class MemoryRecordsDbRepo implements RecordsDbRepo {
   MemoryRecordsDbRepo() {
-    for (int q = 5; q <= 100; q += 5)
+    for (var q = 5; q <= 100; q += 5) {
       _records.add(
         MemoryRecord(
           name: 'Noname',
@@ -29,6 +29,7 @@ class MemoryRecordsDbRepo implements RecordsDbRepo {
           dateTime: DateTime.now().subtract(Duration(hours: q)),
         ),
       );
+    }
   }
 
   @override
@@ -38,16 +39,21 @@ class MemoryRecordsDbRepo implements RecordsDbRepo {
     await Future<void>.delayed(const Duration(seconds: 1));
 
     return _records
-        .where((MemoryRecord memoryRecord) => name == '' || name == memoryRecord.name)
+        .where(
+          (MemoryRecord memoryRecord) =>
+              name == '' || name == memoryRecord.name,
+        )
         .sorted(oldestFirst)
         .sorted(biggestScoreFirst)
         .take(100)
-        .mapIndexed((int index, MemoryRecord memoryRecord) => RecordData(
-              position: index + 1,
-              dateTime: memoryRecord.dateTime,
-              name: memoryRecord.name,
-              score: memoryRecord.score,
-            ))
+        .mapIndexed(
+          (int index, MemoryRecord memoryRecord) => RecordData(
+            position: index + 1,
+            dateTime: memoryRecord.dateTime,
+            name: memoryRecord.name,
+            score: memoryRecord.score,
+          ),
+        )
         .toList(growable: false);
   }
 
@@ -58,16 +64,19 @@ class MemoryRecordsDbRepo implements RecordsDbRepo {
   }) async {
     await Future<void>.delayed(const Duration(seconds: 1));
 
-    _records.add(MemoryRecord(
-      name: name,
-      score: score,
-      dateTime: DateTime.now().toUtc(),
-    ));
+    _records.add(
+      MemoryRecord(
+        name: name,
+        score: score,
+        dateTime: DateTime.now().toUtc(),
+      ),
+    );
   }
 }
 
 @visibleForTesting
-int biggestScoreFirst(MemoryRecord a, MemoryRecord b) => b.score.compareTo(a.score);
+int biggestScoreFirst(MemoryRecord a, MemoryRecord b) =>
+    b.score.compareTo(a.score);
 
 @visibleForTesting
 int oldestFirst(MemoryRecord a, MemoryRecord b) {

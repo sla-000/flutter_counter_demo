@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_counter_shooter/logic/blocs/bombs/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bombs/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bullets/bloc.dart';
@@ -27,7 +29,7 @@ void diInit() {
   );
   di.registerLazySingleton<FrameBloc>(
     () => FrameBloc(frameRepo: di.get<FrameRepo>()),
-    dispose: (FrameBloc bloc) => bloc.close(),
+    dispose: (FrameBloc bloc) => unawaited(bloc.close()),
   );
 
   di.registerFactory<ScoreRepo>(
@@ -35,12 +37,12 @@ void diInit() {
   );
   di.registerLazySingleton<ScoreBloc>(
     () => ScoreBloc(scoreRepo: di.get<ScoreRepo>()),
-    dispose: (ScoreBloc bloc) => bloc.close(),
+    dispose: (ScoreBloc bloc) => unawaited(bloc.close()),
   );
 
   di.registerLazySingleton<ProtagonistBloc>(
-    () => ProtagonistBloc(),
-    dispose: (ProtagonistBloc bloc) => bloc.close(),
+    ProtagonistBloc.new,
+    dispose: (ProtagonistBloc bloc) => unawaited(bloc.close()),
   );
 
   di.registerFactory<BombsClearRepo>(
@@ -48,12 +50,12 @@ void diInit() {
   );
   di.registerLazySingleton<BombsBloc>(
     () => BombsBloc(bombsClearRepo: di.get<BombsClearRepo>()),
-    dispose: (BombsBloc bloc) => bloc.close(),
+    dispose: (BombsBloc bloc) => unawaited(bloc.close()),
   );
 
   di.registerLazySingleton<BulletsBloc>(
-    () => BulletsBloc(),
-    dispose: (BulletsBloc bloc) => bloc.close(),
+    BulletsBloc.new,
+    dispose: (BulletsBloc bloc) => unawaited(bloc.close()),
   );
 
   di.registerFactory<WavesRepo>(
@@ -61,7 +63,7 @@ void diInit() {
   );
   di.registerLazySingleton<WavesBloc>(
     () => WavesBloc(repo: di.get<WavesRepo>()),
-    dispose: (WavesBloc bloc) => bloc.close(),
+    dispose: (WavesBloc bloc) => unawaited(bloc.close()),
   );
 
   di.registerFactory<SpawnRepo>(
@@ -71,7 +73,7 @@ void diInit() {
   );
   di.registerLazySingleton<SpawnBloc>(
     () => SpawnBloc(repo: di.get<SpawnRepo>()),
-    dispose: (SpawnBloc bloc) => bloc.close(),
+    dispose: (SpawnBloc bloc) => unawaited(bloc.close()),
   );
 
   di.registerFactory<SceneScoreRepo>(
@@ -96,17 +98,17 @@ void diInit() {
       sceneWavesRepo: di.get<SceneWavesRepo>(),
       sceneSpawnRepo: di.get<SceneSpawnRepo>(),
     ),
-    dispose: (SceneBloc bloc) => bloc.close(),
+    dispose: (SceneBloc bloc) => unawaited(bloc.close()),
   );
 
-  di.registerFactory<RecordsDbRepo>(() => FirebaseRecordsDbRepo());
+  di.registerFactory<RecordsDbRepo>(FirebaseRecordsDbRepo.new);
 
   di.registerLazySingleton<RecordsBloc>(
     () => RecordsBloc(recordsDbRepo: di.get<RecordsDbRepo>()),
-    dispose: (RecordsBloc bloc) => bloc.close(),
+    dispose: (RecordsBloc bloc) => unawaited(bloc.close()),
   );
 }
 
 void diDispose() {
-  di.reset(dispose: true);
+  unawaited(di.reset());
 }

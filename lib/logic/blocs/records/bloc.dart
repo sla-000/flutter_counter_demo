@@ -1,11 +1,10 @@
 import 'dart:math' as math;
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/records/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/records/repo.dart';
+import 'package:flutter_counter_shooter/logic/blocs/records/state.dart';
 import 'package:meta/meta.dart';
-
-import 'event.dart';
-import 'repo.dart';
-import 'state.dart';
 
 const int kMaxNames = 5;
 
@@ -22,27 +21,37 @@ class RecordsBloc extends Bloc<RecordsEvent, RecordsState> {
   @protected
   final RecordsDbRepo recordsDbRepo;
 
-  Future<void> _onFetch(RecordsEventFetch event, Emitter<RecordsState> emit) async {
+  Future<void> _onFetch(
+    RecordsEventFetch event,
+    Emitter<RecordsState> emit,
+  ) async {
     try {
-      emit(state.copyWith(
-        waitNetwork: true,
-        showNameInput: false,
-      ));
+      emit(
+        state.copyWith(
+          waitNetwork: true,
+          showNameInput: false,
+        ),
+      );
 
-      final List<RecordData> records = await recordsDbRepo.getRecords();
+      final records = await recordsDbRepo.getRecords();
 
-      emit(state.copyWith(
-        records: records,
-        showNameInput: RecordsState.isScoreInTable(state.lastRecord, records),
-      ));
+      emit(
+        state.copyWith(
+          records: records,
+          showNameInput: RecordsState.isScoreInTable(state.lastRecord, records),
+        ),
+      );
     } on Exception catch (_) {
-      emit(state.copyWith(lastNetworkError: 'Can\'t fetch records'));
+      emit(state.copyWith(lastNetworkError: "Can't fetch records"));
     } finally {
       emit(state.copyWith(waitNetwork: false));
     }
   }
 
-  Future<void> _onUpload(RecordsEventUpload event, Emitter<RecordsState> emit) async {
+  Future<void> _onUpload(
+    RecordsEventUpload event,
+    Emitter<RecordsState> emit,
+  ) async {
     try {
       emit(state.copyWith(waitNetwork: true));
 
@@ -55,25 +64,27 @@ class RecordsBloc extends Bloc<RecordsEvent, RecordsState> {
         score: state.lastRecord,
       );
 
-      final List<RecordData> records = await recordsDbRepo.getRecords();
+      final records = await recordsDbRepo.getRecords();
 
       emit(state.copyWith(records: records));
     } on Exception catch (_) {
-      emit(state.copyWith(lastNetworkError: 'Can\'t upload records'));
+      emit(state.copyWith(lastNetworkError: "Can't upload records"));
     } finally {
       emit(state.copyWith(waitNetwork: false));
     }
   }
 
   void _onSetRecord(RecordsEventSetRecord event, Emitter<RecordsState> emit) {
-    emit(state.copyWith(
-      lastRecord: event.value,
-      showNameInput: RecordsState.isScoreInTable(event.value, state.records),
-    ));
+    emit(
+      state.copyWith(
+        lastRecord: event.value,
+        showNameInput: RecordsState.isScoreInTable(event.value, state.records),
+      ),
+    );
   }
 
   void _onSetName(RecordsEventSetName event, Emitter<RecordsState> emit) {
-    List<String> lastNames = List<String>.of(state.lastNames);
+    var lastNames = List<String>.of(state.lastNames);
 
     if (lastNames.contains(event.name)) {
       lastNames.remove(event.name);
@@ -83,13 +94,17 @@ class RecordsBloc extends Bloc<RecordsEvent, RecordsState> {
       lastNames = lastNames.sublist(0, math.min(kMaxNames, lastNames.length));
     }
 
-    emit(state.copyWith(
-      name: event.name,
-      lastNames: lastNames.toList(growable: false),
-      showNameInput: false,
-    ));
+    emit(
+      state.copyWith(
+        name: event.name,
+        lastNames: lastNames.toList(growable: false),
+        showNameInput: false,
+      ),
+    );
 
-    final bool isNewScore = state.records.where((RecordData recordData) => _isInTable(recordData, event.name)).isEmpty;
+    final isNewScore = state.records
+        .where((RecordData recordData) => _isInTable(recordData, event.name))
+        .isEmpty;
 
     if (isNewScore) {
       add(const RecordsEvent.upload());

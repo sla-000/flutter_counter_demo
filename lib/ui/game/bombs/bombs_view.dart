@@ -8,38 +8,35 @@ import 'package:flutter_counter_shooter/ui/game/bombs/bomb_view.dart';
 
 class BombsView extends StatelessWidget {
   const BombsView({
-    Key? key,
+    super.key,
     required this.bombs,
-  }) : super(key: key);
+  });
 
   final Iterable<Bomb> bombs;
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<ScoreBloc, ScoreState>(
-      bloc: di.get<ScoreBloc>(),
-      buildWhen: (ScoreState previous, ScoreState current) => current.gameState != previous.gameState,
-      builder: (_, ScoreState state) {
-        if (state.isStarted) {
-          return Stack(
-            children: <Widget>[
-              ..._buildBombs(),
-            ],
-          );
-        }
+  Widget build(BuildContext context) => BlocBuilder<ScoreBloc, ScoreState>(
+        bloc: di.get<ScoreBloc>(),
+        buildWhen: (ScoreState previous, ScoreState current) =>
+            current.gameState != previous.gameState,
+        builder: (_, ScoreState state) {
+          if (state.isStarted) {
+            return Stack(
+              children: <Widget>[
+                ..._buildBombs(),
+              ],
+            );
+          }
 
-        return const SizedBox.shrink();
-      },
-    );
-  }
+          return const SizedBox.shrink();
+        },
+      );
 
-  List<Widget> _buildBombs() {
-    return bombs
-        .map(
-          (Bomb bomb) => BombView(
-            bomb: bomb,
-          ),
-        )
-        .toList(growable: false);
-  }
+  List<Widget> _buildBombs() => bombs
+      .map(
+        (Bomb bomb) => BombView(
+          bomb: bomb,
+        ),
+      )
+      .toList(growable: false);
 }

@@ -4,21 +4,19 @@ import 'package:flutter_counter_shooter/ui/game/protagonist/gamer.dart';
 
 class ProtagonistView extends StatelessWidget {
   const ProtagonistView({
-    Key? key,
+    super.key,
     required this.protagonist,
-  }) : super(key: key);
+  });
 
   final Protagonist protagonist;
 
   @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      left: protagonist.xOrigin,
-      top: protagonist.yOrigin,
-      child: Transform.rotate(
-        angle: protagonist.angle,
-        child: Gamer(size: protagonist.size.x),
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Positioned(
+        left: protagonist.xOrigin,
+        top: protagonist.yOrigin,
+        child: Transform.rotate(
+          angle: protagonist.angle,
+          child: Gamer(size: protagonist.size.x),
+        ),
+      );
 }

@@ -10,8 +10,8 @@ import 'package:flutter_counter_shooter/utils/context_extensions.dart';
 
 class NameInput extends StatefulWidget {
   const NameInput({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<NameInput> createState() => _NameInputState();
@@ -21,11 +21,9 @@ class _NameInputState extends State<NameInput> {
   String _currentName = '';
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<RecordsBloc, RecordsState>(
-      bloc: di<RecordsBloc>(),
-      builder: (BuildContext context, RecordsState recordsState) {
-        return Column(
+  Widget build(BuildContext context) => BlocBuilder<RecordsBloc, RecordsState>(
+        bloc: di<RecordsBloc>(),
+        builder: (BuildContext context, RecordsState recordsState) => Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Row(
@@ -46,12 +44,13 @@ class _NameInputState extends State<NameInput> {
                   width: 100,
                   child: ElevatedButton(
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8),
                       child: Text(context.l10n.submit),
                     ),
                     onPressed: () {
                       if (_currentName.isNotEmpty) {
-                        di<RecordsBloc>().add(RecordsEvent.setName(_currentName));
+                        di<RecordsBloc>()
+                            .add(RecordsEvent.setName(_currentName));
                       }
                     },
                   ),
@@ -66,8 +65,6 @@ class _NameInputState extends State<NameInput> {
               },
             ),
           ],
-        );
-      },
-    );
-  }
+        ),
+      );
 }

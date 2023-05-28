@@ -11,9 +11,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 class App extends StatefulWidget {
   const App({
-    Key? key,
+    super.key,
     required this.onInit,
-  }) : super(key: key);
+  });
 
   final Future<void> Function() onInit;
 
@@ -44,36 +44,35 @@ class _AppState extends State<App> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return SplashWhileWaitFuture(
-      splashFuture: _splashFuture,
-      splashScreen: AnimatedSwitcher(
-        duration: kXlDuration,
-        child: MaterialApp(
-          home: const SplashScreen(),
-          localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
-            AppLocalizations.delegate,
-          ],
-          supportedLocales: AppLocalizations.delegate.supportedLocales,
+  Widget build(BuildContext context) => SplashWhileWaitFuture(
+        splashFuture: _splashFuture,
+        splashScreen: AnimatedSwitcher(
+          duration: kXlDuration,
+          child: MaterialApp(
+            home: const SplashScreen(),
+            localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+              AppLocalizations.delegate,
+            ],
+            supportedLocales: AppLocalizations.delegate.supportedLocales,
+          ),
         ),
-      ),
-      child: AnimatedSwitcher(
-        duration: kXlDuration,
-        child: MaterialApp(
-          onGenerateTitle: (BuildContext context) => context.l10n.flutterCounterDemo,
-          theme: defaultTheme(context),
-          darkTheme: darkTheme(context),
-          themeMode: ThemeMode.dark,
-          home: const HomePage(),
-          localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: AppLocalizations.delegate.supportedLocales,
+        child: AnimatedSwitcher(
+          duration: kXlDuration,
+          child: MaterialApp(
+            onGenerateTitle: (BuildContext context) =>
+                context.l10n.flutterCounterDemo,
+            theme: defaultTheme(context),
+            darkTheme: darkTheme(context),
+            themeMode: ThemeMode.dark,
+            home: const HomePage(),
+            localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: AppLocalizations.delegate.supportedLocales,
+          ),
         ),
-      ),
-    );
-  }
+      );
 }

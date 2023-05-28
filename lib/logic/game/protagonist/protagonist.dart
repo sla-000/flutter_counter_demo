@@ -70,7 +70,5 @@ class Protagonist extends ActorMoving implements Updatable {
 
   @mustCallSuper
   @override
-  String toString() {
-    return 'Hero{moving: ${super.toString()}}';
-  }
+  String toString() => 'Hero{moving: ${super.toString()}}';
 }

@@ -14,7 +14,7 @@ class FirebaseRecordsDbRepo implements RecordsDbRepo {
   Future<List<RecordData>> getRecords({
     String name = '',
   }) async {
-    final QuerySnapshot<Map<String, dynamic>> scoresSnapshot = await firestore
+    final scoresSnapshot = await firestore
         .collection(ScoreRecord.kCollectionName)
         .orderBy(
           'score',
@@ -25,7 +25,8 @@ class FirebaseRecordsDbRepo implements RecordsDbRepo {
 
     return scoresSnapshot.docs
         .map(
-          (QueryDocumentSnapshot<Map<String, dynamic>> scoreSnapshot) => ScoreRecord.fromJsonId(
+          (QueryDocumentSnapshot<Map<String, dynamic>> scoreSnapshot) =>
+              ScoreRecord.fromJsonId(
             scoreSnapshot.id,
             scoreSnapshot.data(),
           ),
@@ -59,7 +60,8 @@ class FirebaseRecordsDbRepo implements RecordsDbRepo {
 }
 
 @visibleForTesting
-int biggestScoreFirst(ScoreRecord a, ScoreRecord b) => b.score.compareTo(a.score);
+int biggestScoreFirst(ScoreRecord a, ScoreRecord b) =>
+    b.score.compareTo(a.score);
 
 @visibleForTesting
 int oldestFirst(ScoreRecord a, ScoreRecord b) {

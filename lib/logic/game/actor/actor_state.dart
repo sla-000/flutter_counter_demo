@@ -13,7 +13,5 @@ class ActorState {
 
   @mustCallSuper
   @override
-  String toString() {
-    return 'ActorState{position: $position, angle: $angle}';
-  }
+  String toString() => 'ActorState{position: $position, angle: $angle}';
 }

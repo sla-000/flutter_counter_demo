@@ -9,26 +9,24 @@ import 'package:flutter_counter_shooter/ui/game/protagonist/protagonist.dart';
 
 class GameElements extends StatelessWidget {
   const GameElements({
-    Key? key,
+    super.key,
     required this.delta,
-  }) : super(key: key);
+  });
 
   final double delta;
 
   @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        ProtagonistView(
-          protagonist: di<ProtagonistBloc>().state.protagonist,
-        ),
-        BombsView(
-          bombs: di<BombsBloc>().state.bombs,
-        ),
-        BulletsView(
-          bullets: di<BulletsBloc>().state.bullets,
-        ),
-      ],
-    );
-  }
+  Widget build(BuildContext context) => Stack(
+        children: <Widget>[
+          ProtagonistView(
+            protagonist: di<ProtagonistBloc>().state.protagonist,
+          ),
+          BombsView(
+            bombs: di<BombsBloc>().state.bombs,
+          ),
+          BulletsView(
+            bullets: di<BulletsBloc>().state.bullets,
+          ),
+        ],
+      );
 }

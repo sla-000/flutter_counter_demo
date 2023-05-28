@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'event.dart';
 
@@ -12,37 +12,7 @@ part of 'event.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$SceneEventTearOff {
-  const _$SceneEventTearOff();
-
-  SceneEventInit init(Vector size) {
-    return SceneEventInit(
-      size,
-    );
-  }
-
-  SceneEventResize resize(Vector size) {
-    return SceneEventResize(
-      size,
-    );
-  }
-
-  SceneEventTapButton tapButton() {
-    return const SceneEventTapButton();
-  }
-
-  SceneEventUpdate update(double delta) {
-    return SceneEventUpdate(
-      delta,
-    );
-  }
-}
-
-/// @nodoc
-const $SceneEvent = _$SceneEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$SceneEvent {
@@ -56,10 +26,10 @@ mixin _$SceneEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Vector size)? init,
-    TResult Function(Vector size)? resize,
-    TResult Function()? tapButton,
-    TResult Function(double delta)? update,
+    TResult? Function(Vector size)? init,
+    TResult? Function(Vector size)? resize,
+    TResult? Function()? tapButton,
+    TResult? Function(double delta)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,10 +51,10 @@ mixin _$SceneEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(SceneEventInit value)? init,
-    TResult Function(SceneEventResize value)? resize,
-    TResult Function(SceneEventTapButton value)? tapButton,
-    TResult Function(SceneEventUpdate value)? update,
+    TResult? Function(SceneEventInit value)? init,
+    TResult? Function(SceneEventResize value)? resize,
+    TResult? Function(SceneEventTapButton value)? tapButton,
+    TResult? Function(SceneEventUpdate value)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -100,40 +70,46 @@ mixin _$SceneEvent {
 
 /// @nodoc
 abstract class $SceneEventCopyWith<$Res> {
-  factory $SceneEventCopyWith(SceneEvent value, $Res Function(SceneEvent) then) = _$SceneEventCopyWithImpl<$Res>;
+  factory $SceneEventCopyWith(
+          SceneEvent value, $Res Function(SceneEvent) then) =
+      _$SceneEventCopyWithImpl<$Res, SceneEvent>;
 }
 
 /// @nodoc
-class _$SceneEventCopyWithImpl<$Res> implements $SceneEventCopyWith<$Res> {
+class _$SceneEventCopyWithImpl<$Res, $Val extends SceneEvent>
+    implements $SceneEventCopyWith<$Res> {
   _$SceneEventCopyWithImpl(this._value, this._then);
 
-  final SceneEvent _value;
   // ignore: unused_field
-  final $Res Function(SceneEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class $SceneEventInitCopyWith<$Res> {
-  factory $SceneEventInitCopyWith(SceneEventInit value, $Res Function(SceneEventInit) then) =
-      _$SceneEventInitCopyWithImpl<$Res>;
+abstract class _$$SceneEventInitCopyWith<$Res> {
+  factory _$$SceneEventInitCopyWith(
+          _$SceneEventInit value, $Res Function(_$SceneEventInit) then) =
+      __$$SceneEventInitCopyWithImpl<$Res>;
+  @useResult
   $Res call({Vector size});
 }
 
 /// @nodoc
-class _$SceneEventInitCopyWithImpl<$Res> extends _$SceneEventCopyWithImpl<$Res>
-    implements $SceneEventInitCopyWith<$Res> {
-  _$SceneEventInitCopyWithImpl(SceneEventInit _value, $Res Function(SceneEventInit) _then)
-      : super(_value, (v) => _then(v as SceneEventInit));
+class __$$SceneEventInitCopyWithImpl<$Res>
+    extends _$SceneEventCopyWithImpl<$Res, _$SceneEventInit>
+    implements _$$SceneEventInitCopyWith<$Res> {
+  __$$SceneEventInitCopyWithImpl(
+      _$SceneEventInit _value, $Res Function(_$SceneEventInit) _then)
+      : super(_value, _then);
 
-  @override
-  SceneEventInit get _value => super._value as SceneEventInit;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? size = freezed,
+    Object? size = null,
   }) {
-    return _then(SceneEventInit(
-      size == freezed
+    return _then(_$SceneEventInit(
+      null == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as Vector,
@@ -158,17 +134,18 @@ class _$SceneEventInit implements SceneEventInit {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is SceneEventInit &&
-            const DeepCollectionEquality().equals(other.size, size));
+            other is _$SceneEventInit &&
+            (identical(other.size, size) || other.size == size));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(size));
+  int get hashCode => Object.hash(runtimeType, size);
 
   @JsonKey(ignore: true)
   @override
-  $SceneEventInitCopyWith<SceneEventInit> get copyWith =>
-      _$SceneEventInitCopyWithImpl<SceneEventInit>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$SceneEventInitCopyWith<_$SceneEventInit> get copyWith =>
+      __$$SceneEventInitCopyWithImpl<_$SceneEventInit>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -184,10 +161,10 @@ class _$SceneEventInit implements SceneEventInit {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Vector size)? init,
-    TResult Function(Vector size)? resize,
-    TResult Function()? tapButton,
-    TResult Function(double delta)? update,
+    TResult? Function(Vector size)? init,
+    TResult? Function(Vector size)? resize,
+    TResult? Function()? tapButton,
+    TResult? Function(double delta)? update,
   }) {
     return init?.call(size);
   }
@@ -221,10 +198,10 @@ class _$SceneEventInit implements SceneEventInit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(SceneEventInit value)? init,
-    TResult Function(SceneEventResize value)? resize,
-    TResult Function(SceneEventTapButton value)? tapButton,
-    TResult Function(SceneEventUpdate value)? update,
+    TResult? Function(SceneEventInit value)? init,
+    TResult? Function(SceneEventResize value)? resize,
+    TResult? Function(SceneEventTapButton value)? tapButton,
+    TResult? Function(SceneEventUpdate value)? update,
   }) {
     return init?.call(this);
   }
@@ -246,35 +223,38 @@ class _$SceneEventInit implements SceneEventInit {
 }
 
 abstract class SceneEventInit implements SceneEvent {
-  const factory SceneEventInit(Vector size) = _$SceneEventInit;
+  const factory SceneEventInit(final Vector size) = _$SceneEventInit;
 
   Vector get size;
   @JsonKey(ignore: true)
-  $SceneEventInitCopyWith<SceneEventInit> get copyWith => throw _privateConstructorUsedError;
+  _$$SceneEventInitCopyWith<_$SceneEventInit> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SceneEventResizeCopyWith<$Res> {
-  factory $SceneEventResizeCopyWith(SceneEventResize value, $Res Function(SceneEventResize) then) =
-      _$SceneEventResizeCopyWithImpl<$Res>;
+abstract class _$$SceneEventResizeCopyWith<$Res> {
+  factory _$$SceneEventResizeCopyWith(
+          _$SceneEventResize value, $Res Function(_$SceneEventResize) then) =
+      __$$SceneEventResizeCopyWithImpl<$Res>;
+  @useResult
   $Res call({Vector size});
 }
 
 /// @nodoc
-class _$SceneEventResizeCopyWithImpl<$Res> extends _$SceneEventCopyWithImpl<$Res>
-    implements $SceneEventResizeCopyWith<$Res> {
-  _$SceneEventResizeCopyWithImpl(SceneEventResize _value, $Res Function(SceneEventResize) _then)
-      : super(_value, (v) => _then(v as SceneEventResize));
+class __$$SceneEventResizeCopyWithImpl<$Res>
+    extends _$SceneEventCopyWithImpl<$Res, _$SceneEventResize>
+    implements _$$SceneEventResizeCopyWith<$Res> {
+  __$$SceneEventResizeCopyWithImpl(
+      _$SceneEventResize _value, $Res Function(_$SceneEventResize) _then)
+      : super(_value, _then);
 
-  @override
-  SceneEventResize get _value => super._value as SceneEventResize;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? size = freezed,
+    Object? size = null,
   }) {
-    return _then(SceneEventResize(
-      size == freezed
+    return _then(_$SceneEventResize(
+      null == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as Vector,
@@ -299,17 +279,18 @@ class _$SceneEventResize implements SceneEventResize {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is SceneEventResize &&
-            const DeepCollectionEquality().equals(other.size, size));
+            other is _$SceneEventResize &&
+            (identical(other.size, size) || other.size == size));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(size));
+  int get hashCode => Object.hash(runtimeType, size);
 
   @JsonKey(ignore: true)
   @override
-  $SceneEventResizeCopyWith<SceneEventResize> get copyWith =>
-      _$SceneEventResizeCopyWithImpl<SceneEventResize>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$SceneEventResizeCopyWith<_$SceneEventResize> get copyWith =>
+      __$$SceneEventResizeCopyWithImpl<_$SceneEventResize>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -325,10 +306,10 @@ class _$SceneEventResize implements SceneEventResize {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Vector size)? init,
-    TResult Function(Vector size)? resize,
-    TResult Function()? tapButton,
-    TResult Function(double delta)? update,
+    TResult? Function(Vector size)? init,
+    TResult? Function(Vector size)? resize,
+    TResult? Function()? tapButton,
+    TResult? Function(double delta)? update,
   }) {
     return resize?.call(size);
   }
@@ -362,10 +343,10 @@ class _$SceneEventResize implements SceneEventResize {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(SceneEventInit value)? init,
-    TResult Function(SceneEventResize value)? resize,
-    TResult Function(SceneEventTapButton value)? tapButton,
-    TResult Function(SceneEventUpdate value)? update,
+    TResult? Function(SceneEventInit value)? init,
+    TResult? Function(SceneEventResize value)? resize,
+    TResult? Function(SceneEventTapButton value)? tapButton,
+    TResult? Function(SceneEventUpdate value)? update,
   }) {
     return resize?.call(this);
   }
@@ -387,27 +368,28 @@ class _$SceneEventResize implements SceneEventResize {
 }
 
 abstract class SceneEventResize implements SceneEvent {
-  const factory SceneEventResize(Vector size) = _$SceneEventResize;
+  const factory SceneEventResize(final Vector size) = _$SceneEventResize;
 
   Vector get size;
   @JsonKey(ignore: true)
-  $SceneEventResizeCopyWith<SceneEventResize> get copyWith => throw _privateConstructorUsedError;
+  _$$SceneEventResizeCopyWith<_$SceneEventResize> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SceneEventTapButtonCopyWith<$Res> {
-  factory $SceneEventTapButtonCopyWith(SceneEventTapButton value, $Res Function(SceneEventTapButton) then) =
-      _$SceneEventTapButtonCopyWithImpl<$Res>;
+abstract class _$$SceneEventTapButtonCopyWith<$Res> {
+  factory _$$SceneEventTapButtonCopyWith(_$SceneEventTapButton value,
+          $Res Function(_$SceneEventTapButton) then) =
+      __$$SceneEventTapButtonCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$SceneEventTapButtonCopyWithImpl<$Res> extends _$SceneEventCopyWithImpl<$Res>
-    implements $SceneEventTapButtonCopyWith<$Res> {
-  _$SceneEventTapButtonCopyWithImpl(SceneEventTapButton _value, $Res Function(SceneEventTapButton) _then)
-      : super(_value, (v) => _then(v as SceneEventTapButton));
-
-  @override
-  SceneEventTapButton get _value => super._value as SceneEventTapButton;
+class __$$SceneEventTapButtonCopyWithImpl<$Res>
+    extends _$SceneEventCopyWithImpl<$Res, _$SceneEventTapButton>
+    implements _$$SceneEventTapButtonCopyWith<$Res> {
+  __$$SceneEventTapButtonCopyWithImpl(
+      _$SceneEventTapButton _value, $Res Function(_$SceneEventTapButton) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -422,7 +404,8 @@ class _$SceneEventTapButton implements SceneEventTapButton {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is SceneEventTapButton);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SceneEventTapButton);
   }
 
   @override
@@ -442,10 +425,10 @@ class _$SceneEventTapButton implements SceneEventTapButton {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Vector size)? init,
-    TResult Function(Vector size)? resize,
-    TResult Function()? tapButton,
-    TResult Function(double delta)? update,
+    TResult? Function(Vector size)? init,
+    TResult? Function(Vector size)? resize,
+    TResult? Function()? tapButton,
+    TResult? Function(double delta)? update,
   }) {
     return tapButton?.call();
   }
@@ -479,10 +462,10 @@ class _$SceneEventTapButton implements SceneEventTapButton {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(SceneEventInit value)? init,
-    TResult Function(SceneEventResize value)? resize,
-    TResult Function(SceneEventTapButton value)? tapButton,
-    TResult Function(SceneEventUpdate value)? update,
+    TResult? Function(SceneEventInit value)? init,
+    TResult? Function(SceneEventResize value)? resize,
+    TResult? Function(SceneEventTapButton value)? tapButton,
+    TResult? Function(SceneEventUpdate value)? update,
   }) {
     return tapButton?.call(this);
   }
@@ -508,27 +491,29 @@ abstract class SceneEventTapButton implements SceneEvent {
 }
 
 /// @nodoc
-abstract class $SceneEventUpdateCopyWith<$Res> {
-  factory $SceneEventUpdateCopyWith(SceneEventUpdate value, $Res Function(SceneEventUpdate) then) =
-      _$SceneEventUpdateCopyWithImpl<$Res>;
+abstract class _$$SceneEventUpdateCopyWith<$Res> {
+  factory _$$SceneEventUpdateCopyWith(
+          _$SceneEventUpdate value, $Res Function(_$SceneEventUpdate) then) =
+      __$$SceneEventUpdateCopyWithImpl<$Res>;
+  @useResult
   $Res call({double delta});
 }
 
 /// @nodoc
-class _$SceneEventUpdateCopyWithImpl<$Res> extends _$SceneEventCopyWithImpl<$Res>
-    implements $SceneEventUpdateCopyWith<$Res> {
-  _$SceneEventUpdateCopyWithImpl(SceneEventUpdate _value, $Res Function(SceneEventUpdate) _then)
-      : super(_value, (v) => _then(v as SceneEventUpdate));
+class __$$SceneEventUpdateCopyWithImpl<$Res>
+    extends _$SceneEventCopyWithImpl<$Res, _$SceneEventUpdate>
+    implements _$$SceneEventUpdateCopyWith<$Res> {
+  __$$SceneEventUpdateCopyWithImpl(
+      _$SceneEventUpdate _value, $Res Function(_$SceneEventUpdate) _then)
+      : super(_value, _then);
 
-  @override
-  SceneEventUpdate get _value => super._value as SceneEventUpdate;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? delta = freezed,
+    Object? delta = null,
   }) {
-    return _then(SceneEventUpdate(
-      delta == freezed
+    return _then(_$SceneEventUpdate(
+      null == delta
           ? _value.delta
           : delta // ignore: cast_nullable_to_non_nullable
               as double,
@@ -553,17 +538,18 @@ class _$SceneEventUpdate implements SceneEventUpdate {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is SceneEventUpdate &&
-            const DeepCollectionEquality().equals(other.delta, delta));
+            other is _$SceneEventUpdate &&
+            (identical(other.delta, delta) || other.delta == delta));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(delta));
+  int get hashCode => Object.hash(runtimeType, delta);
 
   @JsonKey(ignore: true)
   @override
-  $SceneEventUpdateCopyWith<SceneEventUpdate> get copyWith =>
-      _$SceneEventUpdateCopyWithImpl<SceneEventUpdate>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$SceneEventUpdateCopyWith<_$SceneEventUpdate> get copyWith =>
+      __$$SceneEventUpdateCopyWithImpl<_$SceneEventUpdate>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -579,10 +565,10 @@ class _$SceneEventUpdate implements SceneEventUpdate {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Vector size)? init,
-    TResult Function(Vector size)? resize,
-    TResult Function()? tapButton,
-    TResult Function(double delta)? update,
+    TResult? Function(Vector size)? init,
+    TResult? Function(Vector size)? resize,
+    TResult? Function()? tapButton,
+    TResult? Function(double delta)? update,
   }) {
     return update?.call(delta);
   }
@@ -616,10 +602,10 @@ class _$SceneEventUpdate implements SceneEventUpdate {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(SceneEventInit value)? init,
-    TResult Function(SceneEventResize value)? resize,
-    TResult Function(SceneEventTapButton value)? tapButton,
-    TResult Function(SceneEventUpdate value)? update,
+    TResult? Function(SceneEventInit value)? init,
+    TResult? Function(SceneEventResize value)? resize,
+    TResult? Function(SceneEventTapButton value)? tapButton,
+    TResult? Function(SceneEventUpdate value)? update,
   }) {
     return update?.call(this);
   }
@@ -641,9 +627,10 @@ class _$SceneEventUpdate implements SceneEventUpdate {
 }
 
 abstract class SceneEventUpdate implements SceneEvent {
-  const factory SceneEventUpdate(double delta) = _$SceneEventUpdate;
+  const factory SceneEventUpdate(final double delta) = _$SceneEventUpdate;
 
   double get delta;
   @JsonKey(ignore: true)
-  $SceneEventUpdateCopyWith<SceneEventUpdate> get copyWith => throw _privateConstructorUsedError;
+  _$$SceneEventUpdateCopyWith<_$SceneEventUpdate> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'event.dart';
 
@@ -12,29 +12,7 @@ part of 'event.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$WavesEventTearOff {
-  const _$WavesEventTearOff();
-
-  WavesEventInit init() {
-    return const WavesEventInit();
-  }
-
-  WavesEventNextWave nextWave() {
-    return const WavesEventNextWave();
-  }
-
-  WavesEventUpdate update(int delta) {
-    return WavesEventUpdate(
-      delta,
-    );
-  }
-}
-
-/// @nodoc
-const $WavesEvent = _$WavesEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$WavesEvent {
@@ -47,9 +25,9 @@ mixin _$WavesEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function()? nextWave,
-    TResult Function(int delta)? update,
+    TResult? Function()? init,
+    TResult? Function()? nextWave,
+    TResult? Function(int delta)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,9 +47,9 @@ mixin _$WavesEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(WavesEventInit value)? init,
-    TResult Function(WavesEventNextWave value)? nextWave,
-    TResult Function(WavesEventUpdate value)? update,
+    TResult? Function(WavesEventInit value)? init,
+    TResult? Function(WavesEventNextWave value)? nextWave,
+    TResult? Function(WavesEventUpdate value)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -86,32 +64,36 @@ mixin _$WavesEvent {
 
 /// @nodoc
 abstract class $WavesEventCopyWith<$Res> {
-  factory $WavesEventCopyWith(WavesEvent value, $Res Function(WavesEvent) then) = _$WavesEventCopyWithImpl<$Res>;
+  factory $WavesEventCopyWith(
+          WavesEvent value, $Res Function(WavesEvent) then) =
+      _$WavesEventCopyWithImpl<$Res, WavesEvent>;
 }
 
 /// @nodoc
-class _$WavesEventCopyWithImpl<$Res> implements $WavesEventCopyWith<$Res> {
+class _$WavesEventCopyWithImpl<$Res, $Val extends WavesEvent>
+    implements $WavesEventCopyWith<$Res> {
   _$WavesEventCopyWithImpl(this._value, this._then);
 
-  final WavesEvent _value;
   // ignore: unused_field
-  final $Res Function(WavesEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class $WavesEventInitCopyWith<$Res> {
-  factory $WavesEventInitCopyWith(WavesEventInit value, $Res Function(WavesEventInit) then) =
-      _$WavesEventInitCopyWithImpl<$Res>;
+abstract class _$$WavesEventInitCopyWith<$Res> {
+  factory _$$WavesEventInitCopyWith(
+          _$WavesEventInit value, $Res Function(_$WavesEventInit) then) =
+      __$$WavesEventInitCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$WavesEventInitCopyWithImpl<$Res> extends _$WavesEventCopyWithImpl<$Res>
-    implements $WavesEventInitCopyWith<$Res> {
-  _$WavesEventInitCopyWithImpl(WavesEventInit _value, $Res Function(WavesEventInit) _then)
-      : super(_value, (v) => _then(v as WavesEventInit));
-
-  @override
-  WavesEventInit get _value => super._value as WavesEventInit;
+class __$$WavesEventInitCopyWithImpl<$Res>
+    extends _$WavesEventCopyWithImpl<$Res, _$WavesEventInit>
+    implements _$$WavesEventInitCopyWith<$Res> {
+  __$$WavesEventInitCopyWithImpl(
+      _$WavesEventInit _value, $Res Function(_$WavesEventInit) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -126,7 +108,8 @@ class _$WavesEventInit implements WavesEventInit {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is WavesEventInit);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$WavesEventInit);
   }
 
   @override
@@ -145,9 +128,9 @@ class _$WavesEventInit implements WavesEventInit {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function()? nextWave,
-    TResult Function(int delta)? update,
+    TResult? Function()? init,
+    TResult? Function()? nextWave,
+    TResult? Function(int delta)? update,
   }) {
     return init?.call();
   }
@@ -179,9 +162,9 @@ class _$WavesEventInit implements WavesEventInit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(WavesEventInit value)? init,
-    TResult Function(WavesEventNextWave value)? nextWave,
-    TResult Function(WavesEventUpdate value)? update,
+    TResult? Function(WavesEventInit value)? init,
+    TResult? Function(WavesEventNextWave value)? nextWave,
+    TResult? Function(WavesEventUpdate value)? update,
   }) {
     return init?.call(this);
   }
@@ -206,19 +189,19 @@ abstract class WavesEventInit implements WavesEvent {
 }
 
 /// @nodoc
-abstract class $WavesEventNextWaveCopyWith<$Res> {
-  factory $WavesEventNextWaveCopyWith(WavesEventNextWave value, $Res Function(WavesEventNextWave) then) =
-      _$WavesEventNextWaveCopyWithImpl<$Res>;
+abstract class _$$WavesEventNextWaveCopyWith<$Res> {
+  factory _$$WavesEventNextWaveCopyWith(_$WavesEventNextWave value,
+          $Res Function(_$WavesEventNextWave) then) =
+      __$$WavesEventNextWaveCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$WavesEventNextWaveCopyWithImpl<$Res> extends _$WavesEventCopyWithImpl<$Res>
-    implements $WavesEventNextWaveCopyWith<$Res> {
-  _$WavesEventNextWaveCopyWithImpl(WavesEventNextWave _value, $Res Function(WavesEventNextWave) _then)
-      : super(_value, (v) => _then(v as WavesEventNextWave));
-
-  @override
-  WavesEventNextWave get _value => super._value as WavesEventNextWave;
+class __$$WavesEventNextWaveCopyWithImpl<$Res>
+    extends _$WavesEventCopyWithImpl<$Res, _$WavesEventNextWave>
+    implements _$$WavesEventNextWaveCopyWith<$Res> {
+  __$$WavesEventNextWaveCopyWithImpl(
+      _$WavesEventNextWave _value, $Res Function(_$WavesEventNextWave) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -233,7 +216,8 @@ class _$WavesEventNextWave implements WavesEventNextWave {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is WavesEventNextWave);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$WavesEventNextWave);
   }
 
   @override
@@ -252,9 +236,9 @@ class _$WavesEventNextWave implements WavesEventNextWave {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function()? nextWave,
-    TResult Function(int delta)? update,
+    TResult? Function()? init,
+    TResult? Function()? nextWave,
+    TResult? Function(int delta)? update,
   }) {
     return nextWave?.call();
   }
@@ -286,9 +270,9 @@ class _$WavesEventNextWave implements WavesEventNextWave {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(WavesEventInit value)? init,
-    TResult Function(WavesEventNextWave value)? nextWave,
-    TResult Function(WavesEventUpdate value)? update,
+    TResult? Function(WavesEventInit value)? init,
+    TResult? Function(WavesEventNextWave value)? nextWave,
+    TResult? Function(WavesEventUpdate value)? update,
   }) {
     return nextWave?.call(this);
   }
@@ -313,27 +297,29 @@ abstract class WavesEventNextWave implements WavesEvent {
 }
 
 /// @nodoc
-abstract class $WavesEventUpdateCopyWith<$Res> {
-  factory $WavesEventUpdateCopyWith(WavesEventUpdate value, $Res Function(WavesEventUpdate) then) =
-      _$WavesEventUpdateCopyWithImpl<$Res>;
+abstract class _$$WavesEventUpdateCopyWith<$Res> {
+  factory _$$WavesEventUpdateCopyWith(
+          _$WavesEventUpdate value, $Res Function(_$WavesEventUpdate) then) =
+      __$$WavesEventUpdateCopyWithImpl<$Res>;
+  @useResult
   $Res call({int delta});
 }
 
 /// @nodoc
-class _$WavesEventUpdateCopyWithImpl<$Res> extends _$WavesEventCopyWithImpl<$Res>
-    implements $WavesEventUpdateCopyWith<$Res> {
-  _$WavesEventUpdateCopyWithImpl(WavesEventUpdate _value, $Res Function(WavesEventUpdate) _then)
-      : super(_value, (v) => _then(v as WavesEventUpdate));
+class __$$WavesEventUpdateCopyWithImpl<$Res>
+    extends _$WavesEventCopyWithImpl<$Res, _$WavesEventUpdate>
+    implements _$$WavesEventUpdateCopyWith<$Res> {
+  __$$WavesEventUpdateCopyWithImpl(
+      _$WavesEventUpdate _value, $Res Function(_$WavesEventUpdate) _then)
+      : super(_value, _then);
 
-  @override
-  WavesEventUpdate get _value => super._value as WavesEventUpdate;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? delta = freezed,
+    Object? delta = null,
   }) {
-    return _then(WavesEventUpdate(
-      delta == freezed
+    return _then(_$WavesEventUpdate(
+      null == delta
           ? _value.delta
           : delta // ignore: cast_nullable_to_non_nullable
               as int,
@@ -358,17 +344,18 @@ class _$WavesEventUpdate implements WavesEventUpdate {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is WavesEventUpdate &&
-            const DeepCollectionEquality().equals(other.delta, delta));
+            other is _$WavesEventUpdate &&
+            (identical(other.delta, delta) || other.delta == delta));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(delta));
+  int get hashCode => Object.hash(runtimeType, delta);
 
   @JsonKey(ignore: true)
   @override
-  $WavesEventUpdateCopyWith<WavesEventUpdate> get copyWith =>
-      _$WavesEventUpdateCopyWithImpl<WavesEventUpdate>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$WavesEventUpdateCopyWith<_$WavesEventUpdate> get copyWith =>
+      __$$WavesEventUpdateCopyWithImpl<_$WavesEventUpdate>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -383,9 +370,9 @@ class _$WavesEventUpdate implements WavesEventUpdate {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function()? nextWave,
-    TResult Function(int delta)? update,
+    TResult? Function()? init,
+    TResult? Function()? nextWave,
+    TResult? Function(int delta)? update,
   }) {
     return update?.call(delta);
   }
@@ -417,9 +404,9 @@ class _$WavesEventUpdate implements WavesEventUpdate {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(WavesEventInit value)? init,
-    TResult Function(WavesEventNextWave value)? nextWave,
-    TResult Function(WavesEventUpdate value)? update,
+    TResult? Function(WavesEventInit value)? init,
+    TResult? Function(WavesEventNextWave value)? nextWave,
+    TResult? Function(WavesEventUpdate value)? update,
   }) {
     return update?.call(this);
   }
@@ -440,9 +427,10 @@ class _$WavesEventUpdate implements WavesEventUpdate {
 }
 
 abstract class WavesEventUpdate implements WavesEvent {
-  const factory WavesEventUpdate(int delta) = _$WavesEventUpdate;
+  const factory WavesEventUpdate(final int delta) = _$WavesEventUpdate;
 
   int get delta;
   @JsonKey(ignore: true)
-  $WavesEventUpdateCopyWith<WavesEventUpdate> get copyWith => throw _privateConstructorUsedError;
+  _$$WavesEventUpdateCopyWith<_$WavesEventUpdate> get copyWith =>
+      throw _privateConstructorUsedError;
 }

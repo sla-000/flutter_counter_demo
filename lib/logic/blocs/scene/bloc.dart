@@ -9,7 +9,12 @@ import 'package:flutter_counter_shooter/logic/blocs/bullets/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/bullets/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/protagonist/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/protagonist/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/scene/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/scene/repo.dart';
+import 'package:flutter_counter_shooter/logic/blocs/scene/state.dart';
+import 'package:flutter_counter_shooter/logic/blocs/scene/utils/bombs.dart';
+import 'package:flutter_counter_shooter/logic/blocs/scene/utils/bullets.dart';
+import 'package:flutter_counter_shooter/logic/blocs/scene/utils/distance.dart';
 import 'package:flutter_counter_shooter/logic/blocs/spawn/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/spawn/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
@@ -18,22 +23,17 @@ import 'package:flutter_counter_shooter/logic/game/actor/actor_moving.dart';
 import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
 import 'package:flutter_counter_shooter/logic/game/enemy/bomb.dart';
 import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
-import 'package:flutter_counter_shooter/logic/game/protagonist/protagonist.dart';
-
-import 'event.dart';
-import 'state.dart';
-import 'utils/bombs.dart';
-import 'utils/bullets.dart';
-import 'utils/distance.dart';
 
 class SceneBloc extends Bloc<SceneEvent, SceneState> {
   SceneBloc({
     required this.sceneSpawnRepo,
     required this.sceneWavesRepo,
     required this.gameScoreRepo,
-  }) : super(SceneState(
-          size: Vector.one(),
-        )) {
+  }) : super(
+          SceneState(
+            size: Vector.one(),
+          ),
+        ) {
     on<SceneEventInit>(_onInit);
     on<SceneEventResize>(_onResize);
     on<SceneEventTapButton>(_onTapButton);
@@ -58,12 +58,14 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
   }
 
   void _onInit(SceneEventInit event, Emitter<SceneState> emit) {
-    di<ProtagonistBloc>().add(ProtagonistEvent.init(
-      Vector(
-        x: event.size.x / 2,
-        y: event.size.y / 2,
+    di<ProtagonistBloc>().add(
+      ProtagonistEvent.init(
+        Vector(
+          x: event.size.x / 2,
+          y: event.size.y / 2,
+        ),
       ),
-    ));
+    );
 
     di<BulletsBloc>().add(const BulletsEvent.init());
 
@@ -72,43 +74,53 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
     di<SpawnBloc>().add(const SpawnEvent.init());
     di<WavesBloc>().add(const WavesEvent.init());
 
-    emit(state.copyWith(
-      size: event.size,
-    ));
+    emit(
+      state.copyWith(
+        size: event.size,
+      ),
+    );
   }
 
   void _onResize(SceneEventResize event, Emitter<SceneState> emit) {
-    final double xCoeff = event.size.x / state.size.x;
-    final double yCoeff = event.size.y / state.size.y;
+    final xCoeff = event.size.x / state.size.x;
+    final yCoeff = event.size.y / state.size.y;
 
-    di<ProtagonistBloc>().add(ProtagonistEvent.init(
-      Vector(
-        x: event.size.x / 2,
-        y: event.size.y / 2,
+    di<ProtagonistBloc>().add(
+      ProtagonistEvent.init(
+        Vector(
+          x: event.size.x / 2,
+          y: event.size.y / 2,
+        ),
       ),
-    ));
+    );
 
-    di<BulletsBloc>().add(BulletsEvent.setAll(
-      convertBullets(
-        di<BulletsBloc>().state.bullets,
-        xCoeff,
-        yCoeff,
+    di<BulletsBloc>().add(
+      BulletsEvent.setAll(
+        convertBullets(
+          di<BulletsBloc>().state.bullets,
+          xCoeff,
+          yCoeff,
+        ),
       ),
-    ));
+    );
 
-    di<BombsBloc>().add(BombsEvent.setAll(
-      convertBombs(
-        di<BombsBloc>().state.bombs,
-        xCoeff,
-        yCoeff,
+    di<BombsBloc>().add(
+      BombsEvent.setAll(
+        convertBombs(
+          di<BombsBloc>().state.bombs,
+          xCoeff,
+          yCoeff,
+        ),
       ),
-    ));
+    );
 
     // di<BombsBloc>().add(const BombsEvent.init()); // todo
 
-    emit(state.copyWith(
-      size: event.size,
-    ));
+    emit(
+      state.copyWith(
+        size: event.size,
+      ),
+    );
   }
 
   void _onTapButton(SceneEventTapButton event, Emitter<SceneState> emit) {
@@ -117,7 +129,7 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
     if (gameScoreRepo.isStarted) {
       di<ProtagonistBloc>().add(const ProtagonistEvent.shoot());
 
-      final Protagonist protagonist = di<ProtagonistBloc>().state.protagonist;
+      final protagonist = di<ProtagonistBloc>().state.protagonist;
 
       di<BulletsBloc>().add(
         BulletsEvent.add(
@@ -173,7 +185,7 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
   }
 
   void _processCollisions() {
-    final int hits = checkAllCollisions(
+    final hits = checkAllCollisions(
       protagonist: di<ProtagonistBloc>().state.protagonist,
       bullets: di<BulletsBloc>().state.bullets,
       bombs: di<BombsBloc>().state.bombs,
@@ -189,15 +201,18 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
       },
     );
 
-    for (int i = 0; i < hits; ++i) {
+    for (var i = 0; i < hits; ++i) {
       gameScoreRepo.kill();
     }
   }
 
-  void _checkBounds(List<ActorMoving> actors, void Function(List<ActorMoving> actors) onRemove) {
-    final List<ActorMoving> delItems = <ActorMoving>[];
+  void _checkBounds(
+    List<ActorMoving> actors,
+    void Function(List<ActorMoving> actors) onRemove,
+  ) {
+    final delItems = <ActorMoving>[];
 
-    for (final ActorMoving actor in actors) {
+    for (final actor in actors) {
       checkBoundsAddToDeleteList(delItems, actor, state.size.x, state.size.y);
     }
 
@@ -209,15 +224,15 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
       return;
     }
 
-    final Vector bombPosition = _generateBombPosition();
-    final Vector toCenter = Vector(
+    final bombPosition = _generateBombPosition();
+    final toCenter = Vector(
       x: state.size.x / 2 - bombPosition.x,
       y: state.size.y / 2 - bombPosition.y,
     );
 
-    final double angleToCenter = toCenter.getAngle();
+    final angleToCenter = toCenter.getAngle();
 
-    final Bomb bomb = Bomb(
+    final bomb = Bomb(
       position: bombPosition,
       angle: angleToCenter,
       linearSpeed: Vector.fromAngle(angle: angleToCenter, length: 20),

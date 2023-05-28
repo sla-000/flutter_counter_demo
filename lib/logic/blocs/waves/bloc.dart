@@ -1,10 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'event.dart';
-import 'repo.dart';
-import 'state.dart';
+import 'package:flutter_counter_shooter/logic/blocs/waves/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/waves/repo.dart';
+import 'package:flutter_counter_shooter/logic/blocs/waves/state.dart';
 
 const int kWaveTime = 60000;
 
@@ -35,27 +34,33 @@ class WavesBloc extends Bloc<WavesEvent, WavesState> {
   }
 
   void _onInit(WavesEventInit _, Emitter<WavesState> emit) {
-    emit(state.copyWith(
-      count: 0,
-      waveTime: 0,
-    ));
+    emit(
+      state.copyWith(
+        count: 0,
+        waveTime: 0,
+      ),
+    );
   }
 
   void _onNextWave(WavesEventNextWave _, Emitter<WavesState> emit) {
-    emit(state.copyWith(
-      count: state.count + 1,
-      waveTime: 0,
-    ));
+    emit(
+      state.copyWith(
+        count: state.count + 1,
+        waveTime: 0,
+      ),
+    );
   }
 
   void _onUpdate(WavesEventUpdate event, Emitter<WavesState> emit) {
-    final int time = state.waveTime + event.delta;
+    final time = state.waveTime + event.delta;
 
     if (time > kWaveTime) {
-      emit(state.copyWith(
-        waveTime: time - kWaveTime,
-        count: state.count + 1,
-      ));
+      emit(
+        state.copyWith(
+          waveTime: time - kWaveTime,
+          count: state.count + 1,
+        ),
+      );
     } else {
       emit(state.copyWith(waveTime: time));
     }

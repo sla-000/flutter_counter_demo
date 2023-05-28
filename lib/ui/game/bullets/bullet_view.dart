@@ -4,17 +4,17 @@ import 'package:flutter_counter_shooter/ui/common/gradient_icon.dart';
 
 class BulletView extends StatelessWidget {
   const BulletView({
-    Key? key,
+    super.key,
     required this.bullet,
-  }) : super(key: key);
+  });
 
   final Bullet bullet;
 
   @override
   Widget build(BuildContext context) {
-    final bool firstPart = bullet.animation < 0.5;
+    final firstPart = bullet.animation < 0.5;
 
-    late final List<Color> colors = firstPart
+    late final colors = firstPart
         ? <Color>[
             Colors.red.shade400,
             Colors.yellow.shade400,
@@ -24,7 +24,8 @@ class BulletView extends StatelessWidget {
             Colors.red.shade400,
           ];
 
-    late final double animation = firstPart ? bullet.animation * 2 : (bullet.animation - 0.5) * 2;
+    late final animation =
+        firstPart ? bullet.animation * 2 : (bullet.animation - 0.5) * 2;
 
     return Positioned(
       left: bullet.xOrigin,

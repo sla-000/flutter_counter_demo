@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'event.dart';
 
@@ -12,25 +12,7 @@ part of 'event.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$FrameEventTearOff {
-  const _$FrameEventTearOff();
-
-  FrameEventControl control(bool enable) {
-    return FrameEventControl(
-      enable,
-    );
-  }
-
-  FrameEventUpdate update() {
-    return const FrameEventUpdate();
-  }
-}
-
-/// @nodoc
-const $FrameEvent = _$FrameEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$FrameEvent {
@@ -42,8 +24,8 @@ mixin _$FrameEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool enable)? control,
-    TResult Function()? update,
+    TResult? Function(bool enable)? control,
+    TResult? Function()? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,8 +43,8 @@ mixin _$FrameEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(FrameEventControl value)? control,
-    TResult Function(FrameEventUpdate value)? update,
+    TResult? Function(FrameEventControl value)? control,
+    TResult? Function(FrameEventUpdate value)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -76,40 +58,46 @@ mixin _$FrameEvent {
 
 /// @nodoc
 abstract class $FrameEventCopyWith<$Res> {
-  factory $FrameEventCopyWith(FrameEvent value, $Res Function(FrameEvent) then) = _$FrameEventCopyWithImpl<$Res>;
+  factory $FrameEventCopyWith(
+          FrameEvent value, $Res Function(FrameEvent) then) =
+      _$FrameEventCopyWithImpl<$Res, FrameEvent>;
 }
 
 /// @nodoc
-class _$FrameEventCopyWithImpl<$Res> implements $FrameEventCopyWith<$Res> {
+class _$FrameEventCopyWithImpl<$Res, $Val extends FrameEvent>
+    implements $FrameEventCopyWith<$Res> {
   _$FrameEventCopyWithImpl(this._value, this._then);
 
-  final FrameEvent _value;
   // ignore: unused_field
-  final $Res Function(FrameEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class $FrameEventControlCopyWith<$Res> {
-  factory $FrameEventControlCopyWith(FrameEventControl value, $Res Function(FrameEventControl) then) =
-      _$FrameEventControlCopyWithImpl<$Res>;
+abstract class _$$FrameEventControlCopyWith<$Res> {
+  factory _$$FrameEventControlCopyWith(
+          _$FrameEventControl value, $Res Function(_$FrameEventControl) then) =
+      __$$FrameEventControlCopyWithImpl<$Res>;
+  @useResult
   $Res call({bool enable});
 }
 
 /// @nodoc
-class _$FrameEventControlCopyWithImpl<$Res> extends _$FrameEventCopyWithImpl<$Res>
-    implements $FrameEventControlCopyWith<$Res> {
-  _$FrameEventControlCopyWithImpl(FrameEventControl _value, $Res Function(FrameEventControl) _then)
-      : super(_value, (v) => _then(v as FrameEventControl));
+class __$$FrameEventControlCopyWithImpl<$Res>
+    extends _$FrameEventCopyWithImpl<$Res, _$FrameEventControl>
+    implements _$$FrameEventControlCopyWith<$Res> {
+  __$$FrameEventControlCopyWithImpl(
+      _$FrameEventControl _value, $Res Function(_$FrameEventControl) _then)
+      : super(_value, _then);
 
-  @override
-  FrameEventControl get _value => super._value as FrameEventControl;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? enable = freezed,
+    Object? enable = null,
   }) {
-    return _then(FrameEventControl(
-      enable == freezed
+    return _then(_$FrameEventControl(
+      null == enable
           ? _value.enable
           : enable // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -134,17 +122,18 @@ class _$FrameEventControl implements FrameEventControl {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is FrameEventControl &&
-            const DeepCollectionEquality().equals(other.enable, enable));
+            other is _$FrameEventControl &&
+            (identical(other.enable, enable) || other.enable == enable));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(enable));
+  int get hashCode => Object.hash(runtimeType, enable);
 
   @JsonKey(ignore: true)
   @override
-  $FrameEventControlCopyWith<FrameEventControl> get copyWith =>
-      _$FrameEventControlCopyWithImpl<FrameEventControl>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$FrameEventControlCopyWith<_$FrameEventControl> get copyWith =>
+      __$$FrameEventControlCopyWithImpl<_$FrameEventControl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -158,8 +147,8 @@ class _$FrameEventControl implements FrameEventControl {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool enable)? control,
-    TResult Function()? update,
+    TResult? Function(bool enable)? control,
+    TResult? Function()? update,
   }) {
     return control?.call(enable);
   }
@@ -189,8 +178,8 @@ class _$FrameEventControl implements FrameEventControl {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(FrameEventControl value)? control,
-    TResult Function(FrameEventUpdate value)? update,
+    TResult? Function(FrameEventControl value)? control,
+    TResult? Function(FrameEventUpdate value)? update,
   }) {
     return control?.call(this);
   }
@@ -210,27 +199,28 @@ class _$FrameEventControl implements FrameEventControl {
 }
 
 abstract class FrameEventControl implements FrameEvent {
-  const factory FrameEventControl(bool enable) = _$FrameEventControl;
+  const factory FrameEventControl(final bool enable) = _$FrameEventControl;
 
   bool get enable;
   @JsonKey(ignore: true)
-  $FrameEventControlCopyWith<FrameEventControl> get copyWith => throw _privateConstructorUsedError;
+  _$$FrameEventControlCopyWith<_$FrameEventControl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FrameEventUpdateCopyWith<$Res> {
-  factory $FrameEventUpdateCopyWith(FrameEventUpdate value, $Res Function(FrameEventUpdate) then) =
-      _$FrameEventUpdateCopyWithImpl<$Res>;
+abstract class _$$FrameEventUpdateCopyWith<$Res> {
+  factory _$$FrameEventUpdateCopyWith(
+          _$FrameEventUpdate value, $Res Function(_$FrameEventUpdate) then) =
+      __$$FrameEventUpdateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$FrameEventUpdateCopyWithImpl<$Res> extends _$FrameEventCopyWithImpl<$Res>
-    implements $FrameEventUpdateCopyWith<$Res> {
-  _$FrameEventUpdateCopyWithImpl(FrameEventUpdate _value, $Res Function(FrameEventUpdate) _then)
-      : super(_value, (v) => _then(v as FrameEventUpdate));
-
-  @override
-  FrameEventUpdate get _value => super._value as FrameEventUpdate;
+class __$$FrameEventUpdateCopyWithImpl<$Res>
+    extends _$FrameEventCopyWithImpl<$Res, _$FrameEventUpdate>
+    implements _$$FrameEventUpdateCopyWith<$Res> {
+  __$$FrameEventUpdateCopyWithImpl(
+      _$FrameEventUpdate _value, $Res Function(_$FrameEventUpdate) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -245,7 +235,8 @@ class _$FrameEventUpdate implements FrameEventUpdate {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is FrameEventUpdate);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FrameEventUpdate);
   }
 
   @override
@@ -263,8 +254,8 @@ class _$FrameEventUpdate implements FrameEventUpdate {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool enable)? control,
-    TResult Function()? update,
+    TResult? Function(bool enable)? control,
+    TResult? Function()? update,
   }) {
     return update?.call();
   }
@@ -294,8 +285,8 @@ class _$FrameEventUpdate implements FrameEventUpdate {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(FrameEventControl value)? control,
-    TResult Function(FrameEventUpdate value)? update,
+    TResult? Function(FrameEventControl value)? control,
+    TResult? Function(FrameEventUpdate value)? update,
   }) {
     return update?.call(this);
   }

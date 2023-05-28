@@ -12,74 +12,67 @@ import 'package:flutter_counter_shooter/utils/context_extensions.dart';
 
 class RecordsView extends StatelessWidget {
   const RecordsView({
-    Key? key,
+    super.key,
     required this.onRestart,
-  }) : super(key: key);
+  });
 
   final void Function() onRestart;
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        ScreenTitle(
-          text: context.l10n.recordsTable,
-        ),
-        const SizedBox(height: 16),
-        const YourScore(),
-        const SizedBox(height: 16),
-        RestartGame(onRestart: onRestart),
-        const SizedBox(height: 16),
-        const _NameInputOrNothing(),
-        const SizedBox(height: 8),
-        const Expanded(
-          child: RecordsTableOrLoader(),
-        ),
-      ],
-    );
-  }
+  Widget build(BuildContext context) => Column(
+        children: <Widget>[
+          ScreenTitle(
+            text: context.l10n.recordsTable,
+          ),
+          const SizedBox(height: 16),
+          const YourScore(),
+          const SizedBox(height: 16),
+          RestartGame(onRestart: onRestart),
+          const SizedBox(height: 16),
+          const _NameInputOrNothing(),
+          const SizedBox(height: 8),
+          const Expanded(
+            child: RecordsTableOrLoader(),
+          ),
+        ],
+      );
 }
 
 class RestartGame extends StatelessWidget {
   const RestartGame({
-    Key? key,
+    super.key,
     required this.onRestart,
-  }) : super(key: key);
+  });
 
   final void Function() onRestart;
 
   @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Text(context.l10n.restart),
-      ),
-      onPressed: () {
-        onRestart();
-      },
-    );
-  }
+  Widget build(BuildContext context) => ElevatedButton(
+        onPressed: onRestart,
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Text(context.l10n.restart),
+        ),
+      );
 }
 
 class _NameInputOrNothing extends StatelessWidget {
   const _NameInputOrNothing({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<RecordsBloc, RecordsState>(
-      bloc: di<RecordsBloc>(),
-      buildWhen: (RecordsState previous, RecordsState current) => current.showNameInput != previous.showNameInput,
-      builder: (_, RecordsState recordsState) {
-        return AnimatedCrossFade(
+  Widget build(BuildContext context) => BlocBuilder<RecordsBloc, RecordsState>(
+        bloc: di<RecordsBloc>(),
+        buildWhen: (RecordsState previous, RecordsState current) =>
+            current.showNameInput != previous.showNameInput,
+        builder: (_, RecordsState recordsState) => AnimatedCrossFade(
           duration: kXlDuration,
-          crossFadeState: recordsState.showNameInput ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+          crossFadeState: recordsState.showNameInput
+              ? CrossFadeState.showFirst
+              : CrossFadeState.showSecond,
           firstChild: const NameInput(),
           secondChild: const SizedBox.shrink(),
-        );
-      },
-    );
-  }
+        ),
+      );
 }

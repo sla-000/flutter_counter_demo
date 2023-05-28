@@ -22,15 +22,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "flutterCounterDemo": MessageLookupByLibrary.simpleMessage("Демонстрация счётчика на Flutter"),
+        "flutterCounterDemo": MessageLookupByLibrary.simpleMessage(
+            "Демонстрация счётчика на Flutter"),
         "increment": MessageLookupByLibrary.simpleMessage("Увеличить"),
         "loading": MessageLookupByLibrary.simpleMessage("Загрузка..."),
-        "recordsTable": MessageLookupByLibrary.simpleMessage("Таблица рекордов"),
+        "recordsTable":
+            MessageLookupByLibrary.simpleMessage("Таблица рекордов"),
         "restart": MessageLookupByLibrary.simpleMessage("Рестарт"),
         "score": MessageLookupByLibrary.simpleMessage("Счёт:"),
         "submit": MessageLookupByLibrary.simpleMessage("Отправить"),
         "wave": MessageLookupByLibrary.simpleMessage("Волна:"),
-        "youHavePushed": MessageLookupByLibrary.simpleMessage("Вы нажали кнопку столько раз:"),
+        "youHavePushed": MessageLookupByLibrary.simpleMessage(
+            "Вы нажали кнопку столько раз:"),
         "yourScore": MessageLookupByLibrary.simpleMessage("Ваш результат:")
       };
 }

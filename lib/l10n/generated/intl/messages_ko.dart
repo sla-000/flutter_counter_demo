@@ -22,13 +22,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "flutterCounterDemo": MessageLookupByLibrary.simpleMessage("Flutter 카운터 데모"),
+        "flutterCounterDemo":
+            MessageLookupByLibrary.simpleMessage("Flutter 카운터 데모"),
         "increment": MessageLookupByLibrary.simpleMessage("증가"),
         "loading": MessageLookupByLibrary.simpleMessage("로드 중..."),
         "score": MessageLookupByLibrary.simpleMessage("점수:"),
         "submit": MessageLookupByLibrary.simpleMessage("제출하다"),
         "wave": MessageLookupByLibrary.simpleMessage("파도:"),
-        "youHavePushed": MessageLookupByLibrary.simpleMessage("버튼을 다음과 같이 여러 번 눌렀습니다."),
+        "youHavePushed":
+            MessageLookupByLibrary.simpleMessage("버튼을 다음과 같이 여러 번 눌렀습니다."),
         "yourScore": MessageLookupByLibrary.simpleMessage("너의 점수:")
       };
 }

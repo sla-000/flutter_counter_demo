@@ -8,16 +8,15 @@ import 'package:flutter_counter_shooter/ui/game/records/table/records_table.dart
 
 class RecordsTableOrLoader extends StatelessWidget {
   const RecordsTableOrLoader({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<RecordsBloc, RecordsState>(
-      bloc: di<RecordsBloc>(),
-      buildWhen: (RecordsState previous, RecordsState current) => current.waitNetwork != previous.waitNetwork,
-      builder: (_, RecordsState recordsState) {
-        return AnimatedSwitcher(
+  Widget build(BuildContext context) => BlocBuilder<RecordsBloc, RecordsState>(
+        bloc: di<RecordsBloc>(),
+        buildWhen: (RecordsState previous, RecordsState current) =>
+            current.waitNetwork != previous.waitNetwork,
+        builder: (_, RecordsState recordsState) => AnimatedSwitcher(
           duration: kXlDuration,
           child: recordsState.waitNetwork
               ? const Center(
@@ -30,8 +29,6 @@ class RecordsTableOrLoader extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 8),
                   child: RecordsTable(),
                 ),
-        );
-      },
-    );
-  }
+        ),
+      );
 }

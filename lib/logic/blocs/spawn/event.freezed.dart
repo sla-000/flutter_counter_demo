@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'event.dart';
 
@@ -12,25 +12,7 @@ part of 'event.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$SpawnEventTearOff {
-  const _$SpawnEventTearOff();
-
-  SpawnEventInit init() {
-    return const SpawnEventInit();
-  }
-
-  SpawnEventSpawn spawn(int time) {
-    return SpawnEventSpawn(
-      time,
-    );
-  }
-}
-
-/// @nodoc
-const $SpawnEvent = _$SpawnEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$SpawnEvent {
@@ -42,8 +24,8 @@ mixin _$SpawnEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function(int time)? spawn,
+    TResult? Function()? init,
+    TResult? Function(int time)? spawn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,8 +43,8 @@ mixin _$SpawnEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(SpawnEventInit value)? init,
-    TResult Function(SpawnEventSpawn value)? spawn,
+    TResult? Function(SpawnEventInit value)? init,
+    TResult? Function(SpawnEventSpawn value)? spawn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -76,32 +58,36 @@ mixin _$SpawnEvent {
 
 /// @nodoc
 abstract class $SpawnEventCopyWith<$Res> {
-  factory $SpawnEventCopyWith(SpawnEvent value, $Res Function(SpawnEvent) then) = _$SpawnEventCopyWithImpl<$Res>;
+  factory $SpawnEventCopyWith(
+          SpawnEvent value, $Res Function(SpawnEvent) then) =
+      _$SpawnEventCopyWithImpl<$Res, SpawnEvent>;
 }
 
 /// @nodoc
-class _$SpawnEventCopyWithImpl<$Res> implements $SpawnEventCopyWith<$Res> {
+class _$SpawnEventCopyWithImpl<$Res, $Val extends SpawnEvent>
+    implements $SpawnEventCopyWith<$Res> {
   _$SpawnEventCopyWithImpl(this._value, this._then);
 
-  final SpawnEvent _value;
   // ignore: unused_field
-  final $Res Function(SpawnEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class $SpawnEventInitCopyWith<$Res> {
-  factory $SpawnEventInitCopyWith(SpawnEventInit value, $Res Function(SpawnEventInit) then) =
-      _$SpawnEventInitCopyWithImpl<$Res>;
+abstract class _$$SpawnEventInitCopyWith<$Res> {
+  factory _$$SpawnEventInitCopyWith(
+          _$SpawnEventInit value, $Res Function(_$SpawnEventInit) then) =
+      __$$SpawnEventInitCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$SpawnEventInitCopyWithImpl<$Res> extends _$SpawnEventCopyWithImpl<$Res>
-    implements $SpawnEventInitCopyWith<$Res> {
-  _$SpawnEventInitCopyWithImpl(SpawnEventInit _value, $Res Function(SpawnEventInit) _then)
-      : super(_value, (v) => _then(v as SpawnEventInit));
-
-  @override
-  SpawnEventInit get _value => super._value as SpawnEventInit;
+class __$$SpawnEventInitCopyWithImpl<$Res>
+    extends _$SpawnEventCopyWithImpl<$Res, _$SpawnEventInit>
+    implements _$$SpawnEventInitCopyWith<$Res> {
+  __$$SpawnEventInitCopyWithImpl(
+      _$SpawnEventInit _value, $Res Function(_$SpawnEventInit) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -116,7 +102,8 @@ class _$SpawnEventInit implements SpawnEventInit {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is SpawnEventInit);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SpawnEventInit);
   }
 
   @override
@@ -134,8 +121,8 @@ class _$SpawnEventInit implements SpawnEventInit {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function(int time)? spawn,
+    TResult? Function()? init,
+    TResult? Function(int time)? spawn,
   }) {
     return init?.call();
   }
@@ -165,8 +152,8 @@ class _$SpawnEventInit implements SpawnEventInit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(SpawnEventInit value)? init,
-    TResult Function(SpawnEventSpawn value)? spawn,
+    TResult? Function(SpawnEventInit value)? init,
+    TResult? Function(SpawnEventSpawn value)? spawn,
   }) {
     return init?.call(this);
   }
@@ -190,27 +177,29 @@ abstract class SpawnEventInit implements SpawnEvent {
 }
 
 /// @nodoc
-abstract class $SpawnEventSpawnCopyWith<$Res> {
-  factory $SpawnEventSpawnCopyWith(SpawnEventSpawn value, $Res Function(SpawnEventSpawn) then) =
-      _$SpawnEventSpawnCopyWithImpl<$Res>;
+abstract class _$$SpawnEventSpawnCopyWith<$Res> {
+  factory _$$SpawnEventSpawnCopyWith(
+          _$SpawnEventSpawn value, $Res Function(_$SpawnEventSpawn) then) =
+      __$$SpawnEventSpawnCopyWithImpl<$Res>;
+  @useResult
   $Res call({int time});
 }
 
 /// @nodoc
-class _$SpawnEventSpawnCopyWithImpl<$Res> extends _$SpawnEventCopyWithImpl<$Res>
-    implements $SpawnEventSpawnCopyWith<$Res> {
-  _$SpawnEventSpawnCopyWithImpl(SpawnEventSpawn _value, $Res Function(SpawnEventSpawn) _then)
-      : super(_value, (v) => _then(v as SpawnEventSpawn));
+class __$$SpawnEventSpawnCopyWithImpl<$Res>
+    extends _$SpawnEventCopyWithImpl<$Res, _$SpawnEventSpawn>
+    implements _$$SpawnEventSpawnCopyWith<$Res> {
+  __$$SpawnEventSpawnCopyWithImpl(
+      _$SpawnEventSpawn _value, $Res Function(_$SpawnEventSpawn) _then)
+      : super(_value, _then);
 
-  @override
-  SpawnEventSpawn get _value => super._value as SpawnEventSpawn;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? time = freezed,
+    Object? time = null,
   }) {
-    return _then(SpawnEventSpawn(
-      time == freezed
+    return _then(_$SpawnEventSpawn(
+      null == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as int,
@@ -235,17 +224,18 @@ class _$SpawnEventSpawn implements SpawnEventSpawn {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is SpawnEventSpawn &&
-            const DeepCollectionEquality().equals(other.time, time));
+            other is _$SpawnEventSpawn &&
+            (identical(other.time, time) || other.time == time));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(time));
+  int get hashCode => Object.hash(runtimeType, time);
 
   @JsonKey(ignore: true)
   @override
-  $SpawnEventSpawnCopyWith<SpawnEventSpawn> get copyWith =>
-      _$SpawnEventSpawnCopyWithImpl<SpawnEventSpawn>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$SpawnEventSpawnCopyWith<_$SpawnEventSpawn> get copyWith =>
+      __$$SpawnEventSpawnCopyWithImpl<_$SpawnEventSpawn>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -259,8 +249,8 @@ class _$SpawnEventSpawn implements SpawnEventSpawn {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function(int time)? spawn,
+    TResult? Function()? init,
+    TResult? Function(int time)? spawn,
   }) {
     return spawn?.call(time);
   }
@@ -290,8 +280,8 @@ class _$SpawnEventSpawn implements SpawnEventSpawn {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(SpawnEventInit value)? init,
-    TResult Function(SpawnEventSpawn value)? spawn,
+    TResult? Function(SpawnEventInit value)? init,
+    TResult? Function(SpawnEventSpawn value)? spawn,
   }) {
     return spawn?.call(this);
   }
@@ -311,9 +301,10 @@ class _$SpawnEventSpawn implements SpawnEventSpawn {
 }
 
 abstract class SpawnEventSpawn implements SpawnEvent {
-  const factory SpawnEventSpawn(int time) = _$SpawnEventSpawn;
+  const factory SpawnEventSpawn(final int time) = _$SpawnEventSpawn;
 
   int get time;
   @JsonKey(ignore: true)
-  $SpawnEventSpawnCopyWith<SpawnEventSpawn> get copyWith => throw _privateConstructorUsedError;
+  _$$SpawnEventSpawnCopyWith<_$SpawnEventSpawn> get copyWith =>
+      throw _privateConstructorUsedError;
 }

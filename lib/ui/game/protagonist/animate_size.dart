@@ -3,12 +3,12 @@ import 'package:flutter_counter_shooter/theme/durations.dart';
 
 class AnimateSize extends StatefulWidget {
   const AnimateSize({
-    Key? key,
+    super.key,
     required this.child,
     this.duration = kXlDuration,
     required this.size,
     this.show = false,
-  }) : super(key: key);
+  });
 
   final Widget child;
   final Duration duration;
@@ -19,7 +19,8 @@ class AnimateSize extends StatefulWidget {
   State<AnimateSize> createState() => _AnimateSizeState();
 }
 
-class _AnimateSizeState extends State<AnimateSize> with SingleTickerProviderStateMixin {
+class _AnimateSizeState extends State<AnimateSize>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _animationController;
 
   @override
@@ -53,12 +54,10 @@ class _AnimateSizeState extends State<AnimateSize> with SingleTickerProviderStat
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Transform.scale(
-      scale: _animationController.value,
-      child: widget.child,
-    );
-  }
+  Widget build(BuildContext context) => Transform.scale(
+        scale: _animationController.value,
+        child: widget.child,
+      );
 
   void _animate() {
     if (widget.show) {

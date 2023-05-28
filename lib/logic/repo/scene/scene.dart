@@ -74,5 +74,6 @@ class SceneFrameRepoImpl implements SceneFrameRepo {
   final FrameBloc frameBloc;
 
   @override
-  Stream<double> deltaStream() => frameBloc.stream.map((FrameState frameState) => frameState.delta);
+  Stream<double> deltaStream() =>
+      frameBloc.stream.map((FrameState frameState) => frameState.delta);
 }

@@ -5,29 +5,27 @@ class GradientIcon extends StatelessWidget {
     this.icon, {
     required this.size,
     required this.gradient,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final IconData icon;
   final double size;
   final Gradient gradient;
 
   @override
-  Widget build(BuildContext context) {
-    return ShaderMask(
-      child: SizedBox(
-        width: size,
-        height: size,
-        child: Icon(
-          icon,
-          size: size,
-          color: Colors.white,
+  Widget build(BuildContext context) => ShaderMask(
+        child: SizedBox(
+          width: size,
+          height: size,
+          child: Icon(
+            icon,
+            size: size,
+            color: Colors.white,
+          ),
         ),
-      ),
-      shaderCallback: (Rect bounds) {
-        final Rect rect = Rect.fromLTRB(0, 0, size, size);
-        return gradient.createShader(rect);
-      },
-    );
-  }
+        shaderCallback: (Rect bounds) {
+          final rect = Rect.fromLTRB(0, 0, size, size);
+          return gradient.createShader(rect);
+        },
+      );
 }

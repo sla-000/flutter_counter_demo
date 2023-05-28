@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'event.dart';
 
@@ -12,35 +12,7 @@ part of 'event.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$RecordsEventTearOff {
-  const _$RecordsEventTearOff();
-
-  RecordsEventFetch fetch() {
-    return const RecordsEventFetch();
-  }
-
-  RecordsEventUpload upload() {
-    return const RecordsEventUpload();
-  }
-
-  RecordsEventSetRecord setRecord(int value) {
-    return RecordsEventSetRecord(
-      value,
-    );
-  }
-
-  RecordsEventSetName setName(String name) {
-    return RecordsEventSetName(
-      name,
-    );
-  }
-}
-
-/// @nodoc
-const $RecordsEvent = _$RecordsEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$RecordsEvent {
@@ -54,10 +26,10 @@ mixin _$RecordsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetch,
-    TResult Function()? upload,
-    TResult Function(int value)? setRecord,
-    TResult Function(String name)? setName,
+    TResult? Function()? fetch,
+    TResult? Function()? upload,
+    TResult? Function(int value)? setRecord,
+    TResult? Function(String name)? setName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -79,10 +51,10 @@ mixin _$RecordsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RecordsEventFetch value)? fetch,
-    TResult Function(RecordsEventUpload value)? upload,
-    TResult Function(RecordsEventSetRecord value)? setRecord,
-    TResult Function(RecordsEventSetName value)? setName,
+    TResult? Function(RecordsEventFetch value)? fetch,
+    TResult? Function(RecordsEventUpload value)? upload,
+    TResult? Function(RecordsEventSetRecord value)? setRecord,
+    TResult? Function(RecordsEventSetName value)? setName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -98,33 +70,36 @@ mixin _$RecordsEvent {
 
 /// @nodoc
 abstract class $RecordsEventCopyWith<$Res> {
-  factory $RecordsEventCopyWith(RecordsEvent value, $Res Function(RecordsEvent) then) =
-      _$RecordsEventCopyWithImpl<$Res>;
+  factory $RecordsEventCopyWith(
+          RecordsEvent value, $Res Function(RecordsEvent) then) =
+      _$RecordsEventCopyWithImpl<$Res, RecordsEvent>;
 }
 
 /// @nodoc
-class _$RecordsEventCopyWithImpl<$Res> implements $RecordsEventCopyWith<$Res> {
+class _$RecordsEventCopyWithImpl<$Res, $Val extends RecordsEvent>
+    implements $RecordsEventCopyWith<$Res> {
   _$RecordsEventCopyWithImpl(this._value, this._then);
 
-  final RecordsEvent _value;
   // ignore: unused_field
-  final $Res Function(RecordsEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class $RecordsEventFetchCopyWith<$Res> {
-  factory $RecordsEventFetchCopyWith(RecordsEventFetch value, $Res Function(RecordsEventFetch) then) =
-      _$RecordsEventFetchCopyWithImpl<$Res>;
+abstract class _$$RecordsEventFetchCopyWith<$Res> {
+  factory _$$RecordsEventFetchCopyWith(
+          _$RecordsEventFetch value, $Res Function(_$RecordsEventFetch) then) =
+      __$$RecordsEventFetchCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RecordsEventFetchCopyWithImpl<$Res> extends _$RecordsEventCopyWithImpl<$Res>
-    implements $RecordsEventFetchCopyWith<$Res> {
-  _$RecordsEventFetchCopyWithImpl(RecordsEventFetch _value, $Res Function(RecordsEventFetch) _then)
-      : super(_value, (v) => _then(v as RecordsEventFetch));
-
-  @override
-  RecordsEventFetch get _value => super._value as RecordsEventFetch;
+class __$$RecordsEventFetchCopyWithImpl<$Res>
+    extends _$RecordsEventCopyWithImpl<$Res, _$RecordsEventFetch>
+    implements _$$RecordsEventFetchCopyWith<$Res> {
+  __$$RecordsEventFetchCopyWithImpl(
+      _$RecordsEventFetch _value, $Res Function(_$RecordsEventFetch) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -139,7 +114,8 @@ class _$RecordsEventFetch implements RecordsEventFetch {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is RecordsEventFetch);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RecordsEventFetch);
   }
 
   @override
@@ -159,10 +135,10 @@ class _$RecordsEventFetch implements RecordsEventFetch {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetch,
-    TResult Function()? upload,
-    TResult Function(int value)? setRecord,
-    TResult Function(String name)? setName,
+    TResult? Function()? fetch,
+    TResult? Function()? upload,
+    TResult? Function(int value)? setRecord,
+    TResult? Function(String name)? setName,
   }) {
     return fetch?.call();
   }
@@ -196,10 +172,10 @@ class _$RecordsEventFetch implements RecordsEventFetch {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RecordsEventFetch value)? fetch,
-    TResult Function(RecordsEventUpload value)? upload,
-    TResult Function(RecordsEventSetRecord value)? setRecord,
-    TResult Function(RecordsEventSetName value)? setName,
+    TResult? Function(RecordsEventFetch value)? fetch,
+    TResult? Function(RecordsEventUpload value)? upload,
+    TResult? Function(RecordsEventSetRecord value)? setRecord,
+    TResult? Function(RecordsEventSetName value)? setName,
   }) {
     return fetch?.call(this);
   }
@@ -225,19 +201,19 @@ abstract class RecordsEventFetch implements RecordsEvent {
 }
 
 /// @nodoc
-abstract class $RecordsEventUploadCopyWith<$Res> {
-  factory $RecordsEventUploadCopyWith(RecordsEventUpload value, $Res Function(RecordsEventUpload) then) =
-      _$RecordsEventUploadCopyWithImpl<$Res>;
+abstract class _$$RecordsEventUploadCopyWith<$Res> {
+  factory _$$RecordsEventUploadCopyWith(_$RecordsEventUpload value,
+          $Res Function(_$RecordsEventUpload) then) =
+      __$$RecordsEventUploadCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RecordsEventUploadCopyWithImpl<$Res> extends _$RecordsEventCopyWithImpl<$Res>
-    implements $RecordsEventUploadCopyWith<$Res> {
-  _$RecordsEventUploadCopyWithImpl(RecordsEventUpload _value, $Res Function(RecordsEventUpload) _then)
-      : super(_value, (v) => _then(v as RecordsEventUpload));
-
-  @override
-  RecordsEventUpload get _value => super._value as RecordsEventUpload;
+class __$$RecordsEventUploadCopyWithImpl<$Res>
+    extends _$RecordsEventCopyWithImpl<$Res, _$RecordsEventUpload>
+    implements _$$RecordsEventUploadCopyWith<$Res> {
+  __$$RecordsEventUploadCopyWithImpl(
+      _$RecordsEventUpload _value, $Res Function(_$RecordsEventUpload) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -252,7 +228,8 @@ class _$RecordsEventUpload implements RecordsEventUpload {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is RecordsEventUpload);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RecordsEventUpload);
   }
 
   @override
@@ -272,10 +249,10 @@ class _$RecordsEventUpload implements RecordsEventUpload {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetch,
-    TResult Function()? upload,
-    TResult Function(int value)? setRecord,
-    TResult Function(String name)? setName,
+    TResult? Function()? fetch,
+    TResult? Function()? upload,
+    TResult? Function(int value)? setRecord,
+    TResult? Function(String name)? setName,
   }) {
     return upload?.call();
   }
@@ -309,10 +286,10 @@ class _$RecordsEventUpload implements RecordsEventUpload {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RecordsEventFetch value)? fetch,
-    TResult Function(RecordsEventUpload value)? upload,
-    TResult Function(RecordsEventSetRecord value)? setRecord,
-    TResult Function(RecordsEventSetName value)? setName,
+    TResult? Function(RecordsEventFetch value)? fetch,
+    TResult? Function(RecordsEventUpload value)? upload,
+    TResult? Function(RecordsEventSetRecord value)? setRecord,
+    TResult? Function(RecordsEventSetName value)? setName,
   }) {
     return upload?.call(this);
   }
@@ -338,27 +315,29 @@ abstract class RecordsEventUpload implements RecordsEvent {
 }
 
 /// @nodoc
-abstract class $RecordsEventSetRecordCopyWith<$Res> {
-  factory $RecordsEventSetRecordCopyWith(RecordsEventSetRecord value, $Res Function(RecordsEventSetRecord) then) =
-      _$RecordsEventSetRecordCopyWithImpl<$Res>;
+abstract class _$$RecordsEventSetRecordCopyWith<$Res> {
+  factory _$$RecordsEventSetRecordCopyWith(_$RecordsEventSetRecord value,
+          $Res Function(_$RecordsEventSetRecord) then) =
+      __$$RecordsEventSetRecordCopyWithImpl<$Res>;
+  @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class _$RecordsEventSetRecordCopyWithImpl<$Res> extends _$RecordsEventCopyWithImpl<$Res>
-    implements $RecordsEventSetRecordCopyWith<$Res> {
-  _$RecordsEventSetRecordCopyWithImpl(RecordsEventSetRecord _value, $Res Function(RecordsEventSetRecord) _then)
-      : super(_value, (v) => _then(v as RecordsEventSetRecord));
+class __$$RecordsEventSetRecordCopyWithImpl<$Res>
+    extends _$RecordsEventCopyWithImpl<$Res, _$RecordsEventSetRecord>
+    implements _$$RecordsEventSetRecordCopyWith<$Res> {
+  __$$RecordsEventSetRecordCopyWithImpl(_$RecordsEventSetRecord _value,
+      $Res Function(_$RecordsEventSetRecord) _then)
+      : super(_value, _then);
 
-  @override
-  RecordsEventSetRecord get _value => super._value as RecordsEventSetRecord;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = freezed,
+    Object? value = null,
   }) {
-    return _then(RecordsEventSetRecord(
-      value == freezed
+    return _then(_$RecordsEventSetRecord(
+      null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as int,
@@ -383,17 +362,19 @@ class _$RecordsEventSetRecord implements RecordsEventSetRecord {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is RecordsEventSetRecord &&
-            const DeepCollectionEquality().equals(other.value, value));
+            other is _$RecordsEventSetRecord &&
+            (identical(other.value, value) || other.value == value));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, value);
 
   @JsonKey(ignore: true)
   @override
-  $RecordsEventSetRecordCopyWith<RecordsEventSetRecord> get copyWith =>
-      _$RecordsEventSetRecordCopyWithImpl<RecordsEventSetRecord>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$RecordsEventSetRecordCopyWith<_$RecordsEventSetRecord> get copyWith =>
+      __$$RecordsEventSetRecordCopyWithImpl<_$RecordsEventSetRecord>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -409,10 +390,10 @@ class _$RecordsEventSetRecord implements RecordsEventSetRecord {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetch,
-    TResult Function()? upload,
-    TResult Function(int value)? setRecord,
-    TResult Function(String name)? setName,
+    TResult? Function()? fetch,
+    TResult? Function()? upload,
+    TResult? Function(int value)? setRecord,
+    TResult? Function(String name)? setName,
   }) {
     return setRecord?.call(value);
   }
@@ -446,10 +427,10 @@ class _$RecordsEventSetRecord implements RecordsEventSetRecord {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RecordsEventFetch value)? fetch,
-    TResult Function(RecordsEventUpload value)? upload,
-    TResult Function(RecordsEventSetRecord value)? setRecord,
-    TResult Function(RecordsEventSetName value)? setName,
+    TResult? Function(RecordsEventFetch value)? fetch,
+    TResult? Function(RecordsEventUpload value)? upload,
+    TResult? Function(RecordsEventSetRecord value)? setRecord,
+    TResult? Function(RecordsEventSetName value)? setName,
   }) {
     return setRecord?.call(this);
   }
@@ -471,35 +452,39 @@ class _$RecordsEventSetRecord implements RecordsEventSetRecord {
 }
 
 abstract class RecordsEventSetRecord implements RecordsEvent {
-  const factory RecordsEventSetRecord(int value) = _$RecordsEventSetRecord;
+  const factory RecordsEventSetRecord(final int value) =
+      _$RecordsEventSetRecord;
 
   int get value;
   @JsonKey(ignore: true)
-  $RecordsEventSetRecordCopyWith<RecordsEventSetRecord> get copyWith => throw _privateConstructorUsedError;
+  _$$RecordsEventSetRecordCopyWith<_$RecordsEventSetRecord> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RecordsEventSetNameCopyWith<$Res> {
-  factory $RecordsEventSetNameCopyWith(RecordsEventSetName value, $Res Function(RecordsEventSetName) then) =
-      _$RecordsEventSetNameCopyWithImpl<$Res>;
+abstract class _$$RecordsEventSetNameCopyWith<$Res> {
+  factory _$$RecordsEventSetNameCopyWith(_$RecordsEventSetName value,
+          $Res Function(_$RecordsEventSetName) then) =
+      __$$RecordsEventSetNameCopyWithImpl<$Res>;
+  @useResult
   $Res call({String name});
 }
 
 /// @nodoc
-class _$RecordsEventSetNameCopyWithImpl<$Res> extends _$RecordsEventCopyWithImpl<$Res>
-    implements $RecordsEventSetNameCopyWith<$Res> {
-  _$RecordsEventSetNameCopyWithImpl(RecordsEventSetName _value, $Res Function(RecordsEventSetName) _then)
-      : super(_value, (v) => _then(v as RecordsEventSetName));
+class __$$RecordsEventSetNameCopyWithImpl<$Res>
+    extends _$RecordsEventCopyWithImpl<$Res, _$RecordsEventSetName>
+    implements _$$RecordsEventSetNameCopyWith<$Res> {
+  __$$RecordsEventSetNameCopyWithImpl(
+      _$RecordsEventSetName _value, $Res Function(_$RecordsEventSetName) _then)
+      : super(_value, _then);
 
-  @override
-  RecordsEventSetName get _value => super._value as RecordsEventSetName;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
+    Object? name = null,
   }) {
-    return _then(RecordsEventSetName(
-      name == freezed
+    return _then(_$RecordsEventSetName(
+      null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
@@ -524,17 +509,19 @@ class _$RecordsEventSetName implements RecordsEventSetName {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is RecordsEventSetName &&
-            const DeepCollectionEquality().equals(other.name, name));
+            other is _$RecordsEventSetName &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(runtimeType, name);
 
   @JsonKey(ignore: true)
   @override
-  $RecordsEventSetNameCopyWith<RecordsEventSetName> get copyWith =>
-      _$RecordsEventSetNameCopyWithImpl<RecordsEventSetName>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$RecordsEventSetNameCopyWith<_$RecordsEventSetName> get copyWith =>
+      __$$RecordsEventSetNameCopyWithImpl<_$RecordsEventSetName>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -550,10 +537,10 @@ class _$RecordsEventSetName implements RecordsEventSetName {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetch,
-    TResult Function()? upload,
-    TResult Function(int value)? setRecord,
-    TResult Function(String name)? setName,
+    TResult? Function()? fetch,
+    TResult? Function()? upload,
+    TResult? Function(int value)? setRecord,
+    TResult? Function(String name)? setName,
   }) {
     return setName?.call(name);
   }
@@ -587,10 +574,10 @@ class _$RecordsEventSetName implements RecordsEventSetName {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RecordsEventFetch value)? fetch,
-    TResult Function(RecordsEventUpload value)? upload,
-    TResult Function(RecordsEventSetRecord value)? setRecord,
-    TResult Function(RecordsEventSetName value)? setName,
+    TResult? Function(RecordsEventFetch value)? fetch,
+    TResult? Function(RecordsEventUpload value)? upload,
+    TResult? Function(RecordsEventSetRecord value)? setRecord,
+    TResult? Function(RecordsEventSetName value)? setName,
   }) {
     return setName?.call(this);
   }
@@ -612,9 +599,10 @@ class _$RecordsEventSetName implements RecordsEventSetName {
 }
 
 abstract class RecordsEventSetName implements RecordsEvent {
-  const factory RecordsEventSetName(String name) = _$RecordsEventSetName;
+  const factory RecordsEventSetName(final String name) = _$RecordsEventSetName;
 
   String get name;
   @JsonKey(ignore: true)
-  $RecordsEventSetNameCopyWith<RecordsEventSetName> get copyWith => throw _privateConstructorUsedError;
+  _$$RecordsEventSetNameCopyWith<_$RecordsEventSetName> get copyWith =>
+      throw _privateConstructorUsedError;
 }

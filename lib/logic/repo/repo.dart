@@ -23,7 +23,8 @@ class WavesRepoImpl implements WavesRepo {
 
   @override
   Stream<int> deltaStream() => frameUpdateBloc.stream.map(
-        (FrameState frameUpdateState) => (frameUpdateState.delta * 1000).toInt(),
+        (FrameState frameUpdateState) =>
+            (frameUpdateState.delta * 1000).toInt(),
       );
 }
 
@@ -35,10 +36,12 @@ class SpawnRepoImpl implements SpawnRepo {
   final WavesBloc wavesBloc;
 
   @override
-  Stream<SpawnModel> get() => wavesBloc.stream.map((WavesState wavesState) => SpawnModel(
-        count: wavesState.count,
-        time: wavesState.waveTime,
-      ));
+  Stream<SpawnModel> get() => wavesBloc.stream.map(
+        (WavesState wavesState) => SpawnModel(
+          count: wavesState.count,
+          time: wavesState.waveTime,
+        ),
+      );
 }
 
 class BombsClearRepoImpl implements BombsClearRepo {
@@ -49,7 +52,9 @@ class BombsClearRepoImpl implements BombsClearRepo {
   final WavesBloc wavesBloc;
 
   @override
-  Stream<void> get() => wavesBloc.stream.map((WavesState wavesState) => wavesState.count).distinct();
+  Stream<void> get() => wavesBloc.stream
+      .map((WavesState wavesState) => wavesState.count)
+      .distinct();
 }
 
 class ScoreRepoImpl implements ScoreRepo {
@@ -74,5 +79,6 @@ class FrameRepoImpl implements FrameRepo {
   final ScoreBloc scoreBloc;
 
   @override
-  Stream<bool> get enabled => scoreBloc.stream.map((ScoreState scoreState) => scoreState.isStarted);
+  Stream<bool> get enabled =>
+      scoreBloc.stream.map((ScoreState scoreState) => scoreState.isStarted);
 }

@@ -11,14 +11,14 @@ import 'package:flutter_counter_shooter/ui/you_pushed_the_button_text.dart';
 
 class GameView extends StatefulWidget {
   const GameView({
-    Key? key,
+    super.key,
     required this.onRestart,
-  }) : super(key: key);
+  });
 
   final void Function() onRestart;
 
   @override
-  _GameViewState createState() => _GameViewState();
+  State<GameView> createState() => _GameViewState();
 }
 
 class _GameViewState extends State<GameView> with TickerProviderStateMixin {
@@ -34,7 +34,10 @@ class _GameViewState extends State<GameView> with TickerProviderStateMixin {
       duration: const Duration(milliseconds: 2000),
       vsync: this,
     );
-    _alignmentAnimation = CurvedAnimation(parent: _animationController, curve: Curves.easeInOutCubic).drive(
+    _alignmentAnimation = CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeInOutCubic,
+    ).drive(
       AlignmentTween(
         begin: Alignment.center,
         end: Alignment.bottomLeft,
@@ -56,48 +59,47 @@ class _GameViewState extends State<GameView> with TickerProviderStateMixin {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return BlocListener<ScoreBloc, ScoreState>(
-      bloc: di.get<ScoreBloc>(),
-      listenWhen: (ScoreState previous, ScoreState current) => current.gameState != previous.gameState,
-      listener: (BuildContext context, ScoreState scoreState) {
-        if (scoreState.isStarted) {
-          _animationController.forward();
-        }
-      },
-      child: Stack(
-        children: <Widget>[
-          FadeTransition(
-            opacity: _fadeAnimation,
-            child: const Center(
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 48),
-                child: YouPushedTheButtonText(),
+  Widget build(BuildContext context) => BlocListener<ScoreBloc, ScoreState>(
+        bloc: di.get<ScoreBloc>(),
+        listenWhen: (ScoreState previous, ScoreState current) =>
+            current.gameState != previous.gameState,
+        listener: (BuildContext context, ScoreState scoreState) {
+          if (scoreState.isStarted) {
+            _animationController.forward();
+          }
+        },
+        child: Stack(
+          children: <Widget>[
+            FadeTransition(
+              opacity: _fadeAnimation,
+              child: const Center(
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 48),
+                  child: YouPushedTheButtonText(),
+                ),
               ),
             ),
-          ),
-          GameField(
-            onRestart: widget.onRestart,
-          ),
-          AlignTransition(
-            alignment: _alignmentAnimation,
-            child: const Padding(
-              padding: EdgeInsets.all(24.0),
-              child: CounterValue(),
+            GameField(
+              onRestart: widget.onRestart,
             ),
-          ),
-          const Positioned(
-            top: 20,
-            left: 20,
-            child: WaveValue(),
-          ),
-          const Positioned(
-            top: 20,
-            right: 20,
-            child: TimeValue(),
-          ),
-        ],
-      ),
-    );
-  }
+            AlignTransition(
+              alignment: _alignmentAnimation,
+              child: const Padding(
+                padding: EdgeInsets.all(24),
+                child: CounterValue(),
+              ),
+            ),
+            const Positioned(
+              top: 20,
+              left: 20,
+              child: WaveValue(),
+            ),
+            const Positioned(
+              top: 20,
+              right: 20,
+              child: TimeValue(),
+            ),
+          ],
+        ),
+      );
 }

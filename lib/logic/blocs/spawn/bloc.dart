@@ -1,10 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'event.dart';
-import 'repo.dart';
-import 'state.dart';
+import 'package:flutter_counter_shooter/logic/blocs/spawn/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/spawn/repo.dart';
+import 'package:flutter_counter_shooter/logic/blocs/spawn/state.dart';
 
 class SpawnBloc extends Bloc<SpawnEvent, BombSpawnState> {
   SpawnBloc({
@@ -26,15 +25,19 @@ class SpawnBloc extends Bloc<SpawnEvent, BombSpawnState> {
   }
 
   void _onInit(SpawnEventInit _, Emitter<BombSpawnState> emit) {
-    emit(state.copyWith(
-      lastSpawn: 0,
-    ));
+    emit(
+      state.copyWith(
+        lastSpawn: 0,
+      ),
+    );
   }
 
   void _onSpawn(SpawnEventSpawn event, Emitter<BombSpawnState> emit) {
-    emit(state.copyWith(
-      lastSpawn: event.time,
-    ));
+    emit(
+      state.copyWith(
+        lastSpawn: event.time,
+      ),
+    );
   }
 
   void _subscribe(SpawnRepo repo) {
@@ -42,12 +45,15 @@ class SpawnBloc extends Bloc<SpawnEvent, BombSpawnState> {
       bombSpawnModel.count;
       bombSpawnModel.time;
 
-      if (state.lastSpawn == null || bombSpawnModel.time < state.lastSpawn || _calcSpawnPeriod(bombSpawnModel)) {
+      if (state.lastSpawn == 0 ||
+          bombSpawnModel.time < state.lastSpawn ||
+          _calcSpawnPeriod(bombSpawnModel)) {
         add(SpawnEvent.spawn(bombSpawnModel.time));
       }
     });
   }
 
   bool _calcSpawnPeriod(SpawnModel bombSpawnModel) =>
-      bombSpawnModel.time > state.lastSpawn + 2000 - (bombSpawnModel.count * 50);
+      bombSpawnModel.time >
+      state.lastSpawn + 2000 - (bombSpawnModel.count * 50);
 }

@@ -4,9 +4,9 @@ import 'package:flutter_counter_shooter/ui/common/gradient_icon.dart';
 
 class BombView extends StatefulWidget {
   const BombView({
-    Key? key,
+    super.key,
     required this.bomb,
-  }) : super(key: key);
+  });
 
   final Bomb bomb;
 
@@ -28,9 +28,9 @@ class _BombViewState extends State<BombView> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final bool firstPart = widget.bomb.animation < 0.5;
+    final firstPart = widget.bomb.animation < 0.5;
 
-    late final List<Color> colors = firstPart
+    late final colors = firstPart
         ? <Color>[
             Colors.lightBlueAccent.shade400,
             Colors.lightBlueAccent.shade100,
@@ -40,7 +40,9 @@ class _BombViewState extends State<BombView> with TickerProviderStateMixin {
             Colors.lightBlueAccent.shade400,
           ];
 
-    late final double animation = firstPart ? widget.bomb.animation * 2 : (widget.bomb.animation - 0.5) * 2;
+    late final animation = firstPart
+        ? widget.bomb.animation * 2
+        : (widget.bomb.animation - 0.5) * 2;
 
     return Positioned(
       left: widget.bomb.xOrigin,

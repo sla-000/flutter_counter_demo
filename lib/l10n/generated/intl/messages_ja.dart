@@ -22,7 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "flutterCounterDemo": MessageLookupByLibrary.simpleMessage("フラッターカウンターデモ"),
+        "flutterCounterDemo":
+            MessageLookupByLibrary.simpleMessage("フラッターカウンターデモ"),
         "increment": MessageLookupByLibrary.simpleMessage("インクリメント"),
         "loading": MessageLookupByLibrary.simpleMessage("読み込んでいます..."),
         "score": MessageLookupByLibrary.simpleMessage("スコア:"),

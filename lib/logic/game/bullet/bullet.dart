@@ -13,7 +13,8 @@ class Bullet extends ActorMoving implements Updatable {
           position: position,
           angle: angle,
           rotationSpeed: rotationSpeed,
-          linearSpeed: linearSpeed ?? Vector.fromAngle(angle: angle, length: 100),
+          linearSpeed:
+              linearSpeed ?? Vector.fromAngle(angle: angle, length: 100),
           size: size ?? Vector.square(size: 20),
         );
 
@@ -45,7 +46,7 @@ class Bullet extends ActorMoving implements Updatable {
   }
 
   void _updateAnimation(double delta) {
-    double calcAnimation = animation;
+    var calcAnimation = animation;
 
     calcAnimation += delta * 2;
     while (calcAnimation > 1) {
@@ -56,7 +57,5 @@ class Bullet extends ActorMoving implements Updatable {
   }
 
   @override
-  String toString() {
-    return 'HeroBullet{moving: ${super.toString()}}';
-  }
+  String toString() => 'HeroBullet{moving: ${super.toString()}}';
 }

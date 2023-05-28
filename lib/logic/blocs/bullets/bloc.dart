@@ -1,8 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/bullets/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/bullets/state.dart';
 import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
-
-import 'event.dart';
-import 'state.dart';
 
 class BulletsBloc extends Bloc<BulletsEvent, BulletsState> {
   BulletsBloc() : super(const BulletsState()) {
@@ -22,7 +21,7 @@ class BulletsBloc extends Bloc<BulletsEvent, BulletsState> {
   }
 
   void _onAdd(BulletsEventAdd event, Emitter<BulletsState> emit) {
-    final List<Bullet> rez = List<Bullet>.of(state.bullets);
+    final rez = List<Bullet>.of(state.bullets);
 
     rez.add(event.bullet);
 
@@ -30,7 +29,7 @@ class BulletsBloc extends Bloc<BulletsEvent, BulletsState> {
   }
 
   void _onRemoveAll(BulletsEventRemoveAll event, Emitter<BulletsState> emit) {
-    final List<Bullet> rez = List<Bullet>.of(state.bullets);
+    final rez = List<Bullet>.of(state.bullets);
 
     rez.removeWhere((Bullet element) => event.bombs.contains(element));
 
@@ -38,7 +37,7 @@ class BulletsBloc extends Bloc<BulletsEvent, BulletsState> {
   }
 
   void _onUpdate(BulletsEventUpdate event, Emitter<BulletsState> emit) {
-    for (final Bullet bomb in state.bullets) {
+    for (final bomb in state.bullets) {
       bomb.update(event.delta);
     }
 

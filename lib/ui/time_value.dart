@@ -12,20 +12,19 @@ import 'package:flutter_counter_shooter/theme/durations.dart';
 
 class TimeValue extends StatelessWidget {
   const TimeValue({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<WavesBloc, WavesState>(
-      bloc: di.get<WavesBloc>(),
-      builder: (BuildContext context, WavesState wavesState) {
-        return BlocBuilder<ScoreBloc, ScoreState>(
+  Widget build(BuildContext context) => BlocBuilder<WavesBloc, WavesState>(
+        bloc: di.get<WavesBloc>(),
+        builder: (BuildContext context, WavesState wavesState) =>
+            BlocBuilder<ScoreBloc, ScoreState>(
           bloc: di.get<ScoreBloc>(),
           builder: (BuildContext context, ScoreState gameScoreState) {
-            final int remainingTime = kWaveTime - wavesState.waveTime;
-            final int remainingTime0 = (remainingTime < 0) ? 0 : remainingTime;
-            final bool show = remainingTime0 < 10000;
+            final remainingTime = kWaveTime - wavesState.waveTime;
+            final remainingTime0 = (remainingTime < 0) ? 0 : remainingTime;
+            final show = remainingTime0 < 10000;
 
             return (gameScoreState.isStarted && show)
                 ? AnimatedOpacity(
@@ -44,27 +43,25 @@ class TimeValue extends StatelessWidget {
                     child: SizedBox.shrink(),
                   );
           },
-        );
-      },
-    );
-  }
+        ),
+      );
 
   Color _getColor(int remainingTime) {
-    remainingTime += 1000 - Random.secure().nextInt(2000);
+    final value = remainingTime + 1000 - Random.secure().nextInt(2000);
 
-    if (remainingTime > 9000) {
+    if (value > 9000) {
       return Colors.red[700]!;
-    } else if (remainingTime > 7000) {
+    } else if (value > 7000) {
       return Colors.orange[700]!;
-    } else if (remainingTime > 5000) {
+    } else if (value > 5000) {
       return Colors.yellow[600]!;
-    } else if (remainingTime > 4000) {
+    } else if (value > 4000) {
       return Colors.yellow[100]!;
-    } else if (remainingTime > 3000) {
+    } else if (value > 3000) {
       return Colors.blue[100]!;
-    } else if (remainingTime > 2000) {
+    } else if (value > 2000) {
       return Colors.blue[400]!;
-    } else if (remainingTime > 1000) {
+    } else if (value > 1000) {
       return Colors.blue[800]!;
     } else {
       return Colors.grey[800]!;

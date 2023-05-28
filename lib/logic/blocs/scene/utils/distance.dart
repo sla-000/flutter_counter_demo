@@ -16,15 +16,15 @@ int checkAllCollisions({
   required void Function(List<Bomb> bombs) onBombRemove,
   required void Function(Bomb bomb) onProtagonistHit,
 }) {
-  final List<Bullet> delBullets = <Bullet>[];
-  final List<Bomb> delBombs = <Bomb>[];
+  final delBullets = <Bullet>[];
+  final delBombs = <Bomb>[];
 
-  for (final Bomb bomb in bombs) {
+  for (final bomb in bombs) {
     if (actorsAreClose(protagonist, bomb, distance: 40)) {
       onProtagonistHit(bomb);
     }
 
-    for (final Bullet bullet in bullets) {
+    for (final bullet in bullets) {
       if (actorsAreClose(
         bullet,
         bomb,
@@ -47,17 +47,23 @@ bool actorsAreClose(
   ActorMoving actor0,
   ActorMoving actor1, {
   double distance = 20,
-}) {
-  return actor0.position.distance(actor1.position) < distance;
-}
+}) =>
+    actor0.position.distance(actor1.position) < distance;
 
-void checkBoundsAddToDeleteList(List<ActorState> delItems, ActorState actor, double width, double height) {
-  if (actor.position.x < -kDeleteDistance || actor.position.x > width + kDeleteDistance) {
+void checkBoundsAddToDeleteList(
+  List<ActorState> delItems,
+  ActorState actor,
+  double width,
+  double height,
+) {
+  if (actor.position.x < -kDeleteDistance ||
+      actor.position.x > width + kDeleteDistance) {
     delItems.add(actor);
     return;
   }
 
-  if (actor.position.y < -kDeleteDistance || actor.position.y > height + kDeleteDistance) {
+  if (actor.position.y < -kDeleteDistance ||
+      actor.position.y > height + kDeleteDistance) {
     delItems.add(actor);
     return;
   }

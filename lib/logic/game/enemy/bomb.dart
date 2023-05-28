@@ -34,7 +34,7 @@ class Bomb extends ActorMoving implements Updatable {
   }
 
   void _updateAnimation(double delta) {
-    double calcAnimation = animation;
+    var calcAnimation = animation;
 
     calcAnimation += delta * 1.2;
     while (calcAnimation > 1) {
@@ -45,7 +45,5 @@ class Bomb extends ActorMoving implements Updatable {
   }
 
   @override
-  String toString() {
-    return 'Bomb{moving: ${super.toString()}}';
-  }
+  String toString() => 'Bomb{moving: ${super.toString()}}';
 }

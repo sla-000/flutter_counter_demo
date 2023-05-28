@@ -38,14 +38,12 @@ class Vector {
     );
   }
 
-  Vector applyAdd(Vector v) {
+  void applyAdd(Vector v) {
     assert(!isNone);
     assert(!v.isNone);
 
     x += v.x;
     y += v.y;
-
-    return this;
   }
 
   Vector multiply(double k) {
@@ -57,13 +55,11 @@ class Vector {
     );
   }
 
-  Vector applyMultiply(double k) {
+  void applyMultiply(double k) {
     assert(!isNone);
 
     x *= k;
     y *= k;
-
-    return this;
   }
 
   double getLength() {
@@ -81,7 +77,7 @@ class Vector {
   Vector toLength(double length) {
     assert(!isNone);
 
-    final double coeff = length / getLength();
+    final coeff = length / getLength();
 
     return multiply(coeff);
   }
@@ -97,7 +93,5 @@ class Vector {
   }
 
   @override
-  String toString() {
-    return 'Vector{x: $x, y: $y}';
-  }
+  String toString() => 'Vector{x: $x, y: $y}';
 }

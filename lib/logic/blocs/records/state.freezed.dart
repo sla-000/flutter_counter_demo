@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'state.dart';
 
@@ -12,34 +12,7 @@ part of 'state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$RecordsStateTearOff {
-  const _$RecordsStateTearOff();
-
-  _RecordsState call(
-      {int lastRecord = 0,
-      String name = '',
-      List<String> lastNames = const <String>[],
-      List<RecordData> records = const <RecordData>[],
-      bool waitNetwork = false,
-      String lastNetworkError = '',
-      bool showNameInput = false}) {
-    return _RecordsState(
-      lastRecord: lastRecord,
-      name: name,
-      lastNames: lastNames,
-      records: records,
-      waitNetwork: waitNetwork,
-      lastNetworkError: lastNetworkError,
-      showNameInput: showNameInput,
-    );
-  }
-}
-
-/// @nodoc
-const $RecordsState = _$RecordsStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$RecordsState {
@@ -52,13 +25,16 @@ mixin _$RecordsState {
   bool get showNameInput => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RecordsStateCopyWith<RecordsState> get copyWith => throw _privateConstructorUsedError;
+  $RecordsStateCopyWith<RecordsState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $RecordsStateCopyWith<$Res> {
-  factory $RecordsStateCopyWith(RecordsState value, $Res Function(RecordsState) then) =
-      _$RecordsStateCopyWithImpl<$Res>;
+  factory $RecordsStateCopyWith(
+          RecordsState value, $Res Function(RecordsState) then) =
+      _$RecordsStateCopyWithImpl<$Res, RecordsState>;
+  @useResult
   $Res call(
       {int lastRecord,
       String name,
@@ -70,61 +46,67 @@ abstract class $RecordsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RecordsStateCopyWithImpl<$Res> implements $RecordsStateCopyWith<$Res> {
+class _$RecordsStateCopyWithImpl<$Res, $Val extends RecordsState>
+    implements $RecordsStateCopyWith<$Res> {
   _$RecordsStateCopyWithImpl(this._value, this._then);
 
-  final RecordsState _value;
   // ignore: unused_field
-  final $Res Function(RecordsState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lastRecord = freezed,
-    Object? name = freezed,
-    Object? lastNames = freezed,
-    Object? records = freezed,
-    Object? waitNetwork = freezed,
-    Object? lastNetworkError = freezed,
-    Object? showNameInput = freezed,
+    Object? lastRecord = null,
+    Object? name = null,
+    Object? lastNames = null,
+    Object? records = null,
+    Object? waitNetwork = null,
+    Object? lastNetworkError = null,
+    Object? showNameInput = null,
   }) {
     return _then(_value.copyWith(
-      lastRecord: lastRecord == freezed
+      lastRecord: null == lastRecord
           ? _value.lastRecord
           : lastRecord // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      lastNames: lastNames == freezed
+      lastNames: null == lastNames
           ? _value.lastNames
           : lastNames // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      records: records == freezed
+      records: null == records
           ? _value.records
           : records // ignore: cast_nullable_to_non_nullable
               as List<RecordData>,
-      waitNetwork: waitNetwork == freezed
+      waitNetwork: null == waitNetwork
           ? _value.waitNetwork
           : waitNetwork // ignore: cast_nullable_to_non_nullable
               as bool,
-      lastNetworkError: lastNetworkError == freezed
+      lastNetworkError: null == lastNetworkError
           ? _value.lastNetworkError
           : lastNetworkError // ignore: cast_nullable_to_non_nullable
               as String,
-      showNameInput: showNameInput == freezed
+      showNameInput: null == showNameInput
           ? _value.showNameInput
           : showNameInput // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$RecordsStateCopyWith<$Res> implements $RecordsStateCopyWith<$Res> {
-  factory _$RecordsStateCopyWith(_RecordsState value, $Res Function(_RecordsState) then) =
-      __$RecordsStateCopyWithImpl<$Res>;
+abstract class _$$_RecordsStateCopyWith<$Res>
+    implements $RecordsStateCopyWith<$Res> {
+  factory _$$_RecordsStateCopyWith(
+          _$_RecordsState value, $Res Function(_$_RecordsState) then) =
+      __$$_RecordsStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int lastRecord,
       String name,
@@ -136,50 +118,50 @@ abstract class _$RecordsStateCopyWith<$Res> implements $RecordsStateCopyWith<$Re
 }
 
 /// @nodoc
-class __$RecordsStateCopyWithImpl<$Res> extends _$RecordsStateCopyWithImpl<$Res>
-    implements _$RecordsStateCopyWith<$Res> {
-  __$RecordsStateCopyWithImpl(_RecordsState _value, $Res Function(_RecordsState) _then)
-      : super(_value, (v) => _then(v as _RecordsState));
+class __$$_RecordsStateCopyWithImpl<$Res>
+    extends _$RecordsStateCopyWithImpl<$Res, _$_RecordsState>
+    implements _$$_RecordsStateCopyWith<$Res> {
+  __$$_RecordsStateCopyWithImpl(
+      _$_RecordsState _value, $Res Function(_$_RecordsState) _then)
+      : super(_value, _then);
 
-  @override
-  _RecordsState get _value => super._value as _RecordsState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lastRecord = freezed,
-    Object? name = freezed,
-    Object? lastNames = freezed,
-    Object? records = freezed,
-    Object? waitNetwork = freezed,
-    Object? lastNetworkError = freezed,
-    Object? showNameInput = freezed,
+    Object? lastRecord = null,
+    Object? name = null,
+    Object? lastNames = null,
+    Object? records = null,
+    Object? waitNetwork = null,
+    Object? lastNetworkError = null,
+    Object? showNameInput = null,
   }) {
-    return _then(_RecordsState(
-      lastRecord: lastRecord == freezed
+    return _then(_$_RecordsState(
+      lastRecord: null == lastRecord
           ? _value.lastRecord
           : lastRecord // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      lastNames: lastNames == freezed
-          ? _value.lastNames
+      lastNames: null == lastNames
+          ? _value._lastNames
           : lastNames // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      records: records == freezed
-          ? _value.records
+      records: null == records
+          ? _value._records
           : records // ignore: cast_nullable_to_non_nullable
               as List<RecordData>,
-      waitNetwork: waitNetwork == freezed
+      waitNetwork: null == waitNetwork
           ? _value.waitNetwork
           : waitNetwork // ignore: cast_nullable_to_non_nullable
               as bool,
-      lastNetworkError: lastNetworkError == freezed
+      lastNetworkError: null == lastNetworkError
           ? _value.lastNetworkError
           : lastNetworkError // ignore: cast_nullable_to_non_nullable
               as String,
-      showNameInput: showNameInput == freezed
+      showNameInput: null == showNameInput
           ? _value.showNameInput
           : showNameInput // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -193,33 +175,47 @@ class _$_RecordsState extends _RecordsState {
   const _$_RecordsState(
       {this.lastRecord = 0,
       this.name = '',
-      this.lastNames = const <String>[],
-      this.records = const <RecordData>[],
+      final List<String> lastNames = const <String>[],
+      final List<RecordData> records = const <RecordData>[],
       this.waitNetwork = false,
       this.lastNetworkError = '',
       this.showNameInput = false})
-      : super._();
+      : _lastNames = lastNames,
+        _records = records,
+        super._();
 
-  @JsonKey()
   @override
+  @JsonKey()
   final int lastRecord;
-  @JsonKey()
   @override
+  @JsonKey()
   final String name;
-  @JsonKey()
+  final List<String> _lastNames;
   @override
-  final List<String> lastNames;
   @JsonKey()
+  List<String> get lastNames {
+    if (_lastNames is EqualUnmodifiableListView) return _lastNames;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_lastNames);
+  }
+
+  final List<RecordData> _records;
   @override
-  final List<RecordData> records;
   @JsonKey()
+  List<RecordData> get records {
+    if (_records is EqualUnmodifiableListView) return _records;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_records);
+  }
+
   @override
+  @JsonKey()
   final bool waitNetwork;
-  @JsonKey()
   @override
+  @JsonKey()
   final String lastNetworkError;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool showNameInput;
 
   @override
@@ -231,41 +227,48 @@ class _$_RecordsState extends _RecordsState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RecordsState &&
-            const DeepCollectionEquality().equals(other.lastRecord, lastRecord) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.lastNames, lastNames) &&
-            const DeepCollectionEquality().equals(other.records, records) &&
-            const DeepCollectionEquality().equals(other.waitNetwork, waitNetwork) &&
-            const DeepCollectionEquality().equals(other.lastNetworkError, lastNetworkError) &&
-            const DeepCollectionEquality().equals(other.showNameInput, showNameInput));
+            other is _$_RecordsState &&
+            (identical(other.lastRecord, lastRecord) ||
+                other.lastRecord == lastRecord) &&
+            (identical(other.name, name) || other.name == name) &&
+            const DeepCollectionEquality()
+                .equals(other._lastNames, _lastNames) &&
+            const DeepCollectionEquality().equals(other._records, _records) &&
+            (identical(other.waitNetwork, waitNetwork) ||
+                other.waitNetwork == waitNetwork) &&
+            (identical(other.lastNetworkError, lastNetworkError) ||
+                other.lastNetworkError == lastNetworkError) &&
+            (identical(other.showNameInput, showNameInput) ||
+                other.showNameInput == showNameInput));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(lastRecord),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(lastNames),
-      const DeepCollectionEquality().hash(records),
-      const DeepCollectionEquality().hash(waitNetwork),
-      const DeepCollectionEquality().hash(lastNetworkError),
-      const DeepCollectionEquality().hash(showNameInput));
+      lastRecord,
+      name,
+      const DeepCollectionEquality().hash(_lastNames),
+      const DeepCollectionEquality().hash(_records),
+      waitNetwork,
+      lastNetworkError,
+      showNameInput);
 
   @JsonKey(ignore: true)
   @override
-  _$RecordsStateCopyWith<_RecordsState> get copyWith => __$RecordsStateCopyWithImpl<_RecordsState>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_RecordsStateCopyWith<_$_RecordsState> get copyWith =>
+      __$$_RecordsStateCopyWithImpl<_$_RecordsState>(this, _$identity);
 }
 
 abstract class _RecordsState extends RecordsState {
   const factory _RecordsState(
-      {int lastRecord,
-      String name,
-      List<String> lastNames,
-      List<RecordData> records,
-      bool waitNetwork,
-      String lastNetworkError,
-      bool showNameInput}) = _$_RecordsState;
+      {final int lastRecord,
+      final String name,
+      final List<String> lastNames,
+      final List<RecordData> records,
+      final bool waitNetwork,
+      final String lastNetworkError,
+      final bool showNameInput}) = _$_RecordsState;
   const _RecordsState._() : super._();
 
   @override
@@ -284,5 +287,6 @@ abstract class _RecordsState extends RecordsState {
   bool get showNameInput;
   @override
   @JsonKey(ignore: true)
-  _$RecordsStateCopyWith<_RecordsState> get copyWith => throw _privateConstructorUsedError;
+  _$$_RecordsStateCopyWith<_$_RecordsState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

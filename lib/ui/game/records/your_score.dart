@@ -7,19 +7,15 @@ import 'package:flutter_counter_shooter/utils/context_extensions.dart';
 
 class YourScore extends StatelessWidget {
   const YourScore({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<RecordsBloc, RecordsState>(
-      bloc: di<RecordsBloc>(),
-      builder: (BuildContext context, RecordsState recordsState) {
-        return Text(
+  Widget build(BuildContext context) => BlocBuilder<RecordsBloc, RecordsState>(
+        bloc: di<RecordsBloc>(),
+        builder: (BuildContext context, RecordsState recordsState) => Text(
           '${context.l10n.yourScore} ${recordsState.lastRecord}',
           style: Theme.of(context).textTheme.headlineSmall,
-        );
-      },
-    );
-  }
+        ),
+      );
 }

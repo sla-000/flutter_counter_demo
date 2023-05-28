@@ -22,13 +22,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "flutterCounterDemo": MessageLookupByLibrary.simpleMessage("عرض توضيحي مضاد للرفرفة"),
+        "flutterCounterDemo":
+            MessageLookupByLibrary.simpleMessage("عرض توضيحي مضاد للرفرفة"),
         "increment": MessageLookupByLibrary.simpleMessage("زيادة راتب"),
         "loading": MessageLookupByLibrary.simpleMessage("تحميل..."),
         "score": MessageLookupByLibrary.simpleMessage("نتيجة:"),
         "submit": MessageLookupByLibrary.simpleMessage("يقدم"),
         "wave": MessageLookupByLibrary.simpleMessage("موجة:"),
-        "youHavePushed": MessageLookupByLibrary.simpleMessage("لقد ضغطت على الزر عدة مرات:"),
+        "youHavePushed":
+            MessageLookupByLibrary.simpleMessage("لقد ضغطت على الزر عدة مرات:"),
         "yourScore": MessageLookupByLibrary.simpleMessage("درجاتك:")
       };
 }

@@ -11,34 +11,30 @@ import 'package:flutter_counter_shooter/utils/context_extensions.dart';
 
 class WaveValue extends StatelessWidget {
   const WaveValue({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<WavesBloc, WavesState>(
-      bloc: di.get<WavesBloc>(),
-      builder: (BuildContext context, WavesState wavesState) {
-        return BlocBuilder<ScoreBloc, ScoreState>(
+  Widget build(BuildContext context) => BlocBuilder<WavesBloc, WavesState>(
+        bloc: di.get<WavesBloc>(),
+        builder: (BuildContext context, WavesState wavesState) =>
+            BlocBuilder<ScoreBloc, ScoreState>(
           bloc: di.get<ScoreBloc>(),
-          builder: (BuildContext context, ScoreState gameScoreState) {
-            return gameScoreState.isStarted
-                ? AnimatedOpacity(
-                    duration: kXlDuration,
-                    opacity: 1,
-                    child: Text(
-                      '${context.l10n.wave} ${wavesState.count + 1}',
-                      style: labelTextStyle(context),
+          builder: (BuildContext context, ScoreState gameScoreState) =>
+              gameScoreState.isStarted
+                  ? AnimatedOpacity(
+                      duration: kXlDuration,
+                      opacity: 1,
+                      child: Text(
+                        '${context.l10n.wave} ${wavesState.count + 1}',
+                        style: labelTextStyle(context),
+                      ),
+                    )
+                  : const AnimatedOpacity(
+                      duration: kXlDuration,
+                      opacity: 0,
+                      child: SizedBox.shrink(),
                     ),
-                  )
-                : const AnimatedOpacity(
-                    duration: kXlDuration,
-                    opacity: 0,
-                    child: SizedBox.shrink(),
-                  );
-          },
-        );
-      },
-    );
-  }
+        ),
+      );
 }

@@ -7,11 +7,13 @@ part 'event.freezed.dart';
 class BulletsEvent with _$BulletsEvent {
   const factory BulletsEvent.init() = BulletsEventInit;
 
-  const factory BulletsEvent.setAll(Iterable<Bullet> bullets) = BulletsEventSetAll;
+  const factory BulletsEvent.setAll(Iterable<Bullet> bullets) =
+      BulletsEventSetAll;
 
   const factory BulletsEvent.add(Bullet bullet) = BulletsEventAdd;
 
-  const factory BulletsEvent.removeAll(Iterable<Object> bombs) = BulletsEventRemoveAll;
+  const factory BulletsEvent.removeAll(Iterable<Object> bombs) =
+      BulletsEventRemoveAll;
 
   const factory BulletsEvent.update(double delta) = BulletsEventUpdate;
 }

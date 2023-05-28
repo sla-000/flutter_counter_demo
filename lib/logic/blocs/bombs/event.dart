@@ -11,7 +11,8 @@ class BombsEvent with _$BombsEvent {
 
   const factory BombsEvent.add(Bomb bomb) = BombsEventAdd;
 
-  const factory BombsEvent.removeAll(Iterable<Object> bombs) = BombsEventRemoveAll;
+  const factory BombsEvent.removeAll(Iterable<Object> bombs) =
+      BombsEventRemoveAll;
 
   const factory BombsEvent.update(double delta) = BombsEventUpdate;
 }

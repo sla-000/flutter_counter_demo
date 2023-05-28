@@ -6,7 +6,10 @@ class ExponentialMovingAverage {
     double initialEma = 0,
     this.alpha = 0,
     this.n = 0,
-  })  : assert((alpha == 0) != (n == 0), 'Only one of alpha or n must be entered'),
+  })  : assert(
+          (alpha == 0) != (n == 0),
+          'Only one of alpha or n must be entered',
+        ),
         _ema = initialEma;
 
   /// last EMA
@@ -22,14 +25,14 @@ class ExponentialMovingAverage {
   double get ema => _ema;
 
   double update(double val) {
-    late final double _alpha;
+    late final double value;
     if (alpha != 0) {
-      _alpha = alpha;
+      value = alpha;
     } else if (n != 0) {
-      _alpha = 2 / (n + 1);
+      value = 2 / (n + 1);
     }
 
-    _ema = _alpha * val + (1 - _alpha) * _ema;
+    _ema = value * val + (1 - value) * _ema;
 
     return _ema;
   }

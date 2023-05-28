@@ -13,37 +13,35 @@ import 'package:flutter_counter_shooter/ui/game/records/records_view.dart';
 
 class GameField extends StatelessWidget {
   const GameField({
-    Key? key,
+    super.key,
     required this.onRestart,
-  }) : super(key: key);
+  });
 
   final void Function() onRestart;
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<FrameBloc, FrameState>(
-      bloc: di.get<FrameBloc>(),
-      builder: (BuildContext context, FrameState frameState) {
-        di.get<SceneBloc>().add(SceneEvent.update(frameState.delta));
-        di.get<FrameBloc>().add(const FrameEvent.update());
+  Widget build(BuildContext context) => BlocBuilder<FrameBloc, FrameState>(
+        bloc: di.get<FrameBloc>(),
+        builder: (BuildContext context, FrameState frameState) {
+          di.get<SceneBloc>().add(SceneEvent.update(frameState.delta));
+          di.get<FrameBloc>().add(const FrameEvent.update());
 
-        return BlocBuilder<ScoreBloc, ScoreState>(
-          bloc: di.get<ScoreBloc>(),
-          buildWhen: (ScoreState previous, ScoreState current) =>
-              current.gameState != previous.gameState,
-          builder: (BuildContext context, ScoreState scoreState) {
-            if (scoreState.gameState == GameState.finished) {
-              return RecordsView(
-                onRestart: onRestart,
+          return BlocBuilder<ScoreBloc, ScoreState>(
+            bloc: di.get<ScoreBloc>(),
+            buildWhen: (ScoreState previous, ScoreState current) =>
+                current.gameState != previous.gameState,
+            builder: (BuildContext context, ScoreState scoreState) {
+              if (scoreState.gameState == GameState.finished) {
+                return RecordsView(
+                  onRestart: onRestart,
+                );
+              }
+
+              return GameElements(
+                delta: frameState.delta,
               );
-            }
-
-            return GameElements(
-              delta: frameState.delta,
-            );
-          },
-        );
-      },
-    );
-  }
+            },
+          );
+        },
+      );
 }

@@ -8,30 +8,27 @@ import 'package:flutter_counter_shooter/ui/game/protagonist/gamer_icon.dart';
 
 class Gamer extends StatefulWidget {
   const Gamer({
-    Key? key,
+    super.key,
     required this.size,
-  }) : super(key: key);
+  });
 
   final double size;
 
   @override
-  _GamerState createState() => _GamerState();
+  State<Gamer> createState() => _GamerState();
 }
 
 class _GamerState extends State<Gamer> with TickerProviderStateMixin {
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<ScoreBloc, ScoreState>(
-      bloc: di.get<ScoreBloc>(),
-      buildWhen: (ScoreState previous, ScoreState current) => current.gameState != previous.gameState,
-      builder: (_, ScoreState state) {
-        return AnimateSize(
+  Widget build(BuildContext context) => BlocBuilder<ScoreBloc, ScoreState>(
+        bloc: di.get<ScoreBloc>(),
+        buildWhen: (ScoreState previous, ScoreState current) =>
+            current.gameState != previous.gameState,
+        builder: (_, ScoreState state) => AnimateSize(
           duration: const Duration(milliseconds: 1000),
           size: widget.size,
           show: state.isStarted,
           child: GamerIcon(size: widget.size),
-        );
-      },
-    );
-  }
+        ),
+      );
 }

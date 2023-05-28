@@ -2,7 +2,7 @@
 // ignore_for_file: lines_longer_than_80_chars, avoid_classes_with_only_static_members
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
-    show defaultTargetPlatform, kIsWeb, TargetPlatform;
+    show TargetPlatform, defaultTargetPlatform, kIsWeb;
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -64,7 +64,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '903842230586',
     projectId: 'flutter-counter-demo-9209c',
     storageBucket: 'flutter-counter-demo-9209c.appspot.com',
-    iosClientId: '903842230586-4kkpfe0ggfgs23q8ect8806lr896a3cm.apps.googleusercontent.com',
+    iosClientId:
+        '903842230586-4kkpfe0ggfgs23q8ect8806lr896a3cm.apps.googleusercontent.com',
     iosBundleId: 'com.example.example',
   );
 }

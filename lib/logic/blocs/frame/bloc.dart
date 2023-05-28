@@ -2,11 +2,10 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/frame/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/frame/repo.dart';
+import 'package:flutter_counter_shooter/logic/blocs/frame/state.dart';
 import 'package:flutter_counter_shooter/utils/math/ema.dart';
-
-import 'event.dart';
-import 'repo.dart';
-import 'state.dart';
 
 class FrameBloc extends Bloc<FrameEvent, FrameState> {
   FrameBloc({
@@ -39,10 +38,12 @@ class FrameBloc extends Bloc<FrameEvent, FrameState> {
   }
 
   void _onControl(FrameEventControl event, Emitter<FrameState> emit) {
-    emit(state.copyWith(
-      enabled: event.enable,
-      delta: 0,
-    ));
+    emit(
+      state.copyWith(
+        enabled: event.enable,
+        delta: 0,
+      ),
+    );
 
     if (!event.enable) {
       _frameStopwatch.stop();
@@ -55,7 +56,7 @@ class FrameBloc extends Bloc<FrameEvent, FrameState> {
     }
 
     _frameStopwatch.stop();
-    final double delta = _frameStopwatch.elapsedMilliseconds / 1000.0;
+    final delta = _frameStopwatch.elapsedMilliseconds / 1000.0;
     _frameStopwatch.reset();
     _frameStopwatch.start();
 
@@ -63,10 +64,12 @@ class FrameBloc extends Bloc<FrameEvent, FrameState> {
       _ema.update(1 / delta);
     }
 
-    emit(state.copyWith(
-      delta: min(delta, kMaxDelta),
-      frame: state.frame + 1,
-      fps: _ema.ema,
-    ));
+    emit(
+      state.copyWith(
+        delta: min(delta, kMaxDelta),
+        frame: state.frame + 1,
+        fps: _ema.ema,
+      ),
+    );
   }
 }

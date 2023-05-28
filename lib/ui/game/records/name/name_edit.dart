@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class NameEdit extends StatefulWidget {
   const NameEdit({
-    Key? key,
+    super.key,
     required this.name,
     this.onSubmitted,
     this.onChanged,
-  }) : super(key: key);
+  });
 
   final String name;
   final void Function(String name)? onSubmitted;
@@ -32,15 +32,13 @@ class _NameEditState extends State<NameEdit> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return TextField(
-      controller: _nameController,
-      decoration: const InputDecoration(
-        hintText: 'Nobody',
-        labelText: 'Player name',
-      ),
-      onSubmitted: widget.onSubmitted,
-      onChanged: widget.onChanged,
-    );
-  }
+  Widget build(BuildContext context) => TextField(
+        controller: _nameController,
+        decoration: const InputDecoration(
+          hintText: 'Nobody',
+          labelText: 'Player name',
+        ),
+        onSubmitted: widget.onSubmitted,
+        onChanged: widget.onChanged,
+      );
 }

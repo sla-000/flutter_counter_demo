@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'event.dart';
 
@@ -12,31 +12,7 @@ part of 'event.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ProtagonistEventTearOff {
-  const _$ProtagonistEventTearOff();
-
-  ProtagonistEventInit init(Vector center) {
-    return ProtagonistEventInit(
-      center,
-    );
-  }
-
-  ProtagonistEventShoot shoot() {
-    return const ProtagonistEventShoot();
-  }
-
-  ProtagonistEventUpdate update(double delta) {
-    return ProtagonistEventUpdate(
-      delta,
-    );
-  }
-}
-
-/// @nodoc
-const $ProtagonistEvent = _$ProtagonistEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ProtagonistEvent {
@@ -49,9 +25,9 @@ mixin _$ProtagonistEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Vector center)? init,
-    TResult Function()? shoot,
-    TResult Function(double delta)? update,
+    TResult? Function(Vector center)? init,
+    TResult? Function()? shoot,
+    TResult? Function(double delta)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,9 +47,9 @@ mixin _$ProtagonistEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ProtagonistEventInit value)? init,
-    TResult Function(ProtagonistEventShoot value)? shoot,
-    TResult Function(ProtagonistEventUpdate value)? update,
+    TResult? Function(ProtagonistEventInit value)? init,
+    TResult? Function(ProtagonistEventShoot value)? shoot,
+    TResult? Function(ProtagonistEventUpdate value)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -88,41 +64,46 @@ mixin _$ProtagonistEvent {
 
 /// @nodoc
 abstract class $ProtagonistEventCopyWith<$Res> {
-  factory $ProtagonistEventCopyWith(ProtagonistEvent value, $Res Function(ProtagonistEvent) then) =
-      _$ProtagonistEventCopyWithImpl<$Res>;
+  factory $ProtagonistEventCopyWith(
+          ProtagonistEvent value, $Res Function(ProtagonistEvent) then) =
+      _$ProtagonistEventCopyWithImpl<$Res, ProtagonistEvent>;
 }
 
 /// @nodoc
-class _$ProtagonistEventCopyWithImpl<$Res> implements $ProtagonistEventCopyWith<$Res> {
+class _$ProtagonistEventCopyWithImpl<$Res, $Val extends ProtagonistEvent>
+    implements $ProtagonistEventCopyWith<$Res> {
   _$ProtagonistEventCopyWithImpl(this._value, this._then);
 
-  final ProtagonistEvent _value;
   // ignore: unused_field
-  final $Res Function(ProtagonistEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class $ProtagonistEventInitCopyWith<$Res> {
-  factory $ProtagonistEventInitCopyWith(ProtagonistEventInit value, $Res Function(ProtagonistEventInit) then) =
-      _$ProtagonistEventInitCopyWithImpl<$Res>;
+abstract class _$$ProtagonistEventInitCopyWith<$Res> {
+  factory _$$ProtagonistEventInitCopyWith(_$ProtagonistEventInit value,
+          $Res Function(_$ProtagonistEventInit) then) =
+      __$$ProtagonistEventInitCopyWithImpl<$Res>;
+  @useResult
   $Res call({Vector center});
 }
 
 /// @nodoc
-class _$ProtagonistEventInitCopyWithImpl<$Res> extends _$ProtagonistEventCopyWithImpl<$Res>
-    implements $ProtagonistEventInitCopyWith<$Res> {
-  _$ProtagonistEventInitCopyWithImpl(ProtagonistEventInit _value, $Res Function(ProtagonistEventInit) _then)
-      : super(_value, (v) => _then(v as ProtagonistEventInit));
+class __$$ProtagonistEventInitCopyWithImpl<$Res>
+    extends _$ProtagonistEventCopyWithImpl<$Res, _$ProtagonistEventInit>
+    implements _$$ProtagonistEventInitCopyWith<$Res> {
+  __$$ProtagonistEventInitCopyWithImpl(_$ProtagonistEventInit _value,
+      $Res Function(_$ProtagonistEventInit) _then)
+      : super(_value, _then);
 
-  @override
-  ProtagonistEventInit get _value => super._value as ProtagonistEventInit;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? center = freezed,
+    Object? center = null,
   }) {
-    return _then(ProtagonistEventInit(
-      center == freezed
+    return _then(_$ProtagonistEventInit(
+      null == center
           ? _value.center
           : center // ignore: cast_nullable_to_non_nullable
               as Vector,
@@ -147,17 +128,19 @@ class _$ProtagonistEventInit implements ProtagonistEventInit {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ProtagonistEventInit &&
-            const DeepCollectionEquality().equals(other.center, center));
+            other is _$ProtagonistEventInit &&
+            (identical(other.center, center) || other.center == center));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(center));
+  int get hashCode => Object.hash(runtimeType, center);
 
   @JsonKey(ignore: true)
   @override
-  $ProtagonistEventInitCopyWith<ProtagonistEventInit> get copyWith =>
-      _$ProtagonistEventInitCopyWithImpl<ProtagonistEventInit>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$ProtagonistEventInitCopyWith<_$ProtagonistEventInit> get copyWith =>
+      __$$ProtagonistEventInitCopyWithImpl<_$ProtagonistEventInit>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -172,9 +155,9 @@ class _$ProtagonistEventInit implements ProtagonistEventInit {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Vector center)? init,
-    TResult Function()? shoot,
-    TResult Function(double delta)? update,
+    TResult? Function(Vector center)? init,
+    TResult? Function()? shoot,
+    TResult? Function(double delta)? update,
   }) {
     return init?.call(center);
   }
@@ -206,9 +189,9 @@ class _$ProtagonistEventInit implements ProtagonistEventInit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ProtagonistEventInit value)? init,
-    TResult Function(ProtagonistEventShoot value)? shoot,
-    TResult Function(ProtagonistEventUpdate value)? update,
+    TResult? Function(ProtagonistEventInit value)? init,
+    TResult? Function(ProtagonistEventShoot value)? shoot,
+    TResult? Function(ProtagonistEventUpdate value)? update,
   }) {
     return init?.call(this);
   }
@@ -229,27 +212,29 @@ class _$ProtagonistEventInit implements ProtagonistEventInit {
 }
 
 abstract class ProtagonistEventInit implements ProtagonistEvent {
-  const factory ProtagonistEventInit(Vector center) = _$ProtagonistEventInit;
+  const factory ProtagonistEventInit(final Vector center) =
+      _$ProtagonistEventInit;
 
   Vector get center;
   @JsonKey(ignore: true)
-  $ProtagonistEventInitCopyWith<ProtagonistEventInit> get copyWith => throw _privateConstructorUsedError;
+  _$$ProtagonistEventInitCopyWith<_$ProtagonistEventInit> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProtagonistEventShootCopyWith<$Res> {
-  factory $ProtagonistEventShootCopyWith(ProtagonistEventShoot value, $Res Function(ProtagonistEventShoot) then) =
-      _$ProtagonistEventShootCopyWithImpl<$Res>;
+abstract class _$$ProtagonistEventShootCopyWith<$Res> {
+  factory _$$ProtagonistEventShootCopyWith(_$ProtagonistEventShoot value,
+          $Res Function(_$ProtagonistEventShoot) then) =
+      __$$ProtagonistEventShootCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ProtagonistEventShootCopyWithImpl<$Res> extends _$ProtagonistEventCopyWithImpl<$Res>
-    implements $ProtagonistEventShootCopyWith<$Res> {
-  _$ProtagonistEventShootCopyWithImpl(ProtagonistEventShoot _value, $Res Function(ProtagonistEventShoot) _then)
-      : super(_value, (v) => _then(v as ProtagonistEventShoot));
-
-  @override
-  ProtagonistEventShoot get _value => super._value as ProtagonistEventShoot;
+class __$$ProtagonistEventShootCopyWithImpl<$Res>
+    extends _$ProtagonistEventCopyWithImpl<$Res, _$ProtagonistEventShoot>
+    implements _$$ProtagonistEventShootCopyWith<$Res> {
+  __$$ProtagonistEventShootCopyWithImpl(_$ProtagonistEventShoot _value,
+      $Res Function(_$ProtagonistEventShoot) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -264,7 +249,8 @@ class _$ProtagonistEventShoot implements ProtagonistEventShoot {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is ProtagonistEventShoot);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ProtagonistEventShoot);
   }
 
   @override
@@ -283,9 +269,9 @@ class _$ProtagonistEventShoot implements ProtagonistEventShoot {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Vector center)? init,
-    TResult Function()? shoot,
-    TResult Function(double delta)? update,
+    TResult? Function(Vector center)? init,
+    TResult? Function()? shoot,
+    TResult? Function(double delta)? update,
   }) {
     return shoot?.call();
   }
@@ -317,9 +303,9 @@ class _$ProtagonistEventShoot implements ProtagonistEventShoot {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ProtagonistEventInit value)? init,
-    TResult Function(ProtagonistEventShoot value)? shoot,
-    TResult Function(ProtagonistEventUpdate value)? update,
+    TResult? Function(ProtagonistEventInit value)? init,
+    TResult? Function(ProtagonistEventShoot value)? shoot,
+    TResult? Function(ProtagonistEventUpdate value)? update,
   }) {
     return shoot?.call(this);
   }
@@ -344,27 +330,29 @@ abstract class ProtagonistEventShoot implements ProtagonistEvent {
 }
 
 /// @nodoc
-abstract class $ProtagonistEventUpdateCopyWith<$Res> {
-  factory $ProtagonistEventUpdateCopyWith(ProtagonistEventUpdate value, $Res Function(ProtagonistEventUpdate) then) =
-      _$ProtagonistEventUpdateCopyWithImpl<$Res>;
+abstract class _$$ProtagonistEventUpdateCopyWith<$Res> {
+  factory _$$ProtagonistEventUpdateCopyWith(_$ProtagonistEventUpdate value,
+          $Res Function(_$ProtagonistEventUpdate) then) =
+      __$$ProtagonistEventUpdateCopyWithImpl<$Res>;
+  @useResult
   $Res call({double delta});
 }
 
 /// @nodoc
-class _$ProtagonistEventUpdateCopyWithImpl<$Res> extends _$ProtagonistEventCopyWithImpl<$Res>
-    implements $ProtagonistEventUpdateCopyWith<$Res> {
-  _$ProtagonistEventUpdateCopyWithImpl(ProtagonistEventUpdate _value, $Res Function(ProtagonistEventUpdate) _then)
-      : super(_value, (v) => _then(v as ProtagonistEventUpdate));
+class __$$ProtagonistEventUpdateCopyWithImpl<$Res>
+    extends _$ProtagonistEventCopyWithImpl<$Res, _$ProtagonistEventUpdate>
+    implements _$$ProtagonistEventUpdateCopyWith<$Res> {
+  __$$ProtagonistEventUpdateCopyWithImpl(_$ProtagonistEventUpdate _value,
+      $Res Function(_$ProtagonistEventUpdate) _then)
+      : super(_value, _then);
 
-  @override
-  ProtagonistEventUpdate get _value => super._value as ProtagonistEventUpdate;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? delta = freezed,
+    Object? delta = null,
   }) {
-    return _then(ProtagonistEventUpdate(
-      delta == freezed
+    return _then(_$ProtagonistEventUpdate(
+      null == delta
           ? _value.delta
           : delta // ignore: cast_nullable_to_non_nullable
               as double,
@@ -389,17 +377,19 @@ class _$ProtagonistEventUpdate implements ProtagonistEventUpdate {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ProtagonistEventUpdate &&
-            const DeepCollectionEquality().equals(other.delta, delta));
+            other is _$ProtagonistEventUpdate &&
+            (identical(other.delta, delta) || other.delta == delta));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(delta));
+  int get hashCode => Object.hash(runtimeType, delta);
 
   @JsonKey(ignore: true)
   @override
-  $ProtagonistEventUpdateCopyWith<ProtagonistEventUpdate> get copyWith =>
-      _$ProtagonistEventUpdateCopyWithImpl<ProtagonistEventUpdate>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$ProtagonistEventUpdateCopyWith<_$ProtagonistEventUpdate> get copyWith =>
+      __$$ProtagonistEventUpdateCopyWithImpl<_$ProtagonistEventUpdate>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -414,9 +404,9 @@ class _$ProtagonistEventUpdate implements ProtagonistEventUpdate {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Vector center)? init,
-    TResult Function()? shoot,
-    TResult Function(double delta)? update,
+    TResult? Function(Vector center)? init,
+    TResult? Function()? shoot,
+    TResult? Function(double delta)? update,
   }) {
     return update?.call(delta);
   }
@@ -448,9 +438,9 @@ class _$ProtagonistEventUpdate implements ProtagonistEventUpdate {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ProtagonistEventInit value)? init,
-    TResult Function(ProtagonistEventShoot value)? shoot,
-    TResult Function(ProtagonistEventUpdate value)? update,
+    TResult? Function(ProtagonistEventInit value)? init,
+    TResult? Function(ProtagonistEventShoot value)? shoot,
+    TResult? Function(ProtagonistEventUpdate value)? update,
   }) {
     return update?.call(this);
   }
@@ -471,9 +461,11 @@ class _$ProtagonistEventUpdate implements ProtagonistEventUpdate {
 }
 
 abstract class ProtagonistEventUpdate implements ProtagonistEvent {
-  const factory ProtagonistEventUpdate(double delta) = _$ProtagonistEventUpdate;
+  const factory ProtagonistEventUpdate(final double delta) =
+      _$ProtagonistEventUpdate;
 
   double get delta;
   @JsonKey(ignore: true)
-  $ProtagonistEventUpdateCopyWith<ProtagonistEventUpdate> get copyWith => throw _privateConstructorUsedError;
+  _$$ProtagonistEventUpdateCopyWith<_$ProtagonistEventUpdate> get copyWith =>
+      throw _privateConstructorUsedError;
 }

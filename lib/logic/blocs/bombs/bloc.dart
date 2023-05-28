@@ -1,11 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/bombs/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/bombs/repo.dart';
+import 'package:flutter_counter_shooter/logic/blocs/bombs/state.dart';
 import 'package:flutter_counter_shooter/logic/game/enemy/bomb.dart';
-
-import 'event.dart';
-import 'repo.dart';
-import 'state.dart';
 
 class BombsBloc extends Bloc<BombsEvent, BombsState> {
   BombsBloc({
@@ -40,7 +39,7 @@ class BombsBloc extends Bloc<BombsEvent, BombsState> {
   }
 
   void _onAdd(BombsEventAdd event, Emitter<BombsState> emit) {
-    final List<Bomb> rez = List<Bomb>.of(state.bombs);
+    final rez = List<Bomb>.of(state.bombs);
 
     rez.add(event.bomb);
 
@@ -48,7 +47,7 @@ class BombsBloc extends Bloc<BombsEvent, BombsState> {
   }
 
   void _onRemoveAll(BombsEventRemoveAll event, Emitter<BombsState> emit) {
-    final List<Bomb> rez = List<Bomb>.of(state.bombs);
+    final rez = List<Bomb>.of(state.bombs);
 
     rez.removeWhere((Bomb element) => event.bombs.contains(element));
 
@@ -56,7 +55,7 @@ class BombsBloc extends Bloc<BombsEvent, BombsState> {
   }
 
   void _onUpdate(BombsEventUpdate event, Emitter<BombsState> emit) {
-    for (final Bomb bomb in state.bombs) {
+    for (final bomb in state.bombs) {
       bomb.update(event.delta);
     }
 

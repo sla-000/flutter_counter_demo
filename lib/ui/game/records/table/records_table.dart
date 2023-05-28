@@ -5,46 +5,43 @@ import 'package:flutter_counter_shooter/logic/blocs/records/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/repo.dart';
 import 'package:flutter_counter_shooter/logic/blocs/records/state.dart';
 
-import 'one_record.dart';
+import 'package:flutter_counter_shooter/ui/game/records/table/one_record.dart';
 
 class RecordsTable extends StatelessWidget {
   const RecordsTable({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
-      padding: EdgeInsets.symmetric(horizontal: 16),
-      child: RecordsList(),
-    );
-  }
+  Widget build(BuildContext context) => const SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: RecordsList(),
+      );
 }
 
 class RecordsList extends StatelessWidget {
   const RecordsList({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<RecordsBloc, RecordsState>(
-      bloc: di<RecordsBloc>(),
-      buildWhen: (RecordsState previous, RecordsState current) => current.records != previous.records,
-      builder: (_, RecordsState recordsState) {
-        return Column(
+  Widget build(BuildContext context) => BlocBuilder<RecordsBloc, RecordsState>(
+        bloc: di<RecordsBloc>(),
+        buildWhen: (RecordsState previous, RecordsState current) =>
+            current.records != previous.records,
+        builder: (_, RecordsState recordsState) => Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: _buildRecords(recordsState.records),
-        );
-      },
-    );
-  }
+        ),
+      );
 
   List<OneRecord> _buildRecords(List<RecordData> records) => records
-      .map((RecordData recordData) => OneRecord(
-            recordData: recordData,
-          ))
+      .map(
+        (RecordData recordData) => OneRecord(
+          recordData: recordData,
+        ),
+      )
       .toList();
 }

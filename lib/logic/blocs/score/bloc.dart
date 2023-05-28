@@ -1,8 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'event.dart';
-import 'repo.dart';
-import 'state.dart';
+import 'package:flutter_counter_shooter/logic/blocs/score/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/score/repo.dart';
+import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
 
 class ScoreBloc extends Bloc<ScoreEvent, ScoreState> {
   ScoreBloc({
@@ -40,10 +39,12 @@ class ScoreBloc extends Bloc<ScoreEvent, ScoreState> {
     if (state.gameState == GameState.started) {
       scoreRepo.saveRecord(state.score);
 
-      emit(state.copyWith(
-        gameState: GameState.finished,
-        score: 0,
-      ));
+      emit(
+        state.copyWith(
+          gameState: GameState.finished,
+          score: 0,
+        ),
+      );
     }
   }
 

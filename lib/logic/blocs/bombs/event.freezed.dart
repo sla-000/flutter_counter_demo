@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'event.dart';
 
@@ -12,43 +12,7 @@ part of 'event.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$BombsEventTearOff {
-  const _$BombsEventTearOff();
-
-  BombsEventInit init() {
-    return const BombsEventInit();
-  }
-
-  BombsEventSetAll setAll(Iterable<Bomb> bombs) {
-    return BombsEventSetAll(
-      bombs,
-    );
-  }
-
-  BombsEventAdd add(Bomb bomb) {
-    return BombsEventAdd(
-      bomb,
-    );
-  }
-
-  BombsEventRemoveAll removeAll(Iterable<Object> bombs) {
-    return BombsEventRemoveAll(
-      bombs,
-    );
-  }
-
-  BombsEventUpdate update(double delta) {
-    return BombsEventUpdate(
-      delta,
-    );
-  }
-}
-
-/// @nodoc
-const $BombsEvent = _$BombsEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$BombsEvent {
@@ -63,11 +27,11 @@ mixin _$BombsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function(Iterable<Bomb> bombs)? setAll,
-    TResult Function(Bomb bomb)? add,
-    TResult Function(Iterable<Object> bombs)? removeAll,
-    TResult Function(double delta)? update,
+    TResult? Function()? init,
+    TResult? Function(Iterable<Bomb> bombs)? setAll,
+    TResult? Function(Bomb bomb)? add,
+    TResult? Function(Iterable<Object> bombs)? removeAll,
+    TResult? Function(double delta)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -91,11 +55,11 @@ mixin _$BombsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BombsEventInit value)? init,
-    TResult Function(BombsEventSetAll value)? setAll,
-    TResult Function(BombsEventAdd value)? add,
-    TResult Function(BombsEventRemoveAll value)? removeAll,
-    TResult Function(BombsEventUpdate value)? update,
+    TResult? Function(BombsEventInit value)? init,
+    TResult? Function(BombsEventSetAll value)? setAll,
+    TResult? Function(BombsEventAdd value)? add,
+    TResult? Function(BombsEventRemoveAll value)? removeAll,
+    TResult? Function(BombsEventUpdate value)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -112,32 +76,36 @@ mixin _$BombsEvent {
 
 /// @nodoc
 abstract class $BombsEventCopyWith<$Res> {
-  factory $BombsEventCopyWith(BombsEvent value, $Res Function(BombsEvent) then) = _$BombsEventCopyWithImpl<$Res>;
+  factory $BombsEventCopyWith(
+          BombsEvent value, $Res Function(BombsEvent) then) =
+      _$BombsEventCopyWithImpl<$Res, BombsEvent>;
 }
 
 /// @nodoc
-class _$BombsEventCopyWithImpl<$Res> implements $BombsEventCopyWith<$Res> {
+class _$BombsEventCopyWithImpl<$Res, $Val extends BombsEvent>
+    implements $BombsEventCopyWith<$Res> {
   _$BombsEventCopyWithImpl(this._value, this._then);
 
-  final BombsEvent _value;
   // ignore: unused_field
-  final $Res Function(BombsEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class $BombsEventInitCopyWith<$Res> {
-  factory $BombsEventInitCopyWith(BombsEventInit value, $Res Function(BombsEventInit) then) =
-      _$BombsEventInitCopyWithImpl<$Res>;
+abstract class _$$BombsEventInitCopyWith<$Res> {
+  factory _$$BombsEventInitCopyWith(
+          _$BombsEventInit value, $Res Function(_$BombsEventInit) then) =
+      __$$BombsEventInitCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$BombsEventInitCopyWithImpl<$Res> extends _$BombsEventCopyWithImpl<$Res>
-    implements $BombsEventInitCopyWith<$Res> {
-  _$BombsEventInitCopyWithImpl(BombsEventInit _value, $Res Function(BombsEventInit) _then)
-      : super(_value, (v) => _then(v as BombsEventInit));
-
-  @override
-  BombsEventInit get _value => super._value as BombsEventInit;
+class __$$BombsEventInitCopyWithImpl<$Res>
+    extends _$BombsEventCopyWithImpl<$Res, _$BombsEventInit>
+    implements _$$BombsEventInitCopyWith<$Res> {
+  __$$BombsEventInitCopyWithImpl(
+      _$BombsEventInit _value, $Res Function(_$BombsEventInit) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -152,7 +120,8 @@ class _$BombsEventInit implements BombsEventInit {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is BombsEventInit);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$BombsEventInit);
   }
 
   @override
@@ -173,11 +142,11 @@ class _$BombsEventInit implements BombsEventInit {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function(Iterable<Bomb> bombs)? setAll,
-    TResult Function(Bomb bomb)? add,
-    TResult Function(Iterable<Object> bombs)? removeAll,
-    TResult Function(double delta)? update,
+    TResult? Function()? init,
+    TResult? Function(Iterable<Bomb> bombs)? setAll,
+    TResult? Function(Bomb bomb)? add,
+    TResult? Function(Iterable<Object> bombs)? removeAll,
+    TResult? Function(double delta)? update,
   }) {
     return init?.call();
   }
@@ -213,11 +182,11 @@ class _$BombsEventInit implements BombsEventInit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BombsEventInit value)? init,
-    TResult Function(BombsEventSetAll value)? setAll,
-    TResult Function(BombsEventAdd value)? add,
-    TResult Function(BombsEventRemoveAll value)? removeAll,
-    TResult Function(BombsEventUpdate value)? update,
+    TResult? Function(BombsEventInit value)? init,
+    TResult? Function(BombsEventSetAll value)? setAll,
+    TResult? Function(BombsEventAdd value)? add,
+    TResult? Function(BombsEventRemoveAll value)? removeAll,
+    TResult? Function(BombsEventUpdate value)? update,
   }) {
     return init?.call(this);
   }
@@ -244,27 +213,29 @@ abstract class BombsEventInit implements BombsEvent {
 }
 
 /// @nodoc
-abstract class $BombsEventSetAllCopyWith<$Res> {
-  factory $BombsEventSetAllCopyWith(BombsEventSetAll value, $Res Function(BombsEventSetAll) then) =
-      _$BombsEventSetAllCopyWithImpl<$Res>;
+abstract class _$$BombsEventSetAllCopyWith<$Res> {
+  factory _$$BombsEventSetAllCopyWith(
+          _$BombsEventSetAll value, $Res Function(_$BombsEventSetAll) then) =
+      __$$BombsEventSetAllCopyWithImpl<$Res>;
+  @useResult
   $Res call({Iterable<Bomb> bombs});
 }
 
 /// @nodoc
-class _$BombsEventSetAllCopyWithImpl<$Res> extends _$BombsEventCopyWithImpl<$Res>
-    implements $BombsEventSetAllCopyWith<$Res> {
-  _$BombsEventSetAllCopyWithImpl(BombsEventSetAll _value, $Res Function(BombsEventSetAll) _then)
-      : super(_value, (v) => _then(v as BombsEventSetAll));
+class __$$BombsEventSetAllCopyWithImpl<$Res>
+    extends _$BombsEventCopyWithImpl<$Res, _$BombsEventSetAll>
+    implements _$$BombsEventSetAllCopyWith<$Res> {
+  __$$BombsEventSetAllCopyWithImpl(
+      _$BombsEventSetAll _value, $Res Function(_$BombsEventSetAll) _then)
+      : super(_value, _then);
 
-  @override
-  BombsEventSetAll get _value => super._value as BombsEventSetAll;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? bombs = freezed,
+    Object? bombs = null,
   }) {
-    return _then(BombsEventSetAll(
-      bombs == freezed
+    return _then(_$BombsEventSetAll(
+      null == bombs
           ? _value.bombs
           : bombs // ignore: cast_nullable_to_non_nullable
               as Iterable<Bomb>,
@@ -289,17 +260,19 @@ class _$BombsEventSetAll implements BombsEventSetAll {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is BombsEventSetAll &&
+            other is _$BombsEventSetAll &&
             const DeepCollectionEquality().equals(other.bombs, bombs));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(bombs));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(bombs));
 
   @JsonKey(ignore: true)
   @override
-  $BombsEventSetAllCopyWith<BombsEventSetAll> get copyWith =>
-      _$BombsEventSetAllCopyWithImpl<BombsEventSetAll>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$BombsEventSetAllCopyWith<_$BombsEventSetAll> get copyWith =>
+      __$$BombsEventSetAllCopyWithImpl<_$BombsEventSetAll>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -316,11 +289,11 @@ class _$BombsEventSetAll implements BombsEventSetAll {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function(Iterable<Bomb> bombs)? setAll,
-    TResult Function(Bomb bomb)? add,
-    TResult Function(Iterable<Object> bombs)? removeAll,
-    TResult Function(double delta)? update,
+    TResult? Function()? init,
+    TResult? Function(Iterable<Bomb> bombs)? setAll,
+    TResult? Function(Bomb bomb)? add,
+    TResult? Function(Iterable<Object> bombs)? removeAll,
+    TResult? Function(double delta)? update,
   }) {
     return setAll?.call(bombs);
   }
@@ -356,11 +329,11 @@ class _$BombsEventSetAll implements BombsEventSetAll {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BombsEventInit value)? init,
-    TResult Function(BombsEventSetAll value)? setAll,
-    TResult Function(BombsEventAdd value)? add,
-    TResult Function(BombsEventRemoveAll value)? removeAll,
-    TResult Function(BombsEventUpdate value)? update,
+    TResult? Function(BombsEventInit value)? init,
+    TResult? Function(BombsEventSetAll value)? setAll,
+    TResult? Function(BombsEventAdd value)? add,
+    TResult? Function(BombsEventRemoveAll value)? removeAll,
+    TResult? Function(BombsEventUpdate value)? update,
   }) {
     return setAll?.call(this);
   }
@@ -383,34 +356,39 @@ class _$BombsEventSetAll implements BombsEventSetAll {
 }
 
 abstract class BombsEventSetAll implements BombsEvent {
-  const factory BombsEventSetAll(Iterable<Bomb> bombs) = _$BombsEventSetAll;
+  const factory BombsEventSetAll(final Iterable<Bomb> bombs) =
+      _$BombsEventSetAll;
 
   Iterable<Bomb> get bombs;
   @JsonKey(ignore: true)
-  $BombsEventSetAllCopyWith<BombsEventSetAll> get copyWith => throw _privateConstructorUsedError;
+  _$$BombsEventSetAllCopyWith<_$BombsEventSetAll> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BombsEventAddCopyWith<$Res> {
-  factory $BombsEventAddCopyWith(BombsEventAdd value, $Res Function(BombsEventAdd) then) =
-      _$BombsEventAddCopyWithImpl<$Res>;
+abstract class _$$BombsEventAddCopyWith<$Res> {
+  factory _$$BombsEventAddCopyWith(
+          _$BombsEventAdd value, $Res Function(_$BombsEventAdd) then) =
+      __$$BombsEventAddCopyWithImpl<$Res>;
+  @useResult
   $Res call({Bomb bomb});
 }
 
 /// @nodoc
-class _$BombsEventAddCopyWithImpl<$Res> extends _$BombsEventCopyWithImpl<$Res> implements $BombsEventAddCopyWith<$Res> {
-  _$BombsEventAddCopyWithImpl(BombsEventAdd _value, $Res Function(BombsEventAdd) _then)
-      : super(_value, (v) => _then(v as BombsEventAdd));
+class __$$BombsEventAddCopyWithImpl<$Res>
+    extends _$BombsEventCopyWithImpl<$Res, _$BombsEventAdd>
+    implements _$$BombsEventAddCopyWith<$Res> {
+  __$$BombsEventAddCopyWithImpl(
+      _$BombsEventAdd _value, $Res Function(_$BombsEventAdd) _then)
+      : super(_value, _then);
 
-  @override
-  BombsEventAdd get _value => super._value as BombsEventAdd;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? bomb = freezed,
+    Object? bomb = null,
   }) {
-    return _then(BombsEventAdd(
-      bomb == freezed
+    return _then(_$BombsEventAdd(
+      null == bomb
           ? _value.bomb
           : bomb // ignore: cast_nullable_to_non_nullable
               as Bomb,
@@ -435,16 +413,18 @@ class _$BombsEventAdd implements BombsEventAdd {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is BombsEventAdd &&
-            const DeepCollectionEquality().equals(other.bomb, bomb));
+            other is _$BombsEventAdd &&
+            (identical(other.bomb, bomb) || other.bomb == bomb));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(bomb));
+  int get hashCode => Object.hash(runtimeType, bomb);
 
   @JsonKey(ignore: true)
   @override
-  $BombsEventAddCopyWith<BombsEventAdd> get copyWith => _$BombsEventAddCopyWithImpl<BombsEventAdd>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$BombsEventAddCopyWith<_$BombsEventAdd> get copyWith =>
+      __$$BombsEventAddCopyWithImpl<_$BombsEventAdd>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -461,11 +441,11 @@ class _$BombsEventAdd implements BombsEventAdd {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function(Iterable<Bomb> bombs)? setAll,
-    TResult Function(Bomb bomb)? add,
-    TResult Function(Iterable<Object> bombs)? removeAll,
-    TResult Function(double delta)? update,
+    TResult? Function()? init,
+    TResult? Function(Iterable<Bomb> bombs)? setAll,
+    TResult? Function(Bomb bomb)? add,
+    TResult? Function(Iterable<Object> bombs)? removeAll,
+    TResult? Function(double delta)? update,
   }) {
     return add?.call(bomb);
   }
@@ -501,11 +481,11 @@ class _$BombsEventAdd implements BombsEventAdd {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BombsEventInit value)? init,
-    TResult Function(BombsEventSetAll value)? setAll,
-    TResult Function(BombsEventAdd value)? add,
-    TResult Function(BombsEventRemoveAll value)? removeAll,
-    TResult Function(BombsEventUpdate value)? update,
+    TResult? Function(BombsEventInit value)? init,
+    TResult? Function(BombsEventSetAll value)? setAll,
+    TResult? Function(BombsEventAdd value)? add,
+    TResult? Function(BombsEventRemoveAll value)? removeAll,
+    TResult? Function(BombsEventUpdate value)? update,
   }) {
     return add?.call(this);
   }
@@ -528,35 +508,38 @@ class _$BombsEventAdd implements BombsEventAdd {
 }
 
 abstract class BombsEventAdd implements BombsEvent {
-  const factory BombsEventAdd(Bomb bomb) = _$BombsEventAdd;
+  const factory BombsEventAdd(final Bomb bomb) = _$BombsEventAdd;
 
   Bomb get bomb;
   @JsonKey(ignore: true)
-  $BombsEventAddCopyWith<BombsEventAdd> get copyWith => throw _privateConstructorUsedError;
+  _$$BombsEventAddCopyWith<_$BombsEventAdd> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BombsEventRemoveAllCopyWith<$Res> {
-  factory $BombsEventRemoveAllCopyWith(BombsEventRemoveAll value, $Res Function(BombsEventRemoveAll) then) =
-      _$BombsEventRemoveAllCopyWithImpl<$Res>;
+abstract class _$$BombsEventRemoveAllCopyWith<$Res> {
+  factory _$$BombsEventRemoveAllCopyWith(_$BombsEventRemoveAll value,
+          $Res Function(_$BombsEventRemoveAll) then) =
+      __$$BombsEventRemoveAllCopyWithImpl<$Res>;
+  @useResult
   $Res call({Iterable<Object> bombs});
 }
 
 /// @nodoc
-class _$BombsEventRemoveAllCopyWithImpl<$Res> extends _$BombsEventCopyWithImpl<$Res>
-    implements $BombsEventRemoveAllCopyWith<$Res> {
-  _$BombsEventRemoveAllCopyWithImpl(BombsEventRemoveAll _value, $Res Function(BombsEventRemoveAll) _then)
-      : super(_value, (v) => _then(v as BombsEventRemoveAll));
+class __$$BombsEventRemoveAllCopyWithImpl<$Res>
+    extends _$BombsEventCopyWithImpl<$Res, _$BombsEventRemoveAll>
+    implements _$$BombsEventRemoveAllCopyWith<$Res> {
+  __$$BombsEventRemoveAllCopyWithImpl(
+      _$BombsEventRemoveAll _value, $Res Function(_$BombsEventRemoveAll) _then)
+      : super(_value, _then);
 
-  @override
-  BombsEventRemoveAll get _value => super._value as BombsEventRemoveAll;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? bombs = freezed,
+    Object? bombs = null,
   }) {
-    return _then(BombsEventRemoveAll(
-      bombs == freezed
+    return _then(_$BombsEventRemoveAll(
+      null == bombs
           ? _value.bombs
           : bombs // ignore: cast_nullable_to_non_nullable
               as Iterable<Object>,
@@ -581,17 +564,20 @@ class _$BombsEventRemoveAll implements BombsEventRemoveAll {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is BombsEventRemoveAll &&
+            other is _$BombsEventRemoveAll &&
             const DeepCollectionEquality().equals(other.bombs, bombs));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(bombs));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(bombs));
 
   @JsonKey(ignore: true)
   @override
-  $BombsEventRemoveAllCopyWith<BombsEventRemoveAll> get copyWith =>
-      _$BombsEventRemoveAllCopyWithImpl<BombsEventRemoveAll>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$BombsEventRemoveAllCopyWith<_$BombsEventRemoveAll> get copyWith =>
+      __$$BombsEventRemoveAllCopyWithImpl<_$BombsEventRemoveAll>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -608,11 +594,11 @@ class _$BombsEventRemoveAll implements BombsEventRemoveAll {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function(Iterable<Bomb> bombs)? setAll,
-    TResult Function(Bomb bomb)? add,
-    TResult Function(Iterable<Object> bombs)? removeAll,
-    TResult Function(double delta)? update,
+    TResult? Function()? init,
+    TResult? Function(Iterable<Bomb> bombs)? setAll,
+    TResult? Function(Bomb bomb)? add,
+    TResult? Function(Iterable<Object> bombs)? removeAll,
+    TResult? Function(double delta)? update,
   }) {
     return removeAll?.call(bombs);
   }
@@ -648,11 +634,11 @@ class _$BombsEventRemoveAll implements BombsEventRemoveAll {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BombsEventInit value)? init,
-    TResult Function(BombsEventSetAll value)? setAll,
-    TResult Function(BombsEventAdd value)? add,
-    TResult Function(BombsEventRemoveAll value)? removeAll,
-    TResult Function(BombsEventUpdate value)? update,
+    TResult? Function(BombsEventInit value)? init,
+    TResult? Function(BombsEventSetAll value)? setAll,
+    TResult? Function(BombsEventAdd value)? add,
+    TResult? Function(BombsEventRemoveAll value)? removeAll,
+    TResult? Function(BombsEventUpdate value)? update,
   }) {
     return removeAll?.call(this);
   }
@@ -675,35 +661,39 @@ class _$BombsEventRemoveAll implements BombsEventRemoveAll {
 }
 
 abstract class BombsEventRemoveAll implements BombsEvent {
-  const factory BombsEventRemoveAll(Iterable<Object> bombs) = _$BombsEventRemoveAll;
+  const factory BombsEventRemoveAll(final Iterable<Object> bombs) =
+      _$BombsEventRemoveAll;
 
   Iterable<Object> get bombs;
   @JsonKey(ignore: true)
-  $BombsEventRemoveAllCopyWith<BombsEventRemoveAll> get copyWith => throw _privateConstructorUsedError;
+  _$$BombsEventRemoveAllCopyWith<_$BombsEventRemoveAll> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BombsEventUpdateCopyWith<$Res> {
-  factory $BombsEventUpdateCopyWith(BombsEventUpdate value, $Res Function(BombsEventUpdate) then) =
-      _$BombsEventUpdateCopyWithImpl<$Res>;
+abstract class _$$BombsEventUpdateCopyWith<$Res> {
+  factory _$$BombsEventUpdateCopyWith(
+          _$BombsEventUpdate value, $Res Function(_$BombsEventUpdate) then) =
+      __$$BombsEventUpdateCopyWithImpl<$Res>;
+  @useResult
   $Res call({double delta});
 }
 
 /// @nodoc
-class _$BombsEventUpdateCopyWithImpl<$Res> extends _$BombsEventCopyWithImpl<$Res>
-    implements $BombsEventUpdateCopyWith<$Res> {
-  _$BombsEventUpdateCopyWithImpl(BombsEventUpdate _value, $Res Function(BombsEventUpdate) _then)
-      : super(_value, (v) => _then(v as BombsEventUpdate));
+class __$$BombsEventUpdateCopyWithImpl<$Res>
+    extends _$BombsEventCopyWithImpl<$Res, _$BombsEventUpdate>
+    implements _$$BombsEventUpdateCopyWith<$Res> {
+  __$$BombsEventUpdateCopyWithImpl(
+      _$BombsEventUpdate _value, $Res Function(_$BombsEventUpdate) _then)
+      : super(_value, _then);
 
-  @override
-  BombsEventUpdate get _value => super._value as BombsEventUpdate;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? delta = freezed,
+    Object? delta = null,
   }) {
-    return _then(BombsEventUpdate(
-      delta == freezed
+    return _then(_$BombsEventUpdate(
+      null == delta
           ? _value.delta
           : delta // ignore: cast_nullable_to_non_nullable
               as double,
@@ -728,17 +718,18 @@ class _$BombsEventUpdate implements BombsEventUpdate {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is BombsEventUpdate &&
-            const DeepCollectionEquality().equals(other.delta, delta));
+            other is _$BombsEventUpdate &&
+            (identical(other.delta, delta) || other.delta == delta));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(delta));
+  int get hashCode => Object.hash(runtimeType, delta);
 
   @JsonKey(ignore: true)
   @override
-  $BombsEventUpdateCopyWith<BombsEventUpdate> get copyWith =>
-      _$BombsEventUpdateCopyWithImpl<BombsEventUpdate>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$BombsEventUpdateCopyWith<_$BombsEventUpdate> get copyWith =>
+      __$$BombsEventUpdateCopyWithImpl<_$BombsEventUpdate>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -755,11 +746,11 @@ class _$BombsEventUpdate implements BombsEventUpdate {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function(Iterable<Bomb> bombs)? setAll,
-    TResult Function(Bomb bomb)? add,
-    TResult Function(Iterable<Object> bombs)? removeAll,
-    TResult Function(double delta)? update,
+    TResult? Function()? init,
+    TResult? Function(Iterable<Bomb> bombs)? setAll,
+    TResult? Function(Bomb bomb)? add,
+    TResult? Function(Iterable<Object> bombs)? removeAll,
+    TResult? Function(double delta)? update,
   }) {
     return update?.call(delta);
   }
@@ -795,11 +786,11 @@ class _$BombsEventUpdate implements BombsEventUpdate {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BombsEventInit value)? init,
-    TResult Function(BombsEventSetAll value)? setAll,
-    TResult Function(BombsEventAdd value)? add,
-    TResult Function(BombsEventRemoveAll value)? removeAll,
-    TResult Function(BombsEventUpdate value)? update,
+    TResult? Function(BombsEventInit value)? init,
+    TResult? Function(BombsEventSetAll value)? setAll,
+    TResult? Function(BombsEventAdd value)? add,
+    TResult? Function(BombsEventRemoveAll value)? removeAll,
+    TResult? Function(BombsEventUpdate value)? update,
   }) {
     return update?.call(this);
   }
@@ -822,9 +813,10 @@ class _$BombsEventUpdate implements BombsEventUpdate {
 }
 
 abstract class BombsEventUpdate implements BombsEvent {
-  const factory BombsEventUpdate(double delta) = _$BombsEventUpdate;
+  const factory BombsEventUpdate(final double delta) = _$BombsEventUpdate;
 
   double get delta;
   @JsonKey(ignore: true)
-  $BombsEventUpdateCopyWith<BombsEventUpdate> get copyWith => throw _privateConstructorUsedError;
+  _$$BombsEventUpdateCopyWith<_$BombsEventUpdate> get copyWith =>
+      throw _privateConstructorUsedError;
 }
