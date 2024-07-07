@@ -50,3 +50,5 @@ macos/**
 
 lib/firebase_options.dart
 build_appbundle_release.sh
+build_web_release.sh
+deploy_web_release.sh
