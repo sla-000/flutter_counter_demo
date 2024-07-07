@@ -1,16 +1,11 @@
 # flutter_counter_shooter
 
-Typical flutter counter demo project with an ability to shoot
+A typical "flutter counter demo" project with shoot capability
 
-## Getting Started
+Some ~~interesting~~ details:
+- Firebase is used for hosting and for high score storage
+- Hand-written game engine uses Widgets instead of canvas painter
 
-This project is a starting point for a Flutter application.
+[Playable web demo](https://flutter-counter-demo-9209c.web.app/#/)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot](page/gameplay.png)

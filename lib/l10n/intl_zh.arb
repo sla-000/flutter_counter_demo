@@ -1,0 +1,10 @@
+{
+  "flutterCounterDemo": "Flutter计数器演示",
+  "increment": "增量",
+  "score": "分数:",
+  "loading": "正在加载...",
+  "yourScore": "你的分数：",
+  "youHavePushed": "你已经多次按下按钮：",
+  "submit": "提交",
+  "wave": "海浪："
+}

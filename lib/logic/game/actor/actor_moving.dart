@@ -5,18 +5,25 @@ import 'package:meta/meta.dart';
 
 class ActorMoving extends ActorState implements Updatable {
   ActorMoving({
-    Vector? position,
-    double? angle,
+    super.position,
+    super.angle,
     Vector? linearSpeed,
     double? rotationSpeed,
     Vector? size,
   })  : linearSpeed = linearSpeed ?? Vector.zero(),
         rotationSpeed = rotationSpeed ?? 0,
-        size = size ?? Vector.one(),
-        super(
-          position: position,
-          angle: angle,
-        );
+        size = size ?? Vector.one();
+
+  ActorMoving copyWith({
+    required Vector position,
+  }) =>
+      ActorMoving(
+        position: position,
+        angle: angle,
+        linearSpeed: linearSpeed,
+        rotationSpeed: rotationSpeed,
+        size: size,
+      );
 
   final Vector linearSpeed;
   double rotationSpeed;
@@ -34,7 +41,7 @@ class ActorMoving extends ActorState implements Updatable {
 
   @mustCallSuper
   @override
-  String toString() {
-    return 'ActorMoving{state: ${super.toString()}, linearSpeed: $linearSpeed, rotationSpeed: $rotationSpeed, size: $size}';
-  }
+  String toString() =>
+      'ActorMoving{state: ${super.toString()}, linearSpeed: $linearSpeed, '
+      'rotationSpeed: $rotationSpeed, size: $size}';
 }

@@ -1,0 +1,12 @@
+{
+  "flutterCounterDemo": "Демонстрация счётчика на Flutter",
+  "increment": "Увеличить",
+  "score": "Счёт:",
+  "loading": "Загрузка...",
+  "yourScore": "Ваш результат:",
+  "youHavePushed": "Вы нажали кнопку столько раз:",
+  "submit": "Отправить",
+  "wave": "Волна:",
+  "restart": "Рестарт",
+  "recordsTable": "Таблица рекордов"
+}

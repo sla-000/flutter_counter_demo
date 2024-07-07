@@ -1,69 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_shooter/di/di.dart';
-import 'package:flutter_counter_shooter/logic/blocs/frame_update_bloc.dart';
-import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
-import 'package:flutter_counter_shooter/logic/game/scene_data.dart';
-import 'package:flutter_counter_shooter/ui/game/gamer.dart';
+import 'package:flutter_counter_shooter/logic/blocs/frame/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/frame/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/frame/state.dart';
+import 'package:flutter_counter_shooter/logic/blocs/scene/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/scene/event.dart';
+import 'package:flutter_counter_shooter/logic/blocs/score/bloc.dart';
+import 'package:flutter_counter_shooter/logic/blocs/score/state.dart';
+import 'package:flutter_counter_shooter/ui/game/game_elements.dart';
+import 'package:flutter_counter_shooter/ui/game/records/records_view.dart';
 
 class GameField extends StatelessWidget {
   const GameField({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+    required this.onRestart,
+  });
+
+  final void Function() onRestart;
 
   @override
-  Widget build(BuildContext context) {
-    return StreamBuilder<void>(
-      stream: I.get<FrameUpdateBloc>().stream,
-      builder: (_, __) {
-        I.get<FrameUpdateBloc>().update();
+  Widget build(BuildContext context) => BlocBuilder<FrameBloc, FrameState>(
+        bloc: di.get<FrameBloc>(),
+        builder: (BuildContext context, FrameState frameState) {
+          di.get<SceneBloc>().add(SceneEvent.update(frameState.delta));
+          di.get<FrameBloc>().add(const FrameEvent.update());
 
-        final double delta = I.get<FrameUpdateBloc>().getDelta();
+          return BlocBuilder<ScoreBloc, ScoreState>(
+            bloc: di.get<ScoreBloc>(),
+            buildWhen: (ScoreState previous, ScoreState current) =>
+                current.gameState != previous.gameState,
+            builder: (BuildContext context, ScoreState scoreState) {
+              if (scoreState.gameState == GameState.finished) {
+                return RecordsView(
+                  onRestart: onRestart,
+                );
+              }
 
-        I.get<SceneData>().update(delta);
-
-        return Stack(
-          children: <Widget>[
-            Positioned(
-              left: 0,
-              top: 0,
-              child: Text(delta.toString()),
-            ),
-            _buildHero(),
-            ..._buildEnemies(),
-            ..._buildBullets(),
-          ],
-        );
-      },
-    );
-  }
-
-  List<Widget> _buildEnemies() {
-    return <Widget>[];
-  }
-
-  List<Widget> _buildBullets() {
-    return I.get<SceneData>().bullets.map(_buildBullet).toList(growable: false);
-  }
-
-  Widget _buildBullet(Bullet bullet) => Positioned(
-        left: bullet.xOrigin,
-        top: bullet.yOrigin,
-        child: Transform.rotate(
-          angle: bullet.angle,
-          child: Icon(
-            Icons.cancel,
-            size: bullet.size.x,
-            color: Colors.red,
-          ),
-        ),
-      );
-
-  Widget _buildHero() => Positioned(
-        left: I.get<SceneData>().hero.xOrigin,
-        top: I.get<SceneData>().hero.yOrigin,
-        child: Transform.rotate(
-          angle: I.get<SceneData>().hero.angle,
-          child: Gamer(size: I.get<SceneData>().hero.size.x),
-        ),
+              return GameElements(
+                delta: frameState.delta,
+              );
+            },
+          );
+        },
       );
 }

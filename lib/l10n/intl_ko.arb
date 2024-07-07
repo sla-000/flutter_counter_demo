@@ -1,0 +1,10 @@
+{
+  "flutterCounterDemo": "Flutter 카운터 데모",
+  "increment": "증가",
+  "score": "점수:",
+  "loading": "로드 중...",
+  "yourScore": "너의 점수:",
+  "youHavePushed": "버튼을 다음과 같이 여러 번 눌렀습니다.",
+  "submit": "제출하다",
+  "wave": "파도:"
+}

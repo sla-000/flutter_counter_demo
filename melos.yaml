@@ -1,0 +1,108 @@
+name: flutter_counter_shooter
+
+packages:
+  - '.'
+  - '*'
+  - '**'
+
+scripts:
+  generate:
+    description: "Generate sources and format"
+    run: |
+      dart run melos exec --concurrency=1 --\
+        dart pub run build_runner build --delete-conflicting-outputs && \
+        dart run melos run format
+
+  analyze:
+    description: "Analyze"
+    run: |
+      dart run melos exec --concurrency=1 --\
+        flutter analyze
+
+  check:
+    description: "Check format, analyze and test"
+    run: |
+      dart run melos exec --concurrency=1 --\
+        dart run melos run format:check && \
+        dart run melos run analyze && \
+        dart run melos run test && \
+        dart run melos run coverage:check
+
+  coverage:
+    description: "Show coverage in browser"
+    run: |
+      dart run melos run coverage:filter && \
+      dart run melos run coverage:html && \
+      open coverage/html/index.html
+
+  coverage:check:
+    description: "Check coverage"
+    packageFilters:
+      dirExists:
+        - test
+    run: |
+      dart run melos exec --concurrency=1 --\
+        dart pub global activate check_coverage && \
+        cat coverage/lcov.info | check_coverage 75
+
+  coverage:filter:
+    description: "Filter coverage"
+    run: |
+      mv -f coverage/lcov.info coverage/lcov-all.info && \
+      lcov --ignore-errors unused \
+        --remove coverage/lcov-all.info \
+        '*.g.dart' '*.freezed.dart' \
+        -o coverage/lcov.info && \
+      rm -f coverage/lcov-all.info
+
+  coverage:html:
+    description: "Generate html"
+    run: |
+      genhtml coverage/lcov.info -o coverage/html
+
+  fix:
+    description: "Dart fix"
+    run: |
+      dart run melos exec --concurrency=1 --\
+        dart fix --apply
+
+  format:
+    description: "Format"
+    run: |
+      dart run melos exec --\
+        dart format .
+
+  format:check:
+    description: "Check format"
+    run: |
+      dart run melos exec --concurrency=1 --\
+        dart format --set-exit-if-changed .
+
+  test:
+    description: "Test"
+    packageFilters:
+      dirExists:
+        - test
+    run: |
+      dart run melos exec --concurrency=1 --\
+        flutter test --coverage -j 1 .
+
+  upgrade:
+    description: "Upgrade"
+    run: |
+      dart run melos exec --concurrency=1 --\
+        flutter pub upgrade --major-versions
+
+  deploy:
+    description: "Deploy"
+    run: |
+      dart run melos run build && \
+      pushd build/web && \
+      firebase deploy  && \
+      popd
+
+  build:
+    description: "Build"
+    run: |
+      rm -rf build && \
+      flutter build web --web-renderer auto

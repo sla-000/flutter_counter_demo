@@ -1,0 +1,12 @@
+{
+  "flutterCounterDemo": "Flutter counter demo",
+  "increment": "Increment",
+  "score": "Score:",
+  "loading": "Loading...",
+  "yourScore": "Your score:",
+  "youHavePushed": "You have pushed the button this many times:",
+  "submit": "Submit",
+  "wave": "Wave:",
+  "restart": "Restart",
+  "recordsTable": "Records table"
+}

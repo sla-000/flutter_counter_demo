@@ -1,0 +1,10 @@
+{
+  "flutterCounterDemo": "Dimostrazione del contatore di Flutter",
+  "increment": "Incremento",
+  "score": "Punto:",
+  "loading": "Caricamento in corso...",
+  "yourScore": "Il tuo punteggio:",
+  "youHavePushed": "Hai premuto il pulsante così tante volte:",
+  "submit": "Invia",
+  "wave": "Onda:"
+}

@@ -1,0 +1,10 @@
+{
+  "flutterCounterDemo": "フラッターカウンターデモ",
+  "increment": "インクリメント",
+  "score": "スコア:",
+  "loading": "読み込んでいます...",
+  "yourScore": "あなたのスコア：",
+  "youHavePushed": "ボタンを何度も押しました。",
+  "submit": "送信",
+  "wave": "波："
+}

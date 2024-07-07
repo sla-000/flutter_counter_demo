@@ -38,14 +38,12 @@ class Vector {
     );
   }
 
-  Vector applyAdd(Vector v) {
+  void applyAdd(Vector v) {
     assert(!isNone);
     assert(!v.isNone);
 
     x += v.x;
     y += v.y;
-
-    return this;
   }
 
   Vector multiply(double k) {
@@ -57,13 +55,11 @@ class Vector {
     );
   }
 
-  Vector applyMultiply(double k) {
+  void applyMultiply(double k) {
     assert(!isNone);
 
     x *= k;
     y *= k;
-
-    return this;
   }
 
   double getLength() {
@@ -72,16 +68,30 @@ class Vector {
     return sqrt(x * x + y * y);
   }
 
+  double getAngle() {
+    assert(!isNone);
+
+    return atan2(x, -y);
+  }
+
   Vector toLength(double length) {
     assert(!isNone);
 
-    final double koeff = length / getLength();
+    final coeff = length / getLength();
 
-    return multiply(koeff);
+    return multiply(coeff);
+  }
+
+  double distance(Vector other) {
+    assert(!isNone);
+    assert(!other.isNone);
+
+    return Vector(
+      x: x - other.x,
+      y: y - other.y,
+    ).getLength();
   }
 
   @override
-  String toString() {
-    return 'Vector{x: $x, y: $y}';
-  }
+  String toString() => 'Vector{x: $x, y: $y}';
 }
