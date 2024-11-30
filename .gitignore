@@ -52,3 +52,6 @@ lib/firebase_options.dart
 build_appbundle_release.sh
 build_web_release.sh
 deploy_web_release.sh
+
+# FVM Version Cache
+.fvm/
