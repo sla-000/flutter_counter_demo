@@ -2,8 +2,11 @@ name: flutter_counter_shooter
 
 packages:
   - '.'
-  - '*'
-  - '**'
+
+#ignore:
+#  - ".fvm"
+
+sdkPath: .fvm/flutter_sdk
 
 scripts:
   generate:
