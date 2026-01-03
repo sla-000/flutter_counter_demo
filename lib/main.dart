@@ -13,8 +13,9 @@ Future<void> main() async {
       WidgetsFlutterBinding.ensureInitialized();
 
       LicenseRegistry.addLicense(() async* {
-        final license =
-            await rootBundle.loadString('assets/google_fonts/OFL.txt');
+        final license = await rootBundle.loadString(
+          'assets/google_fonts/OFL.txt',
+        );
         yield LicenseEntryWithLineBreaks(<String>['google_fonts'], license);
       });
 
