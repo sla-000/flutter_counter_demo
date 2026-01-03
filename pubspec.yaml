@@ -151,4 +151,4 @@ melos:
       description: "Build"
       run: |
         rm -rf build && \
-        flutter build web -O4
+        flutter build web --wasm -O4
