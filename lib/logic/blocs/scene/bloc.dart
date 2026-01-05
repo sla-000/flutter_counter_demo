@@ -23,17 +23,14 @@ import 'package:flutter_counter_shooter/logic/game/actor/actor_moving.dart';
 import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
 import 'package:flutter_counter_shooter/logic/game/enemy/bomb.dart';
 import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
+import 'package:flutter_counter_shooter/logic/service/sound_service.dart';
 
 class SceneBloc extends Bloc<SceneEvent, SceneState> {
   SceneBloc({
     required this.sceneSpawnRepo,
     required this.sceneWavesRepo,
     required this.gameScoreRepo,
-  }) : super(
-          SceneState(
-            size: Vector.one(),
-          ),
-        ) {
+  }) : super(SceneState(size: Vector.one())) {
     on<SceneEventInit>(_onInit);
     on<SceneEventResize>(_onResize);
     on<SceneEventTapButton>(_onTapButton);
@@ -58,13 +55,10 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
   }
 
   void _onInit(SceneEventInit event, Emitter<SceneState> emit) {
+    unawaited(di.get<SoundService>().load());
+
     di<ProtagonistBloc>().add(
-      ProtagonistEvent.init(
-        Vector(
-          x: event.size.x / 2,
-          y: event.size.y / 2,
-        ),
-      ),
+      ProtagonistEvent.init(Vector(x: event.size.x / 2, y: event.size.y / 2)),
     );
 
     di<BulletsBloc>().add(const BulletsEvent.init());
@@ -74,11 +68,7 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
     di<SpawnBloc>().add(const SpawnEvent.init());
     di<WavesBloc>().add(const WavesEvent.init());
 
-    emit(
-      state.copyWith(
-        size: event.size,
-      ),
-    );
+    emit(state.copyWith(size: event.size));
   }
 
   void _onResize(SceneEventResize event, Emitter<SceneState> emit) {
@@ -86,41 +76,24 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
     final yCoeff = event.size.y / state.size.y;
 
     di<ProtagonistBloc>().add(
-      ProtagonistEvent.init(
-        Vector(
-          x: event.size.x / 2,
-          y: event.size.y / 2,
-        ),
-      ),
+      ProtagonistEvent.init(Vector(x: event.size.x / 2, y: event.size.y / 2)),
     );
 
     di<BulletsBloc>().add(
       BulletsEvent.setAll(
-        convertBullets(
-          di<BulletsBloc>().state.bullets,
-          xCoeff,
-          yCoeff,
-        ),
+        convertBullets(di<BulletsBloc>().state.bullets, xCoeff, yCoeff),
       ),
     );
 
     di<BombsBloc>().add(
       BombsEvent.setAll(
-        convertBombs(
-          di<BombsBloc>().state.bombs,
-          xCoeff,
-          yCoeff,
-        ),
+        convertBombs(di<BombsBloc>().state.bombs, xCoeff, yCoeff),
       ),
     );
 
     // di<BombsBloc>().add(const BombsEvent.init()); // todo
 
-    emit(
-      state.copyWith(
-        size: event.size,
-      ),
-    );
+    emit(state.copyWith(size: event.size));
   }
 
   void _onTapButton(SceneEventTapButton event, Emitter<SceneState> emit) {
@@ -136,10 +109,7 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
           Bullet(
             position: Vector.copy(
               protagonist.position.add(
-                Vector.fromAngle(
-                  angle: protagonist.angle,
-                  length: 20,
-                ),
+                Vector.fromAngle(angle: protagonist.angle, length: 20),
               ),
             ),
             angle: protagonist.angle,
@@ -171,13 +141,11 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
   void _subscribe() {
     _gameStartedSubscription = gameScoreRepo
         .isStartedStream()
-        .where(
-          (bool started) => started,
-        )
+        .where((bool started) => started)
         .listen((_) {
-      sceneWavesRepo.reset();
-      sceneSpawnRepo.reset();
-    });
+          sceneWavesRepo.reset();
+          sceneSpawnRepo.reset();
+        });
 
     _bombSpawnSubscription = sceneSpawnRepo.bombSpawnStream().listen((_) {
       _addBomb();
@@ -191,6 +159,10 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
       bombs: di<BombsBloc>().state.bombs,
       onBombRemove: (List<Bomb> bombs) {
         di<BombsBloc>().add(BombsEvent.removeAll(bombs));
+
+        if (bombs.isNotEmpty) {
+          di.get<SoundService>().playExplosion();
+        }
       },
       onBulletRemove: (List<Bullet> bullets) {
         di<BulletsBloc>().add(BulletsEvent.removeAll(bullets));
@@ -198,6 +170,8 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
       onProtagonistHit: (Bomb bomb) {
         gameScoreRepo.dead();
         di<BombsBloc>().add(const BombsEvent.init());
+
+        di.get<SoundService>().playDead();
       },
     );
 
@@ -242,8 +216,8 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
   }
 
   Vector _generateBombPosition() => getBombPosition(
-        state.size.x,
-        state.size.y,
-        math.Random.secure().nextDouble(),
-      );
+    state.size.x,
+    state.size.y,
+    math.Random.secure().nextDouble(),
+  );
 }

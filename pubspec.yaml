@@ -8,6 +8,7 @@ environment:
   sdk: ">=3.10.4 <4.0.0"
 
 dependencies:
+  audioplayers: ^6.5.1
   cloud_firestore: ^6.1.1
   collection: ^1.17.0
   firebase_analytics: ^12.1.0
@@ -50,6 +51,7 @@ flutter:
     - assets/
     - assets/google_fonts/
     - assets/images/
+    - assets/sounds/
 
 melos:
   scripts:

@@ -20,6 +20,7 @@ import 'package:flutter_counter_shooter/logic/repo/records/firebase/firebase.dar
 import 'package:flutter_counter_shooter/logic/repo/repo.dart';
 import 'package:flutter_counter_shooter/logic/repo/scene/scene.dart';
 import 'package:flutter_counter_shooter/logic/service/analytics_service.dart';
+import 'package:flutter_counter_shooter/logic/service/sound_service.dart';
 import 'package:get_it/get_it.dart';
 
 final GetIt di = GetIt.I;
@@ -108,6 +109,8 @@ void diInit() {
   );
 
   di.registerLazySingleton<AnalyticsService>(AnalyticsService.new);
+
+  di.registerLazySingleton<SoundService>(SoundService.new);
 }
 
 void diDispose() {
