@@ -19,6 +19,7 @@ import 'package:flutter_counter_shooter/logic/blocs/waves/repo.dart';
 import 'package:flutter_counter_shooter/logic/repo/records/firebase/firebase.dart';
 import 'package:flutter_counter_shooter/logic/repo/repo.dart';
 import 'package:flutter_counter_shooter/logic/repo/scene/scene.dart';
+import 'package:flutter_counter_shooter/logic/service/analytics_service.dart';
 import 'package:get_it/get_it.dart';
 
 final GetIt di = GetIt.I;
@@ -67,9 +68,7 @@ void diInit() {
   );
 
   di.registerFactory<SpawnRepo>(
-    () => SpawnRepoImpl(
-      wavesBloc: di.get<WavesBloc>(),
-    ),
+    () => SpawnRepoImpl(wavesBloc: di.get<WavesBloc>()),
   );
   di.registerLazySingleton<SpawnBloc>(
     () => SpawnBloc(repo: di.get<SpawnRepo>()),
@@ -107,6 +106,8 @@ void diInit() {
     () => RecordsBloc(recordsDbRepo: di.get<RecordsDbRepo>()),
     dispose: (RecordsBloc bloc) => unawaited(bloc.close()),
   );
+
+  di.registerLazySingleton<AnalyticsService>(AnalyticsService.new);
 }
 
 void diDispose() {
