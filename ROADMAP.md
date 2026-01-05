@@ -4,5 +4,5 @@
 - Android is exploding after hit.
   8h 
 
-- Add sounds
-  4h 
+- Adjust sounds volume and balance according position
+  2h 
