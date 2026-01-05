@@ -100,6 +100,8 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
     gameScoreRepo.shoot();
 
     if (gameScoreRepo.isStarted) {
+      di.get<SoundService>().playShoot();
+
       di<ProtagonistBloc>().add(const ProtagonistEvent.shoot());
 
       final protagonist = di<ProtagonistBloc>().state.protagonist;

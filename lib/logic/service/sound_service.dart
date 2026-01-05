@@ -8,6 +8,7 @@ class SoundService {
   Future<void> load() async {
     await _player.setSource(AssetSource('sounds/explosion.mp3'));
     await _player.setSource(AssetSource('sounds/dead.mp3'));
+    await _player.setSource(AssetSource('sounds/shoot.mp3'));
   }
 
   void playExplosion() {
@@ -22,6 +23,15 @@ class SoundService {
   void playDead() {
     unawaited(
       _player.play(AssetSource('sounds/dead.mp3'), mode: PlayerMode.lowLatency),
+    );
+  }
+
+  void playShoot() {
+    unawaited(
+      _player.play(
+        AssetSource('sounds/shoot.mp3'),
+        mode: PlayerMode.lowLatency,
+      ),
     );
   }
 }
