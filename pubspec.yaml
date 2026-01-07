@@ -150,6 +150,12 @@ melos:
         firebase deploy  && \
         popd
 
+    deploy:gh:
+      description: "Build for GitHub Pages"
+      run: |
+        rm -rf build && \
+        flutter build web --wasm -O4 --base-href "/flutter_counter_demo_shooter/"
+
     build:
       description: "Build"
       run: |
