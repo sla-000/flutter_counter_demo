@@ -1,8 +1,11 @@
-- Bomb is exploding after hit.
-  8h 
+- Better animation for bombs.
+  4h 
 
-- Android is exploding after hit.
-  8h 
+- Bombs and bullets are exploding after hit.
+  2h
 
-- Adjust sounds volume and balance according position
+- Android is exploding after dead.
   2h 
+
+- Fix sound issues.
+  1h
