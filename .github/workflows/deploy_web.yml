@@ -36,7 +36,7 @@ jobs:
         run: flutter pub get
 
       - name: Build Web
-        run: flutter build web --wasm --release --base-href "/flutter_counter_demo_shooter/"
+        run: flutter build web -O4 --wasm --release --base-href "/flutter_counter_demo_shooter/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
