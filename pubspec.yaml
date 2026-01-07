@@ -62,6 +62,11 @@ melos:
           dart pub run build_runner build --delete-conflicting-outputs && \
           dart run melos run format
 
+    resize:images:
+      description: "Resize WebP images from 3.0x to 2.0x and 1.0x"
+      run: |
+        bash scripts/resize_images.sh
+
     analyze:
       description: "Analyze"
       run: |
