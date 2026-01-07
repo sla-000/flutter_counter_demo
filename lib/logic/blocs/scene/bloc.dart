@@ -47,16 +47,16 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
   final SceneScoreRepo gameScoreRepo;
 
   @override
-  Future<void> close() {
-    _bombSpawnSubscription.cancel();
-    _gameStartedSubscription.cancel();
+  Future<void> close() async {
+    await Future.wait([
+      _bombSpawnSubscription.cancel(),
+      _gameStartedSubscription.cancel(),
+    ]);
 
     return super.close();
   }
 
   void _onInit(SceneEventInit event, Emitter<SceneState> emit) {
-    unawaited(di.get<SoundService>().load());
-
     di<ProtagonistBloc>().add(
       ProtagonistEvent.init(Vector(x: event.size.x / 2, y: event.size.y / 2)),
     );

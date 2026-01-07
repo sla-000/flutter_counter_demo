@@ -6,9 +6,11 @@ class SoundService {
   final AudioPlayer _player = AudioPlayer();
 
   Future<void> load() async {
-    await _player.setSource(AssetSource('sounds/explosion.mp3'));
-    await _player.setSource(AssetSource('sounds/dead.mp3'));
-    await _player.setSource(AssetSource('sounds/shoot.mp3'));
+    await Future.wait([
+      _player.setSource(AssetSource('sounds/explosion.mp3')),
+      _player.setSource(AssetSource('sounds/dead.mp3')),
+      _player.setSource(AssetSource('sounds/shoot.mp3')),
+    ]);
   }
 
   void playExplosion() {

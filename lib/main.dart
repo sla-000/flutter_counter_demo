@@ -5,7 +5,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_counter_shooter/app.dart';
+import 'package:flutter_counter_shooter/di/di.dart';
 import 'package:flutter_counter_shooter/firebase.dart';
+import 'package:flutter_counter_shooter/logic/service/sound_service.dart';
 
 Future<void> main() async {
   await runZonedGuarded<Future<void>>(
@@ -22,7 +24,10 @@ Future<void> main() async {
       runApp(
         App(
           onInit: () async {
-            await firebaseInit();
+            await Future.wait([
+              firebaseInit(),
+              di.get<SoundService>().load(),
+            ]);
 
             if (!kIsWeb) {
               FlutterError.onError =

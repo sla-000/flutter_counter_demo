@@ -30,6 +30,9 @@ analyzer:
     - '**.freezed.dart'
     - 'lib/l10n/generated/**'
 
+formatter:
+  trailing_commas: preserve
+
 linter:
   rules:
     # Rules docs: https://dart-lang.github.io/linter/lints/
