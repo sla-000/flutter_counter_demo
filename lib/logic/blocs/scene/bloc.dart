@@ -162,8 +162,10 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
       onBombRemove: (List<Bomb> bombs) {
         di<BombsBloc>().add(BombsEvent.removeAll(bombs));
 
-        if (bombs.isNotEmpty) {
-          di.get<SoundService>().playExplosion();
+        for (final bomb in bombs) {
+          di.get<SoundService>().playExplosion(
+            balance: (bomb.position.x / state.size.x - 0.5) * 1.5,
+          );
         }
       },
       onBulletRemove: (List<Bullet> bullets) {

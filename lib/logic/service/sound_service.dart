@@ -17,11 +17,12 @@ class SoundService {
     ]);
   }
 
-  void playExplosion() {
+  void playExplosion({double balance = 0.0}) {
     unawaited(
       _player.play(
         _explosion,
         mode: PlayerMode.lowLatency,
+        balance: balance,
       ),
     );
   }
