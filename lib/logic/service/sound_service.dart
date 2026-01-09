@@ -15,6 +15,12 @@ class SoundService {
       _player.setSource(_dead),
       _player.setSource(_shoot),
     ]);
+
+    await _player.audioCache.loadAll([
+      _explosion.path,
+      _dead.path,
+      _shoot.path,
+    ]);
   }
 
   void playExplosion({double balance = 0.0}) {
