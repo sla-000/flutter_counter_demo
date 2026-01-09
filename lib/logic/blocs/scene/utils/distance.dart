@@ -12,12 +12,12 @@ int checkAllCollisions({
   required Protagonist protagonist,
   required List<Bullet> bullets,
   required List<Bomb> bombs,
-  required void Function(List<Bullet> bullets) onBulletRemove,
+  required void Function(List<Bullet> bullets) onBulletHit,
   required void Function(List<Bomb> bombs) onBombsHit,
   required void Function(List<Bomb> bombs) onBombRemove,
   required void Function(Bomb bomb) onProtagonistHit,
 }) {
-  final delBullets = <Bullet>[];
+  final hitBullets = <Bullet>[];
   final hitBombs = <Bomb>[];
 
   final aliveBombs = bombs.where((e) => e.lifecycle == ActorLifecycle.alive);
@@ -28,18 +28,22 @@ int checkAllCollisions({
     }
 
     for (final bullet in bullets) {
+      if (bullet.lifecycle != ActorLifecycle.alive) {
+        continue;
+      }
+
       if (actorsAreClose(
         bullet,
         bomb,
         distance: max(bullet.size.x / 2, bomb.size.x / 2),
       )) {
         hitBombs.add(bomb);
-        delBullets.add(bullet);
+        hitBullets.add(bullet);
       }
     }
   }
 
-  onBulletRemove(delBullets);
+  onBulletHit(hitBullets);
 
   onBombsHit(hitBombs);
 

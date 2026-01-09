@@ -1,4 +1,5 @@
 import 'package:flutter_counter_shooter/logic/game/actor/actor_moving.dart';
+import 'package:flutter_counter_shooter/logic/game/actor/actor_state.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/updatable.dart';
 import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
 
@@ -10,35 +11,57 @@ class Bullet extends ActorMoving implements Updatable {
     Vector? linearSpeed,
     Vector? size,
   }) : super(
-          position: position,
-          angle: angle,
-          rotationSpeed: rotationSpeed,
-          linearSpeed:
-              linearSpeed ?? Vector.fromAngle(angle: angle, length: 100),
-          size: size ?? Vector.square(size: 20),
-        );
+         position: position,
+         angle: angle,
+         rotationSpeed: rotationSpeed,
+         linearSpeed:
+             linearSpeed ?? Vector.fromAngle(angle: angle, length: 100),
+         size: size ?? Vector.square(size: 20),
+       );
 
   double animation = 0;
 
   @override
   Bullet copyWith({
     required Vector position,
-  }) =>
-      Bullet(
-        position: position,
-        angle: angle,
-        linearSpeed: linearSpeed,
-        rotationSpeed: rotationSpeed,
-        size: size,
-      );
+  }) => Bullet(
+    position: position,
+    angle: angle,
+    linearSpeed: linearSpeed,
+    rotationSpeed: rotationSpeed,
+    size: size,
+  );
+
+  static const kDeathTime = 0.2;
+
+  void hit() {
+    switch (lifecycle) {
+      case ActorLifecycle.dead:
+      case ActorLifecycle.dying:
+        return;
+
+      case ActorLifecycle.alive:
+        lifecycle = ActorLifecycle.dying;
+    }
+  }
 
   @override
   void update(double delta) {
     super.update(delta);
 
-    _updateAnimation(delta);
+    switch (lifecycle) {
+      case ActorLifecycle.dead:
+      case ActorLifecycle.alive:
+        _updateAnimation(delta);
+        _updateSize(delta);
 
-    _updateSize(delta);
+      case ActorLifecycle.dying:
+        opacity -= delta / kDeathTime;
+        if (opacity < 0) {
+          opacity = 0;
+          lifecycle = ActorLifecycle.dead;
+        }
+    }
   }
 
   void _updateSize(double delta) {
@@ -57,5 +80,5 @@ class Bullet extends ActorMoving implements Updatable {
   }
 
   @override
-  String toString() => 'HeroBullet{moving: ${super.toString()}}';
+  String toString() => 'Bullet{moving: ${super.toString()}}';
 }

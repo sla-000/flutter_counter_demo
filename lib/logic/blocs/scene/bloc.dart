@@ -165,6 +165,14 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
         .toList();
 
     di<BombsBloc>().add(BombsEvent.removeAll(delBombs));
+
+    final bullets = di<BulletsBloc>().state.bullets;
+
+    final delBullets = bullets
+        .where((bullet) => bullet.lifecycle == ActorLifecycle.dead)
+        .toList();
+
+    di<BulletsBloc>().add(BulletsEvent.removeAll(delBullets));
   }
 
   void _processCollisions() {
@@ -183,8 +191,10 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
       onBombRemove: (List<Bomb> bombs) {
         di<BombsBloc>().add(BombsEvent.removeAll(bombs));
       },
-      onBulletRemove: (List<Bullet> bullets) {
-        di<BulletsBloc>().add(BulletsEvent.removeAll(bullets));
+      onBulletHit: (List<Bullet> bullets) {
+        for (final bullet in bullets) {
+          bullet.hit();
+        }
       },
       onProtagonistHit: (Bomb bomb) {
         gameScoreRepo.dead();
