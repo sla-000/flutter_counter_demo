@@ -50,7 +50,6 @@ class Bullet extends ActorMoving implements Updatable {
     super.update(delta);
 
     switch (lifecycle) {
-      case ActorLifecycle.dead:
       case ActorLifecycle.alive:
         _updateAnimation(delta);
         _updateSize(delta);
@@ -61,6 +60,10 @@ class Bullet extends ActorMoving implements Updatable {
           opacity = 0;
           lifecycle = ActorLifecycle.dead;
         }
+        _updateSize(delta * 100);
+
+      case ActorLifecycle.dead:
+        break;
     }
   }
 

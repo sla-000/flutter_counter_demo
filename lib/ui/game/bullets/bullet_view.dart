@@ -24,20 +24,24 @@ class BulletView extends StatelessWidget {
             Colors.red.shade400,
           ];
 
-    late final animation =
-        firstPart ? bullet.animation * 2 : (bullet.animation - 0.5) * 2;
+    late final animation = firstPart
+        ? bullet.animation * 2
+        : (bullet.animation - 0.5) * 2;
 
     return Positioned(
       left: bullet.xOrigin,
       top: bullet.yOrigin,
-      child: Transform.rotate(
-        angle: bullet.angle,
-        child: GradientIcon(
-          Icons.cancel,
-          size: bullet.size.x,
-          gradient: RadialGradient(
-            colors: colors,
-            radius: animation,
+      child: Opacity(
+        opacity: bullet.opacity,
+        child: Transform.rotate(
+          angle: bullet.angle,
+          child: GradientIcon(
+            Icons.cancel,
+            size: bullet.size.x,
+            gradient: RadialGradient(
+              colors: colors,
+              radius: animation,
+            ),
           ),
         ),
       ),
