@@ -44,6 +44,7 @@ class SoundService {
     unawaited(
       _player.play(
         _shoot,
+        volume: 0.2,
         mode: PlayerMode.lowLatency,
       ),
     );
