@@ -7,23 +7,24 @@ class ActorMoving extends ActorState implements Updatable {
   ActorMoving({
     super.position,
     super.angle,
+    super.opacity,
+    super.lifecycle,
     Vector? linearSpeed,
     double? rotationSpeed,
     Vector? size,
-  })  : linearSpeed = linearSpeed ?? Vector.zero(),
-        rotationSpeed = rotationSpeed ?? 0,
-        size = size ?? Vector.one();
+  }) : linearSpeed = linearSpeed ?? Vector.zero(),
+       rotationSpeed = rotationSpeed ?? 0,
+       size = size ?? Vector.one();
 
   ActorMoving copyWith({
     required Vector position,
-  }) =>
-      ActorMoving(
-        position: position,
-        angle: angle,
-        linearSpeed: linearSpeed,
-        rotationSpeed: rotationSpeed,
-        size: size,
-      );
+  }) => ActorMoving(
+    position: position,
+    angle: angle,
+    linearSpeed: linearSpeed,
+    rotationSpeed: rotationSpeed,
+    size: size,
+  );
 
   final Vector linearSpeed;
   double rotationSpeed;

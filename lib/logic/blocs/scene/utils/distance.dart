@@ -13,13 +13,16 @@ int checkAllCollisions({
   required List<Bullet> bullets,
   required List<Bomb> bombs,
   required void Function(List<Bullet> bullets) onBulletRemove,
+  required void Function(List<Bomb> bombs) onBombsHit,
   required void Function(List<Bomb> bombs) onBombRemove,
   required void Function(Bomb bomb) onProtagonistHit,
 }) {
   final delBullets = <Bullet>[];
-  final delBombs = <Bomb>[];
+  final hitBombs = <Bomb>[];
 
-  for (final bomb in bombs) {
+  final aliveBombs = bombs.where((e) => e.lifecycle == ActorLifecycle.alive);
+
+  for (final bomb in aliveBombs) {
     if (actorsAreClose(protagonist, bomb, distance: 40)) {
       onProtagonistHit(bomb);
     }
@@ -30,7 +33,7 @@ int checkAllCollisions({
         bomb,
         distance: max(bullet.size.x / 2, bomb.size.x / 2),
       )) {
-        delBombs.add(bomb);
+        hitBombs.add(bomb);
         delBullets.add(bullet);
       }
     }
@@ -38,17 +41,22 @@ int checkAllCollisions({
 
   onBulletRemove(delBullets);
 
+  onBombsHit(hitBombs);
+
+  final delBombs = bombs
+      .where((bomb) => bomb.lifecycle == ActorLifecycle.dead)
+      .toList();
+
   onBombRemove(delBombs);
 
-  return delBombs.length;
+  return hitBombs.length;
 }
 
 bool actorsAreClose(
   ActorMoving actor0,
   ActorMoving actor1, {
   double distance = 20,
-}) =>
-    actor0.position.distance(actor1.position) < distance;
+}) => actor0.position.distance(actor1.position) < distance;
 
 void checkBoundsAddToDeleteList(
   List<ActorState> delItems,

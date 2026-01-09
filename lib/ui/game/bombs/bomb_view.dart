@@ -36,7 +36,10 @@ class _BombViewState extends State<BombView> with TickerProviderStateMixin {
       opacity: _animationController,
       child: Transform.rotate(
         angle: widget.bomb.angle + math.pi / 2,
-        child: _BombShock(size: widget.bomb.size.x),
+        child: Opacity(
+          opacity: widget.bomb.opacity,
+          child: _BombShock(size: widget.bomb.size.x),
+        ),
       ),
     ),
   );

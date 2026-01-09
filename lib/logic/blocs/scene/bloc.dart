@@ -20,6 +20,7 @@ import 'package:flutter_counter_shooter/logic/blocs/spawn/event.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/bloc.dart';
 import 'package:flutter_counter_shooter/logic/blocs/waves/event.dart';
 import 'package:flutter_counter_shooter/logic/game/actor/actor_moving.dart';
+import 'package:flutter_counter_shooter/logic/game/actor/actor_state.dart';
 import 'package:flutter_counter_shooter/logic/game/bullet/bullet.dart';
 import 'package:flutter_counter_shooter/logic/game/enemy/bomb.dart';
 import 'package:flutter_counter_shooter/logic/game/math/vector.dart';
@@ -138,6 +139,8 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
     });
 
     _processCollisions();
+
+    _processDead();
   }
 
   void _subscribe() {
@@ -154,19 +157,31 @@ class SceneBloc extends Bloc<SceneEvent, SceneState> {
     });
   }
 
+  void _processDead() {
+    final bombs = di<BombsBloc>().state.bombs;
+
+    final delBombs = bombs
+        .where((bomb) => bomb.lifecycle == ActorLifecycle.dead)
+        .toList();
+
+    di<BombsBloc>().add(BombsEvent.removeAll(delBombs));
+  }
+
   void _processCollisions() {
     final hits = checkAllCollisions(
       protagonist: di<ProtagonistBloc>().state.protagonist,
       bullets: di<BulletsBloc>().state.bullets,
       bombs: di<BombsBloc>().state.bombs,
-      onBombRemove: (List<Bomb> bombs) {
-        di<BombsBloc>().add(BombsEvent.removeAll(bombs));
-
+      onBombsHit: (bombs) {
         for (final bomb in bombs) {
           di.get<SoundService>().playExplosion(
             balance: (bomb.position.x / state.size.x - 0.5) * 1.5,
           );
+          bomb.hit();
         }
+      },
+      onBombRemove: (List<Bomb> bombs) {
+        di<BombsBloc>().add(BombsEvent.removeAll(bombs));
       },
       onBulletRemove: (List<Bullet> bullets) {
         di<BulletsBloc>().add(BulletsEvent.removeAll(bullets));
