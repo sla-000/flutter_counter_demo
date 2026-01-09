@@ -9,18 +9,16 @@ class SoundService {
   final _dead = AssetSource('sounds/dead.mp3');
   final _shoot = AssetSource('sounds/shoot.mp3');
 
-  Future<void> load() async {
-    await Future.wait([
-      _player.setSource(_explosion),
-      _player.setSource(_dead),
-      _player.setSource(_shoot),
-    ]);
+  late final _assets = [
+    _explosion,
+    _dead,
+    _shoot,
+  ];
 
-    await _player.audioCache.loadAll([
-      _explosion.path,
-      _dead.path,
-      _shoot.path,
-    ]);
+  Future<void> load() async {
+    await Future.wait(_assets.map(_player.setSource));
+
+    await _player.audioCache.loadAll(_assets.map((a) => a.path).toList());
   }
 
   void playExplosion({double balance = 0.0}) {
